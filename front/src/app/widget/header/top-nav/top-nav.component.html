@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg bg-light bg-transparent">
+  <div class="container">
+    <a class="navbar-brand" href="/">Luxury</a>
+    <ul class="nav justify-content-end ms-auto mb-2 mb-lg-0 gx-3">
+      <li class="nav-item mx-1">
+        <div class="user-list">
+          <button class="border-0 bg-transparent p-0" type="button">
+            <i class="bi bi-person-circle"></i>
+          </button>
+        </div>
+      </li>
+      <li class="nav-item mx-1">
+        <div class="lang dropdown">
+          <button class="border-0 bg-transparent p-0" type="button">
+            <img [src]="'assets/images/ar.png'" alt="arabic" />
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="#">
+                <img [src]="'assets/images/en.png'" alt="english" />
+                <span>english</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li> -->
+    </ul>
+    <!-- <app-nav-list
+        class="collapse navbar-collapse"
+        id="navbarSupportedContent"
+      ></app-nav-list> -->
+  </div>
+</nav>
