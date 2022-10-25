@@ -1,0 +1,81 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "first_name": "Jon",
+      "last_name": "Harlin",
+      "email": "jharlin0@sun.com",
+      "gender": "Male",
+      "ip_address": "241.6.136.252"
+    },
+    {
+      "id": 2,
+      "first_name": "Lisle",
+      "last_name": "Rohloff",
+      "email": "lrohloff1@tripadvisor.com",
+      "gender": "Male",
+      "ip_address": "129.70.254.38"
+    },
+    {
+      "id": 3,
+      "first_name": "Nikola",
+      "last_name": "Lum",
+      "email": "nlum2@google.it",
+      "gender": "Male",
+      "ip_address": "99.197.47.216"
+    },
+    {
+      "id": 4,
+      "first_name": "Syd",
+      "last_name": "MacCaffery",
+      "email": "smaccaffery3@who.int",
+      "gender": "Male",
+      "ip_address": "118.78.55.90"
+    },
+    {
+      "id": 5,
+      "first_name": "Sharleen",
+      "last_name": "Beevis",
+      "email": "sbeevis4@accuweather.com",
+      "gender": "Female",
+      "ip_address": "149.77.133.3"
+    },
+    {
+      "id": 6,
+      "first_name": "Daron",
+      "last_name": "Longhorne",
+      "email": "dlonghorne5@ocn.ne.jp",
+      "gender": "Male",
+      "ip_address": "177.24.164.247"
+    },
+    {
+      "id": 7,
+      "first_name": "Jefferey",
+      "last_name": "Waddams",
+      "email": "jwaddams6@jiathis.com",
+      "gender": "Male",
+      "ip_address": "85.203.19.211"
+    },
+    {
+      "id": 8,
+      "first_name": "Rolf",
+      "last_name": "O' Connell",
+      "email": "roconnell7@usda.gov",
+      "gender": "Male",
+      "ip_address": "68.154.180.94"
+    },
+    {
+      "id": 9,
+      "first_name": "Cliff",
+      "last_name": "Mennell",
+      "email": "cmennell8@shop-pro.jp",
+      "gender": "Male",
+      "ip_address": "5.21.25.202"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1
+    }
+  ]
+}

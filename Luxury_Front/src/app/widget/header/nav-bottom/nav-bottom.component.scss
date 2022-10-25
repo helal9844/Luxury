@@ -1,0 +1,26 @@
+nav.nav-bottom {
+    .nav-item {
+        .nav-link{
+            color: #fff;
+            font-weight: 550;
+            font-family: PopB;
+            border-radius: 20px;
+            margin: 0 .5rem;
+            text-shadow: 1px 1px 1px #222;
+            box-shadow: -1px -1px 5px 4px #ffffff24;
+            transition: all 1s ease-in-out;
+        }
+        &.active {
+            .nav-link{
+                border: 1px solid #fff;
+                background-color: #fff5;
+            }
+        }
+        &:hover{
+            .nav-link{
+                background-color: #fff5;
+            }
+        }
+        
+    }
+}
