@@ -10,23 +10,33 @@ export class TopNavComponent implements OnInit {
   public currentLang: string;
   public checkLang: string;
   public src: string;
+  public currentSrc: string;
   constructor(public translate: TranslateService) {
     this.currentLang = localStorage.getItem('currentLang') || 'ar';
     this.translate.use(this.currentLang);
     this.checkLang = this.currentLang == 'ar'? 'en': 'ar';
-    this.src = `assets/images/${this.currentLang}.png`;
+    this.src = this.chnageLangImg(this.checkLang);
+    this.currentSrc = this.chnageLangImg(this.currentLang);
   }
 
   changeCurrentLang(lang:string){
     this.translate.use(lang);
     localStorage.setItem('currentLang', lang);
     this.checkLang = lang == 'ar'? 'en': 'ar';
-    this.src = `assets/images/${lang}.png`;
+    this.src = this.chnageLangImg(this.checkLang);
+    this.currentSrc = this.chnageLangImg(lang);
+  }
+
+  chnageLangImg(lang:string):string {
+    return `assets/images/${lang}.png`
   }
 
 
 
   ngOnInit(): void {
+    this.translate.onLangChange.subscribe(()=>{
+      
+    });
   }
 
 }

@@ -1,0 +1,18 @@
+$gold: #aa8453;
+
+$textRight: right;
+$textLeft: left;
+
+@mixin dir($property: text-align, $ltr-value: left, $rtl-value: right, $rtl-property: $property) {
+    #{$property}: $ltr-value;
+    [dir=rtl] & {
+      #{$rtl-property}: $rtl-value;
+    }
+  }
+  
+  @mixin one_dir($property: text-lingn, $rtl-value: left) {
+    [dir=rtl] & {
+      #{$property}: $rtl-value;
+    }
+  }
+  

@@ -1,0 +1,9 @@
+.c-ms {
+    margin-left: auto;
+    @include one_dir(margin-left, 0);
+}
+
+.textAlign {
+    margin-left: left;
+    @include one_dir(text-align, right);
+}
