@@ -12,14 +12,21 @@
       <li class="nav-item mx-1">
         <div class="lang dropdown">
           <button class="border-0 bg-transparent p-0" type="button">
-            <img [src]="'assets/images/ar.png'" alt="arabic" />
+            <img [src]="src" alt="arabic" />
           </button>
           <ul class="dropdown-menu">
             <li>
-              <a class="dropdown-item" href="#">
-                <img [src]="'assets/images/en.png'" alt="english" />
+              <button
+                (click)="changeCurrentLang(checkLang)"
+                class="dropdown-item"
+                href="#"
+              >
+                <img
+                  [src]="'assets/images/' + checkLang + '.png'"
+                  alt="english"
+                />
                 <span>english</span>
-              </a>
+              </button>
             </li>
           </ul>
         </div>

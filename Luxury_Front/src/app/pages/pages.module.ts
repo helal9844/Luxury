@@ -1,15 +1,46 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AboutComponent } from './about/about.component';
-
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
+import { TranslateService } from "@ngx-translate/core";
 @NgModule({
   declarations: [
-
-  
+    HomeComponent,
     AboutComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpTransLoader,
+        deps: [HttpClient]
+      }
+    }),
   ]
 })
-export class PagesModule { }
+export class PagesModule {
+
+  // currentLang: string;
+
+  constructor(public translate: TranslateService) {
+    // translate.setDefaultLang('en');
+    // translate.use('ar');
+  }
+
+  changeCurrentLang(lang:string){
+    this.translate.use(lang);
+    localStorage.setItem('currentLnag', lang);
+  }
+
+ }
+export function HttpTransLoader(http:HttpClient) {
+  return new TranslateHttpLoader(http, '../assets/langs/', '.json');
+}
+

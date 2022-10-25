@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { TranslateService } from "@ngx-translate/core";
 @Component({
   selector: 'top-nav',
   templateUrl: './top-nav.component.html',
@@ -7,7 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopNavComponent implements OnInit {
 
-  constructor() { }
+  public currentLang: string;
+  public checkLang: string;
+  public src: string;
+  constructor(public translate: TranslateService) {
+    this.currentLang = localStorage.getItem('currentLang') || 'ar';
+    this.translate.use(this.currentLang);
+    this.checkLang = this.currentLang == 'ar'? 'en': 'ar';
+    this.src = `assets/images/${this.currentLang}.png`;
+  }
+
+  changeCurrentLang(lang:string){
+    this.translate.use(lang);
+    localStorage.setItem('currentLang', lang);
+    this.checkLang = lang == 'ar'? 'en': 'ar';
+    this.src = `assets/images/${lang}.png`;
+  }
+
+
 
   ngOnInit(): void {
   }

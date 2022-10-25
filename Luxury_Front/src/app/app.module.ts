@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { IndexComponent } from './layout/index/index.component';
 import { WidgetModule } from "./widget/widget.module";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { PagesModule } from './pages/pages.module';
 @NgModule({
   declarations: [
     IndexComponent,
@@ -13,8 +13,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    PagesModule,
     WidgetModule,
-    NgbModule
+    NgbModule,
   ],
   providers: [],
   bootstrap: [IndexComponent]
