@@ -1,3 +1,14 @@
 {
+    "hello": "مرحبا",
+    "username": "جون دوي",
+    "logomega": "ميجا",
+    "dashboard": "الصفحة الرئيسية",
+    "placeholdeusername": "اسم المستخدم",
+    "placeholdpass": "الرقم السري",
+    "errorusername": "",
+    "errorpass": "",
+    "erroremail": "",
+    "errorphone": ""
+
 
 }
