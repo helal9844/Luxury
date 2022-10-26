@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ghost\\Development\\LUXURY\\Luxury_Back\\Luxury_Back.csproj": {}
+    "E:\\DALIA\\iti .net alex\\Final Project Alex\\LUXURY\\Luxury_Back\\Luxury_Back.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ghost\\Development\\LUXURY\\Luxury_Back\\Luxury_Back.csproj": {
+    "E:\\DALIA\\iti .net alex\\Final Project Alex\\LUXURY\\Luxury_Back\\Luxury_Back.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ghost\\Development\\LUXURY\\Luxury_Back\\Luxury_Back.csproj",
+        "projectUniqueName": "E:\\DALIA\\iti .net alex\\Final Project Alex\\LUXURY\\Luxury_Back\\Luxury_Back.csproj",
         "projectName": "Luxury_Back",
-        "projectPath": "C:\\Users\\ghost\\Development\\LUXURY\\Luxury_Back\\Luxury_Back.csproj",
-        "packagesPath": "C:\\Users\\ghost\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ghost\\Development\\LUXURY\\Luxury_Back\\obj\\",
+        "projectPath": "E:\\DALIA\\iti .net alex\\Final Project Alex\\LUXURY\\Luxury_Back\\Luxury_Back.csproj",
+        "packagesPath": "C:\\Users\\ITI\\.nuget\\packages\\",
+        "outputPath": "E:\\DALIA\\iti .net alex\\Final Project Alex\\LUXURY\\Luxury_Back\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ghost\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ITI\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -82,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

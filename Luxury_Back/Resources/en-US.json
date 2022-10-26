@@ -1,0 +1,13 @@
+{
+    "hello": "Hello",
+    "username": "John Doe",
+    "logomega": "Mega",
+    "dashboard": "Dashboard",
+    "placeholdeusername": "Your UserName",
+    "placeholdpass": "Password",
+    "errorusername": "",
+    "errorpass": "",
+    "erroremail": "",
+    "errorphone": ""
+
+}

@@ -1,4 +1,10 @@
-﻿ <!-- ////////////////////////////////////////////////////////////////////////////-->
+﻿@using System.Globalization
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+@{
+    var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar") ? "rtl" : "ltr";
+}
+<!-- ////////////////////////////////////////////////////////////////////////////-->
   <nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-dark navbar-shadow">
       <div class="navbar-wrapper">
         <div class="navbar-header">
@@ -48,9 +54,7 @@
                 <a
                   class="dropdown-toggle nav-link"
                   href="#"
-                  data-toggle="dropdown"
-                  >Mega</a
-                >
+                  data-toggle="dropdown">@localizer["logomega"]</a>
                 <ul class="mega-dropdown-menu dropdown-menu row">
                   <li class="col-md-2">
                     <h6 class="dropdown-menu-header text-uppercase mb-1">
@@ -380,9 +384,9 @@
                   href="#"
                   data-toggle="dropdown"
                 >
-                  <span class="mr-1"
-                    >Hello,
-                    <span class="user-name text-bold-700">John Doe</span>
+                  <span class="mr-1">
+                                @localizer["hello"],
+                                <span class="user-name text-bold-700">@localizer["username"]</span>
                   </span>
                   <span class="avatar avatar-online">
                     <img
@@ -435,6 +439,7 @@
                   >
                 </div>
               </li>
+                    <partial name="_SelectLanguage" />
               <li class="dropdown dropdown-notification nav-item">
                 <a
                   class="nav-link nav-link-label"

@@ -1,5 +1,11 @@
-﻿<!DOCTYPE html>
-<html class="loading" lang="en" data-textdirection="ltr">
+﻿@using System.Globalization
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+@{
+    var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar") ? "rtl" : "ltr";
+}
+<!DOCTYPE html>
+<html class="loading" lang="en" dir="@isRTL">
 <head>
 
 <partial name="../Panel/_Head.cshtml" />
