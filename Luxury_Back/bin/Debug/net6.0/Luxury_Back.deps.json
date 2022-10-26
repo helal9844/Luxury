@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "Luxury_Back/1.0.0": {
         "dependencies": {
+          "MessagePackAnalyzer": "2.1.152",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.10"
         },
         "runtime": {

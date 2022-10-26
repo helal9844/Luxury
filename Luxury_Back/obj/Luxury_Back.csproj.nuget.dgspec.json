@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\DALIA\\iti .net alex\\Final Project Alex\\project\\LUXURY\\Luxury_Back\\Luxury_Back.csproj": {}
+    "C:\\Users\\ghost\\Development\\LUXURY\\Luxury_Back\\Luxury_Back.csproj": {}
   },
   "projects": {
-    "E:\\DALIA\\iti .net alex\\Final Project Alex\\project\\LUXURY\\Luxury_Back\\Luxury_Back.csproj": {
+    "C:\\Users\\ghost\\Development\\LUXURY\\Luxury_Back\\Luxury_Back.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\DALIA\\iti .net alex\\Final Project Alex\\project\\LUXURY\\Luxury_Back\\Luxury_Back.csproj",
+        "projectUniqueName": "C:\\Users\\ghost\\Development\\LUXURY\\Luxury_Back\\Luxury_Back.csproj",
         "projectName": "Luxury_Back",
-        "projectPath": "E:\\DALIA\\iti .net alex\\Final Project Alex\\project\\LUXURY\\Luxury_Back\\Luxury_Back.csproj",
-        "packagesPath": "C:\\Users\\ITI\\.nuget\\packages\\",
-        "outputPath": "E:\\DALIA\\iti .net alex\\Final Project Alex\\project\\LUXURY\\Luxury_Back\\obj\\",
+        "projectPath": "C:\\Users\\ghost\\Development\\LUXURY\\Luxury_Back\\Luxury_Back.csproj",
+        "packagesPath": "C:\\Users\\ghost\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ghost\\Development\\LUXURY\\Luxury_Back\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ITI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ghost\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,6 +40,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "MessagePackAnalyzer": {
+              "target": "Package",
+              "version": "[2.1.152, )"
+            },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[6.0.10, )"
@@ -64,7 +68,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
