@@ -1,3 +1,6 @@
+using Luxury_Back.DB;
+using Microsoft.EntityFrameworkCore;
+
 namespace Luxury_Back
 {
     public class Program
@@ -8,6 +11,11 @@ namespace Luxury_Back
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<LuxuryDb>(db =>
+            {
+                db.UseSqlServer(builder.Configuration.GetConnectionString("luxuryDB"));
+            });
 
             var app = builder.Build();
 

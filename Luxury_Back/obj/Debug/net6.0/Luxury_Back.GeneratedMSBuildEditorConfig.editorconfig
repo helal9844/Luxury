@@ -19,12 +19,16 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQXV0aFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ghost/Development/LUXURY/Luxury_Back/Views/Admin/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSG9tZVxJbmRleC5jc2h0bWw=
+[C:/Users/ghost/Development/LUXURY/Luxury_Back/Views/Admin/Dashboard/About.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkXEFib3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ghost/Development/LUXURY/Luxury_Back/Views/Admin/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSG9tZVxQcml2YWN5LmNzaHRtbA==
+[C:/Users/ghost/Development/LUXURY/Luxury_Back/Views/Admin/Dashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ghost/Development/LUXURY/Luxury_Back/Views/Admin/Dashboard/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkXFByaXZhY3kuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ghost/Development/LUXURY/Luxury_Back/Views/Home/Index.cshtml]

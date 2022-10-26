@@ -24,10 +24,16 @@
     <aside>
         <partial name="../Panel/_SideBar.cshtml" />
     </aside>
-
-    @*START PAGE CONTENT*@
-    @RenderBody()
-
+    <div class="app-content content">
+        <div class="content-wrapper">
+            <div class="content-header row">
+            </div>
+            <div class="content-body">
+                @*START PAGE CONTENT*@
+                @RenderBody()
+            </div>
+        </div>
+    </div>
 <partial name="../Panel/_Script.cshtml" />
 <!-- BEGIN PAGE LEVEL JS-->
     @RenderSection("Scripts", required: false)
