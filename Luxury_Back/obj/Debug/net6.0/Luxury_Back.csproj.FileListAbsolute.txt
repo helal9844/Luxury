@@ -769,3 +769,5 @@ E:\DALIA\iti .net alex\Final Project Alex\LUXURY\Luxury_Back\obj\Debug\net6.0\Lu
 E:\DALIA\iti .net alex\Final Project Alex\LUXURY\Luxury_Back\obj\Debug\net6.0\ref\Luxury_Back.dll
 E:\DALIA\iti .net alex\Final Project Alex\LUXURY\Luxury_Back\bin\Debug\net6.0\Resources\ar-EG.json
 E:\DALIA\iti .net alex\Final Project Alex\LUXURY\Luxury_Back\bin\Debug\net6.0\Resources\en-US.json
+C:\Users\ghost\Development\LUXURY\Luxury_Back\bin\Debug\net6.0\Resources\ar-EG.json
+C:\Users\ghost\Development\LUXURY\Luxury_Back\bin\Debug\net6.0\Resources\en-US.json
