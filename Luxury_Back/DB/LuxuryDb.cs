@@ -5,13 +5,14 @@ namespace Luxury_Back.DB
 {
     public class LuxuryDb : DbContext
     {
-        public virtual DbSet<User> users { get; set; }
-        public virtual DbSet<Governorate> governorates { get; set; }
-        public virtual DbSet<City> cities { get; set; }
+        public virtual DbSet<User> users { get; set; } = null!;
+        public virtual DbSet<Governorate> governorates { get; set; } = null!;
+        public virtual DbSet<City> cities { get; set; } = null!;
 
         public LuxuryDb(DbContextOptions<LuxuryDb> dbContextOptions) : base(dbContextOptions)
         {
-
+            /*Database.EnsureDeleted();
+            Database.EnsureCreated();*/
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -34,7 +35,7 @@ namespace Luxury_Back.DB
                         .IsUnicode();*/
 
             //City
-            modelBuilder.Entity<City>().ToTable("cities");
+           modelBuilder.Entity<City>().ToTable("cities");
             /*modelBuilder.Entity<City>().Property(g => g.name_ar)
                         .HasColumnType("varchar(max)")
                         .UseCollation("ARABIC_CI_AS")

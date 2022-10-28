@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Luxury_Back.Migrations
 {
     [DbContext(typeof(LuxuryDb))]
-    [Migration("20221026224120_governorate_city_entity")]
-    partial class governorate_city_entity
+    [Migration("20221028074300_governorates_data")]
+    partial class governorates_data
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

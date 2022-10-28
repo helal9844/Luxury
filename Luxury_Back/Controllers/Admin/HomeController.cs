@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Localization;
+﻿using Luxury_Back.DB;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
+using System.Diagnostics;
 
 namespace Luxury_Back.Controllers.Admin
 {
@@ -28,6 +30,8 @@ namespace Luxury_Back.Controllers.Admin
             //return RedirectToAction(returnUrl);
         }
         #endregion
+
+        LuxuryDb db;
 
         const string ViewPath = "Views/Admin/Dashboard/";
         public IActionResult Index()

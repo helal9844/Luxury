@@ -4,7 +4,7 @@
 
 namespace Luxury_Back.Migrations
 {
-    public partial class governorate_city_entity : Migration
+    public partial class governorates_entity : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -23,7 +23,7 @@ namespace Luxury_Back.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "cities",
+                name: "City",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -34,9 +34,9 @@ namespace Luxury_Back.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_cities", x => x.Id);
+                    table.PrimaryKey("PK_City", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_cities_governorates_gov_id",
+                        name: "FK_City_governorates_gov_id",
                         column: x => x.gov_id,
                         principalTable: "governorates",
                         principalColumn: "Id",
@@ -44,15 +44,15 @@ namespace Luxury_Back.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_cities_gov_id",
-                table: "cities",
+                name: "IX_City_gov_id",
+                table: "City",
                 column: "gov_id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "cities");
+                name: "City");
 
             migrationBuilder.DropTable(
                 name: "governorates");

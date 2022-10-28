@@ -1,7 +1,4 @@
-﻿@using System.Globalization
-@using Microsoft.AspNetCore.Mvc.Localization
-@inject IViewLocalizer localizer
-@{
+﻿@{
     var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar") ? "rtl" : "ltr";
 }
 <!DOCTYPE html>
