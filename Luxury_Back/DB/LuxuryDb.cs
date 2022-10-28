@@ -8,7 +8,7 @@ namespace Luxury_Back.DB
         public virtual DbSet<User> users { get; set; } = null!;
         public virtual DbSet<Governorate> governorates { get; set; } = null!;
         public virtual DbSet<City> cities { get; set; } = null!;
-
+        public virtual DbSet<Language> languages { get; set; } = null!;
         public LuxuryDb(DbContextOptions<LuxuryDb> dbContextOptions) : base(dbContextOptions)
         {
             /*Database.EnsureDeleted();
@@ -17,6 +17,10 @@ namespace Luxury_Back.DB
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //User
+            modelBuilder.Entity<Language>().ToTable("languages");
+            modelBuilder.Entity<Language>().HasKey(a => a.Id);
+
             //User
             modelBuilder.Entity<User>().ToTable("users");
             modelBuilder.Entity<User>().HasKey(a => a.Id);
