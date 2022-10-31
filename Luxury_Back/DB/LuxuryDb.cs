@@ -18,6 +18,7 @@ namespace Luxury_Back.DB
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             //User
             modelBuilder.Entity<User>().ToTable("users");
             modelBuilder.Entity<User>().HasKey(a => a.Id);
@@ -44,6 +45,7 @@ namespace Luxury_Back.DB
             modelBuilder.Entity<Category>()
                 .HasMany(c => c.translations)
                 .WithOne();
+
         }
     }
 }

@@ -33,6 +33,7 @@ namespace Luxury_Back.Models
         public virtual ICollection<CategoryTranslation> translations { get; set; }
         public virtual ICollection<Category> childs { get; set; }
         public virtual Category? parent { get; set; } = null!;
+
         public Category()
         {
             translations = new HashSet<CategoryTranslation>();

@@ -1,6 +1,8 @@
 ﻿using Luxury_Back.DB;
+using Luxury_Back.Models;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using System.Diagnostics;
 
@@ -37,7 +39,6 @@ namespace Luxury_Back.Controllers.Admin
         const string ViewPath = "Views/Admin/Dashboard/";
         public IActionResult Index()
         {
-
             return View($"{ViewPath}Index.cshtml");
         }
 

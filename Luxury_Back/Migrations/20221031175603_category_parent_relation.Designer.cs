@@ -4,6 +4,7 @@ using Luxury_Back.DB;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Luxury_Back.Migrations
 {
     [DbContext(typeof(LuxuryDb))]
-    partial class LuxuryDbModelSnapshot : ModelSnapshot
+    [Migration("20221031175603_category_parent_relation")]
+    partial class category_parent_relation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,21 +32,21 @@ namespace Luxury_Back.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("CategoryId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("Created_at")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("ParentId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("Updated_at")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("ParentId");
 
                     b.ToTable("categories");
                 });
@@ -175,9 +177,11 @@ namespace Luxury_Back.Migrations
 
             modelBuilder.Entity("Luxury_Back.Models.Category", b =>
                 {
-                    b.HasOne("Luxury_Back.Models.Category", null)
+                    b.HasOne("Luxury_Back.Models.Category", "parent")
                         .WithMany("childs")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("ParentId");
+
+                    b.Navigation("parent");
                 });
 
             modelBuilder.Entity("Luxury_Back.Models.CategoryTranslation", b =>
