@@ -8,12 +8,15 @@ namespace Luxury_Back.Controllers.Admin
 {
     public class HomeController : Controller
     {
+        LuxuryDb db;
+
         #region Language
         //dependancy injection
         private readonly IStringLocalizer<HomeController> localizer;
-        public HomeController(IStringLocalizer<HomeController> _localizer)
+        public HomeController(IStringLocalizer<HomeController> _localizer, LuxuryDb db)
         {
             localizer = _localizer;
+            this.db = db;
         }
 
         [HttpPost]
@@ -31,11 +34,10 @@ namespace Luxury_Back.Controllers.Admin
         }
         #endregion
 
-        LuxuryDb db;
-
         const string ViewPath = "Views/Admin/Dashboard/";
         public IActionResult Index()
         {
+
             return View($"{ViewPath}Index.cshtml");
         }
 

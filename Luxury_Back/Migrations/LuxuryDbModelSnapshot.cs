@@ -22,6 +22,57 @@ namespace Luxury_Back.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("Luxury_Back.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime?>("Created_at")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("ParentId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("Updated_at")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("categories");
+                });
+
+            modelBuilder.Entity("Luxury_Back.Models.CategoryTranslation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("locale")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("categoriesTranslation");
+                });
+
             modelBuilder.Entity("Luxury_Back.Models.City", b =>
                 {
                     b.Property<int>("Id")
@@ -67,28 +118,6 @@ namespace Luxury_Back.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("governorates", (string)null);
-                });
-
-            modelBuilder.Entity("Luxury_Back.Models.Language", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("currency")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("locale")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("languages", (string)null);
                 });
 
             modelBuilder.Entity("Luxury_Back.Models.User", b =>
@@ -142,6 +171,15 @@ namespace Luxury_Back.Migrations
                     b.ToTable("users", (string)null);
                 });
 
+            modelBuilder.Entity("Luxury_Back.Models.CategoryTranslation", b =>
+                {
+                    b.HasOne("Luxury_Back.Models.Category", null)
+                        .WithMany("translations")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Luxury_Back.Models.City", b =>
                 {
                     b.HasOne("Luxury_Back.Models.Governorate", "Governorate")
@@ -151,6 +189,11 @@ namespace Luxury_Back.Migrations
                         .IsRequired();
 
                     b.Navigation("Governorate");
+                });
+
+            modelBuilder.Entity("Luxury_Back.Models.Category", b =>
+                {
+                    b.Navigation("translations");
                 });
 
             modelBuilder.Entity("Luxury_Back.Models.Governorate", b =>

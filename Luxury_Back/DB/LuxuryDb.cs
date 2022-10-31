@@ -8,7 +8,8 @@ namespace Luxury_Back.DB
         public virtual DbSet<User> users { get; set; } = null!;
         public virtual DbSet<Governorate> governorates { get; set; } = null!;
         public virtual DbSet<City> cities { get; set; } = null!;
-        public virtual DbSet<Language> languages { get; set; } = null!;
+        public virtual DbSet<Category> categories { get; set; } = null!;
+        public virtual DbSet<CategoryTranslation> categoriesTranslation { get; set; } = null!;
         public LuxuryDb(DbContextOptions<LuxuryDb> dbContextOptions) : base(dbContextOptions)
         {
             /*Database.EnsureDeleted();
@@ -18,10 +19,6 @@ namespace Luxury_Back.DB
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //User
-            modelBuilder.Entity<Language>().ToTable("languages");
-            modelBuilder.Entity<Language>().HasKey(a => a.Id);
-
-            //User
             modelBuilder.Entity<User>().ToTable("users");
             modelBuilder.Entity<User>().HasKey(a => a.Id);
             modelBuilder.Entity<User>().Property(b => b.password);
@@ -30,7 +27,6 @@ namespace Luxury_Back.DB
                         .UseCollation("ARABIC_CI_AS")
                         .IsUnicode();*/
 
-
             //Governorate
             modelBuilder.Entity<Governorate>().ToTable("governorates");
             /*modelBuilder.Entity<Governorate>().Property(g => g.name_ar)
@@ -38,12 +34,16 @@ namespace Luxury_Back.DB
                         .UseCollation("ARABIC_CI_AS")
                         .IsUnicode();*/
 
-            //City
+           //City
            modelBuilder.Entity<City>().ToTable("cities");
             /*modelBuilder.Entity<City>().Property(g => g.name_ar)
                         .HasColumnType("varchar(max)")
                         .UseCollation("ARABIC_CI_AS")
                         .IsUnicode();*/
+
+            modelBuilder.Entity<Category>()
+                .HasMany(c => c.translations)
+                .WithOne();
         }
     }
 }
