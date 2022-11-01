@@ -16,12 +16,46 @@ namespace Luxury_Back.Controllers.Admin
         {
             this.luxuryDb = luxuryDb;
         }
-
         public IActionResult Index()
         {
             //return luxuryDb.categories.Include(c => c.translations).Include(c=>c.parent).ThenInclude(p=>p.translations).Where(c => c.Id == 2).First().parent.name;
             var categories = luxuryDb.categories.Include(c => c.translations).Include(c=>c.parent).ThenInclude(p=>p.translations).ToList();
             return View($"{ViewPath}Index.cshtml", categories);
+        }
+        public IActionResult Activation(int? id)
+        {
+            var category = luxuryDb.categories.Include(c => c.childs).Where(i => i.Id == id).First();
+            if (category == null)
+            {
+                TempData["error_msg"] = "Category is Not Allow";
+            }
+            else
+            {
+                using (IDbContextTransaction transaction = luxuryDb.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        category.IsActive = category.IsActive ? false : true;
+                        if (category.childs.Count() != 0 && category.childs.Count != null)
+                        {
+                            foreach (var item in category.childs)
+                            {
+                                item.IsActive = category.IsActive;
+                            }
+                        }
+                        
+                        //luxuryDb.categories.Update(category);
+                        luxuryDb.SaveChanges();
+                        transaction.Commit();
+                        
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                    }
+                }
+            }
+            return RedirectToAction("Index");
         }
         public IActionResult Delete(int id)
         {
@@ -47,7 +81,7 @@ namespace Luxury_Back.Controllers.Admin
                     catch(Exception ex)
                     {
                         transaction.Rollback();
-                        TempData["error_msg"] = ex.Message;
+                        TempData["error_msg"] = "Sorry Can't Remove This Category";
                     }
                 }
             }

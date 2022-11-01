@@ -5,3 +5,8 @@
     padding: .25rem .5rem;
     font-size: 1rem;
 }
+.activate {
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: capitalize;
+}

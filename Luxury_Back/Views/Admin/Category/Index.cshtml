@@ -63,10 +63,18 @@
                                             <td>@item.name</td>
                                             <td>@(item.parent !=null ? item.parent.name:null)</td>
                                             <td>@(item.childs != null ? item.childs.Count():0)</td>
-                                            <td>@item.IsActive</td>
                                             <td>
-                                            <a class="btn btn-info white"><i class="ft-edit"></i>@localizer["edit"]</a>
-                                            <a onclick="return confirm('Are you sure you want to delete Category?')" asp-controller="Category" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger white"><i class="ft-trash-2"></i>@localizer["delete"]</a>
+                                            @if (item.IsActive)
+                                            {
+                                                <span class="activate badge badge-success fw-bolder text-capitalize text-white">@localizer["isActive"]</span>
+                                            }else{
+                                                <span class="activate badge badge-danger fw-bolder text-capitalize text-white">@localizer["inActive"]</span>
+                                            }
+                                            </td>
+                                            <td>
+                                            <a class="btn btn-info white"><i class="ft-edit"></i> @localizer["edit"]</a>
+                                            <a asp-action="activation" asp-route-id="@item.Id" class="btn btn-warning white"><i class="ft-repeat"></i> @localizer[item.IsActive?"inActive":"isActive"] </a>
+                                            <a onclick="return confirm('Are you sure you want to delete Category?')" asp-controller="Category" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger white"><i class="ft-trash-2"></i> @localizer["delete"]</a>
                                         </td>
                                         </tr>
                                     }
