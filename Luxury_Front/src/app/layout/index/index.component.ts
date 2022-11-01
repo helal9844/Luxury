@@ -7,7 +7,7 @@ import { GlobalConstants } from 'src/app/Helpers/global-constants';
 })
 export class IndexComponent implements OnInit {
 
-  loader = GlobalConstants.loader;
+  loader = false;
 
   constructor() { }
 

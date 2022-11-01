@@ -17,6 +17,7 @@ export class TopNavComponent implements OnInit {
     this.checkLang = this.currentLang == 'ar'? 'en': 'ar';
     this.src = this.chnageLangImg(this.checkLang);
     this.currentSrc = this.chnageLangImg(this.currentLang);
+    document.body.dir = this.currentLang == 'ar'? 'rtl': 'ltr';
   }
 
   changeCurrentLang(lang:string){
@@ -25,6 +26,7 @@ export class TopNavComponent implements OnInit {
     this.checkLang = lang == 'ar'? 'en': 'ar';
     this.src = this.chnageLangImg(this.checkLang);
     this.currentSrc = this.chnageLangImg(lang);
+    document.body.dir = lang == 'ar'? 'rtl': 'ltr';
   }
 
   chnageLangImg(lang:string):string {
