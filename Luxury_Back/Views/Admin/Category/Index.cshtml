@@ -28,8 +28,19 @@
                             </ul>
                         </div>
                     </div>
+
+                    <div class="container mx-auto">
+                        @if (TempData["error_msg"] != null)
+                        {
+                            <div class="alert alert-danger text-center">@TempData["error_msg"]</div>
+                        }
+                        @if (TempData["success_msg"] != null)
+                        {
+                            <div class="alert alert-success text-center">@TempData["success_msg"]</div>
+                        }
+                    </div>
+                    
                     <div class="card-content collapse show">
-                        
                         <div class="card-body card-dashboard">
                             <a class="btn btn-info text-capitalize white my-2"><i class="ft-file-plus"></i>add new</a>
                             <table class="table table-striped table-bordered zero-configuration">
@@ -54,8 +65,8 @@
                                             <td>@item.IsActive</td>
                                             <td>
                                                 <a class="btn btn-info white"><i class="ft-edit"></i>Edit</a>
-                                                <a class="btn btn-danger white"><i class="ft-trash-2"></i>Delete</a>
-                                            </td>
+                                            <a onclick="return confirm('Are you sure you want to delete Category?')" asp-controller="Category" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger white"><i class="ft-trash-2"></i>Delete</a>
+                                        </td>
                                         </tr>
                                     }
                                 </tbody>
