@@ -21,5 +21,6 @@ namespace Luxury_Back.Controllers.Admin
             var categories = luxuryDb.categories.Include(c => c.translations).Include(c=>c.parent).ThenInclude(p=>p.translations).ToList();
             return View($"{ViewPath}Index.cshtml", categories);
         }
+        
     }
 }

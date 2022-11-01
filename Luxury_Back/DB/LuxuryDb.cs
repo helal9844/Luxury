@@ -5,6 +5,7 @@ namespace Luxury_Back.DB
 {
     public class LuxuryDb : DbContext
     {
+        public virtual DbSet<Language> languages { get; set; }
         public virtual DbSet<User> users { get; set; } = null!;
         public virtual DbSet<Governorate> governorates { get; set; } = null!;
         public virtual DbSet<City> cities { get; set; } = null!;
@@ -46,6 +47,9 @@ namespace Luxury_Back.DB
                 .HasMany(c => c.translations)
                 .WithOne();
 
+            //Languages
+            modelBuilder.Entity<Language>().ToTable("languages");
+            modelBuilder.Entity<Language>().HasKey(a => a.Id);
         }
     }
 }
