@@ -1,17 +1,29 @@
 {
-  "hello": "Hello",
-  "username": "UserName",
-  "logomega": "Mega",
-  "dashboard": "Dashboard",
-  "placeholdeusername": "Your UserName",
-  "placeholdpass": "Password",
-  "errorusername": "",
-  "errorpass": "",
-  "erroremail": "",
+    "hello": "Hello",
+    "username": "UserName",
+    "logomega": "Mega",
+    "dashboard": "Dashboard",
+    "placeholdeusername": "Your UserName",
+    "placeholdpass": "Password",
+    "errorusername": "",
+    "errorpass": "",
+    "erroremail": "",
 
-  "errorphone": "",
-  "ar-EG": "Arabic",
-  "en-US": "English"
-
+    "errorphone": "",
+    "ar-EG": "Arabic",
+    "en-US": "English",
+    //side bar
+    "category": "Categories",
+    "dispaly": "Display Category",
+    "add": "Add Category",
+    //Display Category
+    "add_new": "Add New",
+    "name_category": "Name",
+    "parent_category": "Parent",
+    "count_child": "Count Child",
+    "active_category": "Active",
+    "actions": "Actions",
+    "edit": "Edit",
+    "delete": "delete"
 
 }
