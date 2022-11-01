@@ -1,14 +1,15 @@
 {
-    "hello": "مرحبا ",
-    "username": "اسم المستخدم",
-    "logomega": "ميجا",
-    "dashboard": "الصفحة الرئيسية",
-    "placeholdeusername": "اسم المستخدم",
-    "placeholdpass": "الرقم السري",
-    "errorusername": "",
-    "errorpass": "",
-    "erroremail": "",
-    "errorphone": ""
-
+  "hello": "مرحبا ",
+  "username": "اسم المستخدم",
+  "logomega": "ميجا",
+  "dashboard": "الصفحة الرئيسية",
+  "placeholdeusername": "اسم المستخدم",
+  "placeholdpass": "الرقم السري",
+  "errorusername": "",
+  "errorpass": "",
+  "erroremail": "",
+  "errorphone": "",
+  "ar-EG": "العربية",
+  "en-US": "الانجليزية"
 
 }

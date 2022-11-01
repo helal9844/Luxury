@@ -9,9 +9,11 @@
     @RenderSection("Head", required: false)
 @*START PANEL STAYLE LINKS*@
     <partial name="../Panel/_Style.cshtml" />
+    
     <!-- BEGIN Custom CSS-->
     @RenderSection("Styles", required: false)
     <!-- END Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="~/Admin//assets//css/StyleSheet.css" />
 </head>
 
 <body class="vertical-layout vertical-menu-modern 2-columns menu-expanded fixed-navbar"
