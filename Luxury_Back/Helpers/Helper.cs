@@ -5,6 +5,9 @@ namespace Luxury_Back.Helpers
 {
     public class Helper
     {
-        public static string locale = CultureInfo.CurrentCulture.Name.StartsWith("ar")? "ar":"en";
+        public static string getLnag()
+        {
+            return CultureInfo.CurrentCulture.Name.StartsWith("ar")?"ar":"en";
+        }
     }
 }

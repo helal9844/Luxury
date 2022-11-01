@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using System.Globalization;
+using System.Text.Json.Serialization;
 
 namespace Luxury_Back
 {
@@ -41,7 +42,9 @@ namespace Luxury_Back
             });
             #endregion
 
-         
+            builder.Services.AddControllers()
+               .AddJsonOptions(o => o.JsonSerializerOptions
+                   .ReferenceHandler = ReferenceHandler.Preserve);
 
             builder.Services.AddDbContext<LuxuryDb>(db =>
             {

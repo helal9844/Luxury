@@ -24,7 +24,7 @@ namespace Luxury_Back.Models
             {
                 foreach (var translation in translations.ToList())
                 {
-                    if (translation.locale == Helper.locale)
+                    if (translation.locale == Helper.getLnag())
                         return translation.Name;
                 }
                 return "";
@@ -32,7 +32,7 @@ namespace Luxury_Back.Models
         }
         public virtual ICollection<CategoryTranslation> translations { get; set; }
         public virtual ICollection<Category> childs { get; set; }
-        /*public virtual Category? parent { get; set; } = null!;*/
+        public virtual Category? parent { get; set; } = null!;
         public Category()
         {
             translations = new HashSet<CategoryTranslation>();
