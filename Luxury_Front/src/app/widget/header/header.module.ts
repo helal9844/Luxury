@@ -4,6 +4,7 @@ import { HeaderComponent } from './_header/header.component';
 import { NavListComponent } from './nav-list/nav-list.component';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { NavBottomComponent } from './nav-bottom/nav-bottom.component';
+import { TitleHeaderComponent } from './title-header/title-header.component';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { NavBottomComponent } from './nav-bottom/nav-bottom.component';
     HeaderComponent,
     NavListComponent,
     TopNavComponent,
-    NavBottomComponent
+    NavBottomComponent,
+    TitleHeaderComponent
   ],
   imports: [
     CommonModule

@@ -1,3 +1,7 @@
+body{
+    font-family: Cairo;
+    @include dir(font-family, Pop, Cairo);
+}
 header {
     background: #003580;
 }
