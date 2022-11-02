@@ -1,5 +1,6 @@
 ﻿using Luxury_Back.DB;
 using Luxury_Back.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,8 @@ using System.Diagnostics;
 
 namespace Luxury_Back.Controllers.Admin
 {
+    [Authorize(Roles = "admin")]
+    
     public class HomeController : Controller
     {
         LuxuryDb db;

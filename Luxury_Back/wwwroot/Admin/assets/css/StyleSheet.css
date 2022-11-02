@@ -10,3 +10,11 @@
     font-weight: bold;
     text-transform: capitalize;
 }
+
+.invalid-feedback {
+    font-size: .9rem;
+    font-weight: 550;
+    text-transform: capitalize;
+    margin-bottom: .5rem;
+    padding: 0 10px;
+}

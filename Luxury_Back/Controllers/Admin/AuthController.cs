@@ -1,7 +1,15 @@
-﻿using Luxury_Back.Helpers;
+﻿using FluentValidation.Results;
+using Luxury_Back.DB;
+using Luxury_Back.Helpers;
+using Luxury_Back.Models;
+using Luxury_Back.Validations.admin;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using System.Diagnostics;
+using System.Security.Claims;
 
 namespace Luxury_Back.Controllers.Admin
 {
@@ -10,9 +18,11 @@ namespace Luxury_Back.Controllers.Admin
         #region Language
         //dependancy injection
         private readonly IStringLocalizer<AuthController> localizer;
-        public AuthController(IStringLocalizer<AuthController> _localizer)
+        LuxuryDb _luxuryDb;
+        public AuthController(IStringLocalizer<AuthController> _localizer, LuxuryDb luxuryDb)
         {
             localizer = _localizer;
+            _luxuryDb = luxuryDb;
         }
 
         [HttpPost]
@@ -32,7 +42,65 @@ namespace Luxury_Back.Controllers.Admin
         const string ViewPath = "Views/Admin/Auth/";
         public IActionResult Login()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View($"{ViewPath}Login.cshtml");
+        }
+        [HttpPost]
+        public IActionResult Login(User user)
+        {
+            AdminLoginValidation validator = new AdminLoginValidation(localizer);
+
+            ValidationResult results = validator.Validate(user);
+            
+            if (!results.IsValid)
+            {
+                foreach (var failure in results.Errors)
+                {
+                    TempData[failure.PropertyName] = failure.ErrorMessage;
+                }
+            }
+            else
+            {
+                User _user = _luxuryDb.users.Where(u => u.Email == user.Email)
+                    .Where(u => u.password == user.password).FirstOrDefault();
+                if (_user == null)
+                {
+                    TempData["userError"] = "Email Or Password Not Corrected!";
+                }
+                else
+                {
+                   if (_user.is_active && _user.is_admin)
+                    {
+                        // login 
+                        Claim a1 = new Claim("id", _user.Id.ToString());
+                        Claim a2 = new Claim("name", _user.username);
+                        Claim a3 = new Claim(ClaimTypes.Role, "admin");
+                        ClaimsIdentity claimsIdentity = new ClaimsIdentity("adminAuth");
+                        claimsIdentity.AddClaim(a1);
+                        claimsIdentity.AddClaim(a2);
+                        claimsIdentity.AddClaim(a3);
+                        ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+                        HttpContext.SignInAsync(claimsPrincipal);
+
+                        return RedirectToAction("Index","Home");
+                    }
+                    else
+                    {
+                        TempData["userError"] = "This User is not Valid!";
+                    }
+                }
+            }
+            
+            return View($"{ViewPath}Login.cshtml", user);
+        }
+
+        [HttpGet]
+        public IActionResult Logout()
+        {
+            return RedirectToAction("Login");
         }
     }
 }

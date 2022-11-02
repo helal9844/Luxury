@@ -1,4 +1,5 @@
 using Luxury_Back.DB;
+using Luxury_Back.Models;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
@@ -51,7 +52,18 @@ namespace Luxury_Back
                 db.UseSqlServer(builder.Configuration.GetConnectionString("luxuryDB"));
             });
 
+            builder.Services.AddAuthentication("adminAuth")
+                .AddCookie("adminAuth", auth =>
+                {
+                    auth.LoginPath = "/admin/auth/login";
+                    auth.LogoutPath = "/admin/auth/logout";
+                    auth.AccessDeniedPath = "/admin/auth/login";
+                });
+
+            
             var app = builder.Build();
+
+            
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -76,7 +88,12 @@ namespace Luxury_Back
             app.UseRequestLocalization(LocalizationOptions);
             #endregion
 
+            app.UseAuthentication();
             app.UseAuthorization();
+
+            app.MapControllerRoute(
+                name: "admin",
+                pattern: "admin/{controller=Home}/{action=Index}/{id?}");
 
             app.MapControllerRoute(
                 name: "default",

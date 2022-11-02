@@ -22,6 +22,13 @@ namespace Luxury_Back.Controllers.Admin
             var categories = luxuryDb.categories.Include(c => c.translations).Include(c=>c.parent).ThenInclude(p=>p.translations).ToList();
             return View($"{ViewPath}Index.cshtml", categories);
         }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            List<Language> languages = luxuryDb.languages.ToList();
+            ViewBag.languages = languages;
+            return View($"{ViewPath}Index.cshtml");
+        }
         public IActionResult Activation(int? id)
         {
             var category = luxuryDb.categories.Include(c => c.childs).Where(i => i.Id == id).First();
@@ -43,11 +50,8 @@ namespace Luxury_Back.Controllers.Admin
                                 item.IsActive = category.IsActive;
                             }
                         }
-                        
-                        //luxuryDb.categories.Update(category);
                         luxuryDb.SaveChanges();
                         transaction.Commit();
-                        
                     }
                     catch (Exception ex)
                     {
