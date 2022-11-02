@@ -27,7 +27,9 @@ namespace Luxury_Back.Controllers.Admin
         {
             List<Language> languages = luxuryDb.languages.ToList();
             ViewBag.languages = languages;
-            return View($"{ViewPath}Index.cshtml");
+            List<Category> categories = luxuryDb.categories.Include(c=>c.translations).Where(c=>c.CategoryId == null).ToList();
+            ViewBag.categories = categories;
+            return View($"{ViewPath}Create.cshtml");
         }
         public IActionResult Activation(int? id)
         {

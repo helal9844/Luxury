@@ -1,0 +1,58 @@
+﻿@model Category;
+@{
+    ViewData["Title"] = "New Category";
+    Layout = "~/Views/Shared/Admin/Layout/_CardView.cshtml";
+}
+@section Styles{
+    <link rel="stylesheet" type="text/css" href="~/admin/app-assets/vendors/css/forms/selects/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="~/admin/app-assets/css-ltr/plugins/forms/switch.min.css">
+}
+<form class="form row" asp-action="create" method="post">
+    
+    @foreach (var lang in ViewBag.languages)
+    {
+        <div class="form-group col-md-6 mb-2">
+            <lable class="form-labe fw-bold mb-50 d-block"> Name <span class="badge badge-danger">@lang.name</span></lable>
+            <input type="text" class="form-control" name="name[@lang.locale]">
+        </div>
+    }
+
+    <div class="form-group col-md-6 mb-2">
+        <lable class="form-labe fw-bold mb-50 d-block"> Select Parent Category </lable>
+        <fieldset>
+            <div class="float-left w-100">
+                <select class="select2 form-control">
+                    <option value="@null">Select Parent Category</option>
+                    @foreach (var parent in ViewBag.categories)
+                    {
+                        <option value="@parent.Id">@parent.name</option>
+                    }
+                </select>
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="form-group col-md-6 mb-2">
+        <lable class="form-labe fw-bold mb-50 d-block"> Is Active </lable>
+        <fieldset>
+            <div class="float-left">
+                <input type="checkbox" class="switch" id="switch1" checked="checked" asp-for="IsActive"/>
+            </div>
+        </fieldset>
+    </div>
+
+</form>
+
+@section Scripts{
+    <script src="~/Admin/app-assets/vendors/js/forms/toggle/bootstrap-switch.min.js"
+        type="text/javascript"></script>
+    <script src="~/Admin/app-assets/vendors/js/forms/toggle/bootstrap-checkbox.min.js"
+        type="text/javascript"></script>
+    <script src="~/Admin/app-assets/vendors/js/forms/toggle/switchery.min.js"
+        type="text/javascript"></script>
+    <script src="~/Admin/app-assets/js/scripts/forms/switch.js"
+        type="text/javascript"></script>
+    <script src="~/Admin/app-assets/vendors/js/forms/select/select2.full.min.js" type="text/javascript"></script>
+    <script src="~/Admin/app-assets/js/scripts/forms/select/form-select2.js" 
+        type="text/javascript"></script>
+}
