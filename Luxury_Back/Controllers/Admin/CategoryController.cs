@@ -31,7 +31,39 @@ namespace Luxury_Back.Controllers.Admin
             ViewBag.categories = categories;
             return View($"{ViewPath}Create.cshtml");
         }
-        public IActionResult Activation(int? id)
+
+        [HttpPost]
+        public IActionResult CreateCategory()
+        {
+            var category = new Category();
+            List<CategoryTranslation> translations = new List<CategoryTranslation>();
+            foreach(var item in Request.Form)
+            {
+                if(item.Key == "IsActive")
+                {
+                    category.IsActive = bool.Parse(item.Value);
+                }
+                if (item.Key == "CategoryId")
+                {
+                    category.CategoryId = string.IsNullOrWhiteSpace(item.Value)? null:int.Parse(item.Value);
+                }
+                if (item.Key.Contains("name-"))
+                {
+                    var locale = item.Key.Split("-")[1];
+                    var name = item.Value;
+                    translations.Add(new CategoryTranslation
+                    {
+                        locale = locale,
+                        Name = name
+                    });
+                }
+            }
+            category.translations = translations;
+            luxuryDb.categories.Add(category);
+            luxuryDb.SaveChanges();
+            return RedirectToAction("index");
+        }
+            public IActionResult Activation(int? id)
         {
             var category = luxuryDb.categories.Include(c => c.childs).Where(i => i.Id == id).First();
             if (category == null)
@@ -65,12 +97,14 @@ namespace Luxury_Back.Controllers.Admin
         }
         public IActionResult Delete(int id)
         {
-            var category = luxuryDb.categories.Include(c=>c.childs).Where(i=>i.Id ==id).First();
+            var category = luxuryDb.categories.Where(i=>i.Id ==id).First();
+            int categoryChildCount = luxuryDb.categories.Count(c=>c.CategoryId==id);
+            
             if (category == null)
             {
                 TempData["error_msg"] = "Category is Not Allow";
             }
-            else if (category.childs.Count() != 0 && category.childs.Count != null)
+            else if (categoryChildCount != 0 && categoryChildCount != null)
             {
                 TempData["error_msg"] = "Sorry Can't Remove This Category";
             }

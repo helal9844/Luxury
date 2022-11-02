@@ -385,7 +385,7 @@
                   data-toggle="dropdown"
                 >
                   <span class="mr-1">
-                    <span class="user-name text-bold-700">username</span>
+                    <span class="user-name text-bold-700">@(User.Claims.First(c=>c.Type=="name").Value)</span>
                   </span>
                   <span class="avatar avatar-online">
                     <img

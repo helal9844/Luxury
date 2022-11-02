@@ -7,13 +7,13 @@
     <link rel="stylesheet" type="text/css" href="~/admin/app-assets/vendors/css/forms/selects/select2.min.css">
     <link rel="stylesheet" type="text/css" href="~/admin/app-assets/css-ltr/plugins/forms/switch.min.css">
 }
-<form class="form row" asp-action="create" method="post">
+    <form class="form row" asp-action="CreateCategory" method="post">
     
     @foreach (var lang in ViewBag.languages)
     {
         <div class="form-group col-md-6 mb-2">
             <lable class="form-labe fw-bold mb-50 d-block"> Name <span class="badge badge-danger">@lang.name</span></lable>
-            <input type="text" class="form-control" name="name[@lang.locale]">
+            <input type="text" class="form-control" name="name-@lang.locale">
         </div>
     }
 
@@ -21,7 +21,7 @@
         <lable class="form-labe fw-bold mb-50 d-block"> Select Parent Category </lable>
         <fieldset>
             <div class="float-left w-100">
-                <select class="select2 form-control">
+                <select class="select2 form-control" name="CategoryId">
                     <option value="@null">Select Parent Category</option>
                     @foreach (var parent in ViewBag.categories)
                     {
@@ -36,11 +36,11 @@
         <lable class="form-labe fw-bold mb-50 d-block"> Is Active </lable>
         <fieldset>
             <div class="float-left">
-                <input type="checkbox" class="switch" id="switch1" checked="checked" asp-for="IsActive"/>
+                <input type="checkbox" class="switch" id="switch1" checked="checked" value="true" name="IsActive"/>
             </div>
         </fieldset>
     </div>
-
+    <button type="submit"> Submit</button>
 </form>
 
 @section Scripts{

@@ -66,6 +66,7 @@ namespace Luxury_Back.Controllers.Admin
             {
                 User _user = _luxuryDb.users.Where(u => u.Email == user.Email)
                     .Where(u => u.password == user.password).FirstOrDefault();
+
                 if (_user == null)
                 {
                     TempData["userError"] = "Email Or Password Not Corrected!";
