@@ -1,4 +1,55 @@
-﻿.lang-form select {
+﻿lable {
+    font-weight: 550;
+}
+.mt-50{
+    margin-bottom: .5rem !important;
+}
+.ml-50 {
+    margin-bottom: .5rem !important;
+}
+.mr-50 {
+    margin-bottom: .5rem !important;
+}
+.mb-50 {
+    margin-bottom: .5rem !important;
+}
+
+.pt-50 {
+    margin-bottom: .5rem !important;
+}
+
+.pl-50 {
+    margin-bottom: .5rem !important;
+}
+
+.pr-50 {
+    margin-bottom: .5rem !important;
+}
+
+.pb-50 {
+    margin-bottom: .5rem !important;
+}
+
+.py-50 {
+    margin-bottom: .5rem !important;
+}
+
+.px-50 {
+    margin-bottom: .5rem !important;
+}
+
+.my-50 {
+    margin-bottom: .5rem !important;
+}
+
+.mx-50 {
+    margin-bottom: .5rem !important;
+}
+
+.text-decoration-underline {
+    text-decoration:underline !important;
+}
+.lang-form select {
     background-color: #fff;
     border: 1px solid #fff;
     border-radius: 5px;
