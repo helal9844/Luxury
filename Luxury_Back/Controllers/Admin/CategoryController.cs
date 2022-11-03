@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Localization;
+using System;
 using System.Diagnostics;
 
 namespace Luxury_Back.Controllers.Admin
@@ -34,7 +35,7 @@ namespace Luxury_Back.Controllers.Admin
             return View($"{ViewPath}Create.cshtml", category);
         }
         [HttpPost]
-        public IActionResult _Create(Category category)
+        public IActionResult _Create(Category category,IFormFile img_category)
         {
             CategoryCreateValidation validator = new CategoryCreateValidation(localizer);
 
@@ -47,6 +48,7 @@ namespace Luxury_Back.Controllers.Admin
                 }
                 return Create(category);
             }
+           
             using (IDbContextTransaction transaction = luxuryDb.Database.BeginTransaction())
             {
                 try
@@ -60,18 +62,42 @@ namespace Luxury_Back.Controllers.Admin
                         TempData["error_msg"] = "This Category exsited!";
                         return Create(category);
                     }
+                   // category.Id = GetNextId();
+                    if (img_category == null)
+                    {
+                        category.img_category = "DefaultImage.png";
+                        
+                    }
+                    else
+                    {
+                        string uniqueImge = DateTime.Now.ToString("yyyyyMMddHHmmss") + "." + img_category.FileName.Split(".")[1];
+                        if (!System.IO.Directory.Exists(@".\wwwroot\Images\Category"))
+                        {
+                            System.IO.Directory.CreateDirectory(@".\wwwroot\Images\Category");
+                        }
+                        using (var obj = new FileStream(@".\wwwroot\Images\Category\" + uniqueImge, FileMode.Create))
+                        {
+                            img_category.CopyTo(obj);
+                        }
+                       
+                        category.img_category = uniqueImge;
+                    }
+
+                    
 
                     luxuryDb.categories.Add(category);
                     luxuryDb.SaveChanges();
                     transaction.Commit();
-                }catch(Exception ex)
+                }
+                catch(Exception ex)
                 {
                     transaction.Rollback();
                     TempData["error_msg"] = ex.Message;
                     return Content(ex.Message);
                 }
             }
-                return RedirectToAction("Index");
+           
+            return RedirectToAction("Index");
         }
         //[HttpPost]
         //public IActionResult CreateCategory()
@@ -233,6 +259,50 @@ namespace Luxury_Back.Controllers.Admin
 
         }
         #endregion
+
+
+        [HttpGet]
+        public IActionResult Edit_Image(int? id)
+        {
+            if (id == null)
+            {
+                return BadRequest();
+            }
+            var category=luxuryDb.categories.Find(id);
+            if(category == null)
+            {
+                return NotFound();
+            }
+            return View($"{ViewPath}Edit_Image.cshtml",category);
+        }
+        [HttpPost]
+        public IActionResult Edit_Image(int id, IFormFile img_category)
+        {
+           var category= luxuryDb.categories.Find(id);
+            if (img_category != null)
+            {
+                string uniqueImge = DateTime.Now.ToString("yyyyyMMddHHmmss") + "." + img_category.FileName.Split(".")[1];
+                if (!System.IO.Directory.Exists(@".\wwwroot\Images\Category"))
+                {
+                    System.IO.Directory.CreateDirectory(@".\wwwroot\Images\Category");
+                }
+                using (var obj = new FileStream(@".\wwwroot\Images\Category\" + uniqueImge, FileMode.Create))
+                {
+                    img_category.CopyTo(obj);
+                }
+
+                category.img_category = uniqueImge;
+            }
+            luxuryDb.Update(category);
+            luxuryDb.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public int GetNextId()
+        {
+            return luxuryDb.categories.Max(a => a.Id) + 1;
+        }
     }
+   
 
 }
