@@ -7,25 +7,33 @@
     <link rel="stylesheet" type="text/css" href="~/admin/app-assets/vendors/css/forms/selects/select2.min.css">
     <link rel="stylesheet" type="text/css" href="~/admin/app-assets/css-ltr/plugins/forms/switch.min.css">
 }
-    <form class="form row" asp-action="CreateCategory" method="post">
+    <form class="form row" asp-action="_Create" method="post">
     
-    @foreach (var lang in ViewBag.languages)
-    {
         <div class="form-group col-md-6 mb-2">
-            <lable class="form-labe fw-bold mb-50 d-block"> Name <span class="badge badge-danger">@lang.name</span></lable>
-            <input type="text" class="form-control" name="name-@lang.locale">
+            <lable class="form-labe fw-bold mb-50 d-block"> Name <span class="badge badge-danger">@localizer["ar-EG"]</span></lable>
+            <input type="text" class="form-control" asp-for="name_ar">
+            <span class="invalid-feedback d-block">
+                @TempData["name_ar"]
+            </span>
         </div>
-    }
+
+        <div class="form-group col-md-6 mb-2">
+            <lable class="form-labe fw-bold mb-50 d-block"> Name <span class="badge badge-danger">@localizer["en-US"]</span></lable>
+            <input type="text" class="form-control" asp-for="name_en">
+            <span class="invalid-feedback d-block">
+                @TempData["name_en"]
+            </span>
+        </div>
 
     <div class="form-group col-md-6 mb-2">
         <lable class="form-labe fw-bold mb-50 d-block"> Select Parent Category </lable>
         <fieldset>
             <div class="float-left w-100">
-                <select class="select2 form-control" name="CategoryId">
+                <select class="select2 form-control" asp-for="CategoryId">
                     <option value="@null">Select Parent Category</option>
                     @foreach (var parent in ViewBag.categories)
                     {
-                        <option value="@parent.Id">@parent.name</option>
+                        <option value="@parent.Id">@parent.name_en</option>
                     }
                 </select>
             </div>
@@ -36,7 +44,7 @@
         <lable class="form-labe fw-bold mb-50 d-block"> Is Active </lable>
         <fieldset>
             <div class="float-left">
-                <input type="checkbox" class="switch" id="switch1" checked="checked" value="true" name="IsActive"/>
+                <input type="checkbox" class="switch" id="switch1" checked="checked" asp-for="IsActive" value="true"/>
             </div>
         </fieldset>
     </div>

@@ -29,8 +29,8 @@
         {
             <tr>
                 <th>@item.Id</th>
-                <td>@item.name</td>
-                <td>@(item.parent != null ? item.parent.name : null)</td>
+                <th>@item.name_en</th>
+                <th>@(item.parent != null?item.parent.name_en:null)</th>
                 <td>@(item.childs != null ? item.childs.Count() : 0)</td>
                 <td>
                     @if (item.IsActive)

@@ -42,37 +42,19 @@ namespace Luxury_Back.Migrations
                     b.Property<DateTime?>("Updated_at")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("name_ar")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("name_en")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
                     b.ToTable("categories");
-                });
-
-            modelBuilder.Entity("Luxury_Back.Models.CategoryTranslation", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("locale")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.ToTable("categoriesTranslation");
                 });
 
             modelBuilder.Entity("Luxury_Back.Models.City", b =>
@@ -120,25 +102,6 @@ namespace Luxury_Back.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("governorates", (string)null);
-                });
-
-            modelBuilder.Entity("Luxury_Back.Models.Language", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("locale")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("languages", (string)null);
                 });
 
             modelBuilder.Entity("Luxury_Back.Models.User", b =>
@@ -201,15 +164,6 @@ namespace Luxury_Back.Migrations
                     b.Navigation("parent");
                 });
 
-            modelBuilder.Entity("Luxury_Back.Models.CategoryTranslation", b =>
-                {
-                    b.HasOne("Luxury_Back.Models.Category", null)
-                        .WithMany("translations")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Luxury_Back.Models.City", b =>
                 {
                     b.HasOne("Luxury_Back.Models.Governorate", "Governorate")
@@ -224,8 +178,6 @@ namespace Luxury_Back.Migrations
             modelBuilder.Entity("Luxury_Back.Models.Category", b =>
                 {
                     b.Navigation("childs");
-
-                    b.Navigation("translations");
                 });
 
             modelBuilder.Entity("Luxury_Back.Models.Governorate", b =>

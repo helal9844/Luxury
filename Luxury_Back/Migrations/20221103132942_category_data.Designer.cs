@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Luxury_Back.Migrations
 {
     [DbContext(typeof(LuxuryDb))]
-    [Migration("20221028085902_user_data")]
-    partial class user_data
+    [Migration("20221103132942_category_data")]
+    partial class category_data
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,41 @@ namespace Luxury_Back.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("Luxury_Back.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("Created_at")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("Updated_at")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("name_ar")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("name_en")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("categories");
+                });
 
             modelBuilder.Entity("Luxury_Back.Models.City", b =>
                 {
@@ -122,6 +157,15 @@ namespace Luxury_Back.Migrations
                     b.ToTable("users", (string)null);
                 });
 
+            modelBuilder.Entity("Luxury_Back.Models.Category", b =>
+                {
+                    b.HasOne("Luxury_Back.Models.Category", "parent")
+                        .WithMany("childs")
+                        .HasForeignKey("CategoryId");
+
+                    b.Navigation("parent");
+                });
+
             modelBuilder.Entity("Luxury_Back.Models.City", b =>
                 {
                     b.HasOne("Luxury_Back.Models.Governorate", "Governorate")
@@ -131,6 +175,11 @@ namespace Luxury_Back.Migrations
                         .IsRequired();
 
                     b.Navigation("Governorate");
+                });
+
+            modelBuilder.Entity("Luxury_Back.Models.Category", b =>
+                {
+                    b.Navigation("childs");
                 });
 
             modelBuilder.Entity("Luxury_Back.Models.Governorate", b =>

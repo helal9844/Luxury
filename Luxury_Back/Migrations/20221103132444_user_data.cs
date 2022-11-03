@@ -10,8 +10,8 @@ namespace Luxury_Back.Migrations
         {
             migrationBuilder.InsertData(
                 table: "users",
-                columns: new[] 
-                { 
+                columns: new[]
+                {
                     "username",
                     "Email",
                     "Phone",

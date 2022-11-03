@@ -5,12 +5,12 @@ namespace Luxury_Back.DB
 {
     public class LuxuryDb : DbContext
     {
-        public virtual DbSet<Language> languages { get; set; }
+        /*public virtual DbSet<Language> languages { get; set; }*/
         public virtual DbSet<User> users { get; set; } = null!;
         public virtual DbSet<Governorate> governorates { get; set; } = null!;
         public virtual DbSet<City> cities { get; set; } = null!;
         public virtual DbSet<Category> categories { get; set; } = null!;
-        public virtual DbSet<CategoryTranslation> categoriesTranslation { get; set; } = null!;
+        //public virtual DbSet<CategoryTranslation> categoriesTranslation { get; set; } = null!;
         public LuxuryDb(DbContextOptions<LuxuryDb> dbContextOptions) : base(dbContextOptions)
         {
             /*Database.EnsureDeleted();
@@ -43,13 +43,13 @@ namespace Luxury_Back.DB
                         .UseCollation("ARABIC_CI_AS")
                         .IsUnicode();*/
 
-            modelBuilder.Entity<Category>()
+            /*modelBuilder.Entity<Category>()
                 .HasMany(c => c.translations)
-                .WithOne();
+                .WithOne();*/
 
             //Languages
-            modelBuilder.Entity<Language>().ToTable("languages");
-            modelBuilder.Entity<Language>().HasKey(a => a.Id);
+            /*modelBuilder.Entity<Language>().ToTable("languages");
+            modelBuilder.Entity<Language>().HasKey(a => a.Id);*/
         }
     }
 }
