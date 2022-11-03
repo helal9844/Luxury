@@ -73,37 +73,37 @@ namespace Luxury_Back.Controllers.Admin
             }
                 return RedirectToAction("Index");
         }
-        [HttpPost]
-        public IActionResult CreateCategory()
-        {
-            var category = new Category();
-            //List<CategoryTranslation> translations = new List<CategoryTranslation>();
-            foreach(var item in Request.Form)
-            {
-                if(item.Key == "IsActive")
-                {
-                    category.IsActive = bool.Parse(item.Value);
-                }
-                if (item.Key == "CategoryId")
-                {
-                    category.CategoryId = string.IsNullOrWhiteSpace(item.Value)? null:int.Parse(item.Value);
-                }
-                if (item.Key.Contains("name-"))
-                {
-                    var locale = item.Key.Split("-")[1];
-                    var name = item.Value;
-                    /*translations.Add(new CategoryTranslation
-                    {
-                        locale = locale,
-                        Name = name
-                    });*/
-                }
-            }
-            //category.translations = translations;
-            luxuryDb.categories.Add(category);
-            luxuryDb.SaveChanges();
-            return RedirectToAction("index");
-        }
+        //[HttpPost]
+        //public IActionResult CreateCategory()
+        //{
+        //    var category = new Category();
+        //    //List<CategoryTranslation> translations = new List<CategoryTranslation>();
+        //    foreach(var item in Request.Form)
+        //    {
+        //        if(item.Key == "IsActive")
+        //        {
+        //            category.IsActive = bool.Parse(item.Value);
+        //        }
+        //        if (item.Key == "CategoryId")
+        //        {
+        //            category.CategoryId = string.IsNullOrWhiteSpace(item.Value)? null:int.Parse(item.Value);
+        //        }
+        //        if (item.Key.Contains("name-"))
+        //        {
+        //            var locale = item.Key.Split("-")[1];
+        //            var name = item.Value;
+        //            /*translations.Add(new CategoryTranslation
+        //            {
+        //                locale = locale,
+        //                Name = name
+        //            });*/
+        //        }
+        //    }
+        //    //category.translations = translations;
+        //    luxuryDb.categories.Add(category);
+        //    luxuryDb.SaveChanges();
+        //    return RedirectToAction("index");
+        //}
             public IActionResult Activation(int? id)
         {
             var category = luxuryDb.categories.Include(c => c.childs).Where(i => i.Id == id).First();
@@ -169,5 +169,70 @@ namespace Luxury_Back.Controllers.Admin
             return RedirectToAction("Index");
         }
 
+
+        #region Edit get
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            Category category = luxuryDb.categories.Where(i=>i.Id ==id).First();
+            List<Category> categories = luxuryDb.categories.Where(c => c.CategoryId == null).ToList();
+            ViewBag.categories = categories;
+            return View($"{ViewPath}Edit.cshtml", category);
+        }
+        #endregion
+
+        #region Edit Post
+        [HttpPost]
+        public IActionResult Edit(Category category)
+        {
+            CategoryCreateValidation validator = new CategoryCreateValidation(localizer);
+
+            ValidationResult results = validator.Validate(category);
+            if (!results.IsValid)
+            {
+                foreach (var error in results.Errors)
+                {
+                    TempData[error.PropertyName] = error.ErrorMessage;
+                }
+                return Edit(category.Id);
+            }
+            using (IDbContextTransaction transaction = luxuryDb.Database.BeginTransaction())
+            {
+                try
+                {
+                    var _category = luxuryDb.categories
+                        .Where(_ => _.name_ar == category.name_ar || _.name_en == category.name_en)
+                        .Where(w=>w.Id!=category.Id)
+                        .FirstOrDefault();
+                    if (_category == null)
+                    {
+                      // category.parent.CategoryId
+                     // luxuryDb.categories.Where()
+                        luxuryDb.categories.Update(category);
+                        luxuryDb.SaveChanges();
+                        transaction.Commit();
+                    }
+                   
+                    //if (_category != null)
+                    //{
+                    //    TempData["error_msg"] = "This Category exsited!";
+                    //    return Create(category);
+                    //}
+
+                   
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    TempData["error_msg"] = ex.Message;
+                     return Content(ex.Message);
+                 
+                }
+            }
+            return RedirectToAction("Index");
+
+        }
+        #endregion
     }
+
 }
