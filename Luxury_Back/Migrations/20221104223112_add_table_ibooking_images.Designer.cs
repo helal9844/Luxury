@@ -4,6 +4,7 @@ using Luxury_Back.DB;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Luxury_Back.Migrations
 {
     [DbContext(typeof(LuxuryDb))]
-    partial class LuxuryDbModelSnapshot : ModelSnapshot
+    [Migration("20221104223112_add_table_ibooking_images")]
+    partial class add_table_ibooking_images
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -86,21 +88,15 @@ namespace Luxury_Back.Migrations
 
                     b.Property<string>("name_ar")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("name_en")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("name_ar")
-                        .IsUnique();
-
-                    b.HasIndex("name_en")
-                        .IsUnique();
 
                     b.ToTable("categories");
                 });
@@ -181,20 +177,8 @@ namespace Luxury_Back.Migrations
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("getdate()");
 
-                    b.Property<string>("description_ar")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("description_en")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool?>("kitchen")
                         .HasColumnType("bit");
-
-                    b.Property<string>("name_ar")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("name_en")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<bool?>("parking")
                         .HasColumnType("bit");
@@ -217,14 +201,6 @@ namespace Luxury_Back.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("Category_Id");
-
-                    b.HasIndex("name_ar")
-                        .IsUnique()
-                        .HasFilter("[name_ar] IS NOT NULL");
-
-                    b.HasIndex("name_en")
-                        .IsUnique()
-                        .HasFilter("[name_en] IS NOT NULL");
 
                     b.ToTable("iBookings", (string)null);
                 });
