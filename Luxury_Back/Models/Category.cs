@@ -37,11 +37,13 @@ namespace Luxury_Back.Models
         }*/
         //public virtual ICollection<CategoryTranslation> translations { get; set; }
         public virtual ICollection<Category> childs { get; set; }
+        public virtual ICollection<IBooking> iBookings { get; set; }
         public virtual Category? parent { get; set; } = null!;
         public Category()
         {
             /*ranslations = new HashSet<CategoryTranslation>();*/
-            //childs = new HashSet<Category>();
+            childs = new HashSet<Category>();
+            iBookings = new HashSet<IBooking>();
             /*parent = new Category();*/
         }
        

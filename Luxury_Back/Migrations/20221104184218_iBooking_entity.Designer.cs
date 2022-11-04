@@ -4,6 +4,7 @@ using Luxury_Back.DB;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Luxury_Back.Migrations
 {
     [DbContext(typeof(LuxuryDb))]
-    partial class LuxuryDbModelSnapshot : ModelSnapshot
+    [Migration("20221104184218_iBooking_entity")]
+    partial class iBooking_entity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -159,8 +161,6 @@ namespace Luxury_Back.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Category_Id");
-
                     b.ToTable("iBookings", (string)null);
                 });
 
@@ -235,22 +235,9 @@ namespace Luxury_Back.Migrations
                     b.Navigation("Governorate");
                 });
 
-            modelBuilder.Entity("Luxury_Back.Models.IBooking", b =>
-                {
-                    b.HasOne("Luxury_Back.Models.Category", "category")
-                        .WithMany("iBookings")
-                        .HasForeignKey("Category_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("category");
-                });
-
             modelBuilder.Entity("Luxury_Back.Models.Category", b =>
                 {
                     b.Navigation("childs");
-
-                    b.Navigation("iBookings");
                 });
 
             modelBuilder.Entity("Luxury_Back.Models.Governorate", b =>
