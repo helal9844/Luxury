@@ -33,7 +33,9 @@ public class IBooking
     public DateTime? created_at { get; set; }
     public DateTime? updated_at { get; set; }
 
-    public Category? category { get; set; }
+    public Category? Category { get; set; }
+    
+    public Address? Address { get; set; }
 
     public IBooking()
     {

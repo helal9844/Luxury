@@ -17,9 +17,11 @@ namespace Luxury_Back.Models
         public string name_ar { get; set; }
         public string name_en { get; set; }
         public virtual ICollection<City> Cities { get; set; }
+        public virtual ICollection<Address> Addresses { get; set; }
         public Governorate()
         {
             Cities = new HashSet<City>();
+            Addresses = new HashSet<Address>();
         }
     }
 }

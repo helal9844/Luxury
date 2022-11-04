@@ -11,6 +11,8 @@ namespace Luxury_Back.DB
         public virtual DbSet<City> cities { get; set; } = null!;
         public virtual DbSet<Category> categories { get; set; } = null!;
         public virtual DbSet<IBooking> iBookings { get; set; } = null!;
+
+        public virtual DbSet<Address> addresses { get; set; } = null!;
         //public virtual DbSet<CategoryTranslation> categoriesTranslation { get; set; } = null!;
         public LuxuryDb(DbContextOptions<LuxuryDb> dbContextOptions) : base(dbContextOptions)
         {
@@ -49,8 +51,11 @@ namespace Luxury_Back.DB
             modelBuilder.Entity<IBooking>().Property(b => b.created_at).HasDefaultValueSql("getdate()");
             modelBuilder.Entity<Category>()
                 .HasMany(c => c.iBookings)
-                .WithOne(b => b.category)
+                .WithOne(b => b.Category)
                 .HasForeignKey(b=>b.Category_Id);
+
+            //Address
+            modelBuilder.Entity<Address>().HasOne(h => h.IBooking).WithOne(b => b.Address);
 
             /*modelBuilder.Entity<Category>()
                 .HasMany(c => c.translations)
