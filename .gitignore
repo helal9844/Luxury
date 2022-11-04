@@ -7,3 +7,4 @@
 *.bin
 *.sqlite
 *.vsidx
+/Luxury_Back/wwwroot/images/category

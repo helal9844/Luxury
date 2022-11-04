@@ -1,4 +1,5 @@
 ﻿using Luxury_Back.Controllers.Admin;
+//using Microsoft.AspNetCore.Mvc.Razor.RazorPages;
 using System.Globalization;
 
 namespace Luxury_Back.Helpers
@@ -9,5 +10,6 @@ namespace Luxury_Back.Helpers
         {
             return CultureInfo.CurrentCulture.Name.StartsWith("ar")?"ar":"en";
         }
+       
     }
 }

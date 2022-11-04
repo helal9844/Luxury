@@ -10,7 +10,6 @@ using System.Diagnostics;
 namespace Luxury_Back.Controllers.Admin
 {
     [Authorize(Roles = "admin")]
-    
     public class HomeController : Controller
     {
         LuxuryDb db;

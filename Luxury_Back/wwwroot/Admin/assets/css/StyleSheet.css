@@ -69,3 +69,17 @@
     margin-bottom: .5rem;
     padding: 0 10px;
 }
+
+.img-thumbnail.view-img {
+    background-color: #dfdfdf;
+    border-color: #ccc;
+    width: 300px;
+    margin: 2rem auto;
+    justify-content: center;
+    display: flex;
+    height: 250px;
+}
+
+.table-img {
+    background-color: #ccc;
+}
