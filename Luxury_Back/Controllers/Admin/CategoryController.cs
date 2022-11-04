@@ -1,5 +1,6 @@
 ﻿using FluentValidation.Results;
 using Luxury_Back.DB;
+using Luxury_Back.Helpers;
 using Luxury_Back.Models;
 using Luxury_Back.Validations.admin;
 using Microsoft.AspNetCore.Authorization;
@@ -24,6 +25,7 @@ namespace Luxury_Back.Controllers.Admin
             this.luxuryDb = luxuryDb;
             this.localizer = _localizer;
         }
+
         public IActionResult Index()
         {
             //return luxuryDb.categories.Include(c => c.translations).Include(c=>c.parent).ThenInclude(p=>p.translations).Where(c => c.Id == 2).First().parent.name;
@@ -31,6 +33,7 @@ namespace Luxury_Back.Controllers.Admin
             return View($"{ViewPath}Index.cshtml", categories);
         }
         [HttpGet]
+        #region Create
         public IActionResult Create(Category? category)
         {
             List<Category> categories = luxuryDb.categories.Where(c=>c.CategoryId == null).ToList();
@@ -69,7 +72,8 @@ namespace Luxury_Back.Controllers.Admin
                     category.img_category = @"DefaultImage.png";
                     if (category.CategoryId !=null && img_category != null)
                     {
-                        string uniqueImge = DateTime.Now.ToString("yyyyyMMddHHmmss") + "." + img_category.FileName.Split(".")[1];
+                        string? img = Helper.uploadeFile(img_category, "category");
+                        /*string uniqueImge = DateTime.Now.ToString("yyyyyMMddHHmmss") + "." + img_category.FileName.Split(".")[1];
                         if (!System.IO.Directory.Exists(@".\wwwroot\images\category"))
                         {
                             System.IO.Directory.CreateDirectory(@".\wwwroot\images\category");
@@ -77,8 +81,8 @@ namespace Luxury_Back.Controllers.Admin
                         using (var obj = new FileStream(@".\wwwroot\images\category\" + uniqueImge, FileMode.Create))
                         {
                             img_category.CopyTo(obj);
-                        }
-                        category.img_category = @"category\" + uniqueImge;
+                        }*/
+                        category.img_category = @"category\" + img;
                     }
                     
 
@@ -127,7 +131,8 @@ namespace Luxury_Back.Controllers.Admin
         //    luxuryDb.SaveChanges();
         //    return RedirectToAction("index");
         //}
-            public IActionResult Activation(int? id)
+        #endregion
+        public IActionResult Activation(int? id)
         {
             var category = luxuryDb.categories.Include(c => c.childs).Where(i => i.Id == id).First();
             if (category == null)
@@ -191,9 +196,7 @@ namespace Luxury_Back.Controllers.Admin
             }
             return RedirectToAction("Index");
         }
-
-
-        #region Edit get
+        #region Edit
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -202,9 +205,7 @@ namespace Luxury_Back.Controllers.Admin
             ViewBag.categories = categories;
             return View($"{ViewPath}Create_Edit.cshtml", category);
         }
-        #endregion
-
-        #region Edit Post
+        
         [HttpPost]
         public IActionResult Edit(Category category, IFormFile img_category)
         {
@@ -233,17 +234,8 @@ namespace Luxury_Back.Controllers.Admin
                         {
                             category.img_category = @"DefaultImage.png";
                             if (category.CategoryId != null) {
-                                string uniqueImge = DateTime.Now.ToString("yyyyyMMddHHmmss") + "." + img_category.FileName.Split(".")[1];
-                                if (!System.IO.Directory.Exists(@".\wwwroot\images\category"))
-                                {
-                                    System.IO.Directory.CreateDirectory(@".\wwwroot\images\category");
-                                }
-                                using (var obj = new FileStream(@".\wwwroot\images\category\" + uniqueImge, FileMode.Create))
-                                {
-                                    img_category.CopyTo(obj);
-                                }
-
-                                category.img_category = @"category\" + uniqueImge;
+                                string? img = Helper.uploadeFile(img_category, "category");
+                                category.img_category = @"category\" + img;
                             }
                         }
 
@@ -264,12 +256,10 @@ namespace Luxury_Back.Controllers.Admin
 
         }
         #endregion
-
         public int GetNextId()
         {
             return luxuryDb.categories.Max(a => a.Id) + 1;
         }
     }
    
-
 }
