@@ -25,7 +25,6 @@ namespace Luxury_Back.Controllers.Admin
             this.luxuryDb = luxuryDb;
             this.localizer = _localizer;
         }
-
         public IActionResult Index()
         {
             //return luxuryDb.categories.Include(c => c.translations).Include(c=>c.parent).ThenInclude(p=>p.translations).Where(c => c.Id == 2).First().parent.name;
