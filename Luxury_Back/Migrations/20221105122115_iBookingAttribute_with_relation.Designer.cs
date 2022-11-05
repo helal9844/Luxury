@@ -4,6 +4,7 @@ using Luxury_Back.DB;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Luxury_Back.Migrations
 {
     [DbContext(typeof(LuxuryDb))]
-    partial class LuxuryDbModelSnapshot : ModelSnapshot
+    [Migration("20221105122115_iBookingAttribute_with_relation")]
+    partial class iBookingAttribute_with_relation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,7 +60,7 @@ namespace Luxury_Back.Migrations
                         .IsUnique()
                         .HasFilter("[IBookingId] IS NOT NULL");
 
-                    b.ToTable("addresses", (string)null);
+                    b.ToTable("addresses");
                 });
 
             modelBuilder.Entity("Luxury_Back.Models.Category", b =>
@@ -102,7 +104,7 @@ namespace Luxury_Back.Migrations
                     b.HasIndex("name_en")
                         .IsUnique();
 
-                    b.ToTable("categories", (string)null);
+                    b.ToTable("categories");
                 });
 
             modelBuilder.Entity("Luxury_Back.Models.City", b =>
@@ -261,7 +263,7 @@ namespace Luxury_Back.Migrations
                         .IsUnique()
                         .HasFilter("[IBookingId] IS NOT NULL");
 
-                    b.ToTable("iBookingAttributes", (string)null);
+                    b.ToTable("iBookingAttributes");
                 });
 
             modelBuilder.Entity("Luxury_Back.Models.IBookingImg", b =>
@@ -282,7 +284,7 @@ namespace Luxury_Back.Migrations
 
                     b.HasIndex("IBookingId");
 
-                    b.ToTable("iBookingImg", (string)null);
+                    b.ToTable("iBookingImg");
                 });
 
             modelBuilder.Entity("Luxury_Back.Models.User", b =>

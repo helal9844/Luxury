@@ -15,6 +15,7 @@ namespace Luxury_Back.DB
         public virtual DbSet<Address> addresses { get; set; } = null!;
 
         public virtual DbSet<IBookingImg> iBookingImg { get; set; } = null!;
+        public virtual DbSet<IBookingAttribute> iBookingAttributes { get; set; } = null!;
         //public virtual DbSet<CategoryTranslation> categoriesTranslation { get; set; } = null!;
         public LuxuryDb(DbContextOptions<LuxuryDb> dbContextOptions) : base(dbContextOptions)
         {
@@ -56,7 +57,7 @@ namespace Luxury_Back.DB
                 .WithOne(b => b.Category)
                 .HasForeignKey(b=>b.Category_Id);
 
-            //Address
+            //IBooking - Address
             modelBuilder.Entity<Address>().HasOne(h => h.IBooking).WithOne(b => b.Address);
 
             //IBookingImages
@@ -65,6 +66,8 @@ namespace Luxury_Back.DB
                .WithOne(b => b.booking)
                .HasForeignKey(b => b.IBookingId);
 
+            //IBooking - Attribute
+            modelBuilder.Entity<IBookingAttribute>().HasOne(b=>b.IBooking).WithOne(b=>b.attribute);
             /*modelBuilder.Entity<Category>()
                 .HasMany(c => c.translations)
                 .WithOne();*/

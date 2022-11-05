@@ -4,6 +4,7 @@ using Luxury_Back.DB;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Luxury_Back.Migrations
 {
     [DbContext(typeof(LuxuryDb))]
-    partial class LuxuryDbModelSnapshot : ModelSnapshot
+    [Migration("20221105113153_update_iBooking_entity")]
+    partial class update_iBooking_entity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,7 +60,7 @@ namespace Luxury_Back.Migrations
                         .IsUnique()
                         .HasFilter("[IBookingId] IS NOT NULL");
 
-                    b.ToTable("addresses", (string)null);
+                    b.ToTable("addresses");
                 });
 
             modelBuilder.Entity("Luxury_Back.Models.Category", b =>
@@ -102,7 +104,7 @@ namespace Luxury_Back.Migrations
                     b.HasIndex("name_en")
                         .IsUnique();
 
-                    b.ToTable("categories", (string)null);
+                    b.ToTable("categories");
                 });
 
             modelBuilder.Entity("Luxury_Back.Models.City", b =>
@@ -199,71 +201,6 @@ namespace Luxury_Back.Migrations
                     b.ToTable("iBookings", (string)null);
                 });
 
-            modelBuilder.Entity("Luxury_Back.Models.IBookingAttribute", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int?>("IBookingId")
-                        .HasColumnType("int");
-
-                    b.Property<bool?>("balcony")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("bath")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("capacity")
-                        .HasColumnType("int");
-
-                    b.Property<bool?>("city_view")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("conditioning")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("cost")
-                        .HasColumnType("int");
-
-                    b.Property<bool?>("kitchen")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("p_bath")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("parking")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("pool")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("room_service")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("space")
-                        .HasColumnType("int");
-
-                    b.Property<bool?>("transfer_service")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("washing_m")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("wi_fi")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IBookingId")
-                        .IsUnique()
-                        .HasFilter("[IBookingId] IS NOT NULL");
-
-                    b.ToTable("iBookingAttributes", (string)null);
-                });
-
             modelBuilder.Entity("Luxury_Back.Models.IBookingImg", b =>
                 {
                     b.Property<int>("Id")
@@ -282,7 +219,7 @@ namespace Luxury_Back.Migrations
 
                     b.HasIndex("IBookingId");
 
-                    b.ToTable("iBookingImg", (string)null);
+                    b.ToTable("iBookingImg");
                 });
 
             modelBuilder.Entity("Luxury_Back.Models.User", b =>
@@ -388,15 +325,6 @@ namespace Luxury_Back.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("Luxury_Back.Models.IBookingAttribute", b =>
-                {
-                    b.HasOne("Luxury_Back.Models.IBooking", "IBooking")
-                        .WithOne("attribute")
-                        .HasForeignKey("Luxury_Back.Models.IBookingAttribute", "IBookingId");
-
-                    b.Navigation("IBooking");
-                });
-
             modelBuilder.Entity("Luxury_Back.Models.IBookingImg", b =>
                 {
                     b.HasOne("Luxury_Back.Models.IBooking", "booking")
@@ -430,8 +358,6 @@ namespace Luxury_Back.Migrations
             modelBuilder.Entity("Luxury_Back.Models.IBooking", b =>
                 {
                     b.Navigation("Address");
-
-                    b.Navigation("attribute");
 
                     b.Navigation("images");
                 });

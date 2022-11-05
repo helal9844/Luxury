@@ -19,34 +19,16 @@ public class IBooking
     public string? name_ar { get; set; }
     public string? description_en { get; set; }
     public string? description_ar { get; set; }
-    [DefaultValue(0)]
-    public int? cost { get; set; }
-    [DefaultValue(0)]
-    public int? capacity { get; set; }
-    [DefaultValue(0)]
-    public int? space { get; set; }
-    [DefaultValue(false)]
-    public bool? kitchen { get; set; }
-    [DefaultValue(false)]
-    public bool? pool { get; set; }
-    [DefaultValue(false)]
-    public bool? bath { get; set; }
-    [DefaultValue(false)]
-    public bool? conditioning { get; set; }
-    [DefaultValue(false)]
-    public bool? w_m { get; set; }
-    [DefaultValue(false)]
-    public bool? wi_fi { get; set; }
-    [DefaultValue(false)]
-    public bool? parking { get; set; }
     public DateTime? created_at { get; set; }
     public DateTime? updated_at { get; set; }
 
+    //RELATION
     public Category? Category { get; set; }
-    
     public Address? Address { get; set; }
+    public IBookingAttribute? attribute { get; set; }
 
     public ICollection<IBookingImg>? images { get; set; }
+    
     public IBooking()
     {
         //category = new Category();

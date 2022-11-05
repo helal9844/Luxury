@@ -28,6 +28,9 @@ namespace Luxury_Back.Migrations
                     },
                     {
                         1,"Villas","فيلات", true, DateTime.Now,
+                    },
+                    {
+                        1,"Apartments","شقق", true, DateTime.Now,
                     }
                 }
             );
