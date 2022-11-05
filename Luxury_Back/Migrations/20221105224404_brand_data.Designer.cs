@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Luxury_Back.Migrations
 {
     [DbContext(typeof(LuxuryDb))]
-    [Migration("20221105184405_iBooking_data")]
-    partial class iBooking_data
+    [Migration("20221105224404_brand_data")]
+    partial class brand_data
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -203,6 +203,9 @@ namespace Luxury_Back.Migrations
                     b.Property<int?>("Category_Id")
                         .IsRequired()
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime?>("created_at")
                         .ValueGeneratedOnAdd()

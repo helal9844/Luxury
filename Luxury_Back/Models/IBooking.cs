@@ -14,6 +14,7 @@ public class IBooking
     [Required]
     [ForeignKey("Category_Id")]
     public int? Category_Id { get; set; }
+    public int? BrandId { get; set; }
     
     public string? name_en { get; set; }
     public string? name_ar { get; set; }
@@ -21,6 +22,8 @@ public class IBooking
     public string? description_ar { get; set; }
     public DateTime? created_at { get; set; }
     public DateTime? updated_at { get; set; }
+    [DefaultValue(0)]
+    public bool IsActive { get; set; }
 
     //RELATION
     public Category? Category { get; set; }

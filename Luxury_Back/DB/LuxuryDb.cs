@@ -59,6 +59,10 @@ namespace Luxury_Back.DB
                 .HasMany(c => c.iBookings)
                 .WithOne(b => b.Category)
                 .HasForeignKey(b=>b.Category_Id);
+            modelBuilder.Entity<Brand>()
+                .HasMany(c => c.iBookings)
+                .WithOne(b => b.Brand)
+                .HasForeignKey(b=>b.BrandId);
 
             //IBooking - Address
             modelBuilder.Entity<Address>().HasOne(h => h.IBooking).WithOne(b => b.Address);

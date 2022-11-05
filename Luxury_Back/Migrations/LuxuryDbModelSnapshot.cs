@@ -202,6 +202,9 @@ namespace Luxury_Back.Migrations
                         .IsRequired()
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime?>("created_at")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")

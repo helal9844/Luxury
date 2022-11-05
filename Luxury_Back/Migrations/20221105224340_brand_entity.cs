@@ -14,6 +14,13 @@ namespace Luxury_Back.Migrations
                 type: "int",
                 nullable: true);
 
+            migrationBuilder.AddColumn<bool>(
+                name: "IsActive",
+                table: "iBookings",
+                type: "bit",
+                nullable: false,
+                defaultValue: true);
+
             migrationBuilder.CreateTable(
                 name: "brands",
                 columns: table => new
@@ -82,6 +89,10 @@ namespace Luxury_Back.Migrations
 
             migrationBuilder.DropColumn(
                 name: "BrandId",
+                table: "iBookings");
+
+            migrationBuilder.DropColumn(
+                name: "IsActive",
                 table: "iBookings");
         }
     }
