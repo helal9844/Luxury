@@ -10,10 +10,9 @@ namespace Luxury_Back.DB
         public virtual DbSet<Governorate> governorates { get; set; } = null!;
         public virtual DbSet<City> cities { get; set; } = null!;
         public virtual DbSet<Category> categories { get; set; } = null!;
+        public virtual DbSet<Brand> brands { get; set; } = null!;
         public virtual DbSet<IBooking> iBookings { get; set; } = null!;
-
         public virtual DbSet<Address> addresses { get; set; } = null!;
-
         public virtual DbSet<IBookingImg> iBookingImg { get; set; } = null!;
         public virtual DbSet<IBookingAttribute> iBookingAttributes { get; set; } = null!;
         //public virtual DbSet<CategoryTranslation> categoriesTranslation { get; set; } = null!;
@@ -48,6 +47,10 @@ namespace Luxury_Back.DB
                         .HasColumnType("varchar(max)")
                         .UseCollation("ARABIC_CI_AS")
                         .IsUnicode();*/
+
+            //Brand
+            modelBuilder.Entity<Brand>().ToTable("brands");
+            modelBuilder.Entity<Category>().HasMany(h => h.brands).WithOne(b => b.category).HasForeignKey(b=>b.CategoryId);
 
             //Booking
             modelBuilder.Entity<IBooking>().ToTable("iBookings");

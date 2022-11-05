@@ -24,6 +24,7 @@ public class IBooking
 
     //RELATION
     public Category? Category { get; set; }
+    public Brand? Brand { get; set; }
     public Address? Address { get; set; }
     public IBookingAttribute? attribute { get; set; }
 
