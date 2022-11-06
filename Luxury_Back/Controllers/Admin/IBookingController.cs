@@ -3,6 +3,7 @@ using Luxury_Back.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Localization;
 using System.Diagnostics;
 
@@ -51,6 +52,44 @@ namespace Luxury_Back.Controllers.Admin
                 ibooking.IsActive = ibooking.IsActive ? false : true;
                 luxuryDb.SaveChanges();
 
+            }
+            return RedirectToAction("Index");
+        }
+
+        #endregion
+
+        #region Delete
+        public IActionResult Delete(int? id)
+        {
+            var booking = luxuryDb.iBookings.Include(i => i.images).Include(c => c.attribute).Where(w => w.Id == id).FirstOrDefault();
+            if (booking == null)
+            {
+                TempData["error_msg"] = "Booking is Not Allow";
+            }
+            using (IDbContextTransaction transaction = luxuryDb.Database.BeginTransaction())
+            {
+                try
+                {
+                    if (booking.images != null)
+                    {
+                        foreach (var bookImgs in booking.images)
+                        {
+                            luxuryDb.Remove(bookImgs);
+                        }
+                    }
+                    if (booking.attribute != null)
+                    {
+                        luxuryDb.iBookingAttributes.Remove(booking.attribute);
+                    }
+                    luxuryDb.iBookings.Remove(booking);
+                    luxuryDb.SaveChanges();
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    TempData["error_msg"] = "sorry can't remove This Booking";
+                    transaction.Rollback();
+                }
             }
             return RedirectToAction("Index");
         }

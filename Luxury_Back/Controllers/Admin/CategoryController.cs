@@ -200,20 +200,31 @@ namespace Luxury_Back.Controllers.Admin
         }
         public IActionResult Delete(int id)
         {
-            var category = luxuryDb.categories.Where(i=>i.Id ==id).First();
-            int categoryChildCount = luxuryDb.categories.Count(c=>c.CategoryId==id);
-            
+            var category = luxuryDb.categories.Where(i => i.Id == id).First();
             if (category == null)
             {
                 TempData["error_msg"] = "Category is Not Allow";
+                return RedirectToAction("Index");
             }
-            else if (categoryChildCount != 0 && categoryChildCount != null)
+            int categoryChildCount = luxuryDb.categories.Count(c => c.CategoryId == id);
+            int categoryIbookingCount = luxuryDb.iBookings.Count(c => c.Category_Id == id);
+            int categoryBrandsCount = luxuryDb.brands.Count(c => c.CategoryId == id);
+            if (categoryChildCount != 0)
             {
-                TempData["error_msg"] = "Sorry Can't Remove This Category";
+                TempData["error_msg"] = $"Sorry Can't Remove This Category Because it has {categoryChildCount} child Categories";
+            }
+            else if (categoryBrandsCount != 0)
+            {
+                TempData["error_msg"] = $"Sorry Can't Remove This Category Because it has {categoryBrandsCount} brands";
+            }
+            else if (categoryIbookingCount != 0)
+            {
+                TempData["error_msg"] = $"Sorry Can't Remove This Category Because it has {categoryIbookingCount} bookings";
             }
             else
             {
-                using(IDbContextTransaction transaction = luxuryDb.Database.BeginTransaction()) {
+                using (IDbContextTransaction transaction = luxuryDb.Database.BeginTransaction())
+                {
                     try
                     {
                         luxuryDb.categories.Remove(category);
@@ -221,7 +232,7 @@ namespace Luxury_Back.Controllers.Admin
                         transaction.Commit();
                         TempData["success_msg"] = "Category Deleted Successfully!";
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         transaction.Rollback();
                         TempData["error_msg"] = "Sorry Can't Remove This Category";
