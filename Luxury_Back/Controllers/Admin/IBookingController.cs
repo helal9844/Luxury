@@ -29,7 +29,6 @@ namespace Luxury_Back.Controllers.Admin
             
             foreach (var booking in bookings)
             {
-
                 booking_img.Add(luxuryDb.iBookingImg.Where(w => w.IBookingId == booking.Id).FirstOrDefault());
             }
             ViewBag.IBookingImgs=booking_img;
