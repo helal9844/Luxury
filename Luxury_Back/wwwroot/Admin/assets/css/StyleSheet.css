@@ -83,3 +83,25 @@
 .table-img {
     background-color: #ccc;
 }
+
+.overflow-x-auto{
+    overflow-x: auto !important;
+}
+
+.overflow-y-auto {
+    overflow-y: auto !important;
+}
+
+.overflow-auto {
+    overflow: auto !important;
+}
+
+.content-trim {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+td.content-trim {
+    max-width: 200px;
+}

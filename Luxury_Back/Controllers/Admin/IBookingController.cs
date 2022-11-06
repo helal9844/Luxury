@@ -1,5 +1,6 @@
 ﻿using Luxury_Back.DB;
 using Luxury_Back.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
@@ -8,7 +9,7 @@ using System.Diagnostics;
 namespace Luxury_Back.Controllers.Admin
 {
 
-
+    [Authorize(Roles = "admin")]
     public class IBookingController : Controller
     {
         const string ViewPath = "Views/Admin/IBooking/";

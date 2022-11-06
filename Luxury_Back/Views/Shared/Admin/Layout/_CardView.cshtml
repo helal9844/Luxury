@@ -27,7 +27,7 @@
                 </div>
                 <partial name="../Panel/_TempMesages.cshtml" />
                 <div class="card-content collapse show">
-                    <div class="card-body card-dashboard">
+                    <div class="card-body card-dashboard overflow-x-auto">
                         @RenderBody()
                     </div>
                 </div>
@@ -39,4 +39,5 @@
 @section Scripts {
     
     @RenderSection("Scripts", required: false)
+    
 }
