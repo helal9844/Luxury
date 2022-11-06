@@ -1,8 +1,9 @@
-﻿@model IEnumerable<IBooking>
+﻿@using Luxury_Back.Helpers
+@model IEnumerable<IBooking>
 
 
 @{
-    ViewData["Title"] = "IBooking";
+    ViewData["Title"] = localizer["categories"];
     Layout = "~/Views/Shared/Admin/Layout/_CardView.cshtml";
 }
 
@@ -30,9 +31,9 @@
         @foreach(var item in Model){
             <tr>
                 <td>@item.Id</td>
-                <td>@item.name_en</td>
-                <td>@(item.Category!=null?item.Category.name_en:null)</td>
-                <td>@(item.Brand != null ? item.Brand.name_en : null)</td>
+                <th>@(Helper.getLnag() == "ar" ? item.name_ar : item.name_en)</th>
+                <th>@(item.Category != null ? Helper.getLnag() == "ar" ? item.Category.name_ar : item.Category.name_en : null)</th>
+                <th>@(item.Brand != null ? Helper.getLnag() == "ar" ? item.Brand.name_ar : item.Brand.name_en : null)</th>
                 @foreach (var img in ViewBag.IBookingImgs){
                    if(img.IBookingId==item.Id){
                         <td><img src="@(img.Name)" class="table-img" width="100" height="100"/></td>

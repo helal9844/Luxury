@@ -1,7 +1,9 @@
-﻿@model IEnumerable<Category>
+﻿
+@model IEnumerable<Category>
+@using Luxury_Back.Helpers
 @{
 
-    ViewData["Title"] = "Categories";
+    ViewData["Title"] = localizer["categories"];
     Layout = "~/Views/Shared/Admin/Layout/_CardView.cshtml";
 }
 @section Styles {
@@ -27,8 +29,8 @@
         {
             <tr>
                 <th>@item.Id</th>
-                <th>@item.name_en</th>
-                <th>@(item.parent != null?item.parent.name_en:null)</th>
+                <th>@(Helper.getLnag() == "ar" ? item.name_ar : item.name_en)</th>
+                <th>@(item.parent != null ? Helper.getLnag() == "ar" ? item.parent.name_ar : item.parent.name_en : null)</th>
                 <td>@(item.childs != null ? item.childs.Count() : 0)</td>
                 <td> <img class="table-img" src="~/images/@item.img_category" width="100px" height="100px" /></td>
                

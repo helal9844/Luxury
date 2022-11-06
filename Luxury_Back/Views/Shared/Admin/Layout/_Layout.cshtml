@@ -1,5 +1,7 @@
-﻿@{
+﻿
+@{
     var isRTL = ViewData["isRTL"] = CultureInfo.CurrentCulture.Name.StartsWith("ar") ? "rtl" : "ltr";
+    
 }
 <!DOCTYPE html>
 <html class="loading" lang="en" dir="@isRTL">
