@@ -25,5 +25,10 @@ namespace Luxury_Back.Helpers
             return uniqueImge;
         }
 
+        public static string? nameWithLang(string? name_ar, string? name_en)
+        {
+            return getLnag()=="ar"?name_ar:name_en;
+        }
+
     }
 }

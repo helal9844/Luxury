@@ -248,6 +248,94 @@ namespace Luxury_Back.Migrations
                     },
 
                     //5
+                      {
+                        "https://cf.bstatic.com/xdata/images/hotel/max1280x900/389416678.jpg?k=019df0a5439c8f20df8f54776a9a249ab112e47785b8cbe892f63d6509c8ec33&o=&hp=1",
+                       5
+                    },
+                    {
+                        "https://cf.bstatic.com/xdata/images/hotel/max1024x768/390390001.jpg?k=ffbc1b00311814b43ded3540c3d8a7bdb84fcdd6d27c8b1b2c597ab95b171ec8&o=&hp=1",
+                       5
+                    },
+                    {
+                        "https://cf.bstatic.com/xdata/images/hotel/max1024x768/389669988.jpg?k=7db56210d572185eddb92e064a854a06dee05c8d56e9d02837d784c3a8dec866&o=&hp=1",
+                       5
+                    },
+                    {
+                        "https://cf.bstatic.com/xdata/images/hotel/max1280x900/389669840.jpg?k=a2f2c6202703657a1651cd61102dc91f513af13a5514a4c52e2981fdb38bff88&o=&hp=1",
+                       5
+                    },
+                    {
+                        "https://cf.bstatic.com/xdata/images/hotel/max1280x900/391198276.jpg?k=b9c223cc88c62b1e204f7f411118bf856c5cfdc28b2e52d13087bda43a1e19e8&o=&hp=1",
+                       5
+                    },
+                    {
+                        "https://cf.bstatic.com/xdata/images/hotel/max1280x900/390390361.jpg?k=a7967913f3cd21af5b2ac3873f18d268f3616b8fc1bd01470a4c0c4afa0c4ed8&o=&hp=1",
+                       5
+                    },
+                    {
+                        "https://cf.bstatic.com/xdata/images/hotel/max1280x900/390390361.jpg?k=a7967913f3cd21af5b2ac3873f18d268f3616b8fc1bd01470a4c0c4afa0c4ed8&o=&hp=1",
+                        5
+                    },
+
+                    //6
+                    {
+                        "https://cf.bstatic.com/xdata/images/hotel/max1280x900/286279364.jpg?k=f4905912d236bb2fc8ee7cc51f79c2ed3eed1fe3f0dd45560008c37bf2d7b462&o=&hp=1",
+                        6
+                    },
+                    {
+                        "https://cf.bstatic.com/xdata/images/hotel/max1280x900/286279385.jpg?k=fb26565d75008fce62e0d87eed0cfff6c99e79d95de981c3f65863030979e37a&o=&hp=1",
+                        6
+                    },
+                    {
+                        "https://cf.bstatic.com/xdata/images/hotel/max1280x900/286279323.jpg?k=ee54ff5de015fbfb87001e096b9e61fd7702ef15d0516b87cb89db07f3af71e5&o=&hp=1",
+                        6
+                    },
+                    {
+                        "https://cf.bstatic.com/xdata/images/hotel/max1280x900/321676796.jpg?k=7d9747bb756d265c2c16973f1778959251ba4c84b4f56b98b9c426e652834f95&o=&hp=1",
+                        6
+                    },
+                    {
+                        "https://cf.bstatic.com/xdata/images/hotel/max1280x900/287241138.jpg?k=46ee7f1aad5a5c955c172c7906c93f210f067acdd1d95354600a3a59a80923c3&o=&hp=1",
+                        6
+                    },
+                    {
+                        "https://cf.bstatic.com/xdata/images/hotel/max1280x900/286279390.jpg?k=6708e6ac086b869e61c937d289daa29c8e99f3aa1effb7f70cafc565168c0d84&o=&hp=1",
+                        6
+                    },
+                    {
+                        "https://cf.bstatic.com/xdata/images/hotel/max200/286279357.jpg?k=e2d06a160b2fedc32e53606d637c869536b29fd04aa2eab94b67b0d0743e30c1&o=&hp=1",
+                        6
+                    },
+
+                    //7
+                    {
+                        "https://cf.bstatic.com/xdata/images/hotel/max200/228433193.jpg?k=5e52d7de2baeadaa2cc9c9841931c299911a2ab6a9bbb26e0bf9b9e49c97919d&o=&hp=1",
+                        7
+                    },
+                    {
+                        "https://cf.bstatic.com/xdata/images/hotel/max200/228433029.jpg?k=49e89dc5ddaf944bb2e49d9e95ce198f9e118677bbafa557e33904a01ed3e633&o=&hp=1",
+                        7
+                    },
+                    {
+                        "https://cf.bstatic.com/xdata/images/hotel/max1280x900/228433491.jpg?k=dd92fcd30db0afe0f10df75173b359f14d5e063fc6b330d40a9541685c26b4fc&o=&hp=1",
+                        7
+                    },
+                    {
+                        "https://cf.bstatic.com/xdata/images/hotel/max200/221986105.jpg?k=b01661fc0f1935b0f4d663cf196c1427e286d3b8437c75b6c35f0e24efa913c0&o=&hp=1",
+                        7
+                    },
+                    {
+                        "https://cf.bstatic.com/xdata/images/hotel/max200/226785706.jpg?k=22e1bc202d0021d6e1245f526876599caeefa0572b4df2cdd5ab4f3c796d3c95&o=&hp=1",
+                        7
+                    },
+                    {
+                        "https://cf.bstatic.com/xdata/images/hotel/max1280x900/228432358.jpg?k=da58451e329ab1196b82ca4cb838f49e276e34a6cdc9da03524cdb301113ecaf&o=&hp=1",
+                        7
+                    },
+                    {
+                        "https://cf.bstatic.com/xdata/images/hotel/max1280x900/221986919.jpg?k=d44286a783d6c95187b85b681f9da79ee261d5ce1c72dfce610f81f5ceb3ec7c&o=&hp=1",
+                        7
+                    },
 
                 }
             );

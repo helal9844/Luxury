@@ -3,6 +3,7 @@ using Luxury_Back.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using System.Diagnostics;
 
 namespace Luxury_Back.Controllers.Admin
 {
@@ -20,7 +21,19 @@ namespace Luxury_Back.Controllers.Admin
         }
         public IActionResult Index()
         {
-            return View();
+             var booking_img =new List<IBookingImg>();
+            
+           
+            // return bookings;
+            var bookings = luxuryDb.iBookings.Include(t => t.Category).Include(t => t.Brand).ToList();
+            
+            foreach (var booking in bookings)
+            {
+
+                booking_img.Add(luxuryDb.iBookingImg.Where(w => w.IBookingId == booking.Id).FirstOrDefault());
+            }
+            ViewBag.IBookingImgs=booking_img;
+            return View($"{ViewPath}Index.cshtml", bookings);
         }
     }
 }

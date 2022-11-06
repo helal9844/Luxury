@@ -1,37 +1,43 @@
-﻿@model IEnumerable<Category>
-@{
+﻿@model IEnumerable<IBooking>
 
-    ViewData["Title"] = "Categories";
+
+@{
+    ViewData["Title"] = "IBooking";
     Layout = "~/Views/Shared/Admin/Layout/_CardView.cshtml";
 }
+
 @section Styles {
     <link rel="stylesheet" type="text/css" href="~/assets/css/core/menu/menu-types/vertical-menu-modern.css">
     <link rel="stylesheet" type="text/css" href="~/app-assets/css/core/colors/palette-gradient.css">
 }
 
-    <a asp-action="Create" asp-controller="Category" class="btn btn-info text-capitalize white my-2"><i class="ft-file-plus"></i>@localizer["add_new"]</a>
-    <table class="table table-striped table-bordered zero-configuration text-center">
-        <thead>
-            <tr>
+<a asp-action="Create" asp-controller="IBooking" class="btn btn-info text-capitalize white my-2"><i class="ft-file-plus"></i>@localizer["add_new"]</a>
+<table class="table table-striped table-bordered zero-configuration text-center">
+    <thead>
+        <tr>
+               
                 <th>#</th>
                 <th>@localizer["name"]</th>
-                <th>@localizer["parent_category"]</th>
-                <th>@localizer["count_child"]</th>
+                <th>@localizer["category"]</th>
+                <th>@localizer["brand"]</th>
                 <td>@localizer["img"]</td>
                 <th>@localizer["activate"]</th>
                 <th>@localizer["actions"]</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach (var item in Model)
-        {
+        </tr>
+    </thead>
+    <tbody>
+        @*/** IBooking Data **/*@
+        @foreach(var item in Model){
             <tr>
-                <th>@item.Id</th>
-                <th>@item.name_en</th>
-                <th>@(item.parent != null?item.parent.name_en:null)</th>
-                <td>@(item.childs != null ? item.childs.Count() : 0)</td>
-                <td> <img class="table-img" src="~/images/@item.img_category" width="100px" height="100px" /></td>
-               
+                <td>@item.Id</td>
+                <td>@item.name_en</td>
+                <td>@(item.Category!=null?item.Category.name_en:null)</td>
+                <td>@(item.Brand != null ? item.Brand.name_en : null)</td>
+                @foreach (var img in ViewBag.IBookingImgs){
+                   if(img.IBookingId==item.Id){
+                        <td><img src="@(img.Name)" class="table-img" width="100" height="100"/></td>
+                   }
+                }
                 <td>
                     @if (item.IsActive)
                     {
@@ -43,19 +49,21 @@
                     }
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id" asp-controller="Category" class="btn btn-info white"><i class="ft-edit"></i> @localizer["edit"]</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" asp-controller="IBooking" class="btn btn-info white"><i class="ft-edit"></i> @localizer["edit"]</a>
                     <a asp-action="activation" asp-route-id="@item.Id" class="btn btn-warning white"><i class="ft-repeat"></i> @localizer[item.IsActive?"inActive":"isActive"] </a>
-                    <a onclick="return confirm('Are you sure you want to delete Category?')" asp-controller="Category" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger white"><i class="ft-trash-2"></i> @localizer["delete"]</a>
+                    <a onclick="return confirm('Are you sure you want to delete Category?')" asp-controller="IBooking" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger white"><i class="ft-trash-2"></i> @localizer["delete"]</a>
                 </td>
             </tr>
+
         }
     </tbody>
     <tfoot>
         <tr>
+          
             <th>#</th>
             <th>@localizer["name"]</th>
-            <th>@localizer["parent_category"]</th>
-            <th>@localizer["count_child"]</th>
+            <th>@localizer["category"]</th>
+            <th>@localizer["brand"]</th>
             <td>@localizer["img"]</td>
             <th>@localizer["activate"]</th>
             <th>@localizer["actions"]</th>
