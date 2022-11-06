@@ -35,5 +35,28 @@ namespace Luxury_Back.Controllers.Admin
             ViewBag.IBookingImgs=booking_img;
             return View($"{ViewPath}Index.cshtml", bookings);
         }
+
+        #region Activation
+        public IActionResult Activation(int? id)
+        {
+          var ibooking=  luxuryDb.iBookings.Include(i=>i.Category).Where(w => w.Id == id).FirstOrDefault();
+            if (ibooking == null)
+            {
+                TempData["error_msg"] = "IBooking is Not Allow";
+            }
+           var num= ibooking.Category.childs.Count();
+            if (num == 0)
+            {
+               
+                ibooking.IsActive = ibooking.IsActive ? false : true;
+                luxuryDb.SaveChanges();
+
+            }
+            return RedirectToAction("Index");
+        }
+
+        #endregion
+
+
     }
 }

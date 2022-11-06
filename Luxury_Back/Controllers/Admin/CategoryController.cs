@@ -133,7 +133,7 @@ namespace Luxury_Back.Controllers.Admin
         #endregion
         public IActionResult Activation(int? id)
         {
-            var category = luxuryDb.categories.Include(c => c.childs).Where(i => i.Id == id).First();
+            var category = luxuryDb.categories.Include(i => i.iBookings).Include(c => c.childs).ThenInclude(t=>t.iBookings).Where(i => i.Id == id).First();
             if (category == null)
             {
                 TempData["error_msg"] = "Category is Not Allow";
@@ -150,8 +150,29 @@ namespace Luxury_Back.Controllers.Admin
                             foreach (var item in category.childs)
                             {
                                 item.IsActive = category.IsActive;
+                              
+                                foreach (var iBooking in item.iBookings)
+                                {
+                                    if (item.Id == iBooking.Category_Id)
+                                    {
+                                        iBooking.IsActive = category.IsActive;
+                                    }
+                                }
                             }
                         }
+                        //
+                        if (category.childs.Count() == 0)
+                        {
+                            category.IsActive = category.IsActive?true:false;    
+                            foreach (var item in category.iBookings)
+                            {
+                                if (category.Id == item.Category_Id)
+                                {
+                                    item.IsActive = category.IsActive;
+                                }
+                            }
+                        }
+                        //
                         luxuryDb.SaveChanges();
                         transaction.Commit();
                     }
@@ -160,6 +181,20 @@ namespace Luxury_Back.Controllers.Admin
                         transaction.Rollback();
                     }
                 }
+                //var cat_book = luxuryDb.categories.Include(i => i.iBookings).Where(w => w.Id == id).First();
+                //cat_book.IsActive = category.IsActive?false : true;
+                //if (cat_book.childs.Count() == 0)
+                //{
+                //    foreach (var item in cat_book.iBookings)
+                //    {
+                //        if (cat_book.Id == item.Category_Id)
+                //        {
+                //            item.IsActive = cat_book.IsActive;
+                //        }
+                //    }
+                //}
+                //luxuryDb.SaveChanges();
+               
             }
             return RedirectToAction("Index");
         }
