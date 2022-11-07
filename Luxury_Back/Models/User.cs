@@ -24,11 +24,11 @@ namespace Luxury_Back.Models
         [RegularExpression(@"^[A-Za-z0-9]+@([a-zA-Z]+\\.)+[a-zA-Z]{2,6}]&", ErrorMessage = "Email Not Corrict")]
         public string? Email { get; set; }
         [DefaultValue(null)]
-        public bool? IsEmailConfirmed { get; set; }
+        public bool? IsEmailVerify { get; set; }
 
         [MinLength(8, ErrorMessage = "MinLengthValidation")]
         [DefaultValue(null)]
-        public int? Phone { get; set; }
+        public string? Phone { get; set; }
 
         [DefaultValue(0)]
         public bool is_admin { get; set; }
