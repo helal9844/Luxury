@@ -1,5 +1,8 @@
-﻿using Luxury_Back.DB;
+﻿using FluentValidation.Results;
+using Luxury_Back.DB;
+using Luxury_Back.Helpers;
 using Luxury_Back.Models;
+using Luxury_Back.Validations.admin;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -35,6 +38,117 @@ namespace Luxury_Back.Controllers.Admin
             }
             ViewBag.IBookingImgs=booking_img;
             return View($"{ViewPath}Index.cshtml", bookings);
+        }
+
+        [HttpGet]
+        public IActionResult Create(IBooking ibooking)
+        {
+            List<Category> categories = luxuryDb.categories.Include(ca=>ca.childs).Where(c=>c.CategoryId==null).ToList();
+            List<Governorate> governorates = luxuryDb.governorates.ToList();
+            ViewBag.categories = categories;
+            ViewBag.governorates = governorates;
+            return View(ViewPath+"Create.cshtml");
+        }
+
+        [HttpPost]
+        public IActionResult _Create(IBooking iBooking)
+        {
+            
+            IBookingValidation validator = new IBookingValidation(localizer);
+            ValidationResult results = validator.Validate(iBooking);
+            if (!results.IsValid)
+            {
+                foreach (var error in results.Errors)
+                {
+                    TempData[error.PropertyName] = error.ErrorMessage;
+                }
+                return Create(iBooking);
+            }
+
+            IBooking? _ibooking = luxuryDb.iBookings
+                        .Where(_ => _.name_ar == iBooking.name_ar || _.name_en == iBooking.name_en)
+                        .FirstOrDefault();
+
+            if (_ibooking != null)
+            {
+                TempData["error_msg"] = "This Booking Item aready exsited!";
+                return Create(_ibooking);
+            }
+
+            using(IDbContextTransaction transaction = luxuryDb.Database.BeginTransaction())
+            {
+                try
+                {
+                    luxuryDb.iBookings.Add(iBooking);
+                    luxuryDb.SaveChanges();
+                    transaction.Commit();
+                    return RedirectToAction("Dropzone", new { id = iBooking.Id });
+                }
+                catch(Exception ex)
+                {
+                    transaction.Rollback();
+                    TempData["error_msg"] = ex.Message;
+                    return RedirectToAction("Create", iBooking);
+                }
+            }
+        }
+
+        [HttpGet]
+        public IActionResult Dropzone(int? id)
+        {
+            ViewBag.id = id;
+            return View($"{ViewPath}Dropzone.cshtml", id);
+        }
+
+        [HttpPost]
+        public IActionResult _Dropzone(int? id)
+        {
+            var iBooking = luxuryDb.iBookings.Find(id);
+
+            if(iBooking == null)
+            {
+                TempData["error_msg"] = "Data not Found";
+                return RedirectToAction("Index");
+            }
+
+            foreach (var file in Request.Form.Files)
+            {
+                IFormFile iformFile = file;
+                iBooking.images.Add(new IBookingImg()
+                {
+                    Name = Helper.uploadeFile(iformFile, "iBooking")
+                });
+            }
+            using (IDbContextTransaction transaction = luxuryDb.Database.BeginTransaction())
+            {
+                try
+                {
+                    luxuryDb.iBookings.Update(iBooking);
+                    luxuryDb.SaveChanges();
+                    transaction.Commit();
+                    return RedirectToAction("Index");
+                }
+                catch(Exception ex)
+                {
+                    transaction.Rollback();
+                    TempData["error_msg"] = ex.Message;
+                    return Dropzone(iBooking.Id);
+                }
+            }
+                
+        }
+
+        public ActionResult getBrandFromCategory(int? id)
+        {
+            List<Brand> brand = luxuryDb.brands.Where(b=>b.CategoryId == id).ToList();
+
+            return Json(brand);
+        }
+
+        public ActionResult getCitiesFromGov(int? id)
+        {
+            List<City> brand = luxuryDb.cities.Where(b => b.gov_id == id).ToList();
+            return Json(brand);
         }
 
         #region Activation

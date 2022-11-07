@@ -1,4 +1,5 @@
 ﻿@model Category;
+@using Luxury_Back.Helpers
 @{
     ViewData["Title"] = "New Category";
     Layout = "~/Views/Shared/Admin/Layout/_CardView.cshtml";
@@ -11,7 +12,8 @@
 
         <div class="form-group col-12 mb-2">
             <div class="col-5 mx-auto">
-                <img id="img" src="~/images/@(Model.img_category==null ||Model.CategoryId == null?"DefaultImage.png":Model.img_category)" class="img-thumbnail view-img" />
+
+                <img id="img" src="@(Helper.imageUrl(Model.img_category))" class="img-thumbnail view-img" />
                 <input id="imgFile" type="file" class="form-control" name="img_category">
             </div>
         </div>

@@ -33,6 +33,8 @@
   //display ibooking
   "iBooking": "اماكن الحجز",
   "brand": "العلامة التجارية",
+  "description": "الوصف",
+  "dropHere": "قم بسحب وإسقاط الملفات هنا للتحميل",
   "img": "صورة"
 
 
