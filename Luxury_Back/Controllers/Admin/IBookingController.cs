@@ -93,6 +93,15 @@ namespace Luxury_Back.Controllers.Admin
             }
         }
 
+        public IActionResult Edit(int id)
+        {
+            List<Category> categories = luxuryDb.categories.Include(ca => ca.childs).Where(c => c.CategoryId == null).ToList();
+            List<Governorate> governorates = luxuryDb.governorates.ToList();
+            ViewBag.categories = categories;
+            ViewBag.governorates = governorates;
+            return View(ViewPath + "Create.cshtml");
+        }
+
         [HttpGet]
         public IActionResult Dropzone(int? id)
         {
@@ -109,6 +118,11 @@ namespace Luxury_Back.Controllers.Admin
             {
                 TempData["error_msg"] = "Data not Found";
                 return RedirectToAction("Index");
+            }
+
+            if (Request.Form.Files.Count() == 0) {
+                TempData["error_msg"] = "Images Can't Be Empty";
+                return RedirectToAction("Dropzone", new {id = id});
             }
 
             foreach (var file in Request.Form.Files)
@@ -175,7 +189,7 @@ namespace Luxury_Back.Controllers.Admin
         #region Delete
         public IActionResult Delete(int? id)
         {
-            var booking = luxuryDb.iBookings.Include(i => i.images).Include(c => c.attribute).Where(w => w.Id == id).FirstOrDefault();
+            var booking = luxuryDb.iBookings.Include(i => i.images).Where(w => w.Id == id).FirstOrDefault();
             if (booking == null)
             {
                 TempData["error_msg"] = "Booking is Not Allow";
@@ -191,10 +205,10 @@ namespace Luxury_Back.Controllers.Admin
                             luxuryDb.Remove(bookImgs);
                         }
                     }
-                    if (booking.attribute != null)
+                    /*if (booking.attribute != null)
                     {
                         luxuryDb.iBookingAttributes.Remove(booking.attribute);
-                    }
+                    }*/
                     luxuryDb.iBookings.Remove(booking);
                     luxuryDb.SaveChanges();
                     transaction.Commit();

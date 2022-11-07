@@ -29,7 +29,7 @@ public class IBooking
     public Category? Category { get; set; }
     public Brand? Brand { get; set; }
     public Address? Address { get; set; }
-    public IBookingAttribute? attribute { get; set; }
+    /*public IBookingAttribute? attribute { get; set; }*/
 
     public ICollection<IBookingImg>? images { get; set; }
     
