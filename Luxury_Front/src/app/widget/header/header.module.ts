@@ -5,7 +5,7 @@ import { NavListComponent } from './nav-list/nav-list.component';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { NavBottomComponent } from './nav-bottom/nav-bottom.component';
 import { TitleHeaderComponent } from './title-header/title-header.component';
-
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -13,11 +13,9 @@ import { TitleHeaderComponent } from './title-header/title-header.component';
     NavListComponent,
     TopNavComponent,
     NavBottomComponent,
-    TitleHeaderComponent
+    TitleHeaderComponent,
   ],
-  imports: [
-    CommonModule
-  ],
-  exports: [HeaderComponent]
+  imports: [CommonModule, TranslateModule],
+  exports: [HeaderComponent],
 })
-export class HeaderModule { }
+export class HeaderModule {}

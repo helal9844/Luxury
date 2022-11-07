@@ -1,49 +1,57 @@
 nav.navbar {
-    .navbar-brand {
-        color: #aa8453;
-        color: #fff;
-        font-family: PopB;
-        font-weight: bolder;
-        font-size: 1.8rem;
-        text-shadow: 1px 4px 2px #2229;;
-    }
-    .nav{
-        .nav-item{
-            align-items: center;
-            display: flex;
-            button{
-                i{
-                    font-size: 2.3rem;
-                    width: 40px;
-                    height: 40px;
-                    align-items: center;
-                    display: flex;
-                    color: #fff9;
-                }
-                
-            }
-            .lang {
-                >ul.dropdown-menu {
-                    border-radius: 0;
-                    border-radius: 0;
-                }
-                &:hover{
-                    >ul.dropdown-menu {
-                        display: block;
-                    }
-                }
-                img {
-                    border-radius: 50%;
-                    width: 35px;
-                    height: 35px;
-                }
-                .dropdown-item {
-                    span {
-                        text-transform: capitalize;
-                        margin: 0 .5rem;
-                    }
-                }
-            }
+  .navbar-brand {
+    color: #aa8453;
+    color: #fff;
+    font-family: PopB;
+    font-weight: bolder;
+    font-size: 1.8rem;
+    text-shadow: 1px 4px 2px #2229;
+  }
+  .nav {
+    .nav-item {
+      align-items: center;
+      display: flex;
+      button {
+        i {
+          font-size: 2.3rem;
+          width: 40px;
+          height: 40px;
+          align-items: center;
+          display: flex;
+          color: #fff9;
         }
+      }
+      .lang {
+        > ul.dropdown-menu {
+          border-radius: 0;
+          border-radius: 0;
+        }
+        &:hover {
+          > ul.dropdown-menu {
+            display: block;
+          }
+        }
+        img {
+          border-radius: 50%;
+          width: 35px;
+          height: 35px;
+        }
+        .dropdown-item {
+          span {
+            text-transform: capitalize;
+            margin: 0 0.5rem;
+          }
+        }
+      }
     }
+  }
+}
+.Rbtn {
+  color: #0071c2;
+  border: none;
+  border-radius: 2px;
+  height: 40px;
+  margin: 0 5px 0 5px;
+  padding: 8px 16px;
+  font-family: PopB;
 }

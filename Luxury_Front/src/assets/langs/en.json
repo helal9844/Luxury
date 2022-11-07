@@ -1,6 +1,19 @@
 {
-    "Home": "Home Page",
-    "About": "About",
-    "en": "english",
-    "ar": "arabic"
+  "Home": "Home Page",
+  "About": "About",
+  "Contact": "Contact Us",
+  "Help": "Help",
+  "Rbtn": "Register",
+  "Sbtn": "Sign In",
+  "en": "english",
+  "ar": "arabic",
+  "Htitle": "Find your next stay",
+  "Htitle2": "Search low prices on hotels, homes and much more...",
+
+  "ExpEgy": "Explore Egypt",
+  "ExpDes": "These popular destinations have a lot to offer",
+
+  "foottitle": "Save time, save money!",
+  "foottitle2": "Sign up and we'll send the best deals to you",
+  "Listprop": "List Your Property"
 }

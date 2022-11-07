@@ -3,13 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { IndexComponent } from './layout/index/index.component';
-import { WidgetModule } from "./widget/widget.module";
+import { WidgetModule } from './widget/widget.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PagesModule } from './pages/pages.module';
+
 @NgModule({
-  declarations: [
-    IndexComponent,
-  ],
+  declarations: [IndexComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -18,6 +17,6 @@ import { PagesModule } from './pages/pages.module';
     NgbModule,
   ],
   providers: [],
-  bootstrap: [IndexComponent]
+  bootstrap: [IndexComponent],
 })
-export class AppModule { }
+export class AppModule {}
