@@ -1,4 +1,8 @@
 .header-title {
-    font-weight: bolder;
-    @include dir(font-family, Pop, CairoB);
+  font-weight: bolder;
+  // @include dir(font-family, Pop, CairoB);
+}
+.h2 {
+  font-weight: bolder;
+  font-size: 48px;
 }

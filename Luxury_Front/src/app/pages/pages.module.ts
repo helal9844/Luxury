@@ -5,13 +5,11 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule } from '@angular/common/http';
-import { HomeComponent } from './home/home.component';
-import { TranslateService } from "@ngx-translate/core";
+import { TranslateService } from '@ngx-translate/core';
+import { MainHomeComponent } from './home/main-home/main-home.component';
+import { StatesComponent } from './home/states/states.component';
 @NgModule({
-  declarations: [
-    HomeComponent,
-    AboutComponent
-  ],
+  declarations: [MainHomeComponent, AboutComponent, StatesComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -20,13 +18,12 @@ import { TranslateService } from "@ngx-translate/core";
       loader: {
         provide: TranslateLoader,
         useFactory: HttpTransLoader,
-        deps: [HttpClient]
-      }
+        deps: [HttpClient],
+      },
     }),
-  ]
+  ],
 })
 export class PagesModule {
-
   // currentLang: string;
 
   constructor(public translate: TranslateService) {
@@ -34,13 +31,11 @@ export class PagesModule {
     // translate.use('ar');
   }
 
-  changeCurrentLang(lang:string){
+  changeCurrentLang(lang: string) {
     this.translate.use(lang);
     localStorage.setItem('currentLnag', lang);
   }
-
- }
-export function HttpTransLoader(http:HttpClient) {
+}
+export function HttpTransLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/langs/', '.json');
 }
-

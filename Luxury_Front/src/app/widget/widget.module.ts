@@ -1,19 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { FooterComponent } from './footer/footer.component';
 import { HeaderModule } from './header/header.module';
 import { LoaderComponent } from './loader/loader.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { ErrorComponent } from './error/error.component';
+import { FooterModule } from './footer/footer.module';
 
 @NgModule({
-  declarations: [
-    FooterComponent,
-    LoaderComponent
-  ],
-  imports: [
-    CommonModule,
-    HeaderModule
-  ],
-  exports: [HeaderModule,FooterComponent, LoaderComponent]
+  declarations: [LoaderComponent, ErrorComponent],
+  imports: [CommonModule, HeaderModule, FooterModule, TranslateModule],
+  exports: [HeaderModule, LoaderComponent, FooterModule],
 })
-export class WidgetModule { }
+export class WidgetModule {}
