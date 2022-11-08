@@ -14,7 +14,6 @@ namespace Luxury_Back.Models
         public int? IAttributeId { get; set; }
         [DefaultValue(0)]
         public string? value { get; set; }
-##
         public virtual IBooking IBooking { get; set; }
         public virtual IAttribute IAttribute { get; set; }
     }
