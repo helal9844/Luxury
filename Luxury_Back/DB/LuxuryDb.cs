@@ -82,6 +82,8 @@ namespace Luxury_Back.DB
             modelBuilder.Entity<IBookingAttribute>()
                 .HasKey(c => new { c.IBookingId, c.IAttributeId });
 
+            modelBuilder.Entity<IAttribute>().Property(b => b.Created_at).HasDefaultValueSql("getdate()");
+
             /*modelBuilder.Entity<IBooking>()
                 .HasMany(i => i.iAttributes)
                 .WithMany(a => a.iBookings)

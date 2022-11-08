@@ -105,8 +105,8 @@ namespace Luxury_Back.Controllers.Admin
             {
                 try
                 {
-                    _iAttribute.name_en = iAttribute.name_en;
-                    _iAttribute.name_ar = iAttribute.name_ar;
+                    /*_iAttribute.name_en = iAttribute.name_en;
+                    _iAttribute.name_ar = iAttribute.name_ar;*/
                     luxuryDb.iAttributes.Update(_iAttribute);
                     luxuryDb.SaveChanges();
                     transaction.Commit();
