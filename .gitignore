@@ -7,4 +7,4 @@
 *.bin
 *.sqlite
 *.vsidx
-/Luxury_Back/wwwroot/images/category
+/Luxury_Back/wwwroot/images/uploaded/*

@@ -34,6 +34,11 @@
   //display ibooking
   "iBooking": "IBooking",
   "brand": "Brand",
-  "img": "Image"
+  "dropHere": "Drop Files Here To Upload",
+  "description": "Description",
+  "img": "Image",
+
+  "attribute": "Attribute",
+  "attributes": "Attributes"
 
 }

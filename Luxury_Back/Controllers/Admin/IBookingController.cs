@@ -1,5 +1,8 @@
-﻿using Luxury_Back.DB;
+﻿using FluentValidation.Results;
+using Luxury_Back.DB;
+using Luxury_Back.Helpers;
 using Luxury_Back.Models;
+using Luxury_Back.Validations.admin;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -37,6 +40,158 @@ namespace Luxury_Back.Controllers.Admin
             return View($"{ViewPath}Index.cshtml", bookings);
         }
 
+        [HttpGet]
+        public IActionResult Create(IBooking ibooking)
+        {
+            List<Category> categories = luxuryDb.categories.Include(ca=>ca.childs).Where(c=>c.CategoryId==null).ToList();
+            List<Governorate> governorates = luxuryDb.governorates.ToList();
+            List<IAttribute> iAttributes = luxuryDb.iAttributes.ToList();
+
+            ViewBag.categories = categories;
+            ViewBag.governorates = governorates;
+            ViewBag.iAttributes = iAttributes;
+            return View(ViewPath+"Create.cshtml");
+        }
+
+        [HttpPost]
+        public IActionResult _Create(IBooking iBooking)
+        {
+
+            IBookingValidation validator = new IBookingValidation(localizer);
+            ValidationResult results = validator.Validate(iBooking);
+            if (!results.IsValid)
+            {
+                foreach (var error in results.Errors)
+                {
+                    TempData[error.PropertyName] = error.ErrorMessage;
+                }
+                return Create(iBooking);
+            }
+
+            IBooking? _ibooking = luxuryDb.iBookings
+                        .Where(_ => _.name_ar == iBooking.name_ar || _.name_en == iBooking.name_en)
+                        .FirstOrDefault();
+
+            if (_ibooking != null)
+            {
+                TempData["error_msg"] = "This Booking Item aready exsited!";
+                return Create(_ibooking);
+            }
+
+            // ADD IBOOKING ATTRIBUTES
+            if (Request.Form.Where(i => i.Key.StartsWith("attr_")).ToList() !=null)
+            {
+                List<IBookingAttribute> iBookingAttributes = new List<IBookingAttribute>();
+                foreach (var item in Request.Form.Where(i => i.Key.StartsWith("attr_")))
+                {
+                    if (item.Key.Contains("attr_"))
+                    {
+                        var id = item.Key.Split("_")[1];
+                        var value = item.Value;
+                        iBookingAttributes.Add(new IBookingAttribute()
+                        {
+                            IAttributeId = int.Parse(id),
+                            value = value
+                        });
+                    }
+                }
+                iBooking.iBookingAttributes = iBookingAttributes;
+            }
+
+            using (IDbContextTransaction transaction = luxuryDb.Database.BeginTransaction())
+            {
+                try
+                {
+                    luxuryDb.iBookings.Add(iBooking);
+                    luxuryDb.SaveChanges();
+                    transaction.Commit();
+                    return RedirectToAction("Dropzone", new { id = iBooking.Id });
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    TempData["error_msg"] = ex.Message;
+                    return RedirectToAction("Create", iBooking);
+                }
+            }
+        }
+
+        public IActionResult Edit(int id)
+        {
+            List<Category> categories = luxuryDb.categories.Include(ca => ca.childs).Where(c => c.CategoryId == null).ToList();
+            List<Governorate> governorates = luxuryDb.governorates.ToList();
+            List<IAttribute> iAttributes = luxuryDb.iAttributes.ToList();
+
+            ViewBag.categories = categories;
+            ViewBag.iAttributes = iAttributes;
+            ViewBag.governorates = governorates;
+
+            return View(ViewPath + "Create.cshtml");
+        }
+
+        [HttpGet]
+        public IActionResult Dropzone(int? id)
+        {
+            ViewBag.id = id;
+            return View($"{ViewPath}Dropzone.cshtml", id);
+        }
+
+        [HttpPost]
+        public IActionResult _Dropzone(int? id)
+        {
+            var iBooking = luxuryDb.iBookings.Find(id);
+
+            if(iBooking == null)
+            {
+                TempData["error_msg"] = "Data not Found";
+                return RedirectToAction("Index");
+            }
+
+            if (Request.Form.Files.Count() == 0) {
+                TempData["error_msg"] = "Images Can't Be Empty";
+                return RedirectToAction("Dropzone", new {id = id});
+            }
+
+            foreach (var file in Request.Form.Files)
+            {
+                IFormFile iformFile = file;
+                iBooking.images.Add(new IBookingImg()
+                {
+                    Name = Helper.uploadeFile(iformFile, "iBooking")
+                });
+            }
+            using (IDbContextTransaction transaction = luxuryDb.Database.BeginTransaction())
+            {
+                try
+                {
+                    luxuryDb.iBookings.Update(iBooking);
+                    luxuryDb.SaveChanges();
+                    transaction.Commit();
+                    return RedirectToAction("Index");
+                }
+                catch(Exception ex)
+                {
+                    transaction.Rollback();
+                    TempData["error_msg"] = ex.Message;
+                    return Dropzone(iBooking.Id);
+                }
+            }
+                
+        }
+
+        public ActionResult getBrandFromCategory(int? id)
+        {
+            List<Brand> brand = luxuryDb.brands.Where(b=>b.CategoryId == id).ToList();
+
+            return Json(brand);
+        }
+
+        public ActionResult getCitiesFromGov(int? id)
+        {
+            List<City> brand = luxuryDb.cities.Where(b => b.gov_id == id).ToList();
+            return Json(brand);
+        }
+
         #region Activation
         public IActionResult Activation(int? id)
         {
@@ -61,7 +216,7 @@ namespace Luxury_Back.Controllers.Admin
         #region Delete
         public IActionResult Delete(int? id)
         {
-            var booking = luxuryDb.iBookings.Include(i => i.images).Include(c => c.attribute).Where(w => w.Id == id).FirstOrDefault();
+            var booking = luxuryDb.iBookings.Include(i => i.images).Where(w => w.Id == id).FirstOrDefault();
             if (booking == null)
             {
                 TempData["error_msg"] = "Booking is Not Allow";
@@ -77,10 +232,10 @@ namespace Luxury_Back.Controllers.Admin
                             luxuryDb.Remove(bookImgs);
                         }
                     }
-                    if (booking.attribute != null)
+                    /*if (booking.attribute != null)
                     {
                         luxuryDb.iBookingAttributes.Remove(booking.attribute);
-                    }
+                    }*/
                     luxuryDb.iBookings.Remove(booking);
                     luxuryDb.SaveChanges();
                     transaction.Commit();

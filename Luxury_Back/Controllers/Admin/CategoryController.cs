@@ -81,7 +81,7 @@ namespace Luxury_Back.Controllers.Admin
                         {
                             img_category.CopyTo(obj);
                         }*/
-                        category.img_category = @"category\" + img;
+                        category.img_category = img;
                     }
                     
 
@@ -93,7 +93,7 @@ namespace Luxury_Back.Controllers.Admin
                 {
                     transaction.Rollback();
                     TempData["error_msg"] = ex.Message;
-                    return Content(ex.Message);
+                    return Create(category);
                 }
             }
            
@@ -280,7 +280,7 @@ namespace Luxury_Back.Controllers.Admin
                             category.img_category = @"DefaultImage.png";
                             if (category.CategoryId != null) {
                                 string? img = Helper.uploadeFile(img_category, "category");
-                                category.img_category = @"category\" + img;
+                                category.img_category = img;
                             }
                         }
 
@@ -293,8 +293,6 @@ namespace Luxury_Back.Controllers.Admin
                 {
                     transaction.Rollback();
                     TempData["error_msg"] = ex.Message;
-                     return Content(ex.Message);
-                 
                 }
             }
             return RedirectToAction("Index");

@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\images\category\**" />
+    <Content Remove="wwwroot\images\category\**" />
+    <EmbeddedResource Remove="wwwroot\images\category\**" />
+    <None Remove="wwwroot\images\category\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
     <PackageReference Include="MessagePackAnalyzer" Version="2.1.152" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.10" />
@@ -19,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\images\category\" />
+    <Folder Include="wwwroot\images\uploaded\" />
   </ItemGroup>
 
 </Project>

@@ -29,13 +29,18 @@ public class IBooking
     public Category? Category { get; set; }
     public Brand? Brand { get; set; }
     public Address? Address { get; set; }
-    public IBookingAttribute? attribute { get; set; }
+    /*public IBookingAttribute? attribute { get; set; }*/
 
     public ICollection<IBookingImg>? images { get; set; }
-    
+
+    public virtual ICollection<IAttribute>? iAttributes { get; set; }
+    public virtual ICollection<IBookingAttribute>? iBookingAttributes { get; set; }
+
     public IBooking()
     {
         //category = new Category();
         images = new HashSet<IBookingImg>();
+        iAttributes = new HashSet<IAttribute>();
+        iBookingAttributes = new HashSet<IBookingAttribute>();
     }
 }
