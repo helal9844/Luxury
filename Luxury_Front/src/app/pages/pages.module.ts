@@ -8,6 +8,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
 import { MainHomeComponent } from './home/main-home/main-home.component';
 import { StatesComponent } from './home/states/states.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [MainHomeComponent, AboutComponent, StatesComponent],
   imports: [
@@ -21,6 +24,8 @@ import { StatesComponent } from './home/states/states.component';
         deps: [HttpClient],
       },
     }),
+    CarouselModule,
+    BrowserAnimationsModule,
   ],
 })
 export class PagesModule {
