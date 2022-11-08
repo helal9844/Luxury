@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 //using Microsoft.AspNetCore.Mvc.Razor.RazorPages;
 using System.Globalization;
+using System.Numerics;
 
 namespace Luxury_Back.Helpers
 {
@@ -14,7 +15,9 @@ namespace Luxury_Back.Helpers
        
         public static string? uploadeFile(IFormFile img, string? dirName)
         {
-            string uniqueImge = DateTime.Now.ToString("yyyyyMMddHHmmss") + "." + img.FileName.Split(".")[1];
+            Random rand = new Random();
+            var r = rand.Next(1000, int.Parse(DateTime.Now.ToString("yyyyyMMmmss"))).ToString();
+            string uniqueImge = r + "." + img.FileName.Split(".")[1];
             if (!System.IO.Directory.Exists(@$".\wwwroot\images\uploaded\{dirName}"))
             {
                 System.IO.Directory.CreateDirectory(@$".\wwwroot\images\uploaded\{dirName}");

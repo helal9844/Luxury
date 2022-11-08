@@ -45,15 +45,18 @@ namespace Luxury_Back.Controllers.Admin
         {
             List<Category> categories = luxuryDb.categories.Include(ca=>ca.childs).Where(c=>c.CategoryId==null).ToList();
             List<Governorate> governorates = luxuryDb.governorates.ToList();
+            List<IAttribute> iAttributes = luxuryDb.iAttributes.ToList();
+
             ViewBag.categories = categories;
             ViewBag.governorates = governorates;
+            ViewBag.iAttributes = iAttributes;
             return View(ViewPath+"Create.cshtml");
         }
 
         [HttpPost]
         public IActionResult _Create(IBooking iBooking)
         {
-            
+
             IBookingValidation validator = new IBookingValidation(localizer);
             ValidationResult results = validator.Validate(iBooking);
             if (!results.IsValid)
@@ -75,7 +78,27 @@ namespace Luxury_Back.Controllers.Admin
                 return Create(_ibooking);
             }
 
-            using(IDbContextTransaction transaction = luxuryDb.Database.BeginTransaction())
+            // ADD IBOOKING ATTRIBUTES
+            if (Request.Form.Where(i => i.Key.StartsWith("attr_")).ToList() !=null)
+            {
+                List<IBookingAttribute> iBookingAttributes = new List<IBookingAttribute>();
+                foreach (var item in Request.Form.Where(i => i.Key.StartsWith("attr_")))
+                {
+                    if (item.Key.Contains("attr_"))
+                    {
+                        var id = item.Key.Split("_")[1];
+                        var value = item.Value;
+                        iBookingAttributes.Add(new IBookingAttribute()
+                        {
+                            IAttributeId = int.Parse(id),
+                            value = value
+                        });
+                    }
+                }
+                iBooking.iBookingAttributes = iBookingAttributes;
+            }
+
+            using (IDbContextTransaction transaction = luxuryDb.Database.BeginTransaction())
             {
                 try
                 {
@@ -84,7 +107,7 @@ namespace Luxury_Back.Controllers.Admin
                     transaction.Commit();
                     return RedirectToAction("Dropzone", new { id = iBooking.Id });
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     transaction.Rollback();
                     TempData["error_msg"] = ex.Message;
@@ -97,8 +120,12 @@ namespace Luxury_Back.Controllers.Admin
         {
             List<Category> categories = luxuryDb.categories.Include(ca => ca.childs).Where(c => c.CategoryId == null).ToList();
             List<Governorate> governorates = luxuryDb.governorates.ToList();
+            List<IAttribute> iAttributes = luxuryDb.iAttributes.ToList();
+
             ViewBag.categories = categories;
+            ViewBag.iAttributes = iAttributes;
             ViewBag.governorates = governorates;
+
             return View(ViewPath + "Create.cshtml");
         }
 

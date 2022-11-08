@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Luxury_Back.Migrations
 {
     [DbContext(typeof(LuxuryDb))]
-    [Migration("20221108131042_update_iAttribute_col")]
-    partial class update_iAttribute_col
+    [Migration("20221108134825_iAttribute_data")]
+    partial class iAttribute_data
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -219,6 +219,9 @@ namespace Luxury_Back.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("getdate()");
+
+                    b.Property<string>("inputType")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("name_ar")
                         .HasColumnType("nvarchar(450)");

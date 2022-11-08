@@ -12,8 +12,10 @@ namespace Luxury_Back.Models
         public int Id { get; set; }
         public string? name_ar { get; set; }
         public string? name_en { get; set; }
-        [DefaultValue(0)]
+        [DefaultValue(1)]
         public bool IsActive { get; set; }
+        [DefaultValue("checkbox")]
+        public string? inputType { get; set; }
         public DateTime? created_at { get; set; }
         public DateTime? updated_at { get; set; }
         public ICollection<IBooking>? iBookings { get; set; }

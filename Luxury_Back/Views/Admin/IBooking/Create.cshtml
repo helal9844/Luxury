@@ -27,6 +27,7 @@
     <form asp-action="_Create" asp-controller="IBooking" class="number-tab-steps wizard-circle" method="post">
     <!-- Step 1 -->
     <h6>Step 1</h6>
+
     <fieldset>
         <div class="row">
             <div class="col-lg-6">
@@ -179,20 +180,22 @@
     <h6>Step 4</h6>
     <fieldset class="last-step">
         <div class="row">
-            <div class="col-md-6">
+            @foreach (var item in ViewBag.iAttributes)
+            {
+                <div class="col-md-6">
                 <div class="form-group">
+                        <label for="@item.name_en" class="text-capitalize">@(Helper.getLnag() == "ar" ? item.name_ar : item.name_en)</label>
                     <fieldset>
                         <div class="float-left">
-                            
+                            <input type="@item.inputType" class="switch" id="@item.name_en" checked="checked" name="attr_@item.Id" value="true"/>
                         </div>
                     </fieldset>
                 </div>
             </div>
+            }
         </div>
         <button class="submit" type="submit">submit</button>
     </fieldset>
-
-
 </form>
 
 @section Scripts{

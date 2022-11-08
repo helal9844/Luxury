@@ -4,6 +4,7 @@ using Luxury_Back.DB;
 using Luxury_Back.Models;
 using Luxury_Back.Validations.admin;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Localization;
 
@@ -13,6 +14,7 @@ namespace Luxury_Back.Controllers.Admin
     {
         LuxuryDb luxuryDb;
         private readonly IStringLocalizer<IAttributeController> localizer;
+
         public IAttributeController(LuxuryDb luxuryDb, IStringLocalizer<IAttributeController> _localizer, LuxuryDb db)
         { 
             this.luxuryDb = db;
@@ -27,6 +29,7 @@ namespace Luxury_Back.Controllers.Admin
         [HttpGet]
         public IActionResult Create(IAttribute iAttribute)
         {
+            ViewBag.inputs = Types.iSelect.ToList();
             return View($"{ViewPath}Create_Edit.cshtml");
         }
         [HttpPost]
@@ -77,6 +80,7 @@ namespace Luxury_Back.Controllers.Admin
             if (iAttribute == null)
                 TempData["error_msg"] = "This Attribute Is Not Exist.!";
 
+            ViewBag.inputs = Types.iSelect.ToList();
             return View($"{ViewPath}Create_Edit.cshtml", iAttribute);
         }
 
@@ -105,8 +109,9 @@ namespace Luxury_Back.Controllers.Admin
             {
                 try
                 {
-                    /*_iAttribute.name_en = iAttribute.name_en;
-                    _iAttribute.name_ar = iAttribute.name_ar;*/
+                    _iAttribute.name_en = iAttribute.name_en;
+                    _iAttribute.name_ar = iAttribute.name_ar;
+                    _iAttribute.inputType = iAttribute.inputType;
                     luxuryDb.iAttributes.Update(_iAttribute);
                     luxuryDb.SaveChanges();
                     transaction.Commit();

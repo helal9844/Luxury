@@ -34,7 +34,7 @@ namespace Luxury_Back.Migrations
 
                     b.HasIndex("iBookingsId");
 
-                    b.ToTable("IAttributeIBooking", (string)null);
+                    b.ToTable("IAttributeIBooking");
                 });
 
             modelBuilder.Entity("Luxury_Back.Models.Address", b =>
@@ -73,7 +73,7 @@ namespace Luxury_Back.Migrations
                         .IsUnique()
                         .HasFilter("[IBookingId] IS NOT NULL");
 
-                    b.ToTable("addresses", (string)null);
+                    b.ToTable("addresses");
                 });
 
             modelBuilder.Entity("Luxury_Back.Models.Brand", b =>
@@ -152,7 +152,7 @@ namespace Luxury_Back.Migrations
                     b.HasIndex("name_en")
                         .IsUnique();
 
-                    b.ToTable("categories", (string)null);
+                    b.ToTable("categories");
                 });
 
             modelBuilder.Entity("Luxury_Back.Models.City", b =>
@@ -217,6 +217,9 @@ namespace Luxury_Back.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("getdate()");
+
+                    b.Property<string>("inputType")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("name_ar")
                         .HasColumnType("nvarchar(450)");
@@ -331,7 +334,7 @@ namespace Luxury_Back.Migrations
 
                     b.HasIndex("IBookingId");
 
-                    b.ToTable("iBookingImg", (string)null);
+                    b.ToTable("iBookingImg");
                 });
 
             modelBuilder.Entity("Luxury_Back.Models.User", b =>

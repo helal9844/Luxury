@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Luxury_Back.Migrations
 {
-    public partial class update_iAttribute_col : Migration
+    public partial class update_iAttribute : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,10 +28,20 @@ namespace Luxury_Back.Migrations
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
                 oldNullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "inputType",
+                table: "iAttributes",
+                type: "nvarchar(max)",
+                nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropColumn(
+                name: "inputType",
+                table: "iAttributes");
+
             migrationBuilder.RenameColumn(
                 name: "updated_at",
                 table: "iAttributes",

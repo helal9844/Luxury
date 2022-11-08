@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Luxury_Back.Migrations
 {
     [DbContext(typeof(LuxuryDb))]
-    [Migration("20221108123601_iAttribute_data")]
-    partial class iAttribute_data
+    [Migration("20221108134812_update_iAttribute")]
+    partial class update_iAttribute
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -212,20 +212,25 @@ namespace Luxury_Back.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime?>("Created_at")
-                        .HasColumnType("datetime2");
-
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime?>("Updated_at")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTime?>("created_at")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getdate()");
+
+                    b.Property<string>("inputType")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("name_ar")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("name_en")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("updated_at")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
