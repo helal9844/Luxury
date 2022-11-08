@@ -14,8 +14,8 @@ namespace Luxury_Back.Models
         public string? name_en { get; set; }
         [DefaultValue(0)]
         public bool IsActive { get; set; }
-        public DateTime? Created_at { get; set; }
-        public DateTime? Updated_at { get; set; }
+        public DateTime? created_at { get; set; }
+        public DateTime? updated_at { get; set; }
         public ICollection<IBooking>? iBookings { get; set; }
         public virtual ICollection<IBookingAttribute>? iBookingAttributes { get; set; }
         public IAttribute()
