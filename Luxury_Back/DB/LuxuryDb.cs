@@ -14,6 +14,9 @@ namespace Luxury_Back.DB
         public virtual DbSet<IBooking> iBookings { get; set; } = null!;
         public virtual DbSet<Address> addresses { get; set; } = null!;
         public virtual DbSet<IBookingImg> iBookingImg { get; set; } = null!;
+        public virtual DbSet<IAttribute> iAttributes { get; set; } = null!;
+        
+
         /*public virtual DbSet<IBookingAttribute> iBookingAttributes { get; set; } = null!;*/
         //public virtual DbSet<CategoryTranslation> categoriesTranslation { get; set; } = null!;
         public LuxuryDb(DbContextOptions<LuxuryDb> dbContextOptions) : base(dbContextOptions)
@@ -63,6 +66,10 @@ namespace Luxury_Back.DB
                 .HasMany(c => c.iBookings)
                 .WithOne(b => b.Brand)
                 .HasForeignKey(b=>b.BrandId);
+            modelBuilder.Entity<IBooking>()
+                .HasMany(i=>i.iAttributes)
+                .WithMany(a=>a.iBookings)
+                .UsingEntity(t=>t.ToTable("iBookingAttributes"));
 
             //IBooking - Address
             modelBuilder.Entity<Address>().HasOne(h => h.IBooking).WithOne(b => b.Address);
@@ -72,6 +79,8 @@ namespace Luxury_Back.DB
                .HasMany(c => c.images)
                .WithOne(b => b.booking)
                .HasForeignKey(b => b.IBookingId);
+
+            modelBuilder.Entity<IAttribute>().ToTable("iAttributes");
 
             //IBooking - Attribute
             /*modelBuilder.Entity<IBookingAttribute>().HasOne(b=>b.IBooking).WithOne(b=>b.attribute);*/

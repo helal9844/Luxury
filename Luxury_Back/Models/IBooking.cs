@@ -32,10 +32,13 @@ public class IBooking
     /*public IBookingAttribute? attribute { get; set; }*/
 
     public ICollection<IBookingImg>? images { get; set; }
-    
+
+    public virtual ICollection<IAttribute>? iAttributes { get; set; }
+
     public IBooking()
     {
         //category = new Category();
         images = new HashSet<IBookingImg>();
+        iAttributes = new HashSet<IAttribute>();    
     }
 }
