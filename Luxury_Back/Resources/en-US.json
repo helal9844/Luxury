@@ -36,6 +36,9 @@
   "brand": "Brand",
   "dropHere": "Drop Files Here To Upload",
   "description": "Description",
-  "img": "Image"
+  "img": "Image",
+
+  "attribute": "Attribute",
+  "attributes": "Attributes"
 
 }

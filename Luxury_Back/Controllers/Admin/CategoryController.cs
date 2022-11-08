@@ -293,8 +293,6 @@ namespace Luxury_Back.Controllers.Admin
                 {
                     transaction.Rollback();
                     TempData["error_msg"] = ex.Message;
-                     return Content(ex.Message);
-                 
                 }
             }
             return RedirectToAction("Index");
