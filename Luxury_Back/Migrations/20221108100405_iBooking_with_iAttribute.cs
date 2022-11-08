@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Luxury_Back.Migrations
 {
-    public partial class add_iBooking_iAttribute : Migration
+    public partial class iBooking_with_iAttribute : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,21 +30,22 @@ namespace Luxury_Back.Migrations
                 name: "iBookingAttributes",
                 columns: table => new
                 {
-                    iAttributesId = table.Column<int>(type: "int", nullable: false),
-                    iBookingsId = table.Column<int>(type: "int", nullable: false)
+                    IBookingId = table.Column<int>(type: "int", nullable: false),
+                    IAttributeId = table.Column<int>(type: "int", nullable: false),
+                    value = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_iBookingAttributes", x => new { x.iAttributesId, x.iBookingsId });
+                    table.PrimaryKey("PK_iBookingAttributes", x => new { x.IBookingId, x.IAttributeId });
                     table.ForeignKey(
-                        name: "FK_iBookingAttributes_iAttributes_iAttributesId",
-                        column: x => x.iAttributesId,
+                        name: "FK_iBookingAttributes_iAttributes_IAttributeId",
+                        column: x => x.IAttributeId,
                         principalTable: "iAttributes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_iBookingAttributes_iBookings_iBookingsId",
-                        column: x => x.iBookingsId,
+                        name: "FK_iBookingAttributes_iBookings_IBookingId",
+                        column: x => x.IBookingId,
                         principalTable: "iBookings",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -65,13 +66,14 @@ namespace Luxury_Back.Migrations
                 filter: "[name_en] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_iBookingAttributes_iBookingsId",
+                name: "IX_iBookingAttributes_IAttributeId",
                 table: "iBookingAttributes",
-                column: "iBookingsId");
+                column: "IAttributeId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+
             migrationBuilder.DropTable(
                 name: "iBookingAttributes");
 

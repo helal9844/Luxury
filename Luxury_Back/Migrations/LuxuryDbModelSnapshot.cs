@@ -34,7 +34,7 @@ namespace Luxury_Back.Migrations
 
                     b.HasIndex("iBookingsId");
 
-                    b.ToTable("iBookingAttributes", (string)null);
+                    b.ToTable("IAttributeIBooking");
                 });
 
             modelBuilder.Entity("Luxury_Back.Models.Address", b =>
@@ -293,6 +293,24 @@ namespace Luxury_Back.Migrations
                     b.ToTable("iBookings", (string)null);
                 });
 
+            modelBuilder.Entity("Luxury_Back.Models.IBookingAttribute", b =>
+                {
+                    b.Property<int?>("IBookingId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("IAttributeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IBookingId", "IAttributeId");
+
+                    b.HasIndex("IAttributeId");
+
+                    b.ToTable("iBookingAttributes", (string)null);
+                });
+
             modelBuilder.Entity("Luxury_Back.Models.IBookingImg", b =>
                 {
                     b.Property<int>("Id")
@@ -447,6 +465,25 @@ namespace Luxury_Back.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("Luxury_Back.Models.IBookingAttribute", b =>
+                {
+                    b.HasOne("Luxury_Back.Models.IAttribute", "IAttribute")
+                        .WithMany("iBookingAttributes")
+                        .HasForeignKey("IAttributeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Luxury_Back.Models.IBooking", "IBooking")
+                        .WithMany("iBookingAttributes")
+                        .HasForeignKey("IBookingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("IAttribute");
+
+                    b.Navigation("IBooking");
+                });
+
             modelBuilder.Entity("Luxury_Back.Models.IBookingImg", b =>
                 {
                     b.HasOne("Luxury_Back.Models.IBooking", "booking")
@@ -484,9 +521,16 @@ namespace Luxury_Back.Migrations
                     b.Navigation("Cities");
                 });
 
+            modelBuilder.Entity("Luxury_Back.Models.IAttribute", b =>
+                {
+                    b.Navigation("iBookingAttributes");
+                });
+
             modelBuilder.Entity("Luxury_Back.Models.IBooking", b =>
                 {
                     b.Navigation("Address");
+
+                    b.Navigation("iBookingAttributes");
 
                     b.Navigation("images");
                 });
