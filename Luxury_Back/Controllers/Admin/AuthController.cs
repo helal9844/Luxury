@@ -101,6 +101,7 @@ namespace Luxury_Back.Controllers.Admin
         [HttpGet]
         public IActionResult Logout()
         {
+            HttpContext.SignOutAsync();
             return RedirectToAction("Login");
         }
     }
