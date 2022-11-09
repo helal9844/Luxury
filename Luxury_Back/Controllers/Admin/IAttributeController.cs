@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
 using Luxury_Back.DB;
+using Luxury_Back.Helpers;
 using Luxury_Back.Models;
 using Luxury_Back.Validations.admin;
 using Microsoft.AspNetCore.Mvc;
@@ -126,5 +127,53 @@ namespace Luxury_Back.Controllers.Admin
             }
                 return View($"{ViewPath}Create_Edit.cshtml", iAttribute);
         }
+        #region Delete
+        public IActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return BadRequest();
+            }
+            var iAttribute = luxuryDb.iAttributes.Find(id);
+            if (iAttribute == null)
+            {
+                return NotFound(iAttribute.name_en + "is Not Found");
+            }
+
+            var iBookingAttributes = luxuryDb.iBookingAttributes.Where(w => w.IAttributeId == id).ToList();
+            if (iBookingAttributes.Count > 0 && iBookingAttributes != null)
+            {
+                foreach (var item in iBookingAttributes)
+                {
+                    luxuryDb.iBookingAttributes.Remove(item);
+                }
+            }
+            luxuryDb.iAttributes.Remove(iAttribute);
+            luxuryDb.SaveChanges();
+
+            TempData["Delete"] = Helper.getLnag() == "ar" ? iAttribute.name_ar + " " + "تم عملية المسح" : iAttribute.name_en + "Deleted Successfully";
+            return RedirectToAction("Index");
+
+        }
+
+        #endregion
+
+
+        #region Activation
+        public IActionResult Activation(int? id)
+        {
+            var iAttribute = luxuryDb.iAttributes.Find(id);
+            if (iAttribute == null)
+            {
+                TempData["error_msg"] = iAttribute.name_en + "is Not Found";
+            }
+            var iBookingAttributes = luxuryDb.iBookingAttributes.Where(w => w.IAttributeId == id).ToList();
+
+            iAttribute.IsActive = !iAttribute.IsActive;
+            luxuryDb.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+        #endregion
     }
 }

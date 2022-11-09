@@ -42,7 +42,7 @@
                         </td>
                         <td>
                             <a asp-action="Edit" asp-route-id="@item.Id" asp-controller="IAttribute" class="btn btn-info white" data-toggle="tooltip" data-placement="top" title="@localizer["edit"]"><i class="ft-edit"></i></a>
-                            <a asp-action="activation" asp-route-id="@item.Id" class="btn btn-warning white" data-toggle="tooltip" data-placement="top" title="@localizer[item.IsActive?"inActive":"isActive"]"><i class="ft-repeat"></i></a>
+                            <a asp-action="Activation" asp-route-id="@item.Id" class="btn btn-warning white" data-toggle="tooltip" data-placement="top" title="@localizer[item.IsActive?"inActive":"isActive"]"><i class="ft-repeat"></i></a>
                             <a onclick="return confirm('Are you sure you want to delete Attribute?')" asp-controller="IAttribute" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger white"
                        data-toggle="tooltip" data-placement="top" title="@localizer["delete"]"><i class="ft-trash-2"></i></a>
                         </td>
