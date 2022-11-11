@@ -55,6 +55,7 @@
                     }
                 </td>
                 <td>
+                    <a asp-action="Gallary" asp-route-id="@item.Id" asp-controller="IBooking" class="btn btn-info white" data-toggle="tooltip" data-placement="top" title="@localizer["imgs"]"><i class="la la-image"></i></a>
                     <a asp-action="Edit" asp-route-id="@item.Id" asp-controller="IBooking" class="btn btn-info white" data-toggle="tooltip" data-placement="top" title="@localizer["edit"]"><i class="ft-edit"></i></a>
                     <a asp-action="activation" asp-route-id="@item.Id" class="btn btn-warning white" data-toggle="tooltip" data-placement="top" title="@localizer[item.IsActive?"inActive":"isActive"]"><i class="ft-repeat"></i></a>
                     <a onclick="return confirm('Are you sure you want to delete IBooking Content?')" asp-controller="IBooking" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger white" data-toggle="tooltip" data-placement="top" title="@localizer["delete"]"><i class="ft-trash-2"></i></a>

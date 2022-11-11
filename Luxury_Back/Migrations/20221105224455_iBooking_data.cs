@@ -34,13 +34,13 @@ namespace Luxury_Back.Migrations
                         DateTime.Now,
                     },
                     //2
-                    { 3,1,
+                    { 2,1,
                         "غرفة فيرمونت جولد سيجنتشر مزدوجة - لغير المدخنين",
                         "Fairmont Gold Signature Double Room - Non-Smokingm",
                         DateTime.Now,
                     },
                     //3
-                    { 3,3,
+                    { 2,3,
                         "Helnan Palace Hotel - Adults Only",
                         "Helnan Palace Hotel - Adults Only",
                         DateTime.Now,
@@ -340,6 +340,30 @@ namespace Luxury_Back.Migrations
                 }
             );
 
+            /* Address */
+            migrationBuilder.InsertData
+                (
+                    table: "addresses",
+                    columns: new[]
+                    {
+                        "IBookingId",
+                        "address",
+                        "lat",
+                        "lng",
+                        "GovernorateId",
+                        "CityId"
+                    },
+                    values: new object[,]
+                    {
+                        {1, "هيلتون رمسيس، Nile Corniche, Sharkas, Bulaq, Egypt", 30.0502819, 31.2320504, 1, 1 },
+                        {2, "هيلتون رمسيس، Nile Corniche, Sharkas, Bulaq, Egypt", 30.0502819, 31.2320504, 1, 1 },
+                        {3, "هيلتون رمسيس، Nile Corniche, Sharkas, Bulaq, Egypt", 30.0502819, 31.2320504, 1, 1 },
+                        {4, "هيلتون رمسيس، Nile Corniche, Sharkas, Bulaq, Egypt", 30.0502819, 31.2320504, 1, 1 },
+                        {5, "هيلتون رمسيس، Nile Corniche, Sharkas, Bulaq, Egypt", 30.0502819, 31.2320504, 1, 1 },
+                        {6, "هيلتون رمسيس، Nile Corniche, Sharkas, Bulaq, Egypt", 30.0502819, 31.2320504, 1, 1 },
+                        {7, "هيلتون رمسيس، Nile Corniche, Sharkas, Bulaq, Egypt", 30.0502819, 31.2320504, 1, 1 },
+                    }
+                );
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

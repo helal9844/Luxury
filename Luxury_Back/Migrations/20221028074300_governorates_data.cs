@@ -8,7 +8,7 @@ namespace Luxury_Back.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.Sql(
+            /*migrationBuilder.Sql(
                 "INSERT INTO governorates" +
                 " (name_ar, name_en) " +
                 "VALUES ('القاهرة', 'Cairo')," +
@@ -37,7 +37,21 @@ namespace Luxury_Back.Migrations
                 "('الأقصر', 'Luxor')," +
                 "('قنا', 'Qena')," +
                 "('شمال سيناء', 'North Sinai')," +
-                "('سوهاج', 'Sohag');");
+                "('سوهاج', 'Sohag');"
+                );*/
+
+            migrationBuilder.InsertData(table: "governorates",
+                columns: new[]
+                {
+                    "name_ar",
+                    "name_en"
+                },
+                values: new object[,]
+                {
+                    { "القاهرة", "Cairo" },
+                    { "الجيزة", "Giza" },
+                }); 
+
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -9,4 +9,15 @@
 
 })(window);
 
-console.log("test")
+$(".checkBoxValue").on('change', function () {
+    let data = $(this).data("input");
+    let input = $(`#${data}`);
+    console.log(input)
+    if ($(this).is(':checked')) {
+        input.val("true");
+    } else {
+        input.val("false");
+    }
+    console.log($(this).val());
+});
+
