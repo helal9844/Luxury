@@ -59,11 +59,8 @@ namespace Luxury_Back
                     auth.LogoutPath = "/admin/auth/logout";
                     auth.AccessDeniedPath = "/admin/auth/login";
                 });
-
-            
+ 
             var app = builder.Build();
-
-            
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -99,11 +96,11 @@ namespace Luxury_Back
             app.MapAreaControllerRoute(
                 name: "Root",
                 areaName: "Root",
-                pattern: "root/{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Home}/{action=Index}/{id?}");
 
-            app.MapControllerRoute(
+            /*app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Index}/{action=Index}/{id?}");
+                pattern: "{controller=Index}/{action=Index}/{id?}");*/
 
             app.Run();
         }
