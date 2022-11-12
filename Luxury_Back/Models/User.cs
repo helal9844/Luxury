@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
@@ -19,7 +20,8 @@ namespace Luxury_Back.Models
 
         [System.ComponentModel.DataAnnotations.Required, MinLength(8, ErrorMessage = "MinLengthValidation")]
         public string? password { get; set; }
-
+        [NotMapped]
+        public string? confirm_password { get; set; }
         [System.ComponentModel.DataAnnotations.Required]
         [RegularExpression(@"^[A-Za-z0-9]+@([a-zA-Z]+\\.)+[a-zA-Z]{2,6}]&", ErrorMessage = "Email Not Corrict")]
         public string? Email { get; set; }

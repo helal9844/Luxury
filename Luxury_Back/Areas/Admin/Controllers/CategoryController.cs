@@ -20,6 +20,7 @@ namespace Luxury_Back.Controllers.Admin
     {
         private LuxuryDb luxuryDb;
         private readonly IStringLocalizer<CategoryController> localizer;
+        const string viewPath= "Areas/Admin/Views/Category/";
         public CategoryController(LuxuryDb luxuryDb, IStringLocalizer<CategoryController> _localizer)
         {
             this.luxuryDb = luxuryDb;
@@ -37,7 +38,7 @@ namespace Luxury_Back.Controllers.Admin
         {
             List<Category> categories = luxuryDb.categories.Where(c=>c.CategoryId == null).ToList();
             ViewBag.categories = categories;
-            return View(category);
+            return View($"{viewPath}Create_Edit.cshtml",category);
         }
         [HttpPost]
         public IActionResult _Create(Category category,IFormFile img_category)

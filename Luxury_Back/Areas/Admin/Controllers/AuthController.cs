@@ -79,7 +79,7 @@ namespace Luxury_Back.Controllers.Admin
                         Claim a1 = new Claim("id", _user.Id.ToString());
                         Claim a2 = new Claim("name", _user.username);
                         Claim a3 = new Claim(ClaimTypes.Role, "admin");
-                        ClaimsIdentity claimsIdentity = new ClaimsIdentity("adminAuth");
+                        ClaimsIdentity claimsIdentity = new ClaimsIdentity("userAuth");
                         claimsIdentity.AddClaim(a1);
                         claimsIdentity.AddClaim(a2);
                         claimsIdentity.AddClaim(a3);
