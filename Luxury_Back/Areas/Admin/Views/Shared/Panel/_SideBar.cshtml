@@ -26,7 +26,7 @@
                     <a class="menu-item" asp-action="Index" asp-controller="Category" data-i18n="nav.templates.vert.classic_menu">@localizer["dispaly"] @localizer["category"]</a>
                 </li>
                 <li>
-                    <a class="menu-item" href="~/admin/Category/Create">@localizer["add"] @localizer["category"]</a>
+                    <a class="menu-item" asp-action="Create" asp-controller="Category">@localizer["add"] @localizer["category"]</a>
                 </li>
             </ul>
         </li>
@@ -34,10 +34,10 @@
             <a href="#"><i class="la la-hotel"></i><span class="menu-title" data-i18n="nav.templates.main">@localizer["iBooking"]</span></a>
             <ul class="menu-content">
                 <li>
-                    <a class="menu-item" href="~/IBooking" data-i18n="nav.templates.vert.classic_menu">@localizer["dispaly"] @localizer["iBooking"]</a>
+                    <a class="menu-item" asp-action="Index" asp-controller="IBooking" data-i18n="nav.templates.vert.classic_menu">@localizer["dispaly"] @localizer["iBooking"]</a>
                 </li>
                 <li>
-                    <a class="menu-item" href="~/IBooking/Create">@localizer["add"] @localizer["iBooking"]</a>
+                    <a class="menu-item" asp-action="Create" asp-controller="IBooking">@localizer["add"] @localizer["iBooking"]</a>
                 </li>
             </ul>
         </li>
@@ -45,10 +45,10 @@
                 <a href="#"><i class="la la-briefcase"></i><span class="menu-title">@localizer["attribute"]</span></a>
                 <ul class="menu-content">
                     <li>
-                        <a class="menu-item" href="~/IAttribute/Index">@localizer["dispaly"] @localizer["attribute"]</a>
+                        <a class="menu-item" asp-action="Index" asp-controller="IAttribute">@localizer["dispaly"] @localizer["attribute"]</a>
                     </li>
                     <li>
-                        <a class="menu-item" href="~/IAttribute/Create">@localizer["add"] @localizer["attribute"]</a>
+                        <a class="menu-item" asp-action="Create" asp-controller="IAttribute">@localizer["add"] @localizer["attribute"]</a>
                     </li>
                     
                 </ul>

@@ -17,6 +17,7 @@ namespace Luxury_Back.Controllers.Admin
     [Area("admin")]
     public class IAttributeController : Controller
     {
+        const string ViewPath = "Areas/Admin/Views/IAttribute/";
         LuxuryDb luxuryDb;
         private readonly IStringLocalizer<IAttributeController> localizer;
 
@@ -25,11 +26,11 @@ namespace Luxury_Back.Controllers.Admin
             this.luxuryDb = db;
             this.localizer = _localizer;
         }
-            const string ViewPath = "Views/Admin/IAttribute/";
+           
         public IActionResult Index()
         {
             IEnumerable<IAttribute> attributes = luxuryDb.iAttributes.ToList();
-            return View($"{ViewPath}Index.cshtml", attributes);
+            return View(attributes);
         }
         [HttpGet]
         public IActionResult Create(IAttribute iAttribute)

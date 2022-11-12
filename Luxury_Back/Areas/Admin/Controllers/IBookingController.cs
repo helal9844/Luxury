@@ -18,9 +18,10 @@ namespace Luxury_Back.Controllers.Admin
     [Area("admin")]
     public class IBookingController : Controller
     {
-        const string ViewPath = "Views/Admin/IBooking/";
+        const string ViewPath = "Areas/Admin/Views/IBooking/";
         private LuxuryDb luxuryDb;
         private readonly IStringLocalizer<IBookingController> localizer;
+       
         public IBookingController(LuxuryDb luxuryDb, IStringLocalizer<IBookingController> _localizer)
         {
             this.luxuryDb = luxuryDb;
@@ -39,7 +40,7 @@ namespace Luxury_Back.Controllers.Admin
                 booking_img.Add(luxuryDb.iBookingImg.Where(w => w.IBookingId == booking.Id).FirstOrDefault());
             }
             ViewBag.IBookingImgs=booking_img;
-            return View($"{ViewPath}Index.cshtml", bookings);
+            return View(bookings);
         }
 
         [HttpGet]
