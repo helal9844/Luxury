@@ -1,0 +1,104 @@
+﻿@model Category;
+@using Luxury_Back.Helpers
+@{
+    ViewData["Title"] = "New Category";
+    Layout = "~/Areas/Root/Views/Shared/Layout/_CardView.cshtml";
+}
+@section Styles{
+    <link rel="stylesheet" type="text/css" href="~/admin/app-assets/vendors/css/forms/selects/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="~/admin/app-assets/css-ltr/plugins/forms/switch.min.css">
+}
+    <form class="form row" asp-action="@(ViewContext.RouteData.Values["action"].ToString() == "Create"?"_Create":"Edit")" method="post" enctype="multipart/form-data">
+
+        <div class="form-group col-12 mb-2">
+            <div class="col-5 mx-auto">
+
+                <img id="img" src="@(Helper.imageUrl(Model.img_category))" class="img-thumbnail view-img" />
+                <input id="imgFile" type="file" class="form-control" name="img_category">
+            </div>
+        </div>
+
+        <div class="form-group col-md-6 mb-2">
+            <lable class="form-labe fw-bold mb-50 d-block"> @localizer["name"] <span class="badge badge-danger">@localizer["ar-EG"]</span></lable>
+            <input type="text" class="form-control" asp-for="name_ar">
+            <span class="invalid-feedback d-block">
+                @TempData["name_ar"]
+            </span>
+        </div>
+
+        <div class="form-group col-md-6 mb-2">
+            <lable class="form-labe fw-bold mb-50 d-block">  @localizer["name"] <span class="badge badge-danger">@localizer["en-US"]</span></lable>
+            <input type="text" class="form-control" asp-for="name_en">
+            <span class="invalid-feedback d-block">
+                @TempData["name_en"]
+            </span>
+        </div>
+
+        <div class="form-group col-md-6 mb-2">
+            <lable class="form-labe fw-bold mb-50 d-block"> @localizer["Select Parent Category"] </lable>
+            <fieldset>
+                <div class="float-left w-100">
+                    <select class="select2 form-control" asp-for="CategoryId">
+                        <option value="@null">@localizer["Select Parent Category"]</option>
+                    @foreach (var parent in ViewBag.categories)
+                    {
+                        @if (parent.Id == Model.CategoryId)
+                        {
+                            <option value="@parent.Id" selected>@parent.name_en</option>
+                        }
+                        else
+                        {
+                            <option value="@parent.Id">@parent.name_en</option>
+                        }
+                    }
+                </select>
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="form-group col-md-6 mb-2">
+        <lable class="form-labe fw-bold mb-50 d-block"> Is Active </lable>
+        <fieldset>
+            <div class="float-left">
+                <input type="checkbox" class="switch" id="switch1" checked="checked" asp-for="IsActive" value="true" />
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="form-group col-md-6 mb-2">
+        <fieldset>
+            <div class="float-left">
+                <button type="submit" class="btn btn-primary">@localizer["submit"]</button>
+            </div>
+        </fieldset>
+    </div>
+</form>
+
+@section Scripts{
+    <script src="~/Admin/app-assets/vendors/js/forms/toggle/bootstrap-switch.min.js"
+        type="text/javascript"></script>
+    <script src="~/Admin/app-assets/vendors/js/forms/toggle/bootstrap-checkbox.min.js"
+        type="text/javascript"></script>
+    <script src="~/Admin/app-assets/vendors/js/forms/toggle/switchery.min.js"
+        type="text/javascript"></script>
+    <script src="~/Admin/app-assets/js/scripts/forms/switch.js"
+        type="text/javascript"></script>
+    <script src="~/Admin/app-assets/vendors/js/forms/select/select2.full.min.js" type="text/javascript"></script>
+    <script src="~/Admin/app-assets/js/scripts/forms/select/form-select2.js"
+        type="text/javascript"></script>
+
+    <script>
+        let img = document.getElementById("img");
+        let imgFile = document.getElementById("imgFile");
+        imgFile.onchange = function (e) {
+            let reader = new FileReader();
+            let file = e.target.files[0];
+            reader.onload = function () {
+                img.src = reader.result;
+                console.log(img.src);
+                console.log(reader.result);
+            }
+            reader.readAsDataURL(file);
+        }
+    </script>
+}

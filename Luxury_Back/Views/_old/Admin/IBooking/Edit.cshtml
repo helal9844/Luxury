@@ -1,0 +1,552 @@
+﻿@using Luxury_Back.Helpers;
+@model IBooking;
+
+@{
+    ViewData["Title"] = "Create IBooking";
+    Layout = "~/Areas/Root/Views/Shared/Layout/_CardView.cshtml";
+}
+
+@{
+    var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar") ? "rtl" : "ltr";
+
+}
+
+@section Styles{
+    <link rel="stylesheet" type="text/css" href="~/Admin/app-assets/vendors/css/pickers/daterange/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="~/Admin/app-assets/vendors/css/editors/summernote.css">
+
+    <link rel="stylesheet" type="text/css" href="~/Admin/app-assets/vendors/css/editors/codemirror.css">
+    <link rel="stylesheet" type="text/css" href="~/Admin/app-assets/vendors/css/editors/theme/monokai.css">
+    <link rel="stylesheet" type="text/css" href="~/Admin/app-assets/css-@isRTL/plugins/forms/wizard.css">
+    <link rel="stylesheet" type="text/css" href="~/Admin/app-assets/css-@isRTL/plugins/pickers/daterange/daterange.css">
+
+    <link rel="stylesheet" type="text/css" href="~/admin/app-assets/vendors/css/forms/selects/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="~/admin/app-assets/css-@isRTL/plugins/forms/switch.min.css">
+}
+
+    <form asp-action="_Create" asp-controller="IBooking" class="number-tab-steps wizard-circle" method="post">
+    <!-- Step 1 -->
+    <h6>Step 1</h6>
+
+    <fieldset>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="form-group col-12 mb-2">
+                        <lable class="form-labe fw-bold mb-50 d-block"> @localizer["name"] <span class="badge badge-danger">@localizer["ar-EG"]</span></lable>
+                        <input type="text" class="form-control" asp-for="name_ar">
+                        <span class="invalid-feedback d-block">
+                            @TempData["name_ar"]
+                        </span>
+                    </div>
+
+                    <div class="form-group col-12 mb-2">
+                        <lable class="form-labe fw-bold mb-50 d-block"> @localizer["description"] <span class="badge badge-danger">@localizer["ar-EG"]</span></lable>
+                        <textarea class="form-control summernote" cols="30" rows="10" asp-for="description_ar">@Model.description_ar</textarea>
+                        <span class="invalid-feedback d-block">
+                            @TempData["description_ar"]
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="form-group col-12 mb-2">
+                        <lable class="form-labe fw-bold mb-50 d-block"> @localizer["name"] <span class="badge badge-danger">@localizer["ar-EG"]</span></lable>
+                        <input type="text" class="form-control" asp-for="name_en">
+                        <span class="invalid-feedback d-block">
+                            @TempData["name_en"]
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group col-12 mb-2">
+                    <lable class="form-labe fw-bold mb-50 d-block"> @localizer["description"] <span class="badge badge-danger">@localizer["en-US"]</span></lable>
+                    <textarea class="form-control summernote" cols="30" rows="10" asp-for="description_en">@Model.description_en</textarea>
+                    <span class="invalid-feedback d-block">
+                        @TempData["description_en"]
+                    </span>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <!-- Step 2 -->
+    <h6>Step 2</h6>
+    <fieldset>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="proposalTitle1">Select Parent Category</label>
+                    <select id="category_id" class="select2 form-control" style="width: 100% !important" asp-for="Category_Id">
+                        <option value="@null" disabled selected>Select Parent Category</option>
+                        @foreach (var parent in ViewBag.categories)
+                        {
+                            <optgroup label="@parent.name_en">
+                                @foreach (var child in parent.childs)
+                                {
+                                    @if (Model != null && child.Id == Model.Category_Id)
+                                    {
+                                        <option value="@child.Id" selected>@(Helper.getLnag() == "ar" ? child.name_ar : child.name_en)</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@child.Id">@(Helper.getLnag() == "ar" ? child.name_ar : child.name_en)</option>
+                                    }
+                                }
+                            </optgroup>
+                        }
+                    </select>
+                    <span class="invalid-feedback d-block">
+                        @TempData["Category_Id"]
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="proposalTitle1">Select IBooking Brand</label>
+                    <select id="brand_id" class="select2 form-control" style="width: 100% !important" asp-for="BrandId"
+                            data-route=""
+                            data-current_id="1">
+                        <option value="@null" disabled selected>Select Brand</option>
+                        @if (Model.BrandId !=null)
+                        {
+                            @foreach (var brand in ViewBag.brands)
+                            {
+                                @if (brand.Id == Model.BrandId){
+                                    <option value="@brand.Id" selected>@(Helper.getLnag() == "ar" ? brand.name_ar : brand.name_en)</option>
+                                }else
+                                {
+                                    <option value="@brand.Id">@(Helper.getLnag() == "ar" ? brand.name_ar : brand.name_en)</option>
+                                }
+                            }
+                        }
+                    </select>
+                    <span class="invalid-feedback d-block">
+                        @TempData["BrandId"]
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="proposalTitle1">Is Active</label>
+                    <fieldset>
+                        <div class="float-left">
+                            <input type="checkbox" class="switch" id="switch1" checked="checked" asp-for="IsActive" value="true" />
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <!-- Step 3 -->
+    <h6>Step 3</h6>
+    <fieldset class="">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="governorate_id">Governorate</label>
+                    <select id="governorate_id" class="select2 form-control" style="width: 100% !important" asp-for="Address.GovernorateId"
+                            data-route="getCitiesFromGov/"
+                            data-current_id="1">
+                        <option value="@null" disabled selected>Select Governorate</option>
+                        @foreach (var gov in ViewBag.governorates)
+                        {
+                            <option value="@gov.Id">@(Helper.getLnag() == "ar" ? gov.name_ar : gov.name_en)</option>
+                        }
+                    </select>
+                    <span class="invalid-feedback d-block">
+                        @TempData["Address.GovernorateId"]
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="city_id">City</label>
+                    <select id="city_id" class="select2 form-control" style="width: 100% !important" asp-for="Address.CityId">
+                        <option value="@null" disabled>Select Governorate First</option>
+                        @if(ViewBag.cities != null){
+                            @foreach (var city in ViewBag.cities)
+                            {
+                                if (Model.Address.CityId == city.Id)
+                                {
+                                    <option value="@city.Id" selected>@(Helper.getLnag() == "ar" ? city.name_ar : city.name_en)</option>
+                                }else{
+                                    <option value="@city.Id">@(Helper.getLnag() == "ar" ? city.name_ar : city.name_en)</option>
+                                }
+                            }
+                        }
+                    </select>
+                    <span class="invalid-feedback d-block">
+                        @TempData["Address.CityId"]
+                    </span>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-group position-relative">
+                    <label for="city_id">Address</label>
+                    <span class="invalid-feedback d-block">
+                        @TempData["Address.address"]
+                    </span>
+                    <input type="text" class="form-control" id="pac-input" asp-for="Address.address" autocomplete="off"/>
+                    <input type="hidden" id="latitude" name="lat" class="form-control" asp-for="Address.lat" />
+                    <input type="hidden" id="longitude" name="lng" class="form-control" asp-for="Address.lng" />
+                    <div class="map" style="height:650px;width:100%"></div>
+                    <button type="button" class="getLocation btn btn-waring mb-3 shadow font-weight-bold">
+                        <i class="ft-map-pin" height="20" width="20"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+    </fieldset>
+
+    <h6>Step 4</h6>
+    <fieldset class="last-step">
+        <div class="row">
+            @if (Model.iBookingAttributes != null && Model.iBookingAttributes.Count() > 0)
+            {
+                @foreach (var item in Model.iBookingAttributes)
+                {
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="@item.IAttribute.Id" class="text-capitalize">@(Helper.getLnag() == "ar" ? item.IAttribute.name_en : item.IAttribute.name_en)</label>
+                            <fieldset>
+                                <div class="float-left">
+                                    @if (item.IAttribute.inputType == "text")
+                                    {
+                                        <input type="@item.IAttribute.inputType" class="form-control" id="@item.IAttribute.name_en" name="attr_@item.IAttribute.Id" value="@item.value" />
+                                    }
+                                    else
+                                    {
+                                        @if (item.value == "true")
+                                        {
+                                            <input type="@item.IAttribute.inputType" class="switch checkBoxValue" data-input="attr_@item.IAttribute.Id" checked />
+                                        }
+                                        else
+                                        {
+                                            <input type="@item.IAttribute.inputType" class="switch checkBoxValue" data-input="attr_@item.IAttribute.Id" />
+                                        }
+                                        <input type="hidden" id="attr_@item.IAttribute.Id" name="attr_@item.IAttribute.Id" value="@item.value" />
+                                    }
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                }
+            }else{
+                @foreach (var item in ViewBag.iAttributes)
+                {
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="@item.name_en" class="text-capitalize">@(Helper.getLnag() == "ar" ? item.name_ar : item.name_en)</label>
+                        <fieldset>
+                            <div class="float-left">
+                                 @if(item.inputType == "text"){
+                                    <input type="text" class="form-control" id="@item.name_en" name="attr_@item.Id" value="0" />
+                                 }else{
+                                    <input type="@item.inputType" class="switch checkBoxValue" data-input="attr_@item.Id" />
+                                    <input type="hidden" id="attr_@item.Id" name="attr_@item.Id" value="false" />
+                                 }
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                }
+            }
+        </div>
+        <button class="submit" type="submit">submit</button>
+    </fieldset>
+</form>
+
+@section Scripts{
+    <script src="~/Admin/app-assets/vendors/js/extensions/jquery.steps.min.js" type="text/javascript"></script>
+    <script src="~/Admin/app-assets/vendors/js/pickers/dateTime/moment-with-locales.min.js"
+        type="text/javascript"></script>
+    <script src="~/Admin/app-assets/vendors/js/forms/validation/jquery.validate.min.js"
+        type="text/javascript"></script>
+    <script src="~/Admin/app-assets/vendors/js/pickers/daterange/daterangepicker.js"
+        type="text/javascript"></script>
+    <script src="~/Admin/app-assets/js/scripts/forms/wizard-steps.js" type="text/javascript"></script>
+
+    <script src="~/Admin/app-assets/vendors/js/editors/codemirror/lib/codemirror.js"
+        type="text/javascript"></script>
+    <script src="~/Admin/app-assets/vendors/js/editors/summernote/summernote.js" type="text/javascript"></script>
+
+    <script src="~/Admin/app-assets/vendors/js/forms/toggle/bootstrap-switch.min.js"
+        type="text/javascript"></script>
+    <script src="~/Admin/app-assets/vendors/js/forms/toggle/bootstrap-checkbox.min.js"
+        type="text/javascript"></script>
+    <script src="~/Admin/app-assets/vendors/js/forms/toggle/switchery.min.js"
+        type="text/javascript"></script>
+    <script src="~/Admin/app-assets/js/scripts/forms/switch.js"
+        type="text/javascript"></script>
+    <script src="~/Admin/app-assets/vendors/js/forms/select/select2.full.min.js" type="text/javascript"></script>
+    <script src="~/Admin/app-assets/js/scripts/forms/select/form-select2.js"
+        type="text/javascript"></script>
+    <script>
+        let governorate_id = $('#governorate_id');
+        let city_selector = $('#city_id');
+        governorate_id.on('change', function () {
+            let currentID = $(this).data('current_id');
+            let value = $(this).val();
+
+            if (currentID !== value) {
+                let url = $(this).data('route') + `${value}`;
+                let cities = [];
+                $.ajax({
+                    url: url,
+                    method: "GET",
+                    success: function (data) {
+                        let _cities = data["$values"];
+                        _cities.forEach((city, key) => {
+                            cities.push(`<option value="${city.id}" ${key == 0 ? 'selected' : ''}> ${city.name_en} </option>`)
+                        })
+                        city_selector.html(cities);
+                    },
+                    error: function (err) {
+
+                    }
+                });
+            }
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.summernote').summernote({
+                height: 250, // set editor height
+                minHeight: null, // set minimum height of editor
+                maxHeight: null, // set maximum height of editor
+                focus: false // set focus to editable area after initializing summernote
+            });
+        });
+        $(".actions a").on("click", function () {
+            if ($(".last-step").hasClass("current")) {
+                console.log("current")
+                $(".actions a").last().removeClass("d-block");
+                $(".actions a").last().addClass("d-none");
+            }else{
+                console.log("not current")
+                $(".actions a").last().removeClass("d-none");
+                $(".actions a").last().addClass("d-block");
+            }
+        });
+    </script>
+    <script>
+        const xhttp = new XMLHttpRequest();
+        const brandSelect = document.getElementById("brand_id");
+        category_id.onchange = function () {
+            xhttp.open("GET", "getBrandFromCategory/" + this.value, false);
+            xhttp.send();
+            if (xhttp.status === 200) {
+                brandSelect.innerHTML = null;
+                let res = JSON.parse(xhttp.response);
+                if (res["$values"].length) {
+                    for (let i = 0; i < res["$values"].length; i++) {
+                        brandSelect.innerHTML += `<option value="${res['$values'][i].id}">${res['$values'][i].name_en}</option>`;
+                    }
+                }
+
+            }
+        }
+    </script>
+    <script>
+
+        $('#latitude').focusin(function () {
+            $(this).val('');
+        });
+        $('#longitude').focusin(function () {
+            $(this).val('');
+        });
+        // parameter when you first load the API. For example:
+        function initAutocomplete() {
+            $index = 0;
+            $('.map').each(function () {
+
+                var map = new google.maps.Map($('.map')[$index], {
+                    center: { lat: 30.033333, lng: 31.233334 },
+                    zoom: 13,
+                    mapTypeId: 'roadmap'
+                });
+
+                $index++;
+                // move pin and current location
+                infoWindow = new google.maps.InfoWindow;
+
+                geocoder = new google.maps.Geocoder();
+
+                const locationButton = document.querySelector(".getLocation");
+
+                map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(locationButton);
+
+                locationButton.addEventListener("click", (e) => {
+
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(function (position) {
+                            var pos = {
+                                lat: position.coords.latitude,
+                                lng: position.coords.longitude
+                            };
+                            map.setCenter(pos);
+                            var marker = new google.maps.Marker({
+                                position: new google.maps.LatLng(pos),
+                                map: map,
+                                title: $("#pac-input").attr("placeholder")
+                            });
+                            markers.push(marker);
+                            marker.addListener('click', function () {
+                                geocodeLatLng(geocoder, map, infoWindow, marker);
+                            });
+                            // to get current position address on load
+                            google.maps.event.trigger(marker, 'click');
+                        }, function () {
+                            handleLocationError(true, infoWindow, map.getCenter());
+                        });
+                    } else {
+                        // Browser doesn't support Geolocation
+                        handleLocationError(false, infoWindow, map.getCenter());
+                    }
+                });
+
+                var geocoder = new google.maps.Geocoder();
+                google.maps.event.addListener(map, 'click', function (event) {
+                    SelectedLatLng = event.latLng;
+                    geocoder.geocode({
+                        'latLng': event.latLng
+                    }, function (results, status) {
+                        if (status == google.maps.GeocoderStatus.OK) {
+                            if (results[0]) {
+                                deleteMarkers();
+                                addMarkerRunTime(event.latLng);
+                                SelectedLocation = results[0].formatted_address;
+                                splitLatLng(String(event.latLng));
+                                $("#latitude").val(results[0].geometry.location.lat());
+                                $("#longitude").val(results[0].geometry.location.lng());
+                                $("#pac-input").val(results[0].formatted_address);
+                            }
+                        }
+                    });
+                });
+                function geocodeLatLng(geocoder, map, infowindow, markerCurrent) {
+                    var latlng = { lat: markerCurrent.position.lat(), lng: markerCurrent.position.lng() };
+                    $('#branch-latLng').val("(" + markerCurrent.position.lat() + "," + markerCurrent.position.lng() + ")");
+                    $('#latitude').val(markerCurrent.position.lat());
+                    $('#longitude').val(markerCurrent.position.lng());
+                    geocoder.geocode({ 'location': latlng }, function (results, status) {
+                        if (status === 'OK') {
+                            if (results[0]) {
+                                map.setZoom(8);
+                                var marker = new google.maps.Marker({
+                                    position: latlng,
+                                    map: map
+                                });
+                                markers.push(marker);
+                                infowindow.setContent(results[0].formatted_address);
+                                SelectedLocation = results[0].formatted_address;
+                                $("#pac-input").val(results[0].formatted_address);
+                                infowindow.open(map, marker);
+                            } else {
+                                window.alert('No results found');
+                            }
+                        } else {
+                            window.alert('Geocoder failed due to: ' + status);
+                        }
+                    });
+                    SelectedLatLng = (markerCurrent.position.lat(), markerCurrent.position.lng());
+                }
+                function addMarkerRunTime(location) {
+                    var marker = new google.maps.Marker({
+                        position: location,
+                        map: map
+                    });
+                    markers.push(marker);
+                }
+                function setMapOnAll(map) {
+                    for (var i = 0; i < markers.length; i++) {
+                        markers[i].setMap(map);
+                    }
+                }
+                function clearMarkers() {
+                    setMapOnAll(null);
+                }
+                function deleteMarkers() {
+                    clearMarkers();
+                    markers = [];
+                }
+                // Create the search box and link it to the UI element.
+                var input = document.getElementById('pac-input');
+
+        input.setAttribute('placeholder', 'Find IBooking Address');
+        var searchBox = new google.maps.places.SearchBox(input);
+        map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function () {
+            searchBox.setBounds(map.getBounds());
+        });
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function () {
+            var places = searchBox.getPlaces();
+            if (places.length == 0) {
+                return;
+            }
+            // Clear out the old markers.
+            markers.forEach(function (marker) {
+                marker.setMap(null);
+            });
+            markers = [];
+            // For each place, get the icon, name and location.
+            var bounds = new google.maps.LatLngBounds();
+            places.forEach(function (place) {
+                if (!place.geometry) {
+                    console.log("Returned place contains no geometry");
+                    return;
+                }
+                var icon = {
+                    url: place.icon,
+                    size: new google.maps.Size(100, 100),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(17, 34),
+                    scaledSize: new google.maps.Size(25, 25)
+                };
+                // Create a marker for each place.
+                markers.push(new google.maps.Marker({
+                    map: map,
+                    icon: icon,
+                    title: place.name,
+                    position: place.geometry.location
+                }));
+                $('#latitude').val(place.geometry.location.lat());
+                $('#longitude').val(place.geometry.location.lng());
+                if (place.geometry.viewport) {
+                    // Only geocodes have viewport.
+                    bounds.union(place.geometry.viewport);
+                } else {
+                    bounds.extend(place.geometry.location);
+                }
+            });
+            map.fitBounds(bounds);
+        });
+                    });
+                }
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+            infoWindow.setPosition(pos);
+            infoWindow.setContent(browserHasGeolocation ?
+                'Error: The Geolocation service failed.' :
+                'Error: Your browser doesn\'t support geolocation.');
+            infoWindow.open(map);
+        }
+        function splitLatLng(latLng) {
+            var newString = latLng.substring(0, latLng.length - 1);
+            var newString2 = newString.substring(1);
+            var trainindIdArray = newString2.split(',');
+            var lat = trainindIdArray[0];
+            var Lng = trainindIdArray[1];
+        }
+        $(window).on("load", function(){
+            $('.getLocation').fadeIn(1000);
+        });
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIFAyuWCZJGUcMRot40ntC691r2LmlBVM&libraries=places&callback=initAutocomplete&language=en&region=EG
+    async defer"></script>
+}

@@ -1,0 +1,56 @@
+﻿@model IBooking
+@{
+    ViewData["Title"] = "Galary";
+    Layout = "~/Areas/Root/Views/Shared/Layout/_CardView.cshtml";
+}
+
+<h1>Gallary</h1>
+
+<div class="card-body my-gallery" itemscope="" itemtype="http://schema.org/ImageGallery" data-pswp-uid="1">
+    <a asp-action="Dropzone" asp-controller="IBooking" asp-route-id="@Model.Id" class="btn btn-info text-capitalize white my-2"><i class="ft-file-plus"></i>@localizer["add_new"]</a>
+    <div class="row">
+        
+            @if(Model.images !=null){
+                foreach (var img in Model.images)
+                {
+                <figure class="gallary_item col-lg-3 col-md-6 col-12" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">
+                    <a itemprop="contentUrl" data-size="480x360" class="position-relative">
+                        <button class="remove-item" data-imgid="@Url.Action("removeImage", "IBooking")/@img.Id?iBooking=@Model.Id">
+                            <i class="ft-trash-2"></i>
+                        </button>
+                        <img class="img-thumbnail img-fluid" src="@img.Name" itemprop="thumbnail" alt="Image_@img.Id">
+                    </a>
+                </figure>
+                }
+            }else{
+                <figure class="col-lg-3 col-md-6 col-12" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">
+                <a asp-action="Dropzone" asp-route-id="@Model.Id">
+                    <div>
+                        <i class="ft-alert-octagon"></i>
+                    </div>
+                    <div>
+                        <strong>No Images Add Yet!</strong>
+                    </div>
+                </a>
+            </figure>
+            }
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        const xhttp = new XMLHttpRequest();
+        document.querySelectorAll(".remove-item").forEach((el)=>{
+            el.onclick = function(){
+
+                xhttp.open("GET", el.dataset.imgid, false);
+                xhttp.send();
+                if (xhttp.status === 200) {
+                    let resp = JSON.parse(xhttp.responseText);
+                    if(resp)
+                        el.parentElement.parentElement.remove();
+                }
+            }
+        });
+    </script>
+}

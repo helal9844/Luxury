@@ -91,13 +91,19 @@ namespace Luxury_Back
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.MapControllerRoute(
-                name: "admin",
+            app.MapAreaControllerRoute(
+                name: "Admin",
+                areaName: "Admin",
                 pattern: "admin/{controller=Home}/{action=Index}/{id?}");
+            
+            app.MapAreaControllerRoute(
+                name: "Root",
+                areaName: "Root",
+                pattern: "root/{controller=Home}/{action=Index}/{id?}");
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Index}/{action=Index}/{id?}");
 
             app.Run();
         }
