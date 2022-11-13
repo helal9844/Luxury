@@ -2,3 +2,8 @@
 p, span, li, a, small, strong, input, textarea, select, optgroup, button, ::file-selector-button{
     @include dir(font-family, Pop, Cairo, font-family);
 }
+
+
+a, button{
+    cursor: pointer;
+}
