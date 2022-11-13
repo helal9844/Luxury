@@ -61,13 +61,13 @@ p, span, li, a, small, strong, input, textarea, select, optgroup, button, ::file
 header nav.header-navbar {
   background-color: #003580;
 }
-header nav.header-navbar .navbar-brand .brand-text {
+header nav.header-navbar.fixed-top .navbar-brand .brand-text {
   font-family: Pop;
 }
-header nav.header-navbar .navbar-container li > * {
+header nav.header-navbar.fixed-top .navbar-container li > * {
   padding: 1rem 0.1rem 1rem 1rem !important;
 }
-header nav.header-navbar .navbar-container li.isAuth button {
+header nav.header-navbar.fixed-top .navbar-container li.isAuth button {
   background-color: #fff;
   font-weight: 550;
   border-radius: 0;
