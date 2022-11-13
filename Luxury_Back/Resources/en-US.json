@@ -11,6 +11,7 @@
     "password": "Password",
     "confirm_password": "Confirm Passwrd",
     "enter": "Enter",
+    "send": "Send",
     "errorusername": "",
     "errorpass": "",
     "erroremail": "",
@@ -63,7 +64,10 @@
     //Register
     "register": "Register",
     "login": "Login",
-    "forget_password": "Forget Password ?"
+    "forget_password": "Forget Password ?",
+    //code verficatio
+    "code_verfication": "Enter Code",
+    "reset_pass": "Reset Password"
 
 
 

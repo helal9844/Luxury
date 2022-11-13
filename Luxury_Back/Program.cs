@@ -1,11 +1,15 @@
 using Luxury_Back.DB;
+using Luxury_Back.EmailServices;
+using Luxury_Back.EmailSetting;
 using Luxury_Back.Models;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using System.Configuration;
 using System.Globalization;
 using System.Text.Json.Serialization;
+
 
 namespace Luxury_Back
 {
@@ -43,6 +47,16 @@ namespace Luxury_Back
             });
             #endregion
 
+            #region MailSettings To Read Data In appsettings
+            
+           // builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
+
+            #endregion
+
+            #region Inject MailingServices
+          //  builder.Services.AddTransient<IMailingService,MailingService>();
+            #endregion
+
             builder.Services.AddControllers()
                .AddJsonOptions(o => o.JsonSerializerOptions
                    .ReferenceHandler = ReferenceHandler.Preserve);
@@ -69,7 +83,7 @@ namespace Luxury_Back
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-           
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

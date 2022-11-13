@@ -11,6 +11,7 @@
     "password": "كلمة المرور",
     "confirm_password": "تاكيد كلمة المرور",
     "enter": "ادخل",
+    "send": "ارسال",
     "errorusername": "",
     "errorpass": "",
     "erroremail": "",
@@ -63,6 +64,9 @@
     "sign_in": "تسجيل الدخول",
     "register": "تسجيل",
     "login": "تسجيل الدخول",
-    "forget_password": "نسيت كلمة المرور؟"
+    "forget_password": "نسيت كلمة المرور؟",
+    //code verficatio
+    "code_verfication": "ادخل الكود",
+    "reset_pass": "اعادة ضبط الرقم السري"
 
 }

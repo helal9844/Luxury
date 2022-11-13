@@ -26,64 +26,52 @@
     <script src="~/Admin/app-assets/js/scripts/forms/form-login-register.js" type="text/javascript"></script>
 
 }
-
-<section class="flexbox-container">
-    <div class="col-12 d-flex align-items-center justify-content-center">
-        <div class="col-md-4 col-10 box-shadow-2 p-0">
-            <div class="card border-grey border-lighten-3 m-0">
-                <div class="card-header border-0">
-                    <div class="card-title text-center">
-                        @if (TempData["error_msg"] != null)
-                        {
-                            <div class="alert alert-danger text-center text-white">@TempData["error_msg"]</div>
-                        }
-                        <div class="p-1">
-                            <img src="~/images/logo/booking_logo.png" alt="branding logo" class="avatar">
-                        </div>
-                    </div>
-                    <partial name="_SelectLanguage" />
-                    <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
-                        <span>Easily Using</span>
-                    </h6>
-                </div>
-                <div class="card-content">
-                    <div class="card-body pt-0">
-                        <form class="form-horizontal" asp-action="Login" asp-controller="Auth">
-                            <fieldset class="form-group floating-label-form-group">
-                                <label for="Email">@localizer["placeholdeemail"]</label>
-                                <input type="text" class="form-control" id="Email" placeholder="@localizer["enter"] @localizer["placeholdeemail"]" asp-for="Email">
-                                    <span class="invalid-feedback d-block">
-                                        @TempData["Email"]
-                                    </span>
-                            </fieldset>
-                            <fieldset class="form-group floating-label-form-group mb-1">
-                                <label for="password">@localizer["password"]</label>
-                                <input type="password" class="form-control" id="password" placeholder="@localizer["enter"] @localizer["password"]" asp-for="password">
-                                    <span class="invalid-feedback d-block">
-                                        @TempData["password"]
-                                    </span>
-                            </fieldset>
-                            <div class="form-group row">
-                                <div class="col-md-6 col-12 text-center text-sm-left">
-                                    <fieldset>
-                                        <input type="checkbox" id="remember-me" class="chk-remember">
-                                        <label for="remember-me"> Remember Me</label>
-                                    </fieldset>
-                                </div>
-                                <div class="col-md-6 col-12 float-sm-left text-center text-sm-right"><a href="recover-password.html" class="card-link">@localizer["forget_password"]</a></div>
-                            </div>
-                            <button type="submit" class="btn btn-outline-info btn-block"><i class="ft-unlock"></i>@localizer["login"]</button>
-                        </form>
-                    </div>
-                    <p class="card-subtitle line-on-side text-muted text-center font-small-3 mx-2 my-1">
-                        <span>New to Modern ?</span>
-                    </p>
-                    <div class="card-body">
-                        <a asp-action="Register" asp-controller="Auth" class="btn btn-outline-danger btn-block"><i class="ft-user"></i>@localizer["register"]</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="card-header border-0">
+<div class="card-title text-center">
+    <div class="p-1">
+        <img src="~/images/logo/booking_logo.png" alt="branding logo" class="avatar">
     </div>
-</section>
+</div>
+<partial name="_SelectLanguage" />
+<h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
+    <span>Easily Using</span>
+</h6>
+</div>
+<div class="card-content">
+<div class="card-body pt-0">
+    <form class="form-horizontal" asp-action="Login" asp-controller="Auth">
+        <fieldset class="form-group floating-label-form-group">
+            <label for="Email">@localizer["placeholdeemail"]</label>
+            <input type="text" class="form-control" id="Email" placeholder="@localizer["enter"] @localizer["placeholdeemail"]" asp-for="Email">
+                <span class="invalid-feedback d-block">
+                    @TempData["Email"]
+                </span>
+        </fieldset>
+        <fieldset class="form-group floating-label-form-group mb-1">
+            <label for="password">@localizer["password"]</label>
+            <input type="password" class="form-control" id="password" placeholder="@localizer["enter"] @localizer["password"]" asp-for="password">
+                <span class="invalid-feedback d-block">
+                    @TempData["password"]
+                </span>
+        </fieldset>
+        <div class="form-group row">
+            <div class="col-md-6 col-12 text-center text-sm-left">
+                <fieldset>
+                    <input type="checkbox" id="remember-me" class="chk-remember">
+                    <label for="remember-me"> Remember Me</label>
+                </fieldset>
+            </div>
+            <div class="col-md-6 col-12 float-sm-left text-center text-sm-right"><a asp-action="Forget_Pass" asp-controller="Auth" class="card-link">@localizer["forget_password"]</a></div>
+        </div>
+        <button type="submit" class="btn btn-outline-info btn-block"><i class="ft-unlock"></i>@localizer["login"]</button>
+    </form>
+</div>
+<p class="card-subtitle line-on-side text-muted text-center font-small-3 mx-2 my-1">
+    <span>New to Modern ?</span>
+</p>
+<div class="card-body">
+    <a asp-action="Register" asp-controller="Auth" class="btn btn-outline-danger btn-block"><i class="ft-user"></i>@localizer["register"]</a>
+</div>
+</div>
+           
 

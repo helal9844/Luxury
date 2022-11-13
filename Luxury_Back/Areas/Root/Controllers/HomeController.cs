@@ -1,4 +1,6 @@
 ﻿using Luxury_Back.DB;
+using Luxury_Back.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
@@ -6,6 +8,7 @@ using Microsoft.Extensions.Localization;
 namespace Luxury_Back.Areas.Root.Controllers
 {
     [Area("Root")]
+   // [Authorize(Roles ="user")]
     public class HomeController : Controller
     {
         #region Language
@@ -34,6 +37,7 @@ namespace Luxury_Back.Areas.Root.Controllers
         #endregion
         public IActionResult Index()
         {
+           
             return View();
         }
     }

@@ -40,5 +40,7 @@ namespace Luxury_Back.Models
         public DateTime? created_at { get; set; }
         [Timestamp]
         public DateTime? updated_at { get; set; }
+        //navigation
+        public Code_ForgetPass? code { get; set; }
     }
 }

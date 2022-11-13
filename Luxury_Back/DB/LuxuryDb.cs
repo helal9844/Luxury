@@ -18,6 +18,8 @@ namespace Luxury_Back.DB
 
         public virtual DbSet<IBookingAttribute> iBookingAttributes { get; set; } = null!;
         //public virtual DbSet<CategoryTranslation> categoriesTranslation { get; set; } = null!;
+
+        public virtual DbSet<Code_ForgetPass> code_forget_passes { get; set; } = null!;
         public LuxuryDb(DbContextOptions<LuxuryDb> dbContextOptions) : base(dbContextOptions)
         {
             /*Database.EnsureDeleted();
@@ -98,6 +100,10 @@ namespace Luxury_Back.DB
             //Languages
             /*modelBuilder.Entity<Language>().ToTable("languages");
             modelBuilder.Entity<Language>().HasKey(a => a.Id);*/
+
+            //Code_ForgetPass
+            //User - Code_ForgetPass
+            modelBuilder.Entity<User>().HasOne(h => h.code).WithOne(b => b.user);
         }
     }
 }
