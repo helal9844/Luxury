@@ -1,0 +1,54 @@
+﻿@using System.Globalization
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+@{
+    var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar") ? "rtl" : "ltr";
+}
+<!-- ////////////////////////////////////////////////////////////////////////////-->
+<div class="container-fluid hfooter">
+    <div class="row py-3">
+        <div class="col-12 tfooter">
+            <h2 class="h3 text-white text-center m-0 mb-2" >
+                Save time, save money!
+            </h2>
+            <p class="text-center" >
+                Sign up and we'll send the best deals to you
+            </p>
+        </div>
+        <div class="col-12">
+            <div class="container">
+                <form action="">
+                    <input type="text" class="label" placeholder="Your Email" />
+                    <input type="button"
+                           value="Subscribe"
+                           class="me-3 text-white bg-primary subs"
+                           href="#" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ////////////////////////////////////////////////////////////////////////////-->
+<div class="container-fluid botfooter">
+  <div class="row">
+    <div class="col-12 center py-3">
+      <button class="text-white" >
+        List Your Property
+      </button>
+    </div>
+  </div>
+  <hr />
+  <div class="container">
+    <div class="row">
+      <a href="" class="col-4 text-white text-center" 
+        >Contact us</a
+      >
+      <a href="" class="col-4 text-white text-center" 
+        >Help</a
+      >
+      <a href="" class="col-4 text-white text-center" 
+        >About</a
+      >
+    </div>
+  </div>
+</div>

@@ -9,7 +9,7 @@
     }
   }
   
-  @mixin one_dir($property: text-lingn, $rtl-value: left) {
+  @mixin one_dir($property: text-align, $rtl-value: left) {
     [dir=rtl] & {
       #{$property}: $rtl-value;
     }
