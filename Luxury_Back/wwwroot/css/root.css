@@ -1,3 +1,79 @@
+@font-face {
+  font-family: Oxy;
+  src: url("../fonts/Oxygen-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: OxyB;
+  src: url("../fonts/Oxygen-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: Pop;
+  src: url("../fonts/Poppins-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: PopB;
+  src: url("../fonts/Poppins-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: Cairo;
+  src: url("../fonts/Cairo-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: CairoB;
+  src: url("../fonts/Cairo-Bold.ttf") format("truetype");
+}
 /* MITHONS */
+p, span, li, a, small, strong, input, textarea, select, optgroup, button, ::file-selector-button {
+  font-family: Pop;
+}
+[dir=rtl] p, [dir=rtl] span, [dir=rtl] li, [dir=rtl] a, [dir=rtl] small, [dir=rtl] strong, [dir=rtl] input, [dir=rtl] textarea, [dir=rtl] select, [dir=rtl] optgroup, [dir=rtl] button, [dir=rtl] ::file-selector-button {
+  font-family: Cairo;
+}
+
+.select-lang {
+  position: relative;
+}
+.select-lang img {
+  width: 33px;
+}
+.select-lang ul.dropdown-menu {
+  top: 65px;
+  max-width: min-content;
+}
+.select-lang ul.dropdown-menu li {
+  cursor: pointer;
+}
+
+.auth-content .select-lang {
+  justify-content: end;
+  display: flex;
+}
+[dir=rtl] .auth-content .select-lang {
+  justify-content: start;
+}
+[dir=rtl] .auth-content .select-lang .dropdown-menu {
+  right: auto;
+}
+[dir=rtl] .auth-content .select-lang .dropdown-menu {
+  left: -70px;
+}
+
+header nav.header-navbar {
+  background-color: #003580;
+}
+header nav.header-navbar .navbar-brand .brand-text {
+  font-family: Pop;
+}
+header nav.header-navbar .navbar-container li > * {
+  padding: 1rem 0.1rem 1rem 1rem !important;
+}
+header nav.header-navbar .navbar-container li.isAuth button {
+  background-color: #fff;
+  font-weight: 550;
+  border-radius: 0;
+  color: #0763e6;
+  border-color: #0763e6;
+  text-transform: capitalize;
+}
 
 /*# sourceMappingURL=root.css.map */

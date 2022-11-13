@@ -1,0 +1,26 @@
+﻿.select-lang {
+    position: relative;
+    img {
+        width: 33px;
+    }
+
+    ul.dropdown-menu {
+        top: 65px;
+        max-width: min-content;
+        li{
+            cursor: pointer;
+        }
+    }
+}
+
+.auth-content{
+    .select-lang{
+        justify-content: end;
+        display: flex;
+        @include one_dir(justify-content, start);
+        .dropdown-menu{
+            @include one_dir(right, auto);
+            @include one_dir(left, -70px);
+        }
+    }
+}

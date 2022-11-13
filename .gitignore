@@ -9,3 +9,4 @@
 *.vsidx
 /Luxury_Back/wwwroot/images/uploaded/*
 /Luxury_Back/node_modules
+/Luxury_Back/.vscode

@@ -15,12 +15,36 @@
 
  }@using Microsoft.AspNetCore.Mvc.Localization;
 
-<form class="my-auto lang-form" asp-action="SelectLanguage" asp-controller="Home" asp-route-returnUrl="@returnUrl" method="post">
-    <select class="form-select" name="culture" asp-for="@requestCulture.RequestCulture.UICulture.Name"
-            onchange="this.form.submit();">
-			@foreach (var item in cultures)
-			{
-			<option value="@item.Value">@(localizer[item.Value])</option>
-		}
+<div class="select-lang nav-link-label">
+    <a class="nav-link"
+       href="#"
+       data-toggle="dropdown">
+        <img class="rounded-circle" src="~/images/panel/@(CultureInfo.CurrentCulture.Name).png" />
+    </a>
+    <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
+        @foreach (var item in cultures)
+		{
+            @if (item.Value != CultureInfo.CurrentCulture.Name)
+            {
+                <li>
+                    <div class="dropdown-item lang-item" data-lang="@item.Value">
+                        <img class="rounded-circle" src="~/images/panel/@(item.Value).png" />
+                        <span class="mx-50">@localizer[@item.Value]</span>
+                    </div>
+                </li>
+            }
+        }
+    </ul>
+</div>
+
+<form class="my-auto lang-form d-none" asp-action="SelectLanguage" asp-controller="Home" asp-route-returnUrl="@returnUrl" method="post">
+    <select class="select_lang selectBox" name="culture" asp-for="@requestCulture.RequestCulture.UICulture.Name"
+        onchange="this.form.submit();">
+        @foreach (var item in cultures)
+        {
+            <option value="@item.Value">
+                @(localizer[item.Value])
+            </option>
+        }
     </select>
 </form>
