@@ -10,3 +10,14 @@ $(".lang-item").on("click", function () {
     console.log($(".select_lang"));
     $(".lang-form").submit();
 });
+
+let fixedNav = document.getElementsByClassName("header-navbar fixed-top")[0];
+
+window.onscroll = function () {
+
+    if (this.scrollY) {
+        fixedNav.classList.add("onScroll");
+    } else {
+        fixedNav.classList.remove("onScroll");
+    }
+}

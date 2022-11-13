@@ -72,11 +72,13 @@
   "add_new_user": "New User",
   //code verficatio
   "code_verfication": "Enter Code",
-  "reset_pass": "Reset Password"
+  "reset_pass": "Reset Password",
 
-  //create category
-
-  //Auth_User
+  //layout
+  "stays": "Stays",
+  "hotels": "Hotels",
+  "villas": "Villas",
+  "apartments": "Apartments"
 
 
 

@@ -72,7 +72,11 @@
 
   "attribute": "خاصية",
   "attributes": "خصائص ",
-  "updateSuccess": " تم تعديل البيانات بنجاح! "
+  "updateSuccess": " تم تعديل البيانات بنجاح! ",
 
-
+  //layout
+  "stays": "اماكن اقامة",
+  "hotels": "فنادق",
+  "villas": "فيلات",
+  "apartments": "شقق"
 }

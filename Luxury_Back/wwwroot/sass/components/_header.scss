@@ -1,9 +1,16 @@
-﻿header {
+﻿
+header {
     nav {
         &.header-navbar {
-            background-color: $bg-blue;
+            border-bottom: none !important;
 
             &.fixed-top {
+                box-shadow: none;
+
+                &.onScroll {
+                    box-shadow: 0px 5px 30px 5px rgba(0, 0, 0, 0.44);
+                }
+
                 .navbar-brand {
                     .brand-text {
                         font-family: Pop;
@@ -30,5 +37,43 @@
                 }
             }
         }
+
+        &.nav_bottom {
+            .nav-item {
+                .nav-link {
+                    color: #fff;
+                    font-weight: 550;
+                    font-family: Pop;
+                    border-radius: 20px;
+                    margin: 0 .5rem;
+                    padding: .5rem .75rem;
+                    text-shadow: 1px 1px 1px #222;
+                    box-shadow: -1px -1px 5px 4px #ffffff24;
+                    transition: all 1s ease-in-out;
+
+                    i {
+                        margin: auto;
+                        position: relative;
+                        top: 1px;
+                        font-size: 1.7rem;
+                    }
+                }
+
+                &.active {
+                    .nav-link {
+                        border: 1px solid #fff;
+                        background-color: #fff5;
+                    }
+                }
+
+                &:hover {
+                    .nav-link {
+                        background-color: #fff5;
+                    }
+                }
+            }
+        }
+
+        background-color: $bg-blue !important;
     }
 }
