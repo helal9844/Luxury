@@ -1,11 +1,12 @@
 {
-    "hello": "Hello",
-    "username": "UserName",
-    "logomega": "Mega",
-    "dashboard": "Dashboard",
-    "placeholdeusername": "Your UserName",
-    "placeholdeemail": "Your Email Address",
+  "hello": "Hello",
+  "username": "UserName",
+  "logomega": "Mega",
+  "dashboard": "Dashboard",
+  "placeholdeusername": "Your UserName",
+  "placeholdeemail": "Your Email Address",
 
+<<<<<<< HEAD
     "placeholdpass": "Password",
     "email": "Email Address",
     "password": "Password",
@@ -16,40 +17,54 @@
     "errorpass": "",
     "erroremail": "",
     "nullError": " Field Can't Be Empty",
+=======
+  "placeholdpass": "Password",
+  "email": "Email Address",
+  "password": "Password",
+  "confirm_password": "Confirm Passwrd",
+  "enter": "Enter",
+  "errorusername": "",
+  "errorpass": "",
+  "erroremail": "",
+  "nullError": " Field Can't Be Empty",
+  "login": "login",
+  "register": "register",
+>>>>>>> f20a88d4119de64cfcda6c207360c624d4cc48ea
 
-    "errorphone": "",
-    "ar-EG": "Arabic",
-    "en-US": "English",
-    //side bar
-    "category": "Category",
-    "categories": "Categories",
-    "dispaly": "Display",
-    "add": "Add",
-    //Display Category
-    "add_new": "Add New",
-    "name": "Name",
-    "parent_category": "Parent",
-    "count_child": "Count Child",
-    "activate": "Active",
-    "actions": "Actions",
-    "edit": "Edit",
-    "isActive": "active",
-    "inActive": "inActive",
-    "delete": "delete",
-    "upload": "Upload Files",
-    //display ibooking
-    "iBooking": "IBooking",
-    "brand": "Brand",
-    "dropHere": "Drop Files Here To Upload",
-    "description": "Description",
-    "img": "Image",
-    "imgs": "Images",
+  "errorphone": "",
+  "ar-EG": "Arabic",
+  "en-US": "English",
+  //side bar
+  "category": "Category",
+  "categories": "Categories",
+  "dispaly": "Display",
+  "add": "Add",
+  //Display Category
+  "add_new": "Add New",
+  "name": "Name",
+  "parent_category": "Parent",
+  "count_child": "Count Child",
+  "activate": "Active",
+  "actions": "Actions",
+  "edit": "Edit",
+  "isActive": "active",
+  "inActive": "inActive",
+  "delete": "delete",
+  "upload": "Upload Files",
+  //display ibooking
+  "iBooking": "IBooking",
+  "brand": "Brand",
+  "dropHere": "Drop Files Here To Upload",
+  "description": "Description",
+  "img": "Image",
+  "imgs": "Images",
 
-    "attribute": "Attribute",
-    "attributes": "Attributes",
+  "attribute": "Attribute",
+  "attributes": "Attributes",
 
-    "updateSuccess": " Data Updated Successfully!",
+  "updateSuccess": " Data Updated Successfully!",
 
+<<<<<<< HEAD
     //create category
     "Select Parent Category": "Select Parent Category",
     "submit": "Submit",
@@ -68,6 +83,23 @@
     //code verficatio
     "code_verfication": "Enter Code",
     "reset_pass": "Reset Password"
+=======
+  //create category
+  "Select Parent Category": "Select Parent Category",
+  "submit": "Submit",
+  //create IBooking
+  "step": "Step",
+  "Select Brand": "Select Brand",
+  "Governorate": "Governorate",
+  "Select Governorate": "Select Governorate",
+  "address": "Address",
+  "city": "City",
+  //Auth_User
+  //Register
+  "register": "Register",
+  "login": "Login",
+  "forget_password": "Forget Password ?"
+>>>>>>> f20a88d4119de64cfcda6c207360c624d4cc48ea
 
 
 

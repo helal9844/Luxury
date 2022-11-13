@@ -2,46 +2,54 @@
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer localizer
 @{
-    var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar") ? "rtl" : "ltr";
+  var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar") ? "rtl" : "ltr";
 }
 <!-- ////////////////////////////////////////////////////////////////////////////-->
-  <nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-dark navbar-shadow">
-      <div class="navbar-wrapper">
-        <div class="navbar-header">
-          <ul class="nav navbar-nav flex-row">
-            <li class="nav-item mobile-menu d-md-none mr-auto">
-              <a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"
-                ><i class="ft-menu font-large-1"></i
-              ></a>
+<nav role="navigation"
+  class="header-navbar navbar-expand-sm navbar navbar-with-menu navbar-hide-on-scroll fixed-top navbar-dark navbar-shadow navbar-border">
+  <div class="navbar-wrapper">
+    <div class="container p-md-0">
+      <div class="navbar-header">
+        <ul class="nav navbar-nav flex-row">
+          <li class="nav-item mobile-menu d-md-none mr-auto">
+            <a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a>
+          </li>
+          <li class="nav-item mr-auto">
+            <a class="navbar-brand" href="index.html">
+              <img class="brand-logo" alt="modern admin logo" src="~/images/logo/iBooking.png" />
+              <h3 class="brand-text">IBooking.com</h3>
+            </a>
+          </li>
+          @*<li class="nav-item d-none d-md-block float-right">
+            <a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"
+            ><i
+            class="toggle-icon ft-toggle-right font-medium-3 white"
+            data-ticon="ft-toggle-right"
+            ></i
+            ></a>
+            </li>*@
+          <li class="nav-item d-md-none">
+            <a class="nav-link open-navbar-container" data-toggle="collapse" data-target="#navbar-mobile"><i
+                class="la la-ellipsis-v"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="navbar-container content">
+
+        <div class="collapse navbar-collapse" id="navbar-mobile">
+          <ul class="nav navbar-nav mr-auto float-left">
+
+          </ul>
+          <ul class="nav navbar-nav justify-content-end float-end d-flex">
+            <li class="nav-item my-auto">
+              <partial name="_SelectLanguage" />
             </li>
-            <li class="nav-item mr-auto">
-              <a class="navbar-brand" href="index.html">
-                <img
-                  class="brand-logo"
-                  alt="modern admin logo"
-                  src="~/Admin/app-assets/images/logo/logo.png"
-                />
-                <h3 class="brand-text">Modern Admin</h3>
-              </a>
-            </li>
-            <li class="nav-item d-none d-md-block float-right">
-              <a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"
-                ><i
-                  class="toggle-icon ft-toggle-right font-medium-3 white"
-                  data-ticon="ft-toggle-right"
-                ></i
-              ></a>
-            </li>
-            <li class="nav-item d-md-none">
-              <a
-                class="nav-link open-navbar-container"
-                data-toggle="collapse"
-                data-target="#navbar-mobile"
-                ><i class="la la-ellipsis-v"></i
-              ></a>
-            </li>
+
+            <partial name="_IsAuth" />
+
           </ul>
         </div>
+<<<<<<< HEAD
         <div class="navbar-container content">
           <div class="collapse navbar-collapse" id="navbar-mobile">
             <ul class="nav navbar-nav mr-auto float-left">
@@ -688,6 +696,11 @@
             </ul>
           </div>
         </div>
+=======
+>>>>>>> f20a88d4119de64cfcda6c207360c624d4cc48ea
       </div>
-    </nav>
-  <!-- ////////////////////////////////////////////////////////////////////////////-->
+    </div>
+
+  </div>
+</nav>
+<!-- ////////////////////////////////////////////////////////////////////////////-->

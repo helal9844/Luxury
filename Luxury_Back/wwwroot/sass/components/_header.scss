@@ -1,0 +1,34 @@
+﻿header {
+    nav {
+        &.header-navbar {
+            background-color: $bg-blue;
+
+            &.fixed-top {
+                .navbar-brand {
+                    .brand-text {
+                        font-family: Pop;
+                    }
+                }
+
+                .navbar-container {
+                    li {
+                        > * {
+                            padding: 1rem .1rem 1rem 1rem !important;
+                        }
+
+                        &.isAuth {
+                            button {
+                                background-color: #fff;
+                                font-weight: 550;
+                                border-radius: 0;
+                                color: #0763e6;
+                                border-color: #0763e6;
+                                text-transform: capitalize;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

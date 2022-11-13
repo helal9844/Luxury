@@ -1,0 +1,16 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "wwroot/js/root.js",
+  "scripts": {
+    "compile": "sass --watch wwwroot/sass/root.scss:wwwroot/css/root.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "sass": "^1.56.1"
+  }
+}

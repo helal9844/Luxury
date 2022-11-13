@@ -1,6 +1,7 @@
 ﻿@using System.Globalization
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer localizer
+
 @{
     var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar") ? "rtl" : "ltr";
 }
@@ -9,12 +10,18 @@
 <link rel="stylesheet"
       type="text/css"
       href="~/Admin/app-assets/css-@isRTL/vendors.css" />
+<link rel="stylesheet" 
+      type="text/css" 
+      href="~/Admin/app-assets/vendors/css/ui/prism.min.css">
+<link rel="stylesheet" 
+      type="text/css" 
+      href="~/Admin/app-assets/vendors/css/forms/selects/jquery.selectBoxIt.css">
 <!-- END VENDOR CSS-->
 <!-- BEGIN MODERN CSS-->
 <link rel="stylesheet"
       type="text/css"
       href="~/Admin/app-assets/css-@isRTL/app.css" />
-      <link rel="stylesheet"
+<link rel="stylesheet"
       type="text/css"
       href="~/Admin/app-assets/fonts/simple-line-icons/style.css" />
 <!-- END MODERN CSS-->
@@ -31,6 +38,7 @@
 <link rel="stylesheet"
       type="text/css"
       href="~/Admin/app-assets/vendors/css/charts/morris.css" />
-
-
+<link rel="stylesheet"
+      type="text/css"
+      href="~/Admin/app-assets/css-@isRTL/plugins/forms/selectBoxIt/selectBoxIt.css">
 <!-- END Page Level CSS-->
