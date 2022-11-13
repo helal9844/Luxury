@@ -4,7 +4,7 @@
     var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar") ? "rtl" : "ltr";
 }
 @{
-    ViewBag.title = "Forget Password";
+    ViewBag.title = localizer["forget_password"];
     Layout = "~/Areas/Root/Views/Shared/LayoutLogin/_Layout_Login.cshtml";
 }
 @section Styles {
@@ -27,19 +27,6 @@
 
 }
 
-    
-<div class="card-header border-0">
-    <div class="card-title text-center">
-            
-        <div class="p-1">
-            <img src="~/images/logo/booking_logo.png" alt="branding logo" class="avatar">
-        </div>
-    </div>
-    <partial name="_SelectLanguage" />
-    <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
-        <span>Easily Using</span>
-    </h6>
-</div>
 <div class="card-content">
     <div class="card-body pt-0">
         <form class="form-horizontal" asp-action="Forget_Pass" asp-controller="Auth" method="post">

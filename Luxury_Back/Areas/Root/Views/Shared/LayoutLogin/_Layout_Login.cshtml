@@ -24,6 +24,7 @@
 
     <div class="app-content content">
         <div class="content-wrapper">
+            
             <div class="content-header row">
             </div>
             <div class="content-body auth-content">
@@ -32,8 +33,21 @@
                     <div class="col-12 d-flex align-items-center justify-content-center">
                         <div class="col-md-4 col-10 box-shadow-2 p-0">
                             <div class="card border-grey border-lighten-3 m-0">
-                                <partial name="../Panel/_TempMesages.cshtml" />
+                                <partial name="_SelectLanguage" />
+                                
+                                <div class="card-header border-0">
+                                    <div class="card-title text-center">
 
+                                        <div class="p-1">
+                                            <img src="~/images/logo/booking_logo.png" alt="branding logo" class="avatar">
+                                        </div>
+                                    </div>
+
+                                    <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
+                                        <span>@ViewBag.title</span>
+                                    </h6>
+                                </div>
+                                <partial class="mt-1" name="../Panel/_TempMesages.cshtml" />
                                  @RenderBody()
                             </div>
                         </div>

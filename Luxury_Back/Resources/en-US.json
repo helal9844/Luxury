@@ -6,30 +6,18 @@
   "placeholdeusername": "Your UserName",
   "placeholdeemail": "Your Email Address",
 
-<<<<<<< HEAD
-    "placeholdpass": "Password",
-    "email": "Email Address",
-    "password": "Password",
-    "confirm_password": "Confirm Passwrd",
-    "enter": "Enter",
-    "send": "Send",
-    "errorusername": "",
-    "errorpass": "",
-    "erroremail": "",
-    "nullError": " Field Can't Be Empty",
-=======
+
   "placeholdpass": "Password",
   "email": "Email Address",
   "password": "Password",
   "confirm_password": "Confirm Passwrd",
   "enter": "Enter",
+  "send": "Send",
   "errorusername": "",
   "errorpass": "",
   "erroremail": "",
   "nullError": " Field Can't Be Empty",
-  "login": "login",
-  "register": "register",
->>>>>>> f20a88d4119de64cfcda6c207360c624d4cc48ea
+
 
   "errorphone": "",
   "ar-EG": "Arabic",
@@ -64,26 +52,7 @@
 
   "updateSuccess": " Data Updated Successfully!",
 
-<<<<<<< HEAD
-    //create category
-    "Select Parent Category": "Select Parent Category",
-    "submit": "Submit",
-    //create IBooking
-    "step": "Step",
-    "Select Brand": "Select Brand",
-    "Governorate": "Governorate",
-    "Select Governorate": "Select Governorate",
-    "address": "Address",
-    "city": "City",
-    //Auth_User
-    //Register
-    "register": "Register",
-    "login": "Login",
-    "forget_password": "Forget Password ?",
-    //code verficatio
-    "code_verfication": "Enter Code",
-    "reset_pass": "Reset Password"
-=======
+
   //create category
   "Select Parent Category": "Select Parent Category",
   "submit": "Submit",
@@ -96,10 +65,20 @@
   "city": "City",
   //Auth_User
   //Register
-  "register": "Register",
-  "login": "Login",
-  "forget_password": "Forget Password ?"
->>>>>>> f20a88d4119de64cfcda6c207360c624d4cc48ea
+  "login": "login",
+  "register": "register",
+  "forget_password": "Forget Password",
+  "forget_password?": "Forget Password ?",
+  "add_new_user": "New User",
+  //code verficatio
+  "code_verfication": "Enter Code",
+  "reset_pass": "Reset Password"
+
+  //create category
+
+  //Auth_User
+
+
 
 
 
