@@ -34,7 +34,7 @@ a, button {
   cursor: pointer;
 }
 
-h4 {
+h3 {
   font-family: popB;
   font-weight: 700;
   color: #212529;
@@ -202,6 +202,33 @@ footer.main-footer .botfooter hr {
   font-weight: 400;
   color: #6b6b6b;
   display: block;
+}
+
+.nexttrip a {
+  text-decoration: none;
+  color: white !important;
+  height: auto;
+}
+.nexttrip a img {
+  transition: all 0.5s ease-in-out;
+  overflow: hidden;
+  position: relative;
+}
+.nexttrip a:hover img {
+  width: 100%;
+  transform: scale(1.05);
+}
+.nexttrip a .textarea {
+  align-items: start;
+  position: absolute;
+  width: 90%;
+  text-align: center;
+  bottom: 4%;
+}
+.nexttrip a .textarea h4 {
+  font-family: popB;
+  color: white !important;
+  font-weight: 900;
 }
 
 /*# sourceMappingURL=root.css.map */
