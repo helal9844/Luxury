@@ -26,7 +26,7 @@ namespace Luxury_Back.Migrations
                         "admin", "admin@asp.net", 01234567890, "123456789", true, true, DateTime.Now
                     },
                     {
-                        "user", "user@asp.net", 01234567899, "123456789", true, true,DateTime.Now
+                        "user", "user@asp.net", 01234567899, "123456789", true, false,DateTime.Now
                     },
                 });
         }

@@ -24,6 +24,26 @@ header {
                         }
 
                         &.isAuth {
+                            &.dropdown-user {
+                                .avatar {
+                                    border-radius: 50%;
+                                    height: 35px;
+                                    margin: 0 auto;
+
+                                    i {
+                                        width: 35px;
+                                        height: 35px;
+                                        font-size: 2.4rem;
+                                        top: 5px;
+                                        text-align: center;
+                                    }
+                                }
+
+                                .dropdown-menu {
+                                    padding: 0.5rem 0.5rem !important;
+                                }
+                            }
+
                             button {
                                 background-color: #fff;
                                 font-weight: 550;

@@ -104,7 +104,7 @@ namespace Luxury_Back.Controllers.Admin
 
         public IActionResult Edit(int id)
         {
-            var iBooking = luxuryDb.iBookings.Include(i=>i.Address).Include(i => i.iBookingAttributes).FirstOrDefault(i=>i.Id == id);
+            IBooking iBooking = luxuryDb.iBookings.Include(i=>i.Address).Include(i => i.iBookingAttributes).FirstOrDefault(i=>i.Id == id);
 
             if (iBooking == null)
             {
@@ -139,12 +139,12 @@ namespace Luxury_Back.Controllers.Admin
         [HttpPost]
         public IActionResult _Edit(IBooking iBooking)
         {
-            IBooking? _iBooking = luxuryDb.iBookings.FirstOrDefault(i=>i.Id == iBooking.Id);
-            if (_iBooking == null)
+            IBooking? _iBooking = luxuryDb.iBookings.Where(i => i.Id == iBooking.Id).FirstOrDefault();
+            /*if (_iBooking == null)
             {
                 TempData["error_msg"] = "Data Not Found";
                 return RedirectToAction("Index");
-            }
+            }*/
 
             // ADD IBOOKING ATTRIBUTES
             iBooking.iBookingAttributes = this.iBookingAttributes(Request);
