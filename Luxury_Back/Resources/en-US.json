@@ -92,6 +92,12 @@
   "fhelp": "Help",
   "fabout": "About",
 
+  //topvisit
+  "cairo": "Cairo",
+  "luxor": "Luxor",
+  "alexandria": "Alexandria",
+  "sharmelsheikh": "Sharm El Sheikh",
+  "aswan": "Aswan",
 
   //next trip
   "nexttrip": "Get inspiration for your next trip",

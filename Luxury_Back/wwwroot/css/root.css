@@ -231,18 +231,10 @@ footer.main-footer .botfooter hr {
   font-weight: 900;
 }
 
-.topvisit .first,
-.topvisit .second,
-.topvisit .third,
-.topvisit .forth,
-.topvisit .fifth {
+.topvisit .imgcontainer {
   position: relative;
 }
-.topvisit .first:hover,
-.topvisit .second:hover,
-.topvisit .third:hover,
-.topvisit .forth:hover,
-.topvisit .fifth:hover {
+.topvisit .imgcontainer:hover {
   box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease;
   -webkit-transition: all 0.2s ease;
@@ -250,11 +242,7 @@ footer.main-footer .botfooter hr {
   overflow: hidden;
   margin: -5px;
 }
-.topvisit .first h2,
-.topvisit .second h2,
-.topvisit .third h2,
-.topvisit .forth h2,
-.topvisit .fifth h2 {
+.topvisit .imgcontainer h2 {
   color: white !important;
   font-family: popB;
   font-weight: 700;
