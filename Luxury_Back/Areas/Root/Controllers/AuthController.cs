@@ -126,9 +126,14 @@ namespace Luxury_Back.Areas.Root.Controllers
                 }
                 else
                 {
-                    user.is_active = true;
 
-                    if (user.is_active && !user.is_admin)
+                    /*
+                         user.is_active = true;
+
+                        if (_user.is_active && !_user.is_admin)
+                     */
+
+                    if (!_user.is_admin)
                     {
                         Claim u1 = new Claim("id", _user.Id.ToString());
                         Claim u2 = new Claim("name", _user.username);
@@ -144,7 +149,7 @@ namespace Luxury_Back.Areas.Root.Controllers
                     }
                     else
                     {
-                        TempData["error_msg"] = user.Email + " is not Active";
+                        TempData["error_msg"] = user.Email + " is not Allow To Login";
                         return View();
                     }
                 }
@@ -159,7 +164,7 @@ namespace Luxury_Back.Areas.Root.Controllers
         public IActionResult Logout()
         {
             HttpContext.SignOutAsync();
-            return RedirectToAction("Login");
+            return RedirectToAction("Index", "Home");
         }
         #endregion
 
