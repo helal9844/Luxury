@@ -34,6 +34,7 @@
     <Folder Include="Areas\Root\Models\" />
     <Folder Include="Controllers\" />
     <Folder Include="Validations\" />
+    <Folder Include="wwwroot\images\home\" />
     <Folder Include="wwwroot\images\panel\" />
     <Folder Include="wwwroot\images\uploaded\" />
     <Folder Include="wwwroot\fonts\" />

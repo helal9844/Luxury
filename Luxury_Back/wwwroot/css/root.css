@@ -34,6 +34,12 @@ a, button {
   cursor: pointer;
 }
 
+h4 {
+  font-family: popB;
+  font-weight: 700;
+  color: #212529;
+}
+
 .select-lang {
   position: relative;
 }
@@ -163,6 +169,24 @@ footer.main-footer .botfooter .center button {
 footer.main-footer .botfooter hr {
   color: white;
   margin: 0 0 15px 0;
+}
+
+.contravel a {
+  text-decoration: none;
+}
+.contravel a img {
+  margin-bottom: 10px;
+}
+.contravel a h5 {
+  font-family: popB;
+  font-weight: 700;
+  color: #212529;
+}
+.contravel a span {
+  font-family: pop;
+  font-weight: 400;
+  color: #6b6b6b;
+  display: block;
 }
 
 /*# sourceMappingURL=root.css.map */

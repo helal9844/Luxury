@@ -90,5 +90,14 @@
   "propbtn": "List Your Property",
   "fcontact": "Contact Us",
   "fhelp": "Help",
-  "fabout": "About"
+  "fabout": "About",
+
+  //connecttravels
+  "connecttravel": "Connect with other travelers",
+  "egypt": "Egypt",
+  "trvlcom": "Travel Community",
+  "trvltalk": "Travel Talk",
+  "gendis": "Genaral Discussion",
+  "morecom": "More Communities",
+  "viewall": "View All"
 }

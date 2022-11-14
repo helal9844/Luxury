@@ -90,5 +90,14 @@
   "propbtn": "اعرض عقارك علي موقعنا",
   "fcontact": "تواصل معنا",
   "fhelp": "المساعدة",
-  "fabout": "من نحن"
+  "fabout": "من نحن",
+
+  //connecttravels
+  "connecttravel": "تواصل مع المسافرون الاخرون",
+  "egypt": "مصر",
+  "trvlcom": "مجتمع السفر",
+  "trvltalk": "نقاش السفر",
+  "gendis": "مناقشة عامة",
+  "morecom": "المزيد من المجتمعات",
+  "viewall": "عرض الكل"
 }
