@@ -249,7 +249,7 @@ namespace Luxury_Back.Controllers.Admin
             Category category = luxuryDb.categories.Where(i=>i.Id ==id).First();
             List<Category> categories = luxuryDb.categories.Where(c => c.CategoryId == null).ToList();
             ViewBag.categories = categories;
-            return View(category);
+            return View($"{viewPath}/Create_Edit.cshtml",category);
         }
         
         [HttpPost]
@@ -264,7 +264,7 @@ namespace Luxury_Back.Controllers.Admin
                 {
                     TempData[error.PropertyName] = error.ErrorMessage;
                 }
-                return Edit(category.Id);
+                return View($"{viewPath}/Create_Edit.cshtml", category.Id);
             }
             using (IDbContextTransaction transaction = luxuryDb.Database.BeginTransaction())
             {

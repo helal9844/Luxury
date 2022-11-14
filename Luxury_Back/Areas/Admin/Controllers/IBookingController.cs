@@ -104,7 +104,6 @@ namespace Luxury_Back.Controllers.Admin
 
         public IActionResult Edit(int id)
         {
-
             var iBooking = luxuryDb.iBookings.Include(i=>i.Address).Include(i => i.iBookingAttributes).FirstOrDefault(i=>i.Id == id);
 
             if (iBooking == null)
@@ -138,10 +137,10 @@ namespace Luxury_Back.Controllers.Admin
             return View(ViewPath + "Edit.cshtml", iBooking);
         }
         [HttpPost]
-        public IActionResult _Edite(IBooking iBooking)
+        public IActionResult _Edit(IBooking iBooking)
         {
-            IBooking? iBoking = luxuryDb.iBookings.FirstOrDefault();
-            if (iBoking == null)
+            IBooking? _iBooking = luxuryDb.iBookings.FirstOrDefault(i=>i.Id == iBooking.Id);
+            if (_iBooking == null)
             {
                 TempData["error_msg"] = "Data Not Found";
                 return RedirectToAction("Index");
@@ -157,7 +156,7 @@ namespace Luxury_Back.Controllers.Admin
                     luxuryDb.iBookings.Update(iBooking);
                     luxuryDb.SaveChanges();
                     transaction.Commit();
-                    TempData["success_msg"] = Helper.getLnag() == "ar" ? iBoking.name_ar : iBoking.name_en + localizer["updateSuccess"];
+                    TempData["success_msg"] = Helper.getLnag() == "ar" ? _iBooking.name_ar : _iBooking.name_en + localizer["updateSuccess"];
                     return RedirectToAction("Index");
                 }
                 catch (Exception ex)
