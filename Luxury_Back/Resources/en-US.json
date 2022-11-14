@@ -78,10 +78,17 @@
   "stays": "Stays",
   "hotels": "Hotels",
   "villas": "Villas",
-  "apartments": "Apartments"
+  "apartments": "Apartments",
 
+  //topfooter
+  "hfootertitle": "Save time, save money!",
+  "pfootertitle": "Sign up and we'll send the best deals to you",
+  "emailfootertitle": "Your Email",
+  "fsubsribe": "Subscribe",
 
-
-
-
+  //bottomfooter
+  "propbtn": "List Your Property",
+  "fcontact": "Contact Us",
+  "fhelp": "Help",
+  "fabout": "About"
 }

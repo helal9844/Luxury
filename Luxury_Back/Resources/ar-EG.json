@@ -78,5 +78,17 @@
   "stays": "اماكن اقامة",
   "hotels": "فنادق",
   "villas": "فيلات",
-  "apartments": "شقق"
+  "apartments": "شقق",
+
+  //topfooter
+  "hfootertitle": "وفر وقتك ومالك!",
+  "pfootertitle": "اشترك وسنرسل أفضل العروض إليك",
+  "emailfootertitle": "بريدك الالكتروني",
+  "fsubsribe": "أشترك",
+
+  //bottomfooter
+  "propbtn": "اعرض عقارك علي موقعنا",
+  "fcontact": "تواصل معنا",
+  "fhelp": "المساعدة",
+  "fabout": "من نحن"
 }
