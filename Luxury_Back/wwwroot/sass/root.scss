@@ -7,7 +7,9 @@
 //SHARED
 @import "components/_shared/top_search";
 
-// COMPONENTS
+//COMPONENTS
 @import "components/_header.scss";
 @import "components/_footer.scss";
-@import "components/_connect_travels.scss";
+
+//PAGES
+@import "components/_home/home";

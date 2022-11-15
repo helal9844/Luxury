@@ -364,8 +364,8 @@
             $('.map').each(function () {
 
                 var map = new google.maps.Map($('.map')[$index], {
-                    center: { lat: 30.033333, lng: 31.233334 },
-                    zoom: 13,
+                    center: { lat: @Model.Address.lat, lng: @Model.Address.lng },
+                    zoom: 19,
                     mapTypeId: 'roadmap'
                 });
 

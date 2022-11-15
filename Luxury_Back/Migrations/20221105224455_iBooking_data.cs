@@ -357,7 +357,7 @@ namespace Luxury_Back.Migrations
                     {
                         {1, "هيلتون رمسيس، Nile Corniche, Sharkas, Bulaq, Egypt", 30.0502819, 31.2320504, 1, 1 },
                         {2, "هيلتون رمسيس، Nile Corniche, Sharkas, Bulaq, Egypt", 30.0502819, 31.2320504, 1, 1 },
-                        {3, "هيلتون رمسيس، Nile Corniche, Sharkas, Bulaq, Egypt", 30.0502819, 31.2320504, 1, 1 },
+                        {3, "هيلتون رمسيس، Nile Corniche, Sharkas, Bulaq, Egypt", 31.2811595, 30.01148340000001, 1, 1 },
                         {4, "هيلتون رمسيس، Nile Corniche, Sharkas, Bulaq, Egypt", 30.0502819, 31.2320504, 1, 1 },
                         {5, "هيلتون رمسيس، Nile Corniche, Sharkas, Bulaq, Egypt", 30.0502819, 31.2320504, 1, 1 },
                         {6, "هيلتون رمسيس، Nile Corniche, Sharkas, Bulaq, Egypt", 30.0502819, 31.2320504, 1, 1 },
