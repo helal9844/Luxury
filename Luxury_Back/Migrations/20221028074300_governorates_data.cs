@@ -50,6 +50,7 @@ namespace Luxury_Back.Migrations
                 {
                     { "القاهرة", "Cairo" },
                     { "الجيزة", "Giza" },
+                    { "الأسكندرية", "Alexandria" },
                 }); 
 
         }

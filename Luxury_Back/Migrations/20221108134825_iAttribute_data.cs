@@ -109,6 +109,12 @@ namespace Luxury_Back.Migrations
                         "transfer service",
                         true
                         ,"checkbox"
+                    },
+                    {//16
+                        "خدمة التنظيف",
+                        "cleaning service",
+                        true,
+                        "checkbox"
                     }
                 }
             );

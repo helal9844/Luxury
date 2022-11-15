@@ -23,100 +23,84 @@ namespace Luxury_Back.Migrations
                     "BrandId",
                     "name_ar",
                     "name_en",
+                    "description_ar",
+                    "description_en",
                     "created_at"
                 },
                 values: new object[,]
                 {
                     //1
                     { 4, null,
+                        // NAME
                         "Alex Luxury sea view apartment",
                         "Alex Luxury sea view apartment",
+                        //DESCRIPTION
+                        "Alex Luxury sea view apartment",
+                        "Alex Luxury sea view apartment",
+
                         DateTime.Now,
                     },
                     //2
                     { 2,1,
                         "غرفة فيرمونت جولد سيجنتشر مزدوجة - لغير المدخنين",
                         "Fairmont Gold Signature Double Room - Non-Smokingm",
+
+                        "غرفة فيرمونت جولد سيجنتشر مزدوجة - لغير المدخنين",
+                        "Fairmont Gold Signature Double Room - Non-Smokingm",
+
                         DateTime.Now,
                     },
                     //3
                     { 2,3,
                         "Helnan Palace Hotel - Adults Only",
                         "Helnan Palace Hotel - Adults Only",
+                        
+                        "Helnan Palace Hotel - Adults Only",
+                        "Helnan Palace Hotel - Adults Only",
+
                         DateTime.Now,
                     },
                     //4
                     { 4,7,
                         "شقق ستير مياستو الفندقية",
                         "Aparthotel Stare Miasto",
+                        
+                        "شقق ستير مياستو الفندقية",
+                        "Aparthotel Stare Miasto",
+
                         DateTime.Now,
                     },
                     //5
                     { 4,7,
                         "Golden Queen Apartments Old Town",
                         "Golden Queen Apartments Old Town",
+                        
+                        "Golden Queen Apartments Old Town",
+                        "Golden Queen Apartments Old Town",
+
                         DateTime.Now,
                     },
                     //6
                     { 2,2,
                         "Chez Haytham At Four Seasons Nile Plaza Residential Suite",
                         "Chez Haytham At Four Seasons Nile Plaza Residential Suite",
+                        
+                        "Chez Haytham At Four Seasons Nile Plaza Residential Suite",
+                        "Chez Haytham At Four Seasons Nile Plaza Residential Suite",
+
                         DateTime.Now,
                     },
                     //7
                     { 3,5,
                         "Sheraton ocean 401",
                         "Sheraton ocean 401",
+                        
+                        "Sheraton ocean 401",
+                        "Sheraton ocean 401",
+
                         DateTime.Now,
                     }
-                }
-            );
-
-            /* ATTRIBUTES */
-            migrationBuilder.InsertData
-            (
-                table: "iBookingAttributes",
-                columns: new[]
-                {
-                    "cost",
-                    "capacity",
-                    "space",
-                    "city_view",
-                    "kitchen",
-                    "pool",
-                    "bath",
-                    "p_bath",
-                    "balcony",
-                    "conditioning",
-                    "washing_m",
-                    "wi_fi",
-                    "parking",
-                    "room_service",
-                    "transfer_service",
-                },
-                values: new object[,]
-                {
-                    {
-                        2000, 4, 120, true, false, true, true, true, true, false, true, true, true, false, false,
-                    },
-                    {
-                        8000, 2, 90, true, true, true, true, true, true, true,true, true, true, true, false
-                    },
-                    {
-                        5000, 3, 180, true, true, false, true, true, true, true,true, true, true, true, false
-                    },
-                    {
-                        3000, 4, 150, true, false, true, true, true, true, false, true, true, true, false, false,
-                    },
-                    {
-                        4000, 4, 180, true, false, true, true, true, true, false, true, true, true, false, false,
-                    },
-                    {
-                        7900, 2, 90, true, true, true, true, true, true, true,true, true, true, true, false
-                    },
-                    {
-                        1500, 8, 500, true, true, true, true, true, true, true,true, true, true, true, false
-                    },
+                    //
                 }
             );
 
@@ -336,6 +320,10 @@ namespace Luxury_Back.Migrations
                         "https://cf.bstatic.com/xdata/images/hotel/max1280x900/221986919.jpg?k=d44286a783d6c95187b85b681f9da79ee261d5ce1c72dfce610f81f5ceb3ec7c&o=&hp=1",
                         7
                     },
+
+                    //8
+
+                    //9
 
                 }
             );
