@@ -1,8 +1,15 @@
 ﻿
-p, span, li, a, small, strong, input, textarea, select, optgroup, button, ::file-selector-button{
+p, span, li, a, small, strong, input, textarea, select, option, optgroup, button, ::file-selector-button{
     @include dir(font-family, Pop, Cairo, font-family);
+    @include dir();
+    
 }
 
+@for $h from 1 to 7 {
+    h#{$h}, .h#{$h}{
+        @include dir();
+    }
+}
 
 a, button{
     cursor: pointer;

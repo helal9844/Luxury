@@ -292,7 +292,7 @@
             let value = $(this).val();
 
             if (currentID !== value) {
-                let url = $(this).data('route') + `${value}`;
+                let url = '@(Url.Action("getCitiesFromGov", "IBooking"))/' + value;
                 let cities = [];
                 $.ajax({
                     url: url,
@@ -336,7 +336,7 @@
         const xhttp = new XMLHttpRequest();
         const brandSelect = document.getElementById("brand_id");
         category_id.onchange = function () {
-            xhttp.open("GET", "getBrandFromCategory/" + this.value, false);
+            xhttp.open("GET", '@(Url.Action("getBrandFromCategory", "IBooking"))/2' + this.value, false);
             xhttp.send();
             if (xhttp.status === 200) {
                 brandSelect.innerHTML = null;

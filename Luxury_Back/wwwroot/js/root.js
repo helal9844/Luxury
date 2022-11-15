@@ -21,3 +21,9 @@ window.onscroll = function () {
         fixedNav.classList.remove("onScroll");
     }
 }
+
+$(".capcity .dropdown-item").on("click", function () {
+    console.log("dropdown-toggle");
+    $(".capcity .dropdown-toggle").addClass("show");
+    $(".capcity .dropdown-menu").addClass("show");
+});

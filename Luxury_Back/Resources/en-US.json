@@ -18,7 +18,6 @@
   "erroremail": "",
   "nullError": " Field Can't Be Empty",
 
-
   "errorphone": "",
   "ar-EG": "Arabic",
   "en-US": "English",
@@ -79,6 +78,8 @@
   "hotels": "Hotels",
   "villas": "Villas",
   "apartments": "Apartments",
+  "whereGoing": "What is your destination?",
+  "check_in_out": "check-in - check-out",
 
   //topfooter
   "hfootertitle": "Save time, save money!",

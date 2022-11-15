@@ -1,7 +1,11 @@
 ﻿$bg-blue: #003580;
+$_gold: #febb02;
+
+/*  bs vars*/
+$--bs-gutter-x: 1.5rem;
+$--bs-bd-primary: #6528e0;
 
 /* MITHONS */
-
 @mixin dir($property: text-align, $ltr-value: left, $rtl-value: right, $rtl-property: $property) {
     #{$property}: $ltr-value;
     [dir=rtl] & {
