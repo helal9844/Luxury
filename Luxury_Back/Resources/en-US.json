@@ -93,6 +93,26 @@
   "fhelp": "Help",
   "fabout": "About",
 
+  //topvisit
+  "cairo": "Cairo",
+  "luxor": "Luxor",
+  "alexandria": "Alexandria",
+  "sharmelsheikh": "Sharm El Sheikh",
+  "aswan": "Aswan",
+
+  //next trip
+  "nexttrip": "Get inspiration for your next trip",
+  "triptitle1": "The 9 most beautiful cities for fall travel",
+  "triptitle2": "The 9 most beautiful cities for fall travel",
+  "triptitle3": "The 9 most beautiful cities for fall travel",
+  "triptitle4": "The 9 most beautiful cities for fall travel",
+  "triptitle5": "The 9 most beautiful cities for fall travel",
+  "trippar1": "From soaking in Seoul’s hot springs to digging into sticky cinnamon rolls in Montreal.",
+  "trippar2": "From soaking in Seoul’s hot springs to digging into sticky cinnamon rolls in Montreal.",
+  "trippar3": "From soaking in Seoul’s hot springs to digging into sticky cinnamon rolls in Montreal.",
+  "trippar4": "From soaking in Seoul’s hot springs to digging into sticky cinnamon rolls in Montreal.",
+  "trippar5": "From soaking in Seoul’s hot springs to digging into sticky cinnamon rolls in Montreal.",
+
   //connecttravels
   "connecttravel": "Connect with other travelers",
   "egypt": "Egypt",
