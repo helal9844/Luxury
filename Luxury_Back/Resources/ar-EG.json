@@ -8,6 +8,9 @@
   "placeholdeemail": "بريدك الألكتروني",
   "placeholdpass": "الرقم السري",
   "email": "البريد الألكتروني",
+  "correction": "غير صحيح!",
+  "Or": "أو",
+  "not found": "هذه البيانات غير موجودة",
   "password": "كلمة المرور",
   "confirm_password": "تاكيد كلمة المرور",
   "enter": "ادخل",
@@ -47,8 +50,16 @@
   "login": "تسجيل دخول",
 
   //create category
+  "new category": "فئة جديدة",
   "Select Parent Category": "اختر الفئة",
   "submit": "حفظ",
+  "category exist": "هذه الخاصية موجودة مسبقا!",
+  // create and edit Iattrbuite 
+  "new IAttribute": "خاصية جديدة",
+  "inserted before": "تم اضافة هذه الخاصية من قبل",
+  "attribute not exist": "هذه الخاصية ليست موجودة!",
+
+
   //create IBooking
   "step": "الخطوة",
   "Select Brand": "اختر العلامة التجارية",
@@ -56,6 +67,9 @@
   "Select Governorate": "اختر المحافظة",
   "address": "العنوان",
   "city": "المدينة",
+  "new ibooking": "حجز جديد",
+  "edit ibooking": "تعديل حجز",
+  "booking exist": "هذا الحجز موجود مسبقا!",
   //Auth_User
   //Register
   "sign_up": "تسجيل",
@@ -72,15 +86,20 @@
 
   "attribute": "خاصية",
   "attributes": "خصائص ",
+  "add success": "تمت اضافتها بنجاح!",
   "updateSuccess": " تم تعديل البيانات بنجاح! ",
+  "deleted successfully": "تم مسح البيانات بنجاح!",
+  "can't delete": "لا يمكن مسح هذه البيانات!",
+  "can't remove because": "اسف لا يمكن مسح هذا القسم بسبب أن لديه ",
+  "child categories": " أقسام صغيرة  ",
+  "brands": " علامات تجارية ",
+
 
   //layout
   "stays": "اماكن اقامة",
   "hotels": "فنادق",
   "villas": "فيلات",
   "apartments": "شقق",
-  "whereGoing": "ما هي وجهتك؟",
-  "check_in_out": "تسجيل الوصول - تسجيل المغادرة",
 
   //topfooter
   "hfootertitle": "وفر وقتك ومالك!",

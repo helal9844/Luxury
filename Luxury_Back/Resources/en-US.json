@@ -5,6 +5,9 @@
   "dashboard": "Dashboard",
   "placeholdeusername": "Your UserName",
   "placeholdeemail": "Your Email Address",
+  "correction": "is not correct!",
+  "Or": "or",
+  "not found": "this data not found",
 
 
   "placeholdpass": "Password",
@@ -17,6 +20,7 @@
   "errorpass": "",
   "erroremail": "",
   "nullError": " Field Can't Be Empty",
+
 
   "errorphone": "",
   "ar-EG": "Arabic",
@@ -49,12 +53,26 @@
   "attribute": "Attribute",
   "attributes": "Attributes",
 
-  "updateSuccess": " Data Updated Successfully!",
+  "add success": "has been added successfully!",
+  "updateSuccess": " Data has been Updated Successfully!",
+  "deleted successfully": "Data has been deleted successfully!",
+  "can't delete": "Cannot delete this data!",
+  "can't remove because": "Sorry can't remove this category because it has ",
+  "child categories": " Child Categories",
+  "brands": " brands",
 
 
-  //create category
+
+
+  //create  and edit category
+  "new category": "New Category",
   "Select Parent Category": "Select Parent Category",
   "submit": "Submit",
+  "category exist": "this category already exist!",
+  // create and edit IAttribute
+  "new IAttribute": "New IAttribute",
+  "inserted before": "this attribute has been inserted before !",
+  "attribute not exist": "this attribute does not exist!",
   //create IBooking
   "step": "Step",
   "Select Brand": "Select Brand",
@@ -62,6 +80,10 @@
   "Select Governorate": "Select Governorate",
   "address": "Address",
   "city": "City",
+  "new ibooking": "New Ibooking",
+  "edit ibooking": "Edit Ibooking",
+  "booking exist": "this booking already exist!",
+
   //Auth_User
   //Register
   "login": "login",
@@ -78,8 +100,6 @@
   "hotels": "Hotels",
   "villas": "Villas",
   "apartments": "Apartments",
-  "whereGoing": "What is your destination?",
-  "check_in_out": "check-in - check-out",
 
   //topfooter
   "hfootertitle": "Save time, save money!",
