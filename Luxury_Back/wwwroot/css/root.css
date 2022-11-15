@@ -412,4 +412,51 @@ footer.main-footer .botfooter hr {
   display: block;
 }
 
+.topvisit .imgcontainer {
+  position: relative;
+}
+.topvisit .imgcontainer:hover {
+  box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  border: solid #f4cece;
+  overflow: hidden;
+  margin: -5px;
+}
+.topvisit .imgcontainer h2 {
+  color: white !important;
+  font-family: popB;
+  font-weight: 700;
+  top: 10%;
+  left: 5%;
+  position: absolute;
+}
+
+.nexttrip a {
+  text-decoration: none;
+  color: white !important;
+  height: auto;
+}
+.nexttrip a img {
+  transition: all 0.5s ease-in-out;
+  overflow: hidden;
+  position: relative;
+}
+.nexttrip a:hover img {
+  width: 100%;
+  transform: scale(1.05);
+}
+.nexttrip a .textarea {
+  align-items: start;
+  position: absolute;
+  width: 90%;
+  text-align: center;
+  bottom: 4%;
+}
+.nexttrip a .textarea h4 {
+  font-family: popB;
+  color: white !important;
+  font-weight: 900;
+}
+
 /*# sourceMappingURL=root.css.map */

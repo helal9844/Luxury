@@ -90,7 +90,7 @@
                                     }
                                     else
                                     {
-                                        <option value="@child.Id">@(Helper.getLnag() == "ar" ? child.name_ar : child.name_en)n</option>
+                                        <option value="@child.Id">@(Helper.getLnag() == "ar" ? child.name_ar : child.name_en)</option>
                                     }
                                 }
                             </optgroup>
@@ -229,6 +229,7 @@
     <script src="~/Admin/app-assets/js/scripts/forms/select/form-select2.js"
         type="text/javascript"></script>
     <script>
+        const lang = "@(Helper.getLnag())";
         let governorate_id = $('#governorate_id');
         let city_selector = $('#city_id');
         governorate_id.on('change', function () {
@@ -236,7 +237,7 @@
             let value = $(this).val();
 
             if (currentID !== value) {
-                let url = $(this).data('route') + `${value}`;
+                let url = '@(Url.Action("getCitiesFromGov", "IBooking"))/' + value;
                 let cities = [];
                 $.ajax({
                     url: url,
@@ -244,7 +245,13 @@
                     success: function (data) {
                         let _cities = data["$values"];
                         _cities.forEach((city, key) => {
-                            cities.push(`<option value="${city.id}" ${key == 0 ? 'selected' : ''}> ${city.name_en} </option>`)
+                            if (lang == "ar") {
+                                cities.push(`<option value="${city.id}" ${key == 0 ? 'selected' : ''}> ${city.name_ar} </option>`)
+                            }
+                            else {
+                                cities.push(`<option value="${city.id}" ${key == 0 ? 'selected' : ''}> ${city.name_en} </option>`)
+                            }
+
                         })
                         city_selector.html(cities);
                     },
@@ -280,14 +287,20 @@
         const xhttp = new XMLHttpRequest();
         const brandSelect = document.getElementById("brand_id");
         category_id.onchange = function () {
-            xhttp.open("GET", "getBrandFromCategory/" + this.value, false);
+            console.log(lang);
+            xhttp.open("GET", '@(Url.Action("getBrandFromCategory", "IBooking"))/' + this.value, false);
             xhttp.send();
             if (xhttp.status === 200) {
                 brandSelect.innerHTML = null;
                 let res = JSON.parse(xhttp.response);
                 if (res["$values"].length) {
                     for (let i = 0; i < res["$values"].length; i++) {
-                        brandSelect.innerHTML += `<option value="${res['$values'][i].id}">${res['$values'][i].name_en}</option>`;
+                        if (lang == "ar") {
+                            brandSelect.innerHTML += `<option value="${res['$values'][i].id}">${res['$values'][i].name_ar}</option>`;
+                        }
+                        else {
+                            brandSelect.innerHTML += `<option value="${res['$values'][i].id}">${res['$values'][i].name_en}</option>`;
+                        }
                     }
                 }
 
