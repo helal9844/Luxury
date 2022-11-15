@@ -212,7 +212,7 @@ namespace Luxury_Back.Controllers.Admin
             int categoryBrandsCount = luxuryDb.brands.Count(c => c.CategoryId == id);
             if (categoryChildCount != 0)
             {
-                TempData["error_msg"] = $"Sorry Can't Remove This Category Because it has {categoryChildCount} child Categories";
+                TempData["error_msg"] = localizer["countError"];
             }
             else if (categoryBrandsCount != 0)
             {

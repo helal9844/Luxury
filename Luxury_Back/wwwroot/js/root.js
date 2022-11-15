@@ -22,8 +22,19 @@ window.onscroll = function () {
     }
 }
 
-$(".capcity .dropdown-item").on("click", function () {
-    console.log("dropdown-toggle");
-    $(".capcity .dropdown-toggle").addClass("show");
-    $(".capcity .dropdown-menu").addClass("show");
+let top_search_content_drop = document.querySelector("#toggle_menu");
+let _menu = document.querySelector(".toggle_menu");
+
+top_search_content_drop.addEventListener("click", function (event) {
+    console.log("top_search_content");
+    _menu.classList.toggle("show");
+    event.stopPropagation();
+});
+_menu.addEventListener("click", function (event) {
+    console.log("_menu");
+    event.stopPropagation();
+})
+document.addEventListener('click', (event) => {
+    _menu.classList.remove('show');
+    console.log("body");
 });
