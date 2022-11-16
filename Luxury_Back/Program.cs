@@ -59,7 +59,7 @@ namespace Luxury_Back
 
             builder.Services.AddControllers()
                .AddJsonOptions(o => o.JsonSerializerOptions
-                   .ReferenceHandler = ReferenceHandler.Preserve);
+                   .ReferenceHandler = null);
 
             builder.Services.AddDbContext<LuxuryDb>(db =>
             {

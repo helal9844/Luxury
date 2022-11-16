@@ -7,6 +7,7 @@ using Luxury_Back.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Localization;
 using System.Data;
@@ -104,8 +105,11 @@ namespace Luxury_Back.Controllers.Admin
                 return Create(iAttribute);
             }
 
-            IAttribute _iAttribute = luxuryDb.iAttributes.Find(iAttribute.Id);
-            if (_iAttribute == null)
+            /*var entity = luxuryDb.iAttributes.Find(iAttribute.Id);
+            luxuryDb.Entry(entity).State = EntityState.Detached;*/
+
+            bool isFound = luxuryDb.iAttributes.Any(att=>att.Id == iAttribute.Id);
+            if (!isFound)
             {
                 TempData["error_msg"] = "This Attribute Is Not Exist.!";
                 return View($"{ViewPath}Create_Edit.cshtml", iAttribute);
@@ -115,10 +119,7 @@ namespace Luxury_Back.Controllers.Admin
             {
                 try
                 {
-                    _iAttribute.name_en = iAttribute.name_en;
-                    _iAttribute.name_ar = iAttribute.name_ar;
-                    _iAttribute.inputType = iAttribute.inputType;
-                    luxuryDb.iAttributes.Update(_iAttribute);
+                    luxuryDb.iAttributes.Update(iAttribute);
                     luxuryDb.SaveChanges();
                     transaction.Commit();
                     TempData["success_msg"] = "Attribute Data Updated Successfully!";

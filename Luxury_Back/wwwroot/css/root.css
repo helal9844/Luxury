@@ -168,6 +168,10 @@ h3 {
   border-color: #0a58ca;
 }
 
+.mbsc-calendar-title-wrapper {
+  overflow: unset !important;
+}
+
 .select-lang {
   position: relative;
 }
@@ -199,9 +203,16 @@ h3 {
 .top_search_content {
   position: relative;
   top: 55px;
+  text-transform: capitalize;
 }
 .top_search_content .row {
   background-color: #febb02;
+}
+.top_search_content .has-icon-left .form-control-position {
+  line-height: 4rem;
+}
+.top_search_content .has-icon-left .form-control-position i {
+  color: #555;
 }
 .top_search_content input, .top_search_content button {
   width: 100%;
@@ -219,7 +230,10 @@ h3 {
   height: 100%;
 }
 .top_search_content div[class^=col-] > div .form-control-position {
-  line-height: 3.5rem;
+  line-height: 4rem;
+}
+.top_search_content div[class^=col-] > div .form-control-position i {
+  font-size: 1.7rem;
 }
 .top_search_content div[class^=col-]:first-of-type {
   padding-left: 0.3rem;
@@ -235,32 +249,86 @@ h3 {
 }
 @media screen and (min-width: 800px) {
   .top_search_content div[class^=col-lg]:not(:last-of-type) {
-    width: 30%;
+    /*width: 30%;*/
   }
   .top_search_content div[class^=col-lg]:last-of-type {
-    width: 10%;
+    width: 8%;
   }
 }
-.top_search_content .capcity.dropdown {
+.top_search_content .dropdown {
   width: 100%;
   height: 100%;
 }
-.top_search_content .capcity.dropdown > a {
+.top_search_content .dropdown > a {
   width: 100%;
   height: 100%;
   align-items: center;
   display: grid;
   background-color: #fff;
+  padding: 1rem;
   border: none;
   border-radius: 0;
   color: #444;
   text-align: center;
   text-decoration: none;
+  display: flex;
+  justify-content: center;
 }
-.top_search_content .capcity.dropdown > a::after {
+.top_search_content .dropdown > a::after {
   display: block;
+  top: -10px;
 }
-.top_search_content .capcity.dropdown .toggle_menu {
+.top_search_content .dropdown.whereGoing {
+  text-align: right;
+  justify-content: start;
+  padding: 0 3rem;
+  background-color: #fff;
+}
+.top_search_content .dropdown.whereGoing > a {
+  text-align: left;
+  justify-content: initial;
+}
+@media screen and (max-width: 800px) {
+  .top_search_content .dropdown.whereGoing > a {
+    text-align: center;
+    justify-content: center;
+  }
+}
+.top_search_content .dropdown.whereGoing > a::after {
+  display: none;
+}
+.top_search_content .dropdown.whereGoing .dropdown-menu {
+  width: 100%;
+  border-radius: 0;
+  left: -40px !important;
+}
+[dir=rtl] .top_search_content .dropdown.whereGoing .dropdown-menu {
+  right: -50px !important;
+}
+@media screen and (max-width: 800px) {
+  .top_search_content .dropdown.whereGoing .dropdown-menu {
+    left: -14px !important;
+  }
+  [dir=rtl] .top_search_content .dropdown.whereGoing .dropdown-menu {
+    right: -15px !important;
+  }
+}
+.top_search_content .dropdown.whereGoing .dropdown-menu li {
+  cursor: pointer;
+}
+.top_search_content .dropdown.whereGoing .dropdown-menu li:not(:last-of-type) {
+  border-bottom: 1px solid #ccc;
+}
+.top_search_content .dropdown.whereGoing .dropdown-menu li .dropdown-item span {
+  font-weight: 550;
+}
+.top_search_content .dropdown.whereGoing .dropdown-menu li .dropdown-item small {
+  display: block;
+  color: #555;
+  font-weight: normal;
+  padding: 0 2rem;
+}
+.top_search_content .dropdown .toggle_menu {
   width: 100%;
   border-radius: 0;
   list-style: none;
@@ -270,14 +338,43 @@ h3 {
   padding: 1rem 1rem;
   margin-top: 5px;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  text-transform: capitalize;
   display: none;
 }
-.top_search_content .capcity.dropdown .toggle_menu .dropdown-item {
+.top_search_content .dropdown .toggle_menu .dropdown-item {
   cursor: auto;
   padding: 0.5rem 0.5rem;
 }
-.top_search_content .capcity.dropdown .toggle_menu.show {
+.top_search_content .dropdown .toggle_menu li {
+  margin-bottom: 1rem;
+}
+.top_search_content .dropdown .toggle_menu li i {
+  margin: 0;
+}
+.top_search_content .dropdown .toggle_menu.show {
   display: block;
+}
+.top_search_content .dropdown .toggle_menu .bootstrap-touchspin {
+  width: 150px;
+}
+.top_search_content .dropdown .toggle_menu .bootstrap-touchspin .input-group-prepend,
+.top_search_content .dropdown .toggle_menu .bootstrap-touchspin .input-group-append {
+  height: 40px;
+  align-content: center;
+  text-align: center;
+  display: flex;
+}
+.top_search_content .dropdown .toggle_menu .bootstrap-touchspin .input-group-prepend button,
+.top_search_content .dropdown .toggle_menu .bootstrap-touchspin .input-group-append button {
+  align-content: center;
+  display: grid;
+  width: 40px;
+  text-align: center;
+  justify-content: center;
+}
+.top_search_content .dropdown .toggle_menu .bootstrap-touchspin input {
+  height: 40px;
+  text-align: center;
 }
 
 header nav {
@@ -403,6 +500,7 @@ footer.main-footer .botfooter hr {
 }
 ._top_header_title h1, ._top_header_title p {
   color: #fff;
+  text-transform: capitalize;
   font-family: OxyB;
 }
 ._top_header_title h1 {

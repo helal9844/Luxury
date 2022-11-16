@@ -79,8 +79,14 @@
   "hotels": "فنادق",
   "villas": "فيلات",
   "apartments": "شقق",
+  "properties": "عقارات",
+  "property": "عقار",
   "whereGoing": "ما هي وجهتك؟",
   "check_in_out": "تسجيل الوصول - تسجيل المغادرة",
+  "room": "غرفة",
+  "rooms": "غرف",
+  "person": "شخص",
+  "persons": "اشخاص",
 
   //topfooter
   "hfootertitle": "وفر وقتك ومالك!",

@@ -139,12 +139,12 @@ namespace Luxury_Back.Controllers.Admin
         [HttpPost]
         public IActionResult _Edit(IBooking iBooking)
         {
-            IBooking? _iBooking = luxuryDb.iBookings.Where(i => i.Id == iBooking.Id).FirstOrDefault();
-            /*if (_iBooking == null)
+            bool isFound = luxuryDb.iBookings.Any(att => att.Id == iBooking.Id);
+            if (!isFound)
             {
                 TempData["error_msg"] = "Data Not Found";
                 return RedirectToAction("Index");
-            }*/
+            }
 
             // ADD IBOOKING ATTRIBUTES
             iBooking.iBookingAttributes = this.iBookingAttributes(Request);
@@ -156,7 +156,7 @@ namespace Luxury_Back.Controllers.Admin
                     luxuryDb.iBookings.Update(iBooking);
                     luxuryDb.SaveChanges();
                     transaction.Commit();
-                    TempData["success_msg"] = Helper.getLnag() == "ar" ? _iBooking.name_ar : _iBooking.name_en + localizer["updateSuccess"];
+                    TempData["success_msg"] = Helper.getLnag() == "ar" ? iBooking.name_ar : iBooking.name_en + localizer["updateSuccess"];
                     return RedirectToAction("Index");
                 }
                 catch (Exception ex)
@@ -258,8 +258,8 @@ namespace Luxury_Back.Controllers.Admin
 
         public ActionResult getCitiesFromGov(int? id)
         {
-            List<City> brand = luxuryDb.cities.Where(b => b.gov_id == id).ToList();
-            return Json(brand);
+            List<City> cities = luxuryDb.cities.Where(b => b.gov_id == id).ToList();
+            return Json(cities);
         }
         
         public List<IBookingAttribute> iBookingAttributes(HttpRequest request)

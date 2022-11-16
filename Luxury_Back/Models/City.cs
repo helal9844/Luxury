@@ -23,9 +23,9 @@ namespace Luxury_Back.Models
         public virtual Governorate Governorate { get; set; }
         public City()
         {
-            Adresses = new HashSet<Address>();
+            Addresses = new HashSet<Address>();
         }
-        public virtual ICollection<Address>? Adresses { get; set; }
+        public virtual ICollection<Address>? Addresses { get; set; }
 
        
 

@@ -1,9 +1,20 @@
 .top_search_content {
     position: relative;
     top: 55px;
+    text-transform: capitalize;
 
     .row {
         background-color: $_gold;
+    }
+
+    .has-icon-left {
+        .form-control-position {
+            line-height: 4rem;
+
+            i {
+                color: #555;
+            }
+        }
     }
 
     input, button {
@@ -24,7 +35,11 @@
             height: 100%;
 
             .form-control-position {
-                line-height: 3.5rem;
+                line-height: 4rem;
+
+                i {
+                    font-size: 1.7rem;
+                }
             }
         }
 
@@ -40,54 +55,146 @@
     @media screen and (min-width: 800px) {
         div[class^="col-lg"] {
             &:not(:last-of-type) {
-                width: 30%;
+                /*width: 30%;*/
             }
 
             &:last-of-type {
-                width: 10%;
+                width: 8%;
             }
         }
     }
 
-    .capcity {
-        &.dropdown {
+    .dropdown {
+        width: 100%;
+        height: 100%;
+
+        > a {
             width: 100%;
             height: 100%;
+            align-items: center;
+            display: grid;
+            background-color: #fff;
+            padding: 1rem;
+            border: none;
+            border-radius: 0;
+            color: #444;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+
+            &::after {
+                display: block;
+                top: -10px;
+            }
+        }
+
+        &.whereGoing {
+            text-align: right;
+            justify-content: start;
+            padding: 0 3rem;
+            background-color: #fff;
 
             > a {
-                width: 100%;
-                height: 100%;
-                align-items: center;
-                display: grid;
-                background-color: #fff;
-                border: none;
-                border-radius: 0;
-                color: #444;
-                text-align: center;
-                text-decoration: none;
+                text-align: left;
+                justify-content: initial;
+
+                @media screen and (max-width: 800px) {
+                    text-align: center;
+                    justify-content: center;
+                }
 
                 &::after {
-                    display: block;
+                    display: none;
                 }
             }
 
-            .toggle_menu {
+            .dropdown-menu {
                 width: 100%;
                 border-radius: 0;
-                list-style: none;
-                background-color: #fff;
-                position: absolute;
-                z-index: 1;
-                padding: 1rem 1rem;
-                margin-top: 5px;
-                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-                display: none;
-                .dropdown-item {
-                    cursor: auto;
-                    padding: .5rem .5rem;
+                @include dir(left, -40px !important, -50px !important, right);
+
+                @media screen and (max-width: 800px) {
+                    @include dir(left, -14px !important, -15px !important, right);
                 }
-                &.show{
-                    display: block;
+
+                li {
+                    cursor: pointer;
+
+                    &:not(:last-of-type) {
+                        border-bottom: 1px solid #ccc;
+                    }
+
+                    .dropdown-item {
+
+
+                        span {
+                            font-weight: 550;
+                        }
+
+                        small {
+                            display: block;
+                            color: #555;
+                            font-weight: normal;
+                            padding: 0 2rem;
+                        }
+                    }
+                }
+            }
+        }
+
+        .toggle_menu {
+            width: 100%;
+            border-radius: 0;
+            list-style: none;
+            background-color: #fff;
+            position: absolute;
+            z-index: 1;
+            padding: 1rem 1rem;
+            margin-top: 5px;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            text-transform: capitalize;
+            display: none;
+
+            .dropdown-item {
+                cursor: auto;
+                padding: .5rem .5rem;
+            }
+
+            li {
+                margin-bottom: 1rem;
+
+                i {
+                    margin: 0;
+                }
+            }
+
+            &.show {
+                display: block;
+            }
+
+            .bootstrap-touchspin {
+                width: 150px;
+
+                .input-group-prepend,
+                .input-group-append {
+                    height: 40px;
+                    align-content: center;
+                    text-align: center;
+                    display: flex;
+
+                    button {
+                        align-content: center;
+                        display: grid;
+                        width: 40px;
+                        text-align: center;
+                        justify-content: center;
+                    }
+                }
+
+                input {
+                    height: 40px;
+                    text-align: center;
                 }
             }
         }
