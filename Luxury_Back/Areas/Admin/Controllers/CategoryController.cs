@@ -20,7 +20,7 @@ namespace Luxury_Back.Controllers.Admin
     {
         private LuxuryDb luxuryDb;
         private readonly IStringLocalizer<CategoryController> localizer;
-        const string viewPath= "Areas/Admin/Views/Category/";
+        const string viewPath = "Areas/Admin/Views/Category/";
         public CategoryController(LuxuryDb luxuryDb, IStringLocalizer<CategoryController> _localizer)
         {
             this.luxuryDb = luxuryDb;
@@ -29,19 +29,19 @@ namespace Luxury_Back.Controllers.Admin
         public IActionResult Index()
         {
             //return luxuryDb.categories.Include(c => c.translations).Include(c=>c.parent).ThenInclude(p=>p.translations).Where(c => c.Id == 2).First().parent.name;
-            var categories = luxuryDb.categories.Include(c=>c.parent).ToList();
+            var categories = luxuryDb.categories.Include(c => c.parent).ToList();
             return View(categories);
         }
         [HttpGet]
         #region Create
         public IActionResult Create(Category? category)
         {
-            List<Category> categories = luxuryDb.categories.Where(c=>c.CategoryId == null).ToList();
+            List<Category> categories = luxuryDb.categories.Where(c => c.CategoryId == null).ToList();
             ViewBag.categories = categories;
-            return View($"{viewPath}Create_Edit.cshtml",category);
+            return View($"{viewPath}Create_Edit.cshtml", category);
         }
         [HttpPost]
-        public IActionResult _Create(Category category,IFormFile img_category)
+        public IActionResult _Create(Category category, IFormFile img_category)
         {
             CategoryCreateValidation validator = new CategoryCreateValidation(localizer);
 
@@ -54,7 +54,7 @@ namespace Luxury_Back.Controllers.Admin
                 }
                 return Create(category);
             }
-           
+
             using (IDbContextTransaction transaction = luxuryDb.Database.BeginTransaction())
             {
                 try
@@ -65,12 +65,12 @@ namespace Luxury_Back.Controllers.Admin
 
                     if (_category != null)
                     {
-                        TempData["error_msg"] = "This Category exsited!";
+                        TempData["error_msg"] = localizer["category exist"];
                         return Create(category);
                     }
-                    
+
                     category.img_category = @"DefaultImage.png";
-                    if (category.CategoryId !=null && img_category != null)
+                    if (category.CategoryId != null && img_category != null)
                     {
                         string? img = Helper.uploadeFile(img_category, "category");
                         /*string uniqueImge = DateTime.Now.ToString("yyyyyMMddHHmmss") + "." + img_category.FileName.Split(".")[1];
@@ -84,20 +84,20 @@ namespace Luxury_Back.Controllers.Admin
                         }*/
                         category.img_category = img;
                     }
-                    
+
 
                     luxuryDb.categories.Add(category);
                     luxuryDb.SaveChanges();
                     transaction.Commit();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     transaction.Rollback();
                     TempData["error_msg"] = ex.Message;
                     return Create(category);
                 }
             }
-           
+
             return RedirectToAction("Index");
         }
         //[HttpPost]
@@ -134,7 +134,7 @@ namespace Luxury_Back.Controllers.Admin
         #endregion
         public IActionResult Activation(int? id)
         {
-            var category = luxuryDb.categories.Include(i => i.iBookings).Include(c => c.childs).ThenInclude(t=>t.iBookings).Where(i => i.Id == id).First();
+            var category = luxuryDb.categories.Include(i => i.iBookings).Include(c => c.childs).ThenInclude(t => t.iBookings).Where(i => i.Id == id).First();
             if (category == null)
             {
                 TempData["error_msg"] = "Category is Not Allow";
@@ -151,7 +151,7 @@ namespace Luxury_Back.Controllers.Admin
                             foreach (var item in category.childs)
                             {
                                 item.IsActive = category.IsActive;
-                              
+
                                 foreach (var iBooking in item.iBookings)
                                 {
                                     if (item.Id == iBooking.Category_Id)
@@ -164,7 +164,7 @@ namespace Luxury_Back.Controllers.Admin
                         //
                         if (category.childs.Count() == 0)
                         {
-                            category.IsActive = category.IsActive?true:false;    
+                            category.IsActive = category.IsActive ? true : false;
                             foreach (var item in category.iBookings)
                             {
                                 if (category.Id == item.Category_Id)
@@ -195,7 +195,7 @@ namespace Luxury_Back.Controllers.Admin
                 //    }
                 //}
                 //luxuryDb.SaveChanges();
-               
+
             }
             return RedirectToAction("Index");
         }
@@ -212,15 +212,15 @@ namespace Luxury_Back.Controllers.Admin
             int categoryBrandsCount = luxuryDb.brands.Count(c => c.CategoryId == id);
             if (categoryChildCount != 0)
             {
-                TempData["error_msg"] = localizer["countError"];
+                TempData["error_msg"] = localizer["can't remove because"] + categoryChildCount + localizer["child categories"];
             }
             else if (categoryBrandsCount != 0)
             {
-                TempData["error_msg"] = $"Sorry Can't Remove This Category Because it has {categoryBrandsCount} brands";
+                TempData["error_msg"] = localizer["can't remove because"] + categoryBrandsCount + localizer["brands"];
             }
             else if (categoryIbookingCount != 0)
             {
-                TempData["error_msg"] = $"Sorry Can't Remove This Category Because it has {categoryIbookingCount} bookings";
+                TempData["error_msg"] = localizer["can't remove because"] + categoryIbookingCount + localizer["iBooking"];
             }
             else
             {
@@ -231,12 +231,12 @@ namespace Luxury_Back.Controllers.Admin
                         luxuryDb.categories.Remove(category);
                         luxuryDb.SaveChanges();
                         transaction.Commit();
-                        TempData["success_msg"] = "Category Deleted Successfully!";
+                        TempData["success_msg"] = localizer["deleted successfully"];
                     }
                     catch (Exception ex)
                     {
                         transaction.Rollback();
-                        TempData["error_msg"] = "Sorry Can't Remove This Category";
+                        TempData["error_msg"] = localizer["can't delete"];
                     }
                 }
             }
@@ -246,12 +246,12 @@ namespace Luxury_Back.Controllers.Admin
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            Category category = luxuryDb.categories.Where(i=>i.Id ==id).First();
+            Category category = luxuryDb.categories.Where(i => i.Id == id).First();
             List<Category> categories = luxuryDb.categories.Where(c => c.CategoryId == null).ToList();
             ViewBag.categories = categories;
-            return View($"{viewPath}/Create_Edit.cshtml",category);
+            return View($"{viewPath}/Create_Edit.cshtml", category);
         }
-        
+
         [HttpPost]
         public IActionResult Edit(Category category, IFormFile img_category)
         {
@@ -272,14 +272,15 @@ namespace Luxury_Back.Controllers.Admin
                 {
                     var _category = luxuryDb.categories
                         .Where(_ => _.name_ar == category.name_ar || _.name_en == category.name_en)
-                        .Where(w=>w.Id!=category.Id)
+                        .Where(w => w.Id != category.Id)
                         .FirstOrDefault();
                     if (_category == null)
                     {
                         if (category.CategoryId != null && img_category != null)
                         {
                             category.img_category = @"DefaultImage.png";
-                            if (category.CategoryId != null) {
+                            if (category.CategoryId != null)
+                            {
                                 string? img = Helper.uploadeFile(img_category, "category");
                                 category.img_category = img;
                             }
@@ -288,7 +289,7 @@ namespace Luxury_Back.Controllers.Admin
                         luxuryDb.categories.Update(category);
                         luxuryDb.SaveChanges();
                         transaction.Commit();
-                    }         
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -305,5 +306,5 @@ namespace Luxury_Back.Controllers.Admin
             return luxuryDb.categories.Max(a => a.Id) + 1;
         }
     }
-   
+
 }

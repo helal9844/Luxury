@@ -26,7 +26,7 @@ namespace Luxury_Back.Controllers.Admin
         }
 
         #endregion
-        
+
         public IActionResult Login()
         {
             if (User.Identity.IsAuthenticated)
@@ -41,7 +41,7 @@ namespace Luxury_Back.Controllers.Admin
             AdminLoginValidation validator = new AdminLoginValidation(localizer);
 
             ValidationResult results = validator.Validate(user);
-            
+
             if (!results.IsValid)
             {
                 foreach (var failure in results.Errors)
@@ -56,11 +56,11 @@ namespace Luxury_Back.Controllers.Admin
 
                 if (_user == null)
                 {
-                    TempData["userError"] = "Email Or Password Not Corrected!";
+                    TempData["userError"] = localizer["email"] + " " + localizer["Or"] + " " + localizer["placeholdpass"] + ' ' + localizer["correction"];
                 }
                 else
                 {
-                   if (_user.is_active && _user.is_admin)
+                    if (_user.is_active && _user.is_admin)
                     {
                         // login 
                         Claim a1 = new Claim("id", _user.Id.ToString());
@@ -73,7 +73,7 @@ namespace Luxury_Back.Controllers.Admin
                         ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                         HttpContext.SignInAsync(claimsPrincipal);
 
-                        return RedirectToAction("Index","Home");
+                        return RedirectToAction("Index", "Home");
                     }
                     else
                     {
@@ -81,7 +81,7 @@ namespace Luxury_Back.Controllers.Admin
                     }
                 }
             }
-            
+
             return View(user);
         }
 
