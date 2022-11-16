@@ -109,3 +109,8 @@ let whereGoingInput = document.querySelector("#cityIdInput");
         whereGoingInput.value = this.dataset.city;
     }
 });
+//close section
+let closesection = document.querySelector(".closesection")
+document.getElementById("iclose").onclick() = function () {
+    closesection.ariaHidden=true;
+};

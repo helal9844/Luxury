@@ -88,7 +88,7 @@ h3 {
 }
 
 section {
-  margin: 10px 10px;
+  margin: 15px 15px;
 }
 
 .p-05 {
@@ -573,6 +573,51 @@ section .nexttrip a .textarea h4 {
   font-family: popB;
   color: white !important;
   font-weight: 900;
+}
+
+section .subs, .closesection .subs {
+  border: 1px solid rgba(128, 128, 128, 0.5);
+}
+section .subs .subscontent, .closesection .subs .subscontent {
+  padding: 10px 10px;
+}
+section .subs .subscontent .center, .closesection .subs .subscontent .center {
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+}
+@media screen and (max-width: 764px) {
+  section .subs .subscontent .center, .closesection .subs .subscontent .center {
+    visibility: hidden;
+  }
+}
+section .subs .subscontent .subcol, .closesection .subs .subscontent .subcol {
+  position: relative;
+}
+section .subs .subscontent .subcol h4, .closesection .subs .subscontent .subcol h4 {
+  font-family: popB;
+  font-weight: 400;
+}
+section .subs .subscontent .subcol input, .closesection .subs .subscontent .subcol input {
+  padding-right: 20px;
+  width: 350px;
+}
+section .subs .subscontent .subcol button, .closesection .subs .subscontent .subcol button {
+  background-color: #fff;
+  font-weight: 550;
+  border-radius: 0;
+  color: #0763e6;
+  border-color: #0763e6;
+  text-transform: capitalize;
+  margin: 10px;
+}
+section .subs .subscontent .subcol #iclose, .closesection .subs .subscontent .subcol #iclose {
+  position: absolute;
+  top: 5%;
+  right: 2%;
+}
+section .subs .subscontent .subcol #iclose a, .closesection .subs .subscontent .subcol #iclose a {
+  color: black;
 }
 
 /*# sourceMappingURL=root.css.map */
