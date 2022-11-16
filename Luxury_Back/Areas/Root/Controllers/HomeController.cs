@@ -6,9 +6,22 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using System.Linq;
 
 namespace Luxury_Back.Areas.Root.Controllers
 {
+    public record CategoryFilter(Category Category, bool IsSelected, int Count);
+    //public class CategoryFilter2
+    //{
+    //    public CategoryFilter2(Category category, bool isSelected)
+    //    {
+    //        Category = category;
+    //        IsSelected = isSelected;
+    //    }
+    //    public bool IsSelected { get; init; }
+    //    public Category Category {get; init;}
+    //}
+
     [Area("Root")]
     // [Authorize(Roles ="user")]
     public class HomeController : Controller
@@ -41,19 +54,11 @@ namespace Luxury_Back.Areas.Root.Controllers
         {
 
             string locale = Helper.getLnag();
-            var topGov = luxuryDb.governorates.Include(g => g.Addresses).Select(g => new { Id = g.Id, name = locale == "ar" ? g.name_ar : g.name_en, Count = g.Addresses.Count }).OrderByDescending(g => g.Count).Take(2);
-            var topCat = luxuryDb.categories.Where(c => c.CategoryId != null).Include(c => c.iBookings).Select(c => new { Id = c.Id, name = locale == "ar" ? c.name_ar : c.name_en, Count = c.iBookings.Count, img = Helper.imageUrl(c.img_category) }).OrderByDescending(c => c.Count).Take(2);
+            var topGov = luxuryDb.governorates.Include(g=>g.Addresses).Select(g => new {Id  = g.Id, name = locale == "ar"? g.name_ar:g.name_en, Count = g.Addresses.Count }).OrderByDescending(g=> g.Count).Take(2);
+            var topCat = luxuryDb.categories.Where(c=>c.CategoryId !=null).Include(c=>c.iBookings).Select(c => new { Id = c.Id, name = locale == "ar" ? c.name_ar : c.name_en, Count = c.iBookings.Count, img = Helper.imageUrl(c.img_category) }).OrderByDescending(c=>c.Count).Take(2);
             var topBrands = luxuryDb.brands.Include(c => c.iBookings).Select(c => new { Id = c.Id, name = locale == "ar" ? c.name_ar : c.name_en, Count = c.iBookings.Count, img = Helper.imageUrl(c.logo) }).OrderByDescending(c => c.Count).Take(2);
-
+            
             return View();
         }
-
-        public List<IBooking> GetBookings(int id,int pageSize)
-        {
-            pageSize = 1;
-           var x= luxuryDb.iBookings.Include(i=>i.Category).Include(a=>a.Brand).Include(b=>b.Address).Include(c=>c.images).Include(d=>d.iBookingAttributes).Skip((id - 1)* pageSize).Take(pageSize).ToList();
-            return x;
-        }
-           
     }
 }

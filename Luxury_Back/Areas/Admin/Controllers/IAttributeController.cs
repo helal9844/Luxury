@@ -7,6 +7,7 @@ using Luxury_Back.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Localization;
 using System.Data;
@@ -22,11 +23,11 @@ namespace Luxury_Back.Controllers.Admin
         private readonly IStringLocalizer<IAttributeController> localizer;
 
         public IAttributeController(LuxuryDb luxuryDb, IStringLocalizer<IAttributeController> _localizer, LuxuryDb db)
-        { 
+        {
             this.luxuryDb = db;
             this.localizer = _localizer;
         }
-           
+
         public IActionResult Index()
         {
             IEnumerable<IAttribute> attributes = luxuryDb.iAttributes.ToList();
@@ -56,7 +57,7 @@ namespace Luxury_Back.Controllers.Admin
 
             if (attribute != null)
             {
-                TempData["error_msg"] = "This Attribute Inserted Before.!";
+                TempData["error_msg"] = localizer["inserted before"];
                 return RedirectToAction("Create", iAttribute);
             }
 
@@ -67,7 +68,7 @@ namespace Luxury_Back.Controllers.Admin
                     luxuryDb.iAttributes.Add(iAttribute);
                     luxuryDb.SaveChanges();
                     transaction.Commit();
-                    TempData["success_msg"] = "Attribute Created Successfully!";
+                    TempData["success_msg"] = localizer["attribute"] + ' ' + localizer["add success"];
                 }
                 catch (Exception ex)
                 {
@@ -84,7 +85,7 @@ namespace Luxury_Back.Controllers.Admin
         {
             IAttribute? iAttribute = luxuryDb.iAttributes.Find(id);
             if (iAttribute == null)
-                TempData["error_msg"] = "This Attribute Is Not Exist.!";
+                TempData["error_msg"] = localizer["attribute not exist"];
 
             ViewBag.inputs = Types.iSelect.ToList();
             return View($"{ViewPath}Create_Edit.cshtml", iAttribute);
@@ -104,10 +105,13 @@ namespace Luxury_Back.Controllers.Admin
                 return Create(iAttribute);
             }
 
-            IAttribute _iAttribute = luxuryDb.iAttributes.Find(iAttribute.Id);
-            if (_iAttribute == null)
+            /*var entity = luxuryDb.iAttributes.Find(iAttribute.Id);
+            luxuryDb.Entry(entity).State = EntityState.Detached;*/
+
+            bool isFound = luxuryDb.iAttributes.Any(att=>att.Id == iAttribute.Id);
+            if (!isFound)
             {
-                TempData["error_msg"] = "This Attribute Is Not Exist.!";
+                TempData["error_msg"] = localizer["attribute not exist"];
                 return View($"{ViewPath}Create_Edit.cshtml", iAttribute);
             }
 
@@ -115,13 +119,10 @@ namespace Luxury_Back.Controllers.Admin
             {
                 try
                 {
-                    _iAttribute.name_en = iAttribute.name_en;
-                    _iAttribute.name_ar = iAttribute.name_ar;
-                    _iAttribute.inputType = iAttribute.inputType;
-                    luxuryDb.iAttributes.Update(_iAttribute);
+                    luxuryDb.iAttributes.Update(iAttribute);
                     luxuryDb.SaveChanges();
                     transaction.Commit();
-                    TempData["success_msg"] = "Attribute Data Updated Successfully!";
+                    TempData["success_msg"] = localizer["updateSuccess"];
                     return RedirectToAction($"Index");
                 }
                 catch (Exception ex)
@@ -130,7 +131,7 @@ namespace Luxury_Back.Controllers.Admin
                     TempData["error_msg"] = ex.Message;
                 }
             }
-                return View($"{ViewPath}Create_Edit.cshtml", iAttribute);
+            return View($"{ViewPath}Create_Edit.cshtml", iAttribute);
         }
         #region Delete
         public IActionResult Delete(int? id)

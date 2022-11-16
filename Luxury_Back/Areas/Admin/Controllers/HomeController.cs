@@ -9,7 +9,7 @@ using System.Diagnostics;
 
 namespace Luxury_Back.Controllers.Admin
 {
-   
+    [Authorize(Roles = "admin")]
     [Area("admin")]
    
 

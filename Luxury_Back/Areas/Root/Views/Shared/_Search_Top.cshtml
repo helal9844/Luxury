@@ -1,39 +1,108 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
 @{
 }
 
 <div class="top_search_content container">
     <div class="container">
-        <fieldset class="form-group">
-            <div class="row">
-                <div class="col-lg-3">
-                    <input type="text" class="form-control" placeholder="@localizer["whereGoing"]">
-                </div>
-                <div class="col-lg-3">
-                    <input type="text" class="form-control" placeholder="@localizer["check_in_out"]">
-                </div>
-                <div class="col-lg-3">
-                    <div class="capcity">
-                        <div class="dropdown">
+        <form id="search_form">
+            <fieldset class="form-group">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="position-relative has-icon-left">
+                            
+                            <div class="dropdown whereGoing">
+                              <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                @localizer["whereGoing"]
+                              </a>
 
-                          <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown link
-                          </a>
-
-                          <ul class="dropdown-menu w-100">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                          </ul>
+                              <ul class="dropdown-menu">
+                                    @foreach (var city in ViewBag.TopCities)
+                                    {
+                                        <li>
+                                            <div class="dropdown-item" data-city="@city.Id" data-name="@city.name"><i class="la la-map-marker fw-bold"></i> <span>@city.name</span> <small class="d-block"> <b>@city.Count</b> @localizer["property"]</small> </div>
+                                        </li>
+                                    }
+                                <input id="cityIdInput" type="hidden" name="cityId" autocomplete="off"/>
+                              </ul>
+                            </div>
+                            <div class="form-control-position">
+                                <i class="la la-map-marker"></i>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-lg-3">
+                        <div class="position-relative has-icon-left">
+                            <div class="form-control-position">
+                                <i class="la la-calendar"></i>
+                            </div>
+                            <div class="dropdown check_in_out">
+
+                                <a class="dropdown-toggle open_toggle_menu" href="#" data-menu=".check_in_out_menu" role="button" aria-expanded="false">
+                                    <div id="check_in_out_label">@localizer["check_in_out"] </div>
+                                </a>
+
+                                <ul class="toggle_menu check_in_out_menu w-100">
+                                    <li>
+                                        <fieldset>
+                                            <div mbsc-page class="demo-range-select">
+                                                <div style="height:100%">
+                                                    <input type="hidden" id="check_in_out_input" name="check_in_out" autocomplete="off" />
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="position-relative has-icon-left">
+                            <div class="form-control-position">
+                                <i class="la la-user"></i>
+                            </div>
+                            <div class="dropdown capcity">
+
+                                <a class="dropdown-toggle open_toggle_menu" href="#" data-menu=".capcity_menu" role="button" aria-expanded="false">
+                                    <div class="persons"><span>1</span> - @localizer["person"]</div>&nbsp;&nbsp;
+                                    <div class="rooms"><span>1</span> - @localizer["room"] </div>
+                                </a>
+
+                                <ul class="toggle_menu capcity_menu w-100">
+                                    <li>
+                                        <fieldset>
+                                            <span class="float-end">
+                                                @localizer["persons"]
+                                            </span>
+                                            <div class="input-group float-start">
+                                                <input id="persons" type="text" class="touchspin-color p-0" value="1"
+                                                       data-bts-button-down-class="btn btn-info"
+                                                       data-bts-button-up-class="btn btn-info" min="1" name="person"
+                                                       autocomplete="off" />
+                                            </div>
+                                        </fieldset>
+                                    </li>
+                                    <li>
+                                        <fieldset>
+                                            <span class="float-end">
+                                                @localizer["rooms"]
+                                            </span>
+                                            <div class="input-group float-start">
+                                                <input id="rooms" type="text" class="touchspin-color p-0" value="1"
+                                                       data-bts-button-down-class="btn btn-info"
+                                                       data-bts-button-up-class="btn btn-info" min="1" name="room"
+                                                       autocomplete="off" />
+                                            </div>
+                                        </fieldset>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <button type="submit" class="btn btn-primary text-center text-capitalize fw-550">@localizer["search"]</button>
+                    </div>
                 </div>
-                <div class="col-lg-2">
-                    <button class="btn btn-lg bd-btn-lg btn-primary text-center text-capitalize fw-550">بحث</button>
-                </div>
-            </div>
-        </fieldset>
+            </fieldset>
+        </form>
     </div>
 </div>

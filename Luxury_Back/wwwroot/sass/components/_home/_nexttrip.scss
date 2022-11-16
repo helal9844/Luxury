@@ -1,31 +1,35 @@
-﻿.nexttrip {
-    a {
-        text-decoration: none;
-        color: white !important;
-        height: auto;
+﻿section {
+    .nexttrip {
+        a {
+            text-decoration: none;
+            color: white !important;
+            height: auto;
 
-        & img {
-            transition: all 0.5s ease-in-out;
-            overflow: hidden;
-            position: relative;
-        }
+            img {
+                transition: all 0.5s ease-out;
+                overflow: hidden;
+                position: relative;
 
-        &:hover img {
-            width: 100%;
-            transform: scale(1.05);
-        }
+                &:hover {
+                    width: 100%;
+                    transform: scale(1.05);
+                }
+            }
 
-        .textarea {
-            align-items: start;
-            position: absolute;
-            width: 90%;
-            text-align: center;
-            bottom: 4%;
 
-            & h4 {
-                font-family: popB;
-                color: white !important;
-                font-weight: 900;
+
+            .textarea {
+                align-items: start;
+                position: absolute;
+                width: 90%;
+                text-align: center;
+                bottom: 4%;
+
+                & h4 {
+                    font-family: popB;
+                    color: white !important;
+                    font-weight: 900;
+                }
             }
         }
     }
