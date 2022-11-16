@@ -18,9 +18,9 @@
                               <ul class="dropdown-menu">
                                     @foreach (var city in ViewBag.TopCities)
                                     {
-                                        <##li>
+                                        <li>
                                             <div class="dropdown-item" data-city="@city.Id" data-name="@city.name"><i class="la la-map-marker fw-bold"></i> <span>@city.name</span> <small class="d-block"> <b>@city.Count</b> @localizer["property"]</small> </div>
-                                        </##li>
+                                        </li>
                                     }
                                 <input id="cityIdInput" type="hidden" name="cityId" autocomplete="off"/>
                               </ul>
