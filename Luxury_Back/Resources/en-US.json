@@ -9,7 +9,6 @@
   "Or": "or",
   "not found": "this data not found",
 
-
   "placeholdpass": "Password",
   "email": "Email Address",
   "password": "Password",
@@ -100,6 +99,14 @@
   "hotels": "Hotels",
   "villas": "Villas",
   "apartments": "Apartments",
+
+  "whereGoing": "Where are you going?",
+  "check_in_out": "checkin - checkout",
+  "room": "room",
+  "rooms": "rooms",
+  "person": "person",
+  "persons": "persons",
+  "search":  "Search",
 
   //topfooter
   "hfootertitle": "Save time, save money!",
