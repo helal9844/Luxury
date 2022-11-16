@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
+using static System.Net.WebRequestMethods;
 
 #nullable disable
 
@@ -15,7 +16,7 @@ namespace Luxury_Back.Migrations
                 "('الجيزة', 'Giza')," +
                 "('الأسكندرية', 'Alexandria')," +
                 "('الدقهلية', 'Dakahlia')," +
-                "('البحر الأحمر', 'Red Sea')," +
+                "('البحر الأحمر', 'Red Sea')," +//الغردقة 5
                 "('البحيرة', 'Beheira')," +
                 "('الفيوم', 'Fayoum')," +
                 "('الغربية', 'Gharbiya')," +
@@ -31,7 +32,7 @@ namespace Luxury_Back.Migrations
                 "('بورسعيد', 'Port Said')," +
                 "('دمياط', 'Damietta')," +
                 "('الشرقية', 'Sharkia')," +
-                "('جنوب سيناء', 'South Sinai')," +
+                "('جنوب سيناء', 'South Sinai')," +//شرم الشيخ 21
                 "('كفر الشيخ', 'Kafr Al sheikh')," +
                 "('مطروح', 'Matrouh')," +
                 "('الأقصر', 'Luxor')," +
@@ -44,13 +45,17 @@ namespace Luxury_Back.Migrations
                 columns: new[]
                 {
                     "name_ar",
-                    "name_en"
+                    "name_en",
+                   // "img_governorate"
                 },
-                values: new object[,]
+            values: new object[,]
                 {
-                    { "القاهرة", "Cairo" },
+                    { "القاهرة", "Cairo"},
                     { "الجيزة", "Giza" },
-                    { "الأسكندرية", "Alexandria" },
+                    { "الأسكندرية", "Alexandria"},
+                    { "البحر الاحمر", "Red Sea" },
+                    {"جنوب سيناء", "South Sinai" },
+
                 }); 
 
         }

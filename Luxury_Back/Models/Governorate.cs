@@ -16,6 +16,7 @@ namespace Luxury_Back.Models
         public int Id { get; set; }
         public string name_ar { get; set; }
         public string name_en { get; set; }
+        public string? img_governorate { get; set; }
         public virtual ICollection<City> Cities { get; set; }
         public virtual ICollection<Address> Addresses { get; set; }
         public Governorate()

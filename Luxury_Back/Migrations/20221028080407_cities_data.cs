@@ -566,6 +566,16 @@ namespace Luxury_Back.Migrations
                       "مارينا",
                       "Marina"
                     },
+                     {
+                      4,
+                      "الغردقة",
+                      "Hurguda"
+                    },
+                      {
+                      5,
+                      "شرم الشيخ",
+                      "Sharm Sheikh"
+                    },
                 }
             );
         }

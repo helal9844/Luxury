@@ -32,85 +32,91 @@ namespace Luxury_Back.Migrations
                         true,
                         "text",
                     },
-                    {//3
+                     {//3
+                        "غرف",
+                        "rooms",
+                        true,
+                        "text",
+                    },
+                    {//4
                         "المساحة",
                         "space",
                         true,
                         "text",
                     },
-                    {//4
+                    {//5
                         "اطلالة المدينة"
                         ,"city view"
                         ,true,
                         "checkbox"
                     },
-                    {//5
+                    {//6
                         "المطبخ"
                         ,"kitchen"
                         ,true,
                         "checkbox"
                     },
-                    {//6
+                    {//7
                         "حوض استحمام"
                         ,"bath"
                         ,true
                         ,"checkbox"
                     },
-                    {//7
+                    {//8
                         "حمام خاص"
                         ,"priavte bath"
                         ,true
                         ,"checkbox"
                     },
-                    {//8
+                    {//9
                         "حمام سباحة"
                         ,"pool"
                         ,true
                         ,"checkbox"
                     },
-                    {//9
+                    {//10
                         "التكييف"
                         ,"conditioning"
                         ,true
                         ,"checkbox"
                     },
-                    {//10
+                    {//11
                         "واي فاي"
                         ,"WiFi"
                         ,true
                         ,"checkbox"
                     },
-                    {//11
+                    {//12
                         "شرفة"
                         ,"balcony"
                         ,true
                         ,"checkbox"
                     },
-                    {//12
+                    {//13
                         "غسالة ملابس"
                         ,"washing machine"
                         ,true
                         ,"checkbox"
                     },
-                    {//13
+                    {//14
                         "خدمة الغرف"
                         ,"room service"
                         ,true
                         ,"checkbox"
                     },
-                    {//14
+                    {//15
                         "موقف سيارات"
                         ,"parking"
                         ,true
                         ,"checkbox"
                     },
-                    {//15
+                    {//16
                         "خدمة التنقل",
                         "transfer service",
                         true
                         ,"checkbox"
                     },
-                    {//16
+                    {//17
                         "خدمة التنظيف",
                         "cleaning service",
                         true,

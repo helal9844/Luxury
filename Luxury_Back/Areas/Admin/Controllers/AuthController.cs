@@ -24,9 +24,11 @@ namespace Luxury_Back.Controllers.Admin
             localizer = _localizer;
             _luxuryDb = luxuryDb;
         }
+      
+
 
         #endregion
-        
+
         public IActionResult Login()
         {
             if (User.Identity.IsAuthenticated)

@@ -9,8 +9,10 @@ using System.Diagnostics;
 
 namespace Luxury_Back.Controllers.Admin
 {
-    [Authorize(Roles = "admin")]
+   
     [Area("admin")]
+   
+
     public class HomeController : Controller
     {
         LuxuryDb db;
@@ -40,6 +42,7 @@ namespace Luxury_Back.Controllers.Admin
         #endregion
 
         const string ViewPath = "Views/Admin/Dashboard/";
+        [Authorize(Roles = "admin")]
         public IActionResult Index()
         {
             return View();

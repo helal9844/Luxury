@@ -176,6 +176,7 @@ namespace Luxury_Back.Areas.Root.Controllers
             return random.Next(min,max);
         }
         #endregion
+
         #region Generate Random Code
 
 
