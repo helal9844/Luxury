@@ -92,6 +92,8 @@
   //code verficatio
   "code_verfication": "Enter Code",
   "reset_pass": "Reset Password",
+  "remember me": "remember me",
+  "Login with Modern": "Login with Modern",
 
   //layout
   "stays": "Stays",
@@ -138,5 +140,9 @@
   "trvltalk": "Travel Talk",
   "gendis": "Genaral Discussion",
   "morecom": "More Communities",
-  "viewall": "View All"
+  "viewall": "View All",
+
+  //nav bar
+  "Find your next stay": "Find your next stay",
+  "paragraph": "Search deals on hotels, homes, and much more..."
 }
