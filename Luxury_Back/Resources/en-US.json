@@ -102,11 +102,21 @@
 
   "whereGoing": "Where are you going?",
   "check_in_out": "checkin - checkout",
+  "check in": "Check In",
+  "check out": "Check Out",
+  "ibooking count": "Ibooking-Count",
+  "customers": "Customers",
+  "cash flow": "Cash Flow",
+  "recently checkin": "Recently Check-In",
+  "total": "Total",
+  "residence": "residence duration",
+  "recent ibooking": "Recent Ibooking",
+  "review": "Review",
   "room": "room",
   "rooms": "rooms",
   "person": "person",
   "persons": "persons",
-  "search":  "Search",
+  "search": "Search",
 
   //topfooter
   "hfootertitle": "Save time, save money!",
