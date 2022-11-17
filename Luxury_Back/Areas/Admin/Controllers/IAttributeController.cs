@@ -122,8 +122,8 @@ namespace Luxury_Back.Controllers.Admin
                     luxuryDb.iAttributes.Update(iAttribute);
                     luxuryDb.SaveChanges();
                     transaction.Commit();
-                    TempData["success_msg"] = localizer["updateSuccess"];
-                    return RedirectToAction($"Index");
+                    TempData["success_msg"] = localizer["attribute"] + ' ' + localizer["updateSuccess"];
+                    return RedirectToAction("Index");
                 }
                 catch (Exception ex)
                 {

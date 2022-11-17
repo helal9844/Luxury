@@ -254,13 +254,13 @@ namespace Luxury_Back.Controllers.Admin
         {
             List<Brand> brand = luxuryDb.brands.Where(b => b.CategoryId == id).ToList();
 
-            return Json(brand);
+            return Json(Helper.jsonResult(brand));
         }
 
         public ActionResult getCitiesFromGov(int? id)
         {
             List<City> cities = luxuryDb.cities.Where(b => b.gov_id == id).ToList();
-            return Json(cities);
+            return Json(Helper.jsonResult(cities));
         }
 
         public List<IBookingAttribute> iBookingAttributes(HttpRequest request)

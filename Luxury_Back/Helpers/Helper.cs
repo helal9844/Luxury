@@ -1,5 +1,7 @@
 ﻿using Luxury_Back.Controllers.Admin;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Collections.Generic;
 //using Microsoft.AspNetCore.Mvc.Razor.RazorPages;
 using System.Globalization;
 using System.Numerics;
@@ -43,6 +45,14 @@ namespace Luxury_Back.Helpers
         public static string? nameWithLang(string? name_ar, string? name_en)
         {
             return getLnag()=="ar"?name_ar:name_en;
+        }
+
+        public static Dictionary<string, object>? jsonResult(object? obj, int? status = 200)
+        {
+            var result = new Dictionary<string, object>();
+            result["status"] = 200;
+            result["data"] = obj;
+            return result;
         }
 
     }
