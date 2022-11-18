@@ -25,8 +25,6 @@ namespace Luxury_Back.Controllers.Admin
             _luxuryDb = luxuryDb;
         }
       
-
-
         #endregion
 
         public IActionResult Login()

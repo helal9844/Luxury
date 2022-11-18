@@ -24,6 +24,10 @@
 }
 /*  bs vars*/
 /* MITHONS */
+body {
+  background-color: #fff !important;
+}
+
 p, span, li, a, small, strong, input, textarea, select, option, optgroup, button, ::file-selector-button {
   font-family: Pop;
   text-align: left;
@@ -163,17 +167,18 @@ section {
   background-color: #003580 !important;
 }
 
-.btn-primary {
-  background-color: #0d6efd !important;
-  color: #fff;
+.content {
+  margin-left: auto !important;
 }
-.btn-primary:hover {
-  background-color: #0d67ec !important;
-  border-color: #0a58ca;
+[dir=rtl] .content {
+  margin-right: auto !important;
 }
 
-.mbsc-calendar-title-wrapper {
-  overflow: unset !important;
+.text_align {
+  text-align: left;
+}
+[dir=rtl] .text_align {
+  text-align: right;
 }
 
 .select-lang {
@@ -202,6 +207,35 @@ section {
 }
 [dir=rtl] .auth-content .select-lang .dropdown-menu {
   left: -70px;
+}
+
+.component_siction {
+  margin: 1rem 0;
+}
+.component_siction .title_row h2 {
+  text-transform: capitalize;
+  font-family: PopB;
+  margin-bottom: 1rem;
+}
+[dir=rtl] .component_siction .title_row h2 {
+  font-family: CairoB;
+}
+
+.btn-primary {
+  background-color: #0d6efd !important;
+  color: #fff;
+}
+.btn-primary:hover {
+  background-color: #0d67ec !important;
+  border-color: #0a58ca;
+}
+
+.mbsc-calendar-title-wrapper {
+  overflow: unset !important;
+}
+
+.avatar-online i {
+  background-color: transparent !important;
 }
 
 .top_search_content {
@@ -381,20 +415,29 @@ section {
   text-align: center;
 }
 
+header {
+  background-image: url("https://content.r9cdn.net/rimg/dimg/85/e5/d763bad9-city-9087-164429be177.jpg?crop=true&width=1366&height=768&xhint=2760&yhint=1285");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding-top: 50px;
+  position: relative;
+  bottom: 80px;
+}
 header nav {
-  background-color: #003580 !important;
+  /*background-color: $bg-blue !important;*/
 }
 header nav.header-navbar {
   border-bottom: none !important;
 }
 header nav.header-navbar.fixed-top {
   box-shadow: none;
-}
-header nav.header-navbar.fixed-top.onScroll {
-  box-shadow: 0px 5px 30px 5px rgba(0, 0, 0, 0.17);
+  background-color: transparent;
 }
 header nav.header-navbar.fixed-top .navbar-brand .brand-text {
   font-family: Pop;
+  color: #003580 !important;
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
 }
 header nav.header-navbar.fixed-top .navbar-container li > * {
   padding: 1rem 0.1rem 1rem 1rem !important;
@@ -422,6 +465,17 @@ header nav.header-navbar.fixed-top .navbar-container li.isAuth button {
   border-color: #0763e6;
   text-transform: capitalize;
 }
+header nav.header-navbar.fixed-top.onScroll {
+  box-shadow: 0px 5px 30px 5px rgba(0, 0, 0, 0.17);
+  background-color: #003580 !important;
+}
+header nav.header-navbar.fixed-top.onScroll .navbar-brand .brand-text {
+  color: #fff !important;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+header nav.nav_bottom {
+  z-index: 1;
+}
 header nav.nav_bottom .nav-item .nav-link {
   color: #fff;
   font-weight: 550;
@@ -445,6 +499,14 @@ header nav.nav_bottom .nav-item.active .nav-link {
 }
 header nav.nav_bottom .nav-item:hover .nav-link {
   background-color: rgba(255, 255, 255, 0.3333333333);
+}
+header .overlay {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  background-color: rgba(17, 17, 17, 0.34);
+  z-index: 0;
+  height: 100%;
 }
 
 footer.main-footer .hfooter {
@@ -501,11 +563,13 @@ footer.main-footer .botfooter hr {
 
 ._top_header_title {
   position: relative;
+  z-index: 1;
 }
 ._top_header_title h1, ._top_header_title p {
   color: #fff;
   text-transform: capitalize;
   font-family: OxyB;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 ._top_header_title h1 {
   font-family: OxyB;
@@ -535,6 +599,10 @@ section .topvisit .imgcontainer {
   position: relative;
   transition: all 0.5s ease-out;
   overflow: hidden;
+}
+section .topvisit .imgcontainer > img {
+  width: 100%;
+  height: 250px;
 }
 section .topvisit .imgcontainer:hover {
   box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.2);
@@ -614,10 +682,333 @@ section .subs .subscontent .subcol button, .closesection .subs .subscontent .sub
 section .subs .subscontent .subcol #iclose, .closesection .subs .subscontent .subcol #iclose {
   position: absolute;
   top: 5%;
-  right: 2%;
+  right: 5px;
+}
+[dir=rtl] section .subs .subscontent .subcol #iclose, [dir=rtl] .closesection .subs .subscontent .subcol #iclose {
+  right: auto;
+}
+[dir=rtl] section .subs .subscontent .subcol #iclose, [dir=rtl] .closesection .subs .subscontent .subcol #iclose {
+  left: 5px;
 }
 section .subs .subscontent .subcol #iclose a, .closesection .subs .subscontent .subcol #iclose a {
   color: black;
+}
+
+._guests_love .card {
+  border-radius: 0;
+}
+._guests_love .card card-img-top {
+  border-radius: 0;
+  height: 250px;
+}
+._guests_love .card .card-body > a {
+  color: #444;
+  text-decoration: none;
+}
+._guests_love .card .card-body .card-title {
+  font-weight: bold;
+  text-transform: capitalize;
+  font-family: OxyB;
+}
+._guests_love .card .card-body .card-text {
+  font-weight: 550;
+  font-family: Oxy;
+  font-size: 1rem;
+}
+._guests_love .card .card-body .card-text small b {
+  color: #333;
+  text-decoration: underline;
+}
+._guests_love .card .card-body .card-text.reviews b {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+._guests_love .card .card-body .card-text.reviews span {
+  color: #fff;
+  padding: 5px;
+  width: 28px;
+  height: 28px;
+  background-color: #003580;
+  border-radius: 5.0909090909px 5.0909090909px 5.0909090909px 0;
+}
+._guests_love .card .card-body .card-text.reviews small {
+  color: #555;
+}
+
+.iBooking_content .text-header h2 {
+  font-size: 1.7rem;
+  border-bottom: 1px solid #aaa;
+  padding-bottom: 0.5rem;
+  color: #003580 !important;
+}
+.iBooking_content .text-header h2 i {
+  font-size: 2rem;
+}
+.iBooking_content .content_1 .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(34, 34, 34, 0.4666666667);
+  top: 0;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #fff;
+  text-decoration: underline;
+}
+.iBooking_content .content_1 .top-related-nav .badge {
+  border-radius: 0;
+  font-size: 0.9rem;
+}
+.iBooking_content .content_1 .top-related-nav .badge.badge-warning {
+  color: #444;
+  background-color: #febb02;
+}
+.iBooking_content .content_1 .top-related-nav .rating {
+  display: flex;
+  max-width: max-content;
+  display: inline-block;
+}
+.iBooking_content .content_1 .top-related-nav .rating ul {
+  list-style: none;
+  font-size: 0.6rem;
+  padding: 0;
+  display: flex;
+}
+.iBooking_content .content_1 .top-related-nav .rating ul li {
+  padding: 0;
+}
+.iBooking_content .content_1 .top-related-nav .rating ul li i {
+  font-size: 1rem;
+  color: #febb02;
+}
+.iBooking_content .content_1 .top-related-nav .rating ul li .badge {
+  position: relative;
+  bottom: 4px;
+  left: 5px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 0.15em 0.4em;
+  color: #fff;
+  font-size: 1.2rem;
+}
+.iBooking_content .content_1 .top-related-nav .rating ul li .badge i {
+  color: #fff;
+  font-size: 1.4rem;
+}
+.iBooking_content .content_1 .top-related-nav .actions button {
+  border: none;
+  background-color: #fff;
+  color: #003580;
+}
+.iBooking_content .content_1 .top-related-nav .actions button:hover {
+  background-color: rgba(40, 208, 148, 0.12);
+}
+.iBooking_content .content_1 .top-related-nav .actions button i {
+  font-size: 1.8rem;
+}
+.iBooking_content .content_1 .top-related-nav ._feater {
+  background-color: rgba(40, 208, 148, 0.2196078431);
+  color: #008009;
+  text-transform: capitalize;
+  font-weight: lighter;
+  font-family: Oxy;
+  font-size: 12px !important;
+  border-radius: 0 !important;
+}
+.iBooking_content .content_1 .top-related-nav ._feater i {
+  font-size: 1.1rem;
+}
+.iBooking_content .content_1 .title {
+  margin: 1rem 0;
+}
+.iBooking_content .content_1 .title h3 {
+  font-weight: bold;
+}
+.iBooking_content .content_1 .title p {
+  display: flex;
+  font-weight: lighter;
+}
+.iBooking_content .content_1 .title p .map_icon {
+  display: block;
+  width: 15px;
+  height: 23px;
+  margin-right: 0;
+  background-image: url("/images/icons/map_icon.png");
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-size: auto;
+  margin-top: -2px;
+  background-repeat: no-repeat;
+  background-size: 15px 46px;
+  background-position: 0 0;
+  vertical-align: middle;
+  margin: 0 0.5rem;
+}
+.iBooking_content .content_1 .img-content img {
+  width: 100%;
+  height: 250px;
+}
+.iBooking_content .content_1 .img-content ._rating {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  padding: 1rem 1.5rem;
+  background-color: #fff;
+  color: #222;
+  font-weight: normal;
+  font-size: 0.9rem;
+}
+.iBooking_content .content_1 .img-content ._rating span:first-of-type {
+  color: #fff;
+  background-color: #003580;
+  padding: 0.5rem;
+  border-radius: 5px 5px 5px 0;
+  text-align: center;
+  margin: 0 0.5rem;
+}
+.iBooking_content .content_1 .img-content .overlay {
+  width: 95%;
+}
+.iBooking_content .content_1 .staticmap {
+  position: relative;
+}
+.iBooking_content .content_1 .staticmap img {
+  width: 100%;
+}
+.iBooking_content .content_1 .staticmap .overlay {
+  background-color: rgba(34, 34, 34, 0.3098039216);
+}
+.iBooking_content .content_1 .staticmap button {
+  text-decoration: none;
+}
+.iBooking_content .content_1 .iAttributes .toast {
+  box-shadow: none;
+  border-radius: 0;
+  font-weight: 550;
+}
+.iBooking_content .content_1 .Property .card {
+  box-shadow: none;
+  background: #ebf3ff;
+  border: 1px solid #ebf3ff;
+  border-radius: 3px;
+  padding: 10px;
+  clear: both;
+}
+.iBooking_content .content_1 .Property .card img {
+  height: 200px;
+}
+.iBooking_content .content_1 .Property .card .card-title {
+  font-family: OxyB;
+  font-family: OxyB;
+  font-weight: bold;
+}
+[dir=rtl] .iBooking_content .content_1 .Property .card .card-title {
+  font-family: CairoB;
+}
+.iBooking_content .content_1 .Property .card .card-subtitle {
+  font-weight: bold;
+}
+.iBooking_content .content_1 .Property .card p.card-text {
+  margin: 1.3rem 0;
+}
+.iBooking_content .content_1 .Property .card p.card-text i {
+  align-items: center;
+  display: flex;
+  padding: 0;
+  font-size: 2rem;
+}
+.iBooking_content .content_1 .Property .card p.card-text span {
+  padding: 0;
+  font-size: 0.95rem;
+}
+.iBooking_content .content_1 .Property .card .checkIn_btn {
+  font-weight: 550;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0;
+  box-shadow: none;
+  text-align: center;
+}
+.iBooking_content .checkIn-history table {
+  text-align: center;
+}
+.iBooking_content .checkIn-history table th, .iBooking_content .checkIn-history table td {
+  padding: 0.3rem 1rem;
+}
+.iBooking_content .checkIn-history table thead th {
+  background-color: #4C76B2;
+  color: #fff;
+}
+.iBooking_content .checkIn-history table tbody td .rating {
+  display: flex;
+  max-width: max-content;
+  display: inline-block;
+}
+.iBooking_content .checkIn-history table tbody td .rating ul {
+  list-style: none;
+  font-size: 0.6rem;
+  padding: 0;
+  display: flex;
+}
+.iBooking_content .checkIn-history table tbody td .rating ul li {
+  padding: 0;
+}
+.iBooking_content .checkIn-history table tbody td .rating ul li i {
+  font-size: 1.2rem;
+  color: #febb02;
+}
+.iBooking_content .recent_Ibookings .card {
+  border-radius: 0;
+  box-shadow: none;
+}
+[dir=rtl] .iBooking_content .recent_Ibookings .card {
+  padding: 0 0.5rem;
+}
+.iBooking_content .recent_Ibookings .card img {
+  border-radius: 0;
+  height: 200px;
+}
+.iBooking_content .recent_Ibookings .card .card-body > a {
+  color: #444;
+  text-decoration: none;
+}
+.iBooking_content .recent_Ibookings .card .card-body .card-title {
+  font-weight: bold;
+  text-transform: capitalize;
+  font-family: OxyB;
+  font-size: 0.95rem;
+}
+.iBooking_content .recent_Ibookings .card .card-body .card-text {
+  font-weight: 550;
+  font-family: Oxy;
+  font-size: 0.9rem;
+}
+.iBooking_content .recent_Ibookings .card .card-body .card-text small b {
+  color: #333;
+  text-decoration: underline;
+}
+.iBooking_content .recent_Ibookings .card .card-body .card-text.reviews b {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+.iBooking_content .recent_Ibookings .card .card-body .card-text.reviews span {
+  color: #fff;
+  padding: 5px;
+  width: 28px;
+  height: 28px;
+  background-color: #003580;
+  border-radius: 5.0909090909px 5.0909090909px 5.0909090909px 0;
+}
+.iBooking_content .recent_Ibookings .card .card-body .card-text.reviews small {
+  color: #555;
+}
+.iBooking_content .recent_Ibookings .card .card-body .card-text.reviews small:last-of-type {
+  display: block;
+  margin-top: 0.5rem;
 }
 
 /*# sourceMappingURL=root.css.map */

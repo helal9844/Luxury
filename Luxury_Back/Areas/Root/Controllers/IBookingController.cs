@@ -1,4 +1,5 @@
-﻿using Luxury_Back.DB;
+﻿using Luxury_Back.Controllers;
+using Luxury_Back.DB;
 using Luxury_Back.Models;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
@@ -8,16 +9,13 @@ using Microsoft.Extensions.Localization;
 namespace Luxury_Back.Areas.Root.Controllers
 {
     [Area("Root")]
-    public class IBookingController : Controller
+    public class IBookingController : LayoutController
     {
         #region Language
-        LuxuryDb luxuryDb;
-        //dependancy injection
-        private readonly IStringLocalizer<IBookingController> localizer;
-        public IBookingController(IStringLocalizer<IBookingController> _localizer, LuxuryDb db)
+
+        public IBookingController(IStringLocalizer<IBookingController> _localizer, LuxuryDb luxury) : base(_localizer, luxury)
         {
-            localizer = _localizer;
-            this.luxuryDb = db;
+            this.luxuryDb = luxury;
         }
 
         [HttpPost]
@@ -38,18 +36,32 @@ namespace Luxury_Back.Areas.Root.Controllers
         {
             return Content("IBooking");
         }
-
-        public IBooking Show(int? id)
+        public IActionResult Show(int? id)
         {
             var iBooking = luxuryDb.iBookings
                 .Include(i => i.Address)
+                    .ThenInclude(i =>i.City)
+                    .ThenInclude(i => i.Governorate)
                 .Include(i => i.images)
                 .Include(i => i.Brand)
                 .Include(i => i.Category)
                 .Include(i => i.iBookingAttributes)
                     .ThenInclude(i => i.IAttribute)
                 .FirstOrDefault(i => i.Id == id);
-            return iBooking;
+            TopSearch();
+
+            var recent = luxuryDb.iBookings
+                .Include(i=>i.images.Take(1))
+                .Include(i=>i.iBookingAttributes.Take(1))
+                .Where(i => i.Category_Id == iBooking.Category_Id || i.BrandId == iBooking.BrandId)
+                .Where(i=>i.Id != iBooking.Id)
+                .Where(i=>i.images != null)
+                .Distinct().OrderByDescending(i=>i.Id).Take(10).ToList();
+
+            ViewBag.recentCount = recent.Count;
+            ViewBag.recent = recent;
+
+            return View(iBooking);
         }
     }
 }

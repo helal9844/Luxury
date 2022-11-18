@@ -23,6 +23,10 @@ namespace Luxury_Back.Migrations
                 {
                     {
                       1,
+                      "القاهرة",
+                      "Cairo"
+                    },{
+                      1,
                       "15 مايو",
                       "15 May"
                     }, {

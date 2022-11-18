@@ -1,0 +1,330 @@
+﻿@using Luxury_Back.Helpers
+@model IBooking
+@{
+    ViewData["Title"] = "Show";
+    Layout = "~/Areas/Root/Views/Shared/Layout/_Layout.cshtml";
+}
+
+
+<section class="iBooking_content py-3">
+    <div class="container">
+        <div class="row content_1">
+            <div class="col-md-3 col-12">
+                <div class="staticmap">
+                    <img src="~/images/icons/staticmap.png" />
+                    <div class="overlay">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mapView">Show On Map</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 col-12">
+                <nav class="top-related-nav">
+                    <div class="row">
+                        <div class="col-md-8">
+                            @if (Model.Category != null)
+                            {
+                                <span class="badge badge-secondary">@(Helper.getLnag() == "ar" ? Model.Category.name_ar : Model.Category.name_en)</span>
+                            }
+                            @if (Model.Brand != null)
+                            {
+                                <span class="badge badge-warning">@(Helper.getLnag() == "ar" ? Model.Brand.name_ar : Model.Brand.name_en)</span>
+                            }
+                            <div class="rating">
+                                <ul>
+                                    <li>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                    </li>
+                                    <li>
+                                        <span class="badge badge-warning">
+                                            <i class="la la-thumbs-up"></i> +
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-4 justify-content-end d-flex actions">
+                            <button class="btn inWishList"><i class="la la-heart-o"></i></button>
+
+                            <button class="btn share"><i class="la la-facebook"></i></button>
+                            <button class="btn share"><i class="la la-twitter"></i></button>
+                        </div>
+                    </div>
+                    <span class="badge badge-success _feater">
+                        <i class="ft ft-feather"></i>
+                        Travel Sustainable property
+                    </span>
+                </nav>
+
+                <div class="title">
+                    <h3 class="h3">
+                        @(Helper.getLnag() == "ar" ? Model.name_ar : Model.name_en)
+                    </h3>
+                    <p>
+                        <span class="map_icon"></span>
+                        @Model.Address.address
+                        -
+
+                        <strong> @(Helper.getLnag() == "ar" ? Model.Address.City.name_ar : Model.Address.City.name_en) </strong>
+                      
+                    </p>
+                </div>
+                
+                <div class="img-content">
+                    <div id="lightgallery" class="row">
+                        
+                            @{
+                                int i = 0;
+                            }
+                            @foreach (var img in Model.images)
+                            {
+                                
+                                <a href="@(Helper.imageUrl(img.Name))" class="col-md-@(i<2?6:4) @(i+1>5?"d-none":null) mb-2 px-2">
+                                    @if(i==1){
+                                        <div class="_rating">
+                                            <span>
+                                                9.8
+                                            </span>
+                                            <span>Very Good</span>
+                                        </div>
+                                    }
+                                    <img src="@(Helper.imageUrl(img.Name))" />
+                                    @if(i==4){
+                                    <div class="overlay">@localizer["showMore"]</div>
+                                    }
+                                </a>
+                                i++;
+                            }
+                    </div>
+                </div>
+
+                <div class="iAttributes">
+                    <div class="row">
+                        @foreach(var attr in Model.iBookingAttributes.Where(i=>i.IAttribute.inputType == "checkbox"))
+                        {
+                            <div class="col-md-2">
+                                <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                                    <div class="toast-body">
+                                        <img src="~/images/svg/" />
+                                        <span>@attr.IAttribute.name_en</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="row my-5">
+                    <div class="col-md-8">
+                        <div class="description">
+                            @Html.Raw(Helper.getLnag() == "ar" ? Model.description_ar : Model.description_en)
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+
+                            @if (Model.Brand != null)
+                            {
+                                <div class="col-md-12 Property">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">@(Helper.getLnag() == "ar" ? Model.Brand.name_ar : Model.Brand.name_en)</h5>
+                                            <img class="card-img-top" src="@(Helper.imageUrl(@Model.Brand.logo))" />
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                            <div class="col-md-12 Property">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Property Highlights </h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Get what you need</h6>
+                                        <p class="card-text row">
+                                            <i class="la la-heart col-2"></i>
+                                            <span class="col-10">
+                                                If you have any questions after booking, this property responds fast.
+                                            </span>
+                                        </p>
+                                        <p class="card-text row">
+                                            <i class="la la-hotel col-2"></i>
+                                            <span class="col-10">
+                                                If you have any questions after booking, this property responds fast.
+                                            </span>
+                                        </p>
+                                        <a href="#" class="checkIn_btn btn btn-primary btn-float">Check In</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row checkIn-history">
+            <div class="text-header my-3">
+                <h2 class="h2 fw-bold">
+                    <i class="la la-history"></i>
+                    Check In History
+                </h2>
+            </div>
+            <table class="table table-bordered border-primary">
+                <thead>
+                    <tr>
+                        <th scope="col">Customer Name</th>
+                        <th scope="col">Check Out</th>
+                        <th scope="col">Night</th>
+                        <th scope="col">Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Mohamed Rady</th>
+                        <td>2022/10/15</td>
+                        <td>10</td>
+                        <td>
+                            <div class="rating">
+                                <ul>
+                                    <li>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                        <i class="la la-star"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+            </table>
+        </div>
+
+        @if (ViewBag.recentCount > 0)
+        {
+            <div class="row recent_Ibookings">
+
+                <div class="text-header my-3">
+                    <h2 class="h2 fw-bold">
+                        <i class="la la-gratipay"></i>
+                        Some Other @(Helper.getLnag() == "ar" ? Model.Category.name_ar : Model.Category.name_en) Bookings may you love!
+                    </h2>
+                </div>
+                <div class="recent_items">
+                    <div class="owl-carousel owl-theme">
+                    @foreach (var item in ViewBag.recent)
+                    {
+                        
+                        <div class="col-md-12 recent_item p-0">
+                            <div class="card">
+                                <a asp-action="Show" asp-route-id="@item.Id">
+                                    @if(item.images != null)
+                                    {
+                                        @foreach (var img in item.images)
+                                        {
+                                            <img src="@(Helper.imageUrl(img.Name))" class="card-img-top" alt="@item.name_en">
+                                        }
+                                    }
+                                        
+                                    <div class="card-body">
+                                        <h5 class="card-title">@(Helper.getLnag() == "ar" ? item.name_ar : item.name_en)</h5>
+                                        <p class="card-text"></p>
+                                        <p class="card-text">
+                                            @if (item.iBookingAttributes != null)
+                                            {
+                                                @foreach (var attr in item.iBookingAttributes)
+                                                {
+                                                    <small class="text-muted">Night Cost: <b>EGP @attr.Value??0</b></small>
+                                                }
+                                            }
+
+                                        </p>
+                                        <p class="card-text reviews">
+                                            <span>0.9</span>
+                                            <b>Very Good</b>
+                                            <small>   </small>
+                                            <small>200 reviews</small>
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    }
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+
+<!-- Modal -->
+<div class="modal fade" id="mapView" tabindex="-1" aria-labelledby="mapViewLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="mapViewLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</section>
+
+@section Styles{
+    <link type="text/css" rel="stylesheet" href="~/assets/lightgallery.js/dist/css/lightgallery.css" />
+
+    <link type="text/css" rel="stylesheet" href="~/assets/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css" />
+    <link type="text/css" rel="stylesheet" href="~/assets/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css" />
+
+
+}
+
+@section Scripts{
+    <script src="~/assets/lightgallery.js/dist/js/lightgallery.min.js"></script>
+
+    <!-- lightgallery plugins -->
+    <script src="~/assets/lightgallery.js/dist/js/lg-thumbnail.min.js"></script>
+    <script src="~/assets/lightgallery.js/dist/js/lg-fullscreen.min.js"></script>
+
+    <!-- owl carousel -->
+    <script src="~/assets/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+
+    <script>
+        lightGallery(document.getElementById('lightgallery'));
+    </script>
+    
+    <script>
+
+        
+
+        $('.owl-carousel').owlCarousel({
+            loop:true,
+            margin:15,
+            nav:false,
+            dots: false,
+            rtl: @(Helper.getLnag() == "ar" ? "true" : "false"),
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:3
+                },
+                1000:{
+                    items:5
+                }
+            }
+        })
+
+    </script>
+}

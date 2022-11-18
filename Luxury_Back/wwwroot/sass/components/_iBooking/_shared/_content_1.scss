@@ -1,0 +1,367 @@
+﻿.text-header {
+    h2 {
+        font-size: 1.7rem;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: .5rem;
+        color: #003580 !important;
+
+        i {
+            font-size: 2rem;
+        }
+    }
+}
+
+.content_1 {
+
+    .overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: #2227;
+        top: 0;
+        text-align: center;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        font-size: 1.2rem;
+        color: #fff;
+        text-decoration: underline;
+    }
+
+    .top-related-nav {
+        .badge {
+            border-radius: 0;
+            font-size: .9rem;
+
+            &.badge-warning {
+                color: #444;
+                background-color: $_gold;
+            }
+        }
+
+        .rating {
+            display: flex;
+            max-width: max-content;
+            display: inline-block;
+
+            ul {
+                list-style: none;
+                font-size: .6rem;
+                padding: 0;
+                display: flex;
+
+                li {
+                    padding: 0;
+
+                    i {
+                        font-size: 1rem;
+                        color: #febb02;
+                    }
+
+                    .badge {
+                        position: relative;
+                        bottom: 4px;
+                        left: 5px;
+                        color: #fff;
+                        font-weight: bold;
+                        font-size: 1.1rem;
+                        padding: 0.15em 0.4em;
+                        color: #fff;
+                        font-size: 1.2rem;
+
+                        i {
+                            color: #fff;
+                            font-size: 1.4rem;
+                        }
+                    }
+                }
+            }
+        }
+
+        .actions {
+            button {
+                border: none;
+                background-color: #fff;
+                color: $bg_blue;
+
+                &:hover {
+                    background-color: rgba(40, 208, 148, 0.12);
+                }
+
+                i {
+                    font-size: 1.8rem;
+                }
+
+                &.inWishList {
+                }
+            }
+        }
+
+        ._feater {
+            background-color: #28D09438;
+            color: #008009;
+            text-transform: capitalize;
+            font-weight: lighter;
+            font-family: Oxy;
+            font-size: 12px !important;
+            border-radius: 0 !important;
+
+            i {
+                font-size: 1.1rem;
+            }
+        }
+    }
+
+    .title {
+        margin: 1rem 0;
+
+        h3 {
+            font-weight: bold;
+        }
+
+        p {
+            display: flex;
+            font-weight: lighter;
+
+            .map_icon {
+                display: block;
+                width: 15px;
+                height: 23px;
+                margin-right: 0;
+                background-image: url("/images/icons/map_icon.png");
+                background-position-x: 0%;
+                background-position-y: 0%;
+                background-size: auto;
+                margin-top: -2px;
+                background-repeat: no-repeat;
+                background-size: 15px 46px;
+                background-position: 0 0;
+                vertical-align: middle;
+                margin: 0 .5rem;
+            }
+        }
+    }
+
+    .img-content {
+        img {
+            width: 100%;
+            height: 250px;
+        }
+
+        ._rating {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            padding: 1rem 1.5rem;
+            background-color: #fff;
+            color: #222;
+            font-weight: normal;
+            font-size: .9rem;
+
+            span {
+                &:first-of-type {
+                    color: #fff;
+                    background-color: #003580;
+                    padding: .5rem;
+                    border-radius: 5px 5px 5px 0;
+                    text-align: center;
+                    margin: 0 .5rem;
+                }
+            }
+        }
+
+        .overlay {
+            width: 95%;
+        }
+    }
+
+
+
+    .staticmap {
+        position: relative;
+
+        img {
+            width: 100%;
+        }
+
+        .overlay {
+            background-color: #2222224f;
+        }
+
+        button {
+            text-decoration: none;
+        }
+    }
+
+    .iAttributes {
+        .toast {
+            box-shadow: none;
+            border-radius: 0;
+            font-weight: 550;
+        }
+    }
+
+    .Property {
+        .card {
+            box-shadow: none;
+            background: #ebf3ff;
+            border: 1px solid #ebf3ff;
+            border-radius: 3px;
+            padding: 10px;
+            clear: both;
+
+            img {
+                height: 200px;
+            }
+
+            .card-title {
+                font-family: OxyB;
+                @include dir(font-family, OxyB, CairoB);
+                font-weight: bold;
+            }
+
+            .card-subtitle {
+                font-weight: bold;
+            }
+
+            p {
+                &.card-text {
+                    margin: 1.3rem 0;
+
+                    i {
+                        align-items: center;
+                        display: flex;
+                        padding: 0;
+                        font-size: 2rem;
+                    }
+
+                    span {
+                        padding: 0;
+                        font-size: .95rem;
+                    }
+                }
+            }
+
+            .checkIn_btn {
+                font-weight: 550;
+                width: 100%;
+                padding: .5rem;
+                border-radius: 0;
+                box-shadow: none;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.checkIn-history {
+    
+    table {
+        text-align: center;
+
+        th, td {
+            padding: .3rem 1rem;
+        }
+
+        thead {
+            th {
+                background-color: #4C76B2;
+                color: #fff;
+            }
+        }
+
+        tbody {
+            td {
+                .rating {
+                    display: flex;
+                    max-width: max-content;
+                    display: inline-block;
+
+                    ul {
+                        list-style: none;
+                        font-size: .6rem;
+                        padding: 0;
+                        display: flex;
+
+                        li {
+                            padding: 0;
+
+                            i {
+                                font-size: 1.2rem;
+                                color: #febb02;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.recent_Ibookings {
+    .owl-item active{
+        
+    } 
+    .card {
+        border-radius: 0;
+        box-shadow: none;
+        @include one_dir(padding, 0 0.5rem);
+
+        img {
+            border-radius: 0;
+            height: 200px;
+        }
+
+        .card-body {
+            > a {
+                color: #444;
+                text-decoration: none;
+            }
+
+            .card-title {
+                font-weight: bold;
+                text-transform: capitalize;
+                font-family: OxyB;
+                font-size: .95rem;
+            }
+
+            .card-text {
+                font-weight: 550;
+                font-family: Oxy;
+                font-size: .9rem;
+
+                small {
+                    b {
+                        color: #333;
+                        text-decoration: underline;
+                    }
+                }
+
+                &.reviews {
+                    b {
+                        font-weight: bold;
+                        font-size: .9rem;
+                    }
+
+                    span {
+                        color: #fff;
+                        padding: 5px;
+                        width: 28px;
+                        height: 28px;
+                        background-color: #003580;
+                        border-radius: calc(4px*7/5.5) calc(4px*7/5.5) calc(4px*7/5.5) 0;
+                    }
+
+                    small {
+                        color: #555;
+
+                        &:last-of-type {
+                            display: block;
+                            margin-top: .5rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

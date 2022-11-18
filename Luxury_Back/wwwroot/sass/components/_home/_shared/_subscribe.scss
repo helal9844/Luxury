@@ -43,9 +43,12 @@
                 #iclose {
                     position: absolute;
                     top: 5%;
-                    right: 2%;
-                    a{
-                        color:black;
+                    right: 5px;
+                    @include one_dir(right, auto);
+                    @include one_dir(left, 5px);
+
+                    a {
+                        color: black;
                     }
                 }
             }

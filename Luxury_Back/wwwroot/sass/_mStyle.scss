@@ -24,3 +24,34 @@
         }
     }
 }
+
+.component_siction {
+    margin: 1rem 0;
+    .title_row {
+        h2 {
+            text-transform: capitalize;
+            font-family: PopB;
+            margin-bottom: 1rem;
+            @include one_dir(font-family, CairoB);
+        }
+    }
+}
+
+.btn-primary {
+    background-color: #0d6efd !important;
+
+    &:hover {
+        background-color: #0d67ec !important;
+        border-color: #0a58ca;
+    }
+
+    color: #fff;
+}
+
+.mbsc-calendar-title-wrapper {
+    overflow: unset !important;
+}
+
+.avatar-online i{
+    background-color: transparent !important;
+}

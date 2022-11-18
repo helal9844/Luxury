@@ -106,7 +106,8 @@
   "rooms": "rooms",
   "person": "person",
   "persons": "persons",
-  "search":  "Search",
+  "search": "Search",
+  "showMore": "Show More",
 
   //topfooter
   "hfootertitle": "Save time, save money!",

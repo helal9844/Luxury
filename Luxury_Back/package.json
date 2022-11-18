@@ -9,8 +9,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {},
   "dependencies": {
+    "lightgallery.js": "^1.4.0",
+    "photoswipe": "^5.3.3",
     "sass": "^1.56.1"
   }
 }

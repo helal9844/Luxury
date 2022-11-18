@@ -1,13 +1,17 @@
-._top_header_title{
+._top_header_title {
     position: relative;
-    h1, p{
+    z-index: 1;
+
+    h1, p {
         color: #fff;
         text-transform: capitalize;
         font-family: OxyB;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     }
-    h1{
+
+    h1 {
         font-family: OxyB;
         font-weight: bolder;
         font-size: calc(1.375rem + 1.5vw);
-    }  
+    }
 }

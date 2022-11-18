@@ -1,21 +1,30 @@
 ﻿
 header {
+    background-image: url("https://content.r9cdn.net/rimg/dimg/85/e5/d763bad9-city-9087-164429be177.jpg?crop=true&width=1366&height=768&xhint=2760&yhint=1285");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding-top: 50px;
+    position: relative;
+    bottom: 80px;
+
     nav {
         &.header-navbar {
             border-bottom: none !important;
 
             &.fixed-top {
                 box-shadow: none;
-
-                &.onScroll {
-                    box-shadow: 0px 5px 30px 5px rgba(0, 0, 0, 0.17);
-                }
+                background-color: transparent;
 
                 .navbar-brand {
                     .brand-text {
                         font-family: Pop;
+                        color: #003580 !important;
+                        text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
                     }
                 }
+
+
 
                 .navbar-container {
                     li {
@@ -55,10 +64,24 @@ header {
                         }
                     }
                 }
+
+                &.onScroll {
+                    box-shadow: 0px 5px 30px 5px rgba(0, 0, 0, 0.17);
+                    background-color: #003580 !important;
+
+                    .navbar-brand {
+                        .brand-text {
+                            color: #fff !important;
+                            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+                        }
+                    }
+                }
             }
         }
 
         &.nav_bottom {
+            z-index: 1;
+
             .nav-item {
                 .nav-link {
                     color: #fff;
@@ -93,7 +116,15 @@ header {
                 }
             }
         }
+        /*background-color: $bg-blue !important;*/
+    }
 
-        background-color: $bg-blue !important;
+    .overlay {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        background-color: rgba(17, 17, 17, 0.34);
+        z-index: 0;
+        height: 100%;
     }
 }

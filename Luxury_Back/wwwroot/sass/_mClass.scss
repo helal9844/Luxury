@@ -62,25 +62,18 @@
     font-weight: 550 !important;
 }
 
-.pace-progress{
+.pace-progress {
     height: 5px;
 }
 
-._bg-blue{
+._bg-blue {
     background-color: $bg-blue !important;
 }
 
-.btn-primary {
-    background-color: #0d6efd !important;
-
-    &:hover {
-        background-color: #0d67ec !important;
-        border-color: #0a58ca;
-    }
-
-    color: #fff;
+.content {
+    @include dir(margin-left, auto !important, auto !important, margin-right);
 }
 
-.mbsc-calendar-title-wrapper {
-    overflow: unset !important;
+.text_align{
+    @include dir();
 }

@@ -32,7 +32,6 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Root\Data\" />
     <Folder Include="Areas\Root\Models\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Validations\" />
     <Folder Include="wwwroot\images\home\" />
     <Folder Include="wwwroot\images\panel\" />
@@ -98,10 +97,6 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Update="Areas\Admin\Views\_ViewStart.cshtml">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="Areas\Root\Views\Home\Index.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>

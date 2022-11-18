@@ -1,0 +1,56 @@
+﻿._guests_love {
+    .card {
+        border-radius: 0;
+
+        card-img-top {
+            border-radius: 0;
+            height: 250px;
+        }
+
+        .card-body {
+            > a {
+                color: #444;
+                text-decoration: none;
+            }
+
+            .card-title {
+                font-weight: bold;
+                text-transform: capitalize;
+                font-family: OxyB;
+            }
+
+            .card-text {
+                font-weight: 550;
+                font-family: Oxy;
+                font-size: 1rem;
+
+                small {
+                    b {
+                        color: #333;
+                        text-decoration: underline;
+                    }
+                }
+
+                &.reviews {
+                    b {
+                        font-weight: bold;
+                        font-size: .9rem;
+                    }
+
+                    span {
+                        color: #fff;
+                        padding: 5px;
+                        width: 28px;
+                        height: 28px;
+                        background-color: #003580;
+                        border-radius: calc(4px*7/5.5) calc(4px*7/5.5) calc(4px*7/5.5) 0;
+                    }
+
+                    small {
+                        color: #555;
+                    }
+                }
+            }
+        }
+    }
+}
