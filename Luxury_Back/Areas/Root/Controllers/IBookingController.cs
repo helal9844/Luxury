@@ -63,5 +63,10 @@ namespace Luxury_Back.Areas.Root.Controllers
 
             return View(iBooking);
         }
+
+        public IActionResult Checked_In()
+        {
+            return View();
+        }
     }
 }
