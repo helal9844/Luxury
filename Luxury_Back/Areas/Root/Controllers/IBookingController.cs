@@ -74,6 +74,7 @@ namespace Luxury_Back.Areas.Root.Controllers
             {
                 return RedirectToAction("Login", "Auth");
             }
+
             return View();
         }
 
