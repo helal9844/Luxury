@@ -28,6 +28,7 @@
   "ar-EG": "العربية",
   "en-US": "الانجليزية",
   "not selected": "لم يتم اختيار",
+  "Check In History": "سجلات الوصول",
   //side bar
   "category": "قسم",
   "categories": "الاقسام",
@@ -134,6 +135,8 @@
   "persons": "اشخاص",
   "search": "بحث",
   "showMore": "عرض المزيد",
+  "some other": "بعض ",
+  "may you love": "التي من الممكن ان تعجبك",
 
   //topfooter
   "hfootertitle": "وفر وقتك ومالك!",

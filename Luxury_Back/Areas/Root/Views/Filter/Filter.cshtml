@@ -1,0 +1,65 @@
+﻿@using Luxury_Back.Helpers;
+@model IEnumerable<IBooking>
+@{
+    ViewData["Title"] = "Filter";
+    Layout = "~/Areas/Root/Views/Shared/Layout/_Layout.cshtml";
+}
+
+<section class="ibooking-filter">
+    <div class="row recent_Ibookings">
+
+        <div class="text-header my-3">
+            <h2 class="h2 fw-bold">
+                <i class="la la-gratipay"></i>
+                Some Other Bookings may you love!
+            </h2>
+        </div>
+        <div class="recent_items">
+            <div class="owl-carousel owl-theme">
+                @foreach (var item in Model)
+                {
+
+                    <div class="col-md-12 recent_item p-0">
+                        <div class="card">
+                            <a asp-action="Show" asp-route-id="@item.Id">
+                                @if (item.images != null)
+                                {
+                                    @foreach (var img in item.images)
+                                    {
+                                        <img src="@(Helper.imageUrl(img.Name))" class="card-img-top" alt="@item.name_en">
+                                    }
+                                }
+
+                                <div class="card-body">
+                                    <h5 class="card-title">@(Helper.getLnag() == "ar" ? item.name_ar : item.name_en)</h5>
+                                    <p class="card-text"></p>
+                                    <p class="card-text">
+
+                                        @*@if (item.iBookingAttributes.Count != 0)
+                                    {
+                                    @foreach (var attr in item.iBookingAttributes)
+                                    {
+                                    if(item.value != null)
+                                    {
+                                    <small class="text-muted">Night Cost: <b>EGP @attr.value??0</b></small>
+                                    }
+                                    }
+                                    }*@
+
+                                    </p>
+                                    <p class="card-text reviews">
+                                        <span>0.@(Helper.RandomNum(5, 9))</span>
+                                        <b>Very Good</b>
+                                        <small>   </small>
+                                        <small>@(Helper.RandomNum(200, 800)) reviews</small>
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
