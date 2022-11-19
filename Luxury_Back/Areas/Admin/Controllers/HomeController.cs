@@ -69,6 +69,9 @@ namespace Luxury_Back.Controllers.Admin
         public IActionResult Review(int id)//id checked in
         {
             var user_book = db.checked_in.Include(i => i.User).Include(n => n.IBooking).FirstOrDefault(f => f.Id == id);
+
+            var bookAttr_check = db.iBookingAttributes.Where(e => e.IBookingId == user_book.IBookingId).Take(1).FirstOrDefault();
+            TempData["bookAttr_check"] = bookAttr_check.value;
             //ViewBag.Bookings=  db.checked_in.Include(n => n.IBooking).Where(f => f.Id == id).ToList();
             //TempData["total_price"] = db.checked_in.Where(w=>w.UserId==id).Sum(s => s.amount);
             return View(user_book);

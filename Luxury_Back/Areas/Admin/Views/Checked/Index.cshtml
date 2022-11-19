@@ -28,18 +28,19 @@
         @if (Model != null)
         {
            
-            foreach(var item in Model){
+            @foreach(var item in Model){
                 <tr>
                     <td>@item.Id</td>
                     <td>@item.User.username</td>
                     <td>@item.User.Email</td>
-                    <td class="content-trim">@item.IBooking.name_en</td>
-                    <td>@item.amount</td>
+                    <td class="content-trim">@(Helper.getLnag() == "ar" ? item.IBooking.name_ar : item.IBooking.name_en)</td>
+                     <td>@item.IBooking.iBookingAttributes.First().value</td>
                     <td>@item.checked_in</td>
                     <td>@item.checked_out</td>
                     <td>
                      <form asp-action="Data_User" asp-controller="Checked">
                             <input type="hidden" value="@item.UserId" name="UserId" />
+                            <input type="hidden" value="@item.IBookingId" name="checked_IBookingId" />
                     <button  class="btn btn-info white" ><i class="la la-user"></i></button>
                      </form>
                     </td>

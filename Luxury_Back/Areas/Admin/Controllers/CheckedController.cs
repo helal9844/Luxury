@@ -1,4 +1,5 @@
 ﻿using Luxury_Back.DB;
+using Luxury_Back.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
@@ -49,8 +50,14 @@ namespace Luxury_Back.Areas.Admin.Controllers
                 if ((count - ((id - 1) * pageSize) % count) <= pageSize)//the last page null
                 {
                     TempData["disabled_next"] = "disabled";
+                   
                 }
-                var first_page = luxuryDb.checked_in.Include(i => i.User).Include(n => n.IBooking).Skip((id.Value - 1) * pageSize).Take(pageSize).ToList();
+                var first_page = luxuryDb.checked_in.Include(i => i.User).Include(n => n.IBooking).ThenInclude(i => i.iBookingAttributes.Take(1)).Skip((id.Value - 1) * pageSize).Take(pageSize).ToList();
+                if (first_page == null)
+                {
+                   
+                    return View();
+                }
                 TempData["disabled_prev"] = "disabled";
                 TempData["id"] = id;
                 return View(first_page);
@@ -58,14 +65,24 @@ namespace Luxury_Back.Areas.Admin.Controllers
 
             if ((count - ((id - 1) * pageSize) % count) <= pageSize)//the last page null
             {
-                var last_page = luxuryDb.checked_in.Include(i => i.User).Include(n => n.IBooking).Skip((id.Value - 1) * pageSize).Take(pageSize).ToList();
+                var last_page = luxuryDb.checked_in.Include(i => i.User).Include(n => n.IBooking).ThenInclude(i => i.iBookingAttributes.Take(1)).Skip((id.Value - 1) * pageSize).Take(pageSize).ToList();
+                if (last_page == null)
+                {
+
+                    return View();
+                }
                 TempData["disabled_next"] = "disabled";
                 TempData["id"] = id;
                 return View(last_page);
             }
+            //var bookAttr_check = luxuryDb.iBookingAttributes.Where(i => i.IBookingId == checked_IBookingId).Take(1).FirstOrDefault();
+            //TempData["value_bookAttr_check"] = bookAttr_check.value;
 
-
-            var move_page = luxuryDb.checked_in.Include(i => i.User).Include(n => n.IBooking).Skip((id.Value - 1) * pageSize).Take(pageSize).ToList();
+            var move_page = luxuryDb.checked_in.Include(i => i.User).Include(n => n.IBooking).ThenInclude(i => i.iBookingAttributes.Take(1)).Skip((id.Value - 1) * pageSize).Take(pageSize).ToList();
+            if (move_page == null)
+            {
+                return View();
+            }
             id = id + 1;
             TempData["id"] = id;
             return View(move_page);
@@ -78,7 +95,7 @@ namespace Luxury_Back.Areas.Admin.Controllers
         #region all of Data_User with booking Data_User
 
         [HttpPost]
-        public IActionResult Data_User(int? id ,int UserId)//pagination num,userid
+        public IActionResult Data_User(int? id ,int UserId,int checked_IBookingId)//pagination num,userid,checked_id
         {
             #region user data
             //user data
@@ -91,11 +108,15 @@ namespace Luxury_Back.Areas.Admin.Controllers
             ViewBag.username = user.username;
             ViewBag.email = user.Email;
             ViewBag.phone = user.Phone;
-            ViewBag.Sum_Price = luxuryDb.checked_in.Where(w => w.UserId == UserId).Sum(s => s.amount);
+
             //
             #endregion
 
 
+            var bookAttr_check = luxuryDb.iBookingAttributes.Where(i => i.IBookingId == checked_IBookingId).Take(1).FirstOrDefault();
+            TempData["value_bookAttr_check"] =bookAttr_check.value;
+            //ViewBag.amount = user.amount;
+            //luxuryDb.iBookingAttributes.
             // pagination
             var count = luxuryDb.checked_in.Include(i => i.User).Include(n => n.IBooking).Where(w => w.UserId == UserId).Count();
             int pageSize = 5;
@@ -107,6 +128,11 @@ namespace Luxury_Back.Areas.Admin.Controllers
 
             if (TempData["prev"] == null)//the first page
             {
+                if (count == 0)//i make this condition because of not divided on zero in line number 49
+                {
+                    TempData["count"] = 0;
+                    return View();
+                }
                 if ((count - ((id - 1) * pageSize) % count) <= pageSize)//the last page null
                 {
                     TempData["disabled_next"] = "disabled";
