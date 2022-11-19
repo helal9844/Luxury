@@ -66,8 +66,12 @@ namespace Luxury_Back.Areas.Root.Controllers
             return View(iBooking);
         }
 
-        public IActionResult Checked_In()
+        public IActionResult CheckInForm()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Auth");
+            }
             return View();
         }
     }
