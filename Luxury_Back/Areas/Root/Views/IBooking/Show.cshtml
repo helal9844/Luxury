@@ -160,7 +160,8 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <h5 class="card-title text-capitalize"><i class="la la-check-circle-o"></i> @localizer["check in"]</h5>
-                                            <form asp-action="CheckInForm" id="search_form">
+                                            <form asp-action="CheckInForm" method="post">
+                                                <input type="hidden" name="iBookingId" value="@Model.Id"/>
                                                 <fieldset class="form-group">
                                                     <div class="row">
                                                         <div class="col-lg-12">
@@ -179,7 +180,7 @@
                                                                             <fieldset>
                                                                                 <div mbsc-page class="demo-range-select">
                                                                                     <div style="height:100%">
-                                                                                        <input type="hidden" id="check_in_out_input" name="check_in_out" autocomplete="off" />
+                                                                                        <input type="hidden" id="check_in_out_input" name="checkInOut" autocomplete="off" />
                                                                                     </div>
                                                                                 </div>
                                                                             </fieldset>
@@ -209,12 +210,12 @@
                                                                                 <div class="input-group float-start">
                                                                                     <input id="persons" type="text" class="touchspin-color p-0" value="1"
                                                                                             data-bts-button-down-class="btn btn-info"
-                                                                                            data-bts-button-up-class="btn btn-info" min="1" name="person"
+                                                                                            data-bts-button-up-class="btn btn-info" min="1" name="persons"
                                                                                             autocomplete="off" />
                                                                                 </div>
                                                                             </fieldset>
                                                                         </li>
-                                                                        <li>
+                                                                        @*<li>
                                                                             <fieldset>
                                                                                 <span class="float-end">
                                                                                     @localizer["rooms"]
@@ -226,7 +227,7 @@
                                                                                             autocomplete="off" />
                                                                                 </div>
                                                                             </fieldset>
-                                                                        </li>
+                                                                        </li>*@
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -272,7 +273,9 @@
             </div>
         </div>
 
-        <div class="row checkIn-history">
+        @if(Model.Checked_In != null)
+        {
+            <div class="row checkIn-history">
             <div class="col-lg-12">
                 <div class="text-header my-3">
                     <h2 class="h2 fw-bold">
@@ -290,28 +293,31 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">Mohamed Rady</th>
-                            <td>2022/10/15</td>
-                            <td>10</td>
-                            <td>
-                                <div class="rating">
-                                    <ul>
-                                        <li>
-                                            <i class="la la-star"></i>
-                                            <i class="la la-star"></i>
-                                            <i class="la la-star"></i>
-                                            <i class="la la-star"></i>
-                                            <i class="la la-star"></i>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
+                        @foreach(var check in Model.Checked_In)
+                        {
+                            <tr>
+                                <th scope="row">@check.User.username</th>
+                                <td>@check.checked_out</td>
+                                <td>@check.nights_count</td>
+                                <td>
+                                    <div class="rating">
+                                        <ul>
+                                            <li>
+                                                @for(var ii = 0; ii< Helper.RandomNum(2,6); ii++)
+                                                    {
+                                                        <i class="la la-star"></i>
+                                                    }
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
                 </table>
             </div>
             
         </div>
+        }
 
         @if (ViewBag.recentCount > 0)
         {
@@ -357,10 +363,10 @@
 
                                         </p>
                                         <p class="card-text reviews">
-                                            <span>0.9</span>
+                                            <span>0.@(Helper.RandomNum(5, 9))</span>
                                             <b>Very Good</b>
                                             <small>   </small>
-                                            <small>200 reviews</small>
+                                            <small>@(Helper.RandomNum(200, 800)) reviews</small>
                                         </p>
                                     </div>
                                 </a>

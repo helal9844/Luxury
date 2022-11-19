@@ -17,7 +17,7 @@
 }
 
     <form asp-action="_Dropzone" asp-route-id="@ViewBag.id" class="dropzone dropzone-area" id="dpz-remove-thumb" enctype="multipart/form-data">
-        @*<button class="btn btn-primary d-inline-flex fw-bold" type="submit"><i class="ft-upload-cloud mx-1" style="font-size:1.5rem"></i> @localizer["upload"]</button>*@
+        <button class="btn btn-primary d-inline-flex fw-bold" type="submit"><i class="ft-upload-cloud mx-1" style="font-size:1.5rem"></i> @localizer["upload"]</button>
         <div>
             <div class="dz-message">@localizer["dropHere"]</div>
             <input type="file" name="file" class="d-none" multiple/>

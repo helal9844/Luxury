@@ -1,0 +1,137 @@
+﻿@using Luxury_Back.Helpers
+@model Checked_In
+@{
+    var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar") ? "rtl" : "ltr";
+}
+@{
+
+    ViewData["Title"] = localizer["checked_in"];
+    Layout = "~/Areas/Root/Views/Shared/Layout/_CardView.cshtml";
+}
+@section Styles {
+    <!-- BEGIN VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="~/Admin/app-assets/css/vendors.css">
+    <link rel="stylesheet" type="text/css" href="~/Admin/app-assets/vendors/css/ui/prism.min.css">
+    <!-- END VENDOR CSS-->
+    <!-- BEGIN MODERN CSS-->
+    <link rel="stylesheet" type="text/css" href="~/Admin/app-assets/css/app.css">
+    <!-- END MODERN CSS-->
+    <!-- BEGIN Page Level CSS-->
+    <link rel="stylesheet" type="text/css" href="~/Admin/app-assets/css/core/menu/menu-types/vertical-menu-modern.css">
+    <link rel="stylesheet" type="text/css" href="~/Admin/app-assets/css/core/colors/palette-gradient.css">
+    <!-- END Page Level CSS-->
+    <!-- BEGIN Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="~/Admin/assets/css/style.css">
+    <!-- END Custom CSS-->
+}
+
+ <div class="app-content content">
+    <div class="content-wrapper">
+      <div class="content-header row">
+      <div class="content-body">
+        <!-- Bootstrap Checkout form -->
+        <section id="social-cards">
+          <div class="row mt-2">
+                            <!--start cart -->
+            <div class="col-md-4 order-md-2 mb-4">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted">Booking Data</span>
+                </h4>
+              <ul class="list-group mb-3 card">
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                  <div>
+                    <h6 class="my-0">@(Helper.getLnag() == "ar" ? Model.IBooking.name_ar : Model.IBooking.name_en)</h6>
+                    
+                  </div>
+                    @if(Model.IBooking.iBookingAttributes != null)
+                    {
+                        <span class="text-muted">@(Model.IBooking.iBookingAttributes.First().value)</span>
+                    }               
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                  <div>
+                    <h6 class="my-0">Checked In Date</h6>
+                  </div>
+                  <span class="text-muted">@Model.checked_in</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                  <div>
+                    <h6 class="my-0">Checked Out</h6>
+                  </div>
+                    <span class="text-muted">@Model.checked_in</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                  <div class="text-success">
+                    <h6 class="my-0">Duration Of Stay</h6>
+                  </div>
+                  <span class="text-success">@Model.nights_count</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                  <span class="text-capitalize">Total Amount </span>
+                  <strong>@Model.amount</strong>
+                </li>
+              </ul>
+                               
+              <form class="card p-2" asp-action="save-booking">
+                <div class="input-group">
+                  @*<input type="text" class="form-control" placeholder="Promo code">
+                  <div class="input-group-append">
+                    <button type="submit" class="btn btn-secondary">Redeem</button>
+                  </div>*@
+                </div>
+              </form>
+            </div>
+            <!--end cart -->
+            <div class="col-md-8 order-md-1">
+              <h4 class="mb-3">Billing address</h4>
+            <form class="needs-validation p-2 bg-white card" asp-action="saveCheckIn" method="post">
+
+                <input type="hidden" asp-for="amount"/>
+                <input type="hidden" asp-for="IBookingId"/>
+                <input type="hidden" asp-for="checked_in"/>
+                <input type="hidden" asp-for="checked_out"/>
+                <input type="hidden" asp-for="nights_count"/>
+                <input type="hidden" asp-for="UserId"/>
+
+                <div class="mb-3">
+                  <label for="username">Username</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"> </span>
+                    </div>
+                    <input type="text" class="form-control" id="username" asp-for="User.username">
+
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="email">Email
+                  </label>
+                  <input type="email" class="form-control" id="email"  asp-for="User.Email">
+                </div>
+
+                <div class="mb-3">
+                  <label for="address2">Phone
+                  </label>
+                  <input type="text" class="form-control" id="address2" asp-for="User.Phone">
+                </div>
+                <button class="btn btn-info btn-lg btn-block" type="submit">Continue to checkout</button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+      @section Scripts{
+    <!-- BEGIN VENDOR JS-->
+    <script src="~/Admin/app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN PAGE VENDOR JS-->
+    <script src="~/Admin/app-assets/vendors/js/ui/prism.min.js" type="text/javascript"></script>
+    <!-- END PAGE VENDOR JS-->
+    <!-- BEGIN MODERN JS-->
+    <script src="~/Admin/app-assets/js/core/app-menu.js" type="text/javascript"></script>
+    <script src="~/Admin/app-assets/js/core/app.js" type="text/javascript"></script>
+    <script src="~/Admin/app-assets/js/scripts/customizer.js" type="text/javascript"></script>
+    <!-- END MODERN JS-->
+    <!-- BEGIN PAGE LEVEL JS-->
+    <!-- END PAGE LEVEL JS-->
+      }        

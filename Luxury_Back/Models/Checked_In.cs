@@ -15,6 +15,8 @@ namespace Luxury_Back.Models
         public int IBookingId { get; set; }
         [DefaultValue(0)]
         public int amount { get; set; }
+        [DefaultValue(0)]
+        public int nights_count { get; set; }
         public DateTime checked_in { get; set; }
         public DateTime checked_out { get; set; }
        

@@ -238,6 +238,62 @@ section {
   background-color: transparent !important;
 }
 
+.recent_Ibookings .card {
+  border-radius: 0;
+  box-shadow: none;
+}
+[dir=rtl] .recent_Ibookings .card {
+  padding: 0 0.5rem;
+}
+.recent_Ibookings .card img {
+  border-radius: 0;
+  height: 200px;
+}
+.recent_Ibookings .card a {
+  color: #444;
+  text-decoration: none;
+  color: #222;
+}
+.recent_Ibookings .card .card-body > a {
+  color: #444;
+  text-decoration: none;
+  color: #222;
+}
+.recent_Ibookings .card .card-body .card-title {
+  font-weight: bold;
+  text-transform: capitalize;
+  font-family: OxyB;
+  font-size: 0.95rem;
+}
+.recent_Ibookings .card .card-body .card-text {
+  font-weight: 550;
+  font-family: Oxy;
+  font-size: 0.9rem;
+}
+.recent_Ibookings .card .card-body .card-text small b {
+  color: #333;
+  text-decoration: underline;
+}
+.recent_Ibookings .card .card-body .card-text.reviews b {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+.recent_Ibookings .card .card-body .card-text.reviews span {
+  color: #fff;
+  padding: 5px;
+  width: 28px;
+  height: 28px;
+  background-color: #003580;
+  border-radius: 5.0909090909px 5.0909090909px 5.0909090909px 0;
+}
+.recent_Ibookings .card .card-body .card-text.reviews small {
+  color: #555;
+}
+.recent_Ibookings .card .card-body .card-text.reviews small:last-of-type {
+  display: block;
+  margin-top: 0.5rem;
+}
+
 .top_search_content {
   position: relative;
   top: 55px;
@@ -694,36 +750,47 @@ section .subs .subscontent .subcol #iclose a, .closesection .subs .subscontent .
   color: black;
 }
 
-._guests_love .card {
+._guests_love .recent_Ibookings .card {
   border-radius: 0;
+  box-shadow: none;
 }
-._guests_love .card card-img-top {
+[dir=rtl] ._guests_love .recent_Ibookings .card {
+  padding: 0 0.5rem;
+}
+._guests_love .recent_Ibookings .card img {
   border-radius: 0;
-  height: 250px;
+  height: 200px;
 }
-._guests_love .card .card-body > a {
+._guests_love .recent_Ibookings .card a {
   color: #444;
   text-decoration: none;
+  color: #222;
 }
-._guests_love .card .card-body .card-title {
+._guests_love .recent_Ibookings .card .card-body > a {
+  color: #444;
+  text-decoration: none;
+  color: #222;
+}
+._guests_love .recent_Ibookings .card .card-body .card-title {
   font-weight: bold;
   text-transform: capitalize;
   font-family: OxyB;
+  font-size: 0.95rem;
 }
-._guests_love .card .card-body .card-text {
+._guests_love .recent_Ibookings .card .card-body .card-text {
   font-weight: 550;
   font-family: Oxy;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
-._guests_love .card .card-body .card-text small b {
+._guests_love .recent_Ibookings .card .card-body .card-text small b {
   color: #333;
   text-decoration: underline;
 }
-._guests_love .card .card-body .card-text.reviews b {
+._guests_love .recent_Ibookings .card .card-body .card-text.reviews b {
   font-weight: bold;
   font-size: 0.9rem;
 }
-._guests_love .card .card-body .card-text.reviews span {
+._guests_love .recent_Ibookings .card .card-body .card-text.reviews span {
   color: #fff;
   padding: 5px;
   width: 28px;
@@ -731,8 +798,12 @@ section .subs .subscontent .subcol #iclose a, .closesection .subs .subscontent .
   background-color: #003580;
   border-radius: 5.0909090909px 5.0909090909px 5.0909090909px 0;
 }
-._guests_love .card .card-body .card-text.reviews small {
+._guests_love .recent_Ibookings .card .card-body .card-text.reviews small {
   color: #555;
+}
+._guests_love .recent_Ibookings .card .card-body .card-text.reviews small:last-of-type {
+  display: block;
+  margin-top: 0.5rem;
 }
 
 .iBooking_content .text-header h2 {
@@ -977,61 +1048,6 @@ section .subs .subscontent .subcol #iclose a, .closesection .subs .subscontent .
 .iBooking_content .checkIn-history table tbody td .rating ul li i {
   font-size: 1.2rem;
   color: #febb02;
-}
-.iBooking_content .recent_Ibookings .card {
-  border-radius: 0;
-  box-shadow: none;
-}
-[dir=rtl] .iBooking_content .recent_Ibookings .card {
-  padding: 0 0.5rem;
-}
-.iBooking_content .recent_Ibookings .card img {
-  border-radius: 0;
-  height: 200px;
-}
-.iBooking_content .recent_Ibookings .card a {
-  color: #444;
-  text-decoration: none;
-  color: #222;
-}
-.iBooking_content .recent_Ibookings .card .card-body > a {
-  color: #444;
-  text-decoration: none;
-  color: #222;
-}
-.iBooking_content .recent_Ibookings .card .card-body .card-title {
-  font-weight: bold;
-  text-transform: capitalize;
-  font-family: OxyB;
-  font-size: 0.95rem;
-}
-.iBooking_content .recent_Ibookings .card .card-body .card-text {
-  font-weight: 550;
-  font-family: Oxy;
-  font-size: 0.9rem;
-}
-.iBooking_content .recent_Ibookings .card .card-body .card-text small b {
-  color: #333;
-  text-decoration: underline;
-}
-.iBooking_content .recent_Ibookings .card .card-body .card-text.reviews b {
-  font-weight: bold;
-  font-size: 0.9rem;
-}
-.iBooking_content .recent_Ibookings .card .card-body .card-text.reviews span {
-  color: #fff;
-  padding: 5px;
-  width: 28px;
-  height: 28px;
-  background-color: #003580;
-  border-radius: 5.0909090909px 5.0909090909px 5.0909090909px 0;
-}
-.iBooking_content .recent_Ibookings .card .card-body .card-text.reviews small {
-  color: #555;
-}
-.iBooking_content .recent_Ibookings .card .card-body .card-text.reviews small:last-of-type {
-  display: block;
-  margin-top: 0.5rem;
 }
 .iBooking_content .ibooking-map {
   width: 100%;

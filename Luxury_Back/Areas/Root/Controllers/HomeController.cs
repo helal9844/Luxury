@@ -35,6 +35,17 @@ namespace Luxury_Back.Areas.Root.Controllers
         public IActionResult Index()
         {
             this.TopSearch();
+
+            var recent = luxuryDb.iBookings
+                .Include(i => i.images.Take(1))
+                .Include(i => i.iBookingAttributes.Take(1))
+                
+                .Where(i => i.images != null)
+                .Distinct().OrderByDescending(i => i.Id).Take(10).ToList();
+
+            ViewBag.recentCount = recent.Count;
+            ViewBag.recent = recent;
+
             return View();
         }
 

@@ -2,11 +2,14 @@
 using Luxury_Back.DB;
 using Luxury_Back.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Localization;
 using System.Data;
+using System.Globalization;
 
 namespace Luxury_Back.Areas.Root.Controllers
 {
@@ -42,11 +45,13 @@ namespace Luxury_Back.Areas.Root.Controllers
         {
             var iBooking = luxuryDb.iBookings
                 .Include(i => i.Address)
-                    .ThenInclude(i =>i.City)
+                    .ThenInclude(i => i.City)
                     .ThenInclude(i => i.Governorate)
                 .Include(i => i.images)
                 .Include(i => i.Brand)
                 .Include(i => i.Category)
+                .Include(i=> i.Checked_In)
+                    .ThenInclude(i => i.User)
                 .Include(i => i.iBookingAttributes)
                     .ThenInclude(i => i.IAttribute)
                 .FirstOrDefault(i => i.Id == id);
@@ -66,16 +71,96 @@ namespace Luxury_Back.Areas.Root.Controllers
             return View(iBooking);
         }
 
-        
         [HttpPost]
-        public IActionResult CheckInForm()
+        public IActionResult CheckInForm([FromForm] int? iBookingId, [FromForm] string? checkInOut, [FromForm] string? person)
         {
-            if (!User.Identity.IsAuthenticated)
+            /*if (!User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Auth");
+            }*/
+
+            var _checkInOut = checkInOut.Split(" - ");
+            var checkIn = DateTime.ParseExact(_checkInOut[0], "dd/MM/yyyy", null);
+            var checkOut = DateTime.ParseExact(_checkInOut[1], "dd/MM/yyyy", null);
+
+            var nights = int.Parse(checkOut.ToString("yyyMMdd")) - int.Parse(checkIn.ToString("yyyMMdd"));
+
+            var userId = int.Parse(User.Claims.First(c => c.Type == "id").Value);
+
+            if (iBookingId == null || userId == null)
+            {
+                return RedirectToAction("Index", "Home");
             }
 
-            return View();
+            IBooking? _IBooking = luxuryDb.iBookings.Include(i => i.iBookingAttributes.Take(1)).FirstOrDefault(i=>i.Id == iBookingId);
+            User? user = luxuryDb.users.FirstOrDefault(i => i.Id == userId);
+            if (_IBooking == null || user == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            int amount = 0;
+
+            if(_IBooking.iBookingAttributes.Count() !=0)
+            {
+                amount = int.Parse(_IBooking.iBookingAttributes.First().value) * nights;
+            }
+
+            Checked_In checked_In= new Checked_In()
+            {
+                IBookingId = _IBooking.Id,
+                UserId = userId,
+                nights_count = nights,
+                checked_in = checkIn,
+                checked_out = checkOut,
+                IBooking = _IBooking,
+                User = user,
+                amount = amount
+            };
+
+            return View(checked_In);
+       /*     return View();*/
+        }
+
+        [HttpPost]
+        public IActionResult saveCheckIn(
+                [FromForm] int? iBookingId, 
+                [FromForm] DateTime? checked_in, 
+                [FromForm] DateTime? checked_out,
+                [FromForm] int? amount,
+                [FromForm] int? UserId,
+                [FromForm] int? nights_count
+            )
+        {
+            if(iBookingId == null || UserId ==null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            using (IDbContextTransaction transaction = luxuryDb.Database.BeginTransaction())
+            {
+                try
+                {
+                    Checked_In checked_In = new Checked_In()
+                    {
+                        IBookingId = iBookingId.Value,
+                        UserId = UserId.Value,
+                        nights_count = nights_count.Value,
+                        checked_in = checked_in.Value,
+                        checked_out = checked_out.Value,
+                        amount = amount.Value
+                    };
+
+                    luxuryDb.checked_in.Add(checked_In);
+                    luxuryDb.SaveChanges();
+                    transaction.Commit();
+                }
+                catch (Exception ex){
+                    transaction.Rollback();
+                }
+            }
+
+            return RedirectToAction("Index", "Home");
         }
 
     }
