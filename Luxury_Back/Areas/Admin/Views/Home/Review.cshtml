@@ -74,7 +74,7 @@
                                     <td>@Model.checked_in</td>
                                     <td>@Model.checked_out</td>
                                     <td>@(int.Parse(Model.checked_out.ToString("yyyMMdd")) - int.Parse(Model.checked_in.ToString("yyyMMdd")))</td>
-                                    <td>@Model.amount</td>
+                                <td>@TempData["bookAttr_check"]</td>
                                    
                                 </tr>
   

@@ -84,8 +84,8 @@
                                             <td>@item.checked_in</td>
                                             <td>@item.checked_out</td>
                                             <td>@(int.Parse(item.checked_out.ToString("yyyMMdd")) - int.Parse(item.checked_in.ToString("yyyMMdd")))</td>
-                                            <td>@item.amount</td>
-                                            <td>@ViewBag.Sum_Price</td>
+                                        <td>@TempData["value_bookAttr_check"]</td>
+                                        <td>@item.amount</td>
                                         </tr>
                                     }
                                 }
@@ -114,39 +114,41 @@
             </div>
     </div>
 </div>
+@*i make this condition because i don't appear next and previous in case data null*@
+@if(TempData["count"]==null)
+{
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
 
+            @if (TempData["disabled_prev"] != null)
+            {
+                <li class="page-item @TempData["disabled_prev"]">
+                    <a class="page-link" asp-action=" Data_User" asp-controller=" Checked" asp-route-id="@TempData["prev"]">Previous</a>@*tabindex="-1"*@
+                </li>
+            }
+            else
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-action=" Data_User" asp-controller=" Checked" asp-route-id="@TempData["prev"]">Previous</a>@*tabindex="-1"*@
+                </li>
+            }
 
-<nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-
-        @if (TempData["disabled_prev"] != null)
-        {
-            <li class="page-item @TempData["disabled_prev"]">
-                <a class="page-link" asp-action=" Data_User" asp-controller=" Checked" asp-route-id="@TempData["prev"]">Previous</a>@*tabindex="-1"*@
-            </li>
-        }
-        else
-        {
-            <li class="page-item">
-                <a class="page-link" asp-action=" Data_User" asp-controller=" Checked" asp-route-id="@TempData["prev"]">Previous</a>@*tabindex="-1"*@
-            </li>
-        }
-
-        @if (TempData["disabled_next"] != null)
-        {
-            <li class="page-item @TempData["disabled_next"]">
-                <a class="page-link" asp-action=" Data_User" asp-controller=" Checked" asp-route-id="@TempData["next"]">Next</a>
-            </li>
-        }
-        else
-        {
-            <li class="page-item">
-                <a class="page-link" asp-action=" Data_User" asp-controller=" Checked" asp-route-id="@TempData["next"]">Next</a>
-            </li>
-        }
-
-    </ul>
-</nav>
+            @if (TempData["disabled_next"] != null)
+            {
+                <li class="page-item @TempData["disabled_next"]">
+                    <a class="page-link" asp-action=" Data_User" asp-controller=" Checked" asp-route-id="@TempData["next"]">Next</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-action=" Data_User" asp-controller=" Checked" asp-route-id="@TempData["next"]">Next</a>
+                </li>
+            }
+        </ul>
+    </nav>
+}
+   
     @section Scripts{
     <script src="~/Admin/app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
     <!-- BEGIN VENDOR JS-->
