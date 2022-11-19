@@ -7,10 +7,12 @@ using Microsoft.Extensions.Localization;
 
 namespace Luxury_Back.Areas.Root.Controllers
 {
+    [Area("Root")]
     public class FilterController : LayoutController
     {
         public FilterController(IStringLocalizer<LayoutController> _localizer, LuxuryDb luxury) : base(_localizer, luxury)
         {
+            this.luxuryDb = luxury;
         }
 
         /*public IActionResult Index(string? cities, string? categories, string? brands, string? iAttributes)
@@ -52,17 +54,18 @@ namespace Luxury_Back.Areas.Root.Controllers
 
         public IActionResult Filter(string? cities, int? categories, string? brands, string? iAttributes)
         {
-            return Content($"{2}");
+            
             var ibookings = luxuryDb.iBookings
                 .Include(i => i.Category)//
                 .Include(i => i.Brand)//
+                .Include(i=>i.images.Take(1))
                 .Include(i => i.Address)
                     .ThenInclude(a => a.City)
                 .Include(i => i.Address)
                     .ThenInclude(a => a.Governorate)
                 .Include(i => i.iBookingAttributes)
-                    .ThenInclude(i => i.IAttribute)//
-                .Where(i => i.Category_Id == categories)
+                    .ThenInclude(i => i.IAttribute)
+                .Where(i=>i.Category_Id == categories)//
             .ToList();
 
             return View(ibookings);

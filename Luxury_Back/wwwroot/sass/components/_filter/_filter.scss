@@ -1,0 +1,25 @@
+﻿.ibooking_filter {
+    .card {
+        .reviews {
+            span {
+                &:first-of-type {
+                    color: #fff;
+                    padding: 5px;
+                    width: 28px;
+                    height: 28px;
+                    background-color: #003580;
+                    border-radius: 5.0909090909px 5.0909090909px 5.0909090909px 0;
+                }
+            }
+
+            small:last-of-type {
+                display: block;
+                margin-top: 0.5rem;
+            }
+
+            img {
+                height: 250px;
+            }
+        }
+    }
+}

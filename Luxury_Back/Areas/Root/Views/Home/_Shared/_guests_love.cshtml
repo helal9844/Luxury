@@ -32,17 +32,6 @@
                                                 <p class="card-text"></p>
                                                 <p class="card-text">
 
-                                                    @if (item.iBookingAttributes.Count != 0)
-                                                    {
-                                                    @foreach (var attr in item.iBookingAttributes)
-                                                    {
-                                                    if(item.value != null)
-                                                    {
-                                                    <small class="text-muted">Night Cost: <b>EGP @attr.value??0</b></small>
-                                                    }
-                                                    }
-                                                    }
-
                                                 </p>
                                                 <p class="card-text reviews">
                                                     <span>0.@(Helper.RandomNum(7, 9))</span>
