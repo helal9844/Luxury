@@ -9,9 +9,9 @@ using System.Diagnostics;
 
 namespace Luxury_Back.Controllers.Admin
 {
-    [Authorize(Roles = "admin")]
+
     [Area("admin")]
-   
+
 
     public class HomeController : Controller
     {
@@ -43,9 +43,37 @@ namespace Luxury_Back.Controllers.Admin
 
         const string ViewPath = "Views/Admin/Dashboard/";
         [Authorize(Roles = "admin")]
+
+        #region Index
         public IActionResult Index()
         {
-            return View();
+            //cards
+            TempData["count_checked"] = db.checked_in.Count();
+            TempData["count_bookings"] = db.iBookings.Count();
+            TempData["count_users"] = db.users.Count();
+            TempData["mount_checked"] = db.checked_in.Sum(s => s.amount);
+
+            //left table booking
+            var list_bookings = db.iBookings.Include(i => i.Category).Include(n => n.Brand).OrderByDescending(o => o.Id).Take(5).ToList();
+
+            //right table checked in
+            ViewBag.list_check = db.checked_in.Include(i => i.IBooking).Include(n => n.User).OrderByDescending(o => o.Id).Take(5).ToList();
+
+            return View(list_bookings);
+
+
         }
+        #endregion
+
+        #region Review Checked_In get
+        public IActionResult Review(int id)//id checked in
+        {
+            var user_book = db.checked_in.Include(i => i.User).Include(n => n.IBooking).FirstOrDefault(f => f.Id == id);
+            //ViewBag.Bookings=  db.checked_in.Include(n => n.IBooking).Where(f => f.Id == id).ToList();
+            //TempData["total_price"] = db.checked_in.Where(w=>w.UserId==id).Sum(s => s.amount);
+            return View(user_book);
+        }
+        #endregion
+
     }
 }

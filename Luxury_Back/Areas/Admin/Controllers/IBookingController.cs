@@ -27,20 +27,63 @@ namespace Luxury_Back.Controllers.Admin
             this.luxuryDb = luxuryDb;
             this.localizer = _localizer;
         }
-        public IActionResult Index()
+        public IActionResult Index(int? id)
         {
             var booking_img = new List<IBookingImg>();
 
 
             // return bookings;
-            var bookings = luxuryDb.iBookings.Include(t => t.Category).Include(t => t.Brand).ToList();
+            // var bookings = luxuryDb.iBookings.Include(t => t.Category).Include(t => t.Brand).ToList();
+            var count = luxuryDb.iBookings.Count();
+            int pageSize = 5;
+            int page_Num = count / pageSize;
 
-            foreach (var booking in bookings)
+            id = id == null ? 1 : id;
+            TempData["prev"] = id > 1 ? id - 1 : null;
+            TempData["next"] = id + 1;
+
+            if (TempData["prev"] == null)//the first page
+            {
+                if ((count - ((id - 1) * pageSize) % count) <= pageSize)//the last page null
+                {
+                    TempData["disabled_next"] = "disabled";
+                }
+                var first_page = luxuryDb.iBookings.Include(t => t.Category).Include(t => t.Brand).Skip((id.Value - 1) * pageSize).Take(pageSize).ToList();
+                TempData["disabled_prev"] = "disabled";
+                TempData["id"] = id;
+                foreach (var booking in first_page)
+                {
+                    booking_img.Add(luxuryDb.iBookingImg.Where(w => w.IBookingId == booking.Id).FirstOrDefault());
+                }
+                ViewBag.IBookingImgs = booking_img;
+                return View(first_page);
+            }
+
+            if ((count - ((id - 1) * pageSize) % count) <= pageSize)//the last page null
+            {
+                var last_page = luxuryDb.iBookings.Include(t => t.Category).Include(t => t.Brand).Skip((id.Value - 1) * pageSize).Take(pageSize).ToList();
+                TempData["disabled_next"] = "disabled";
+                TempData["id"] = id;
+                foreach (var booking in last_page)
+                {
+                    booking_img.Add(luxuryDb.iBookingImg.Where(w => w.IBookingId == booking.Id).FirstOrDefault());
+                }
+                ViewBag.IBookingImgs = booking_img;
+                return View(last_page);
+            }
+
+
+            var move_page = luxuryDb.iBookings.Include(t => t.Category).Include(t => t.Brand).Skip((id.Value - 1) * pageSize).Take(pageSize).ToList();
+            id = id + 1;
+            TempData["id"] = id;
+
+            foreach (var booking in move_page)
             {
                 booking_img.Add(luxuryDb.iBookingImg.Where(w => w.IBookingId == booking.Id).FirstOrDefault());
             }
             ViewBag.IBookingImgs = booking_img;
-            return View(bookings);
+            return View(move_page);
+            //  return View(bookings);
         }
 
         [HttpGet]
@@ -136,27 +179,88 @@ namespace Luxury_Back.Controllers.Admin
 
             return View(ViewPath + "Edit.cshtml", iBooking);
         }
+        //[HttpPost]
+        //public IActionResult _Edit(IBooking iBooking)
+        //{
+        //    bool isFound = luxuryDb.iBookings.Any(att => att.Id == iBooking.Id);
+        //    if (!isFound)
+        //    {
+        //        TempData["error_msg"] = "Data Not Found";
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    // ADD IBOOKING ATTRIBUTES
+        //    iBooking.iBookingAttributes = this.iBookingAttributes(Request);
+
+        //    using (IDbContextTransaction transaction = luxuryDb.Database.BeginTransaction())
+        //    {
+        //        try
+        //        {
+        //            luxuryDb.iBookings.Update(iBooking);
+        //            luxuryDb.SaveChanges();
+        //            transaction.Commit();
+        //            TempData["success_msg"] = Helper.getLnag() == "ar" ? iBooking.name_ar : iBooking.name_en + localizer["updateSuccess"];
+        //            return RedirectToAction("Index");
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            transaction.Rollback();
+        //            TempData["error_msg"] = ex.Message;
+        //            return RedirectToAction("Edit", new { id = iBooking.Id });
+        //        }
+        //    }
+        //}
+
+        #region Edit Ibooking post 
         [HttpPost]
         public IActionResult _Edit(IBooking iBooking)
         {
-            bool isFound = luxuryDb.iBookings.Any(att => att.Id == iBooking.Id);
-            if (!isFound)
+            //  IBooking? _iBooking = luxuryDb.iBookings.FirstOrDefault(i=>i.Id == iBooking.Id);
+            // IBooking? _iBooking = luxuryDb.iBookings.Where(w=>w.name_en== iBooking.name_en).FirstOrDefault();
+            IBooking? _iBooking = luxuryDb.iBookings.Include(i => i.Address).Include(x => x.iBookingAttributes).FirstOrDefault(i => i.Id == iBooking.Id);
+
+            if (_iBooking == null)
             {
                 TempData["error_msg"] = "Data Not Found";
                 return RedirectToAction("Index");
             }
 
             // ADD IBOOKING ATTRIBUTES
-            iBooking.iBookingAttributes = this.iBookingAttributes(Request);
+            _iBooking.iBookingAttributes = this.iBookingAttributes(Request);
 
             using (IDbContextTransaction transaction = luxuryDb.Database.BeginTransaction())
             {
                 try
                 {
-                    luxuryDb.iBookings.Update(iBooking);
+                    _iBooking.name_ar = iBooking.name_ar;
+                    _iBooking.name_en = iBooking.name_en;
+                    _iBooking.description_ar = iBooking.description_ar;
+                    _iBooking.description_en = iBooking.description_en;
+                    _iBooking.updated_at = iBooking.updated_at;
+                    //address
+                    _iBooking.Address.IBookingId = iBooking.Id;
+                    //_iBooking.Address.GovernorateId = iBooking.Address.GovernorateId;
+                    //_iBooking.Address.CityId = iBooking.Address.CityId;
+                    //_iBooking.Address.address = iBooking.Address.address;
+                    _iBooking.Address = new Address()
+                    {
+                        address = iBooking.Address.address,
+                        CityId = iBooking.Address.CityId,
+                        GovernorateId = iBooking.Address.GovernorateId,
+                        lat = iBooking.Address.lat,
+                        lng = iBooking.Address.lng
+                    };
+                    //category
+                    _iBooking.Category_Id = iBooking.Category_Id;
+                    //brand
+                    _iBooking.BrandId = iBooking.BrandId;
+                    _iBooking.IsActive = iBooking.IsActive;
+
+
+                    luxuryDb.iBookings.Update(_iBooking);
                     luxuryDb.SaveChanges();
                     transaction.Commit();
-                    TempData["success_msg"] = Helper.getLnag() == "ar" ? iBooking.name_ar : iBooking.name_en + localizer["updateSuccess"];
+                    TempData["success_msg"] = Helper.getLnag() == "ar" ? _iBooking.name_ar : _iBooking.name_en + localizer["updateSuccess"];
                     return RedirectToAction("Index");
                 }
                 catch (Exception ex)
@@ -167,6 +271,7 @@ namespace Luxury_Back.Controllers.Admin
                 }
             }
         }
+        #endregion
 
         [HttpGet]
         public IActionResult Dropzone(int? id)

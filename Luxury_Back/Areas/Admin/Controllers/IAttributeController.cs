@@ -28,10 +28,43 @@ namespace Luxury_Back.Controllers.Admin
             this.localizer = _localizer;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? id)
         {
-            IEnumerable<IAttribute> attributes = luxuryDb.iAttributes.ToList();
-            return View(attributes);
+            // IEnumerable<IAttribute> attributes = luxuryDb.iAttributes.Take(5).ToList();
+            var count = luxuryDb.iAttributes.Count();
+            int pageSize = 5;
+            int page_Num = count / pageSize;
+
+            id = id == null ? 1 : id;
+            TempData["prev"] = id > 1 ? id - 1 : null;
+            TempData["next"] = id + 1;
+
+            if (TempData["prev"] == null)//the first page
+            {
+                if ((count - ((id - 1) * pageSize) % count) <= pageSize)//the last page null
+                {
+                    TempData["disabled_next"] = "disabled";
+                }
+                var first_page = luxuryDb.iAttributes.Skip((id.Value - 1) * pageSize).Take(pageSize).ToList();
+                TempData["disabled_prev"] = "disabled";
+                TempData["id"] = id;
+                return View(first_page);
+            }
+
+            if ((count - ((id - 1) * pageSize) % count) <= pageSize)//the last page null
+            {
+                var last_page = luxuryDb.iAttributes.Skip((id.Value - 1) * pageSize).Take(pageSize).ToList();
+                TempData["disabled_next"] = "disabled";
+                TempData["id"] = id;
+                return View(last_page);
+            }
+
+
+            var move_page = luxuryDb.iAttributes.Skip((id.Value - 1) * pageSize).Take(pageSize).ToList();
+            id = id + 1;
+            TempData["id"] = id;
+            return View(move_page);
+            //  return View(attributes);
         }
         [HttpGet]
         public IActionResult Create(IAttribute iAttribute)

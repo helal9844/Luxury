@@ -40,7 +40,7 @@ namespace Luxury_Back.Migrations
                         "Alex Luxury sea view apartment",
                         //DESCRIPTION
                         "Alex Luxury sea view apartment",
-                        "<div class=\"col-md-8\">\r\n<div class=\"description\">\r\n<p style=\"font-family: &quot;Geeza Pro&quot;, Tahoma, BlinkMacSystemFont, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; margin-block-start: 0px; color: rgb(38, 38, 38);\"><b>يقع\r\n فندق Comfort Giza Inn في مدينة القاهرة، وعلى</b></p><h3 style=\"font-family: &quot;Geeza Pro&quot;, Tahoma, BlinkMacSystemFont, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; margin-block-start: 0px; color: rgb(38, 38, 38);\"><u>بُعد 1.6 كم من أهرامات \r\nالجيزة، ويوفر غرفاً مكيفة وبار</u>، كما يتميز مكان الإقامة هذا أيضاً بمكتب \r\nاستقبال يعمل على مدار الساعة ويوفر مطعماً وتراس للضيوف، فيما يتميز \r\nالفندق بحوض استحمام ساخن وخدمة الغرف.</h3><h3 style=\"font-family: &quot;Geeza Pro&quot;, Tahoma, BlinkMacSystemFont, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; color: rgb(38, 38, 38);\">تم تجهيز جميع الوحدات في الفندق بتلفزيون بشاشة مسطحة.</h3><p style=\"font-family: &quot;Geeza Pro&quot;, Tahoma, BlinkMacSystemFont, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; margin-block-end: 0px; color: rgb(38, 38, 38);\">يقع\r\n فندق Comfort Giza Inn على بُعد 3.3 كم من تمثال أبو الهول و13 كم من برج \r\nالقاهرة، كما يعتبر مطار القاهرة الدولي المطار الأقرب لمكان الإقامة، حيث \r\nيبعد مسافة 32 كم، ويوفر مكان الإقامة خدمة نقل المطار مقابل تكلفة إضافية.</p>\r\n                        </div>\r\n                    </div><p></p>",
+                        "Alex Luxury sea view apartment",
 
                         DateTime.Now,
                     },
@@ -1483,20 +1483,20 @@ namespace Luxury_Back.Migrations
                         {24,"مصطفى كامل, Alexandria, Egypt ",31.248057,30.0008903,3,123 },
                         {25,"112 شارع زكريا غنيم العاشر, 21500 Alexandria, Egypt",31.2175238,29.9265748,3,110 },
                         //Red sea hotels Hurguda
-                        {26,"El Dahar, Abdel-Moneim Riad Square, 84511 Hurghada, Egypt",27.2591473,33.8129257,4,137 },
-                        {27,"El Corniche Street - Hurghada, Red Sea, 19706 الغردقة, مصر",27.2561602,33.8288267,4,137 },
+                        {26,"El Dahar, Abdel-Moneim Riad Square, 84511 Hurghada, Egypt",27.2591473,33.8129257,4,1 },
+                        {27,"El Corniche Street - Hurghada, Red Sea, 19706 الغردقة, مصر",27.2561602,33.8288267,4,1 },
                         //villa
-                        {28,"Safaga Road Km12 Hurghada Red Sea Egypt Egypt, 84517 Hurghada, Egypt ",27.1332614,33.8304279,4,137 },
-                        {29,"29 Hurgada - Al Ismaileya, 46616 الغردقة, مصر",29.9634626,32.5551746,4,137 },
+                        {28,"Safaga Road Km12 Hurghada Red Sea Egypt Egypt, 84517 Hurghada, Egypt ",27.1332614,33.8304279,4,1 },
+                        {29,"29 Hurgada - Al Ismaileya, 46616 الغردقة, مصر",29.9634626,32.5551746,4,1 },
                         //apartment 1
-                        {30,"Sheraton Road, 84511 Hurghada, Egypt",27.2046564,33.8488577,4,137 },
+                        {30,"Sheraton Road, 84511 Hurghada, Egypt",27.2046564,33.8488577,4,1 },
                         //sharm sheikh south sinai hotels
-                        {31,"sea street ,Um El Seed Cliff El Forsya Street ; Um El Seed cliff, 44628 Sharm El Sheikh, Egypt",27.8648531,34.3126042,5,138 },
-                        {32,"Sharm El-Sheikh, Qesm Sharm Ash Sheikh, Egypt, 46619 Sharm El Sheikh, Egypt",27.9654198,34.3617769,5,138 },
+                        {31,"sea street ,Um El Seed Cliff El Forsya Street ; Um El Seed cliff, 44628 Sharm El Sheikh, Egypt",27.8648531,34.3126042,5,1 },
+                        {32,"Sharm El-Sheikh, Qesm Sharm Ash Sheikh, Egypt, 46619 Sharm El Sheikh, Egypt",27.9654198,34.3617769,5,1 },
                         //villa
-                        {33,"1 Four Seasons Resort, Boulevard, El-Salam, Sharm El Sheikh, Egypt",27.9564317,34.3916611,5,138 },
-                        {34," NABQ BAY, approx. 20 km from the entertainment centre in Naama Bay; approx. 8 km from the airport in Sharm El Sheikh. NABQ BAY, 46619 Sharm El Sheikh, Egypt",28.1213151,34.4410615,5,138 },
-                        {35,"Nama bay, 44264 شرم الشيخ, مصر",27.9061088,34.3271739,5,138 },
+                        {33,"1 Four Seasons Resort, Boulevard, El-Salam, Sharm El Sheikh, Egypt",27.9564317,34.3916611,5,1 },
+                        {34," NABQ BAY, approx. 20 km from the entertainment centre in Naama Bay; approx. 8 km from the airport in Sharm El Sheikh. NABQ BAY, 46619 Sharm El Sheikh, Egypt",28.1213151,34.4410615,5,1 },
+                        {35,"Nama bay, 44264 شرم الشيخ, مصر",27.9061088,34.3271739,5,1 },
 
 
 

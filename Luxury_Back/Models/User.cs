@@ -42,5 +42,10 @@ namespace Luxury_Back.Models
         public DateTime? updated_at { get; set; }
         //navigation
         public Code_ForgetPass? code { get; set; }
+        public User()
+        {
+            Checked_In=new HashSet<Checked_In>();
+        }
+        public virtual ICollection<Checked_In> Checked_In { get; set; }
     }
 }

@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Localization;
 using MimeKit;
 using System;
@@ -445,6 +446,137 @@ namespace Luxury_Back.Areas.Root.Controllers
            
         }
 
-#endregion
+        #endregion
+
+
+        #region Edit Profile get
+        [HttpGet]
+        public IActionResult Edit()
+        {
+            var userId = User.Claims.First(c => c.Type == "id").Value;
+            var user = luxuryDb.users.FirstOrDefault(f => f.Id == int.Parse(userId));
+            //ViewBag.user = User.Claims.First(c => c.Type == "name").Value;
+            return View(user);
+        }
+        #endregion
+
+        #region Edit Profile Post
+        const string ViewPath_Home = "Areas/Root/Views/Auth/";
+        [HttpPost]
+        public IActionResult Edit(User user)
+        {
+            UserUpdateProfileValidation validator = new UserUpdateProfileValidation(localizer);
+
+            ValidationResult results = validator.Validate(user);
+
+            if (!results.IsValid)
+            {
+                foreach (var failure in results.Errors)
+                {
+                    TempData[failure.PropertyName] = failure.ErrorMessage;
+                }
+                return View(user);
+            }
+            else
+            {
+                bool isFound = luxuryDb.users.Where(w => !w.is_admin).Any(u => u.Id == user.Id);
+                if (!isFound)
+                {
+                    TempData["error_msg"] = localizer["user_null"];
+                    //  return RedirectToAction("Edit");
+                    return View($"{ViewPath_Home}Edit.cshtml");
+                }
+
+                var exist = luxuryDb.users.Where(w => w.Id != user.Id).Where(h => h.Email == user.Email || h.username == user.username).Count();
+                if (exist > 0)
+                {
+                    TempData["error_msg"] = localizer["user_null"];
+                    // return RedirectToAction("Edit");
+                    return View($"{ViewPath_Home}Edit.cshtml");
+                }
+                var pass = luxuryDb.users.Where(w => !w.is_admin && w.Id == user.Id).Select(s => s.password).First();
+                user.password = pass.ToString();
+
+                using (IDbContextTransaction transaction = luxuryDb.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        luxuryDb.users.Update(user);
+                        luxuryDb.SaveChanges();
+                        TempData["success_msg"] = user.username + localizer["update_success"];
+                        transaction.Commit();
+                        // return RedirectToAction("Edit");
+                        return View($"{ViewPath_Home}Edit.cshtml");
+                    }
+                    catch (Exception ex)
+                    {
+                        TempData["error_msg"] = localizer["occur_error"];
+                        transaction.Rollback();
+                        // return RedirectToAction("Edit");
+                        return View($"{ViewPath_Home}Edit.cshtml");
+                    }
+                }
+
+            }
+
+        }
+        #endregion
+
+        #region Edit password post
+        const string ViewPath_Edit = "Areas/Root/Views/Auth/";
+
+        [HttpPost]
+        public IActionResult Edit_Pass(int Id, string password, string confirm_password)
+        {
+            if (password == null || confirm_password == null)
+            {
+                TempData["error_msg"] = localizer["pass_null"];
+                //  return RedirectToAction("Edit");
+                return View($"{ViewPath_Edit}Edit.cshtml");
+            }
+            if (password.Length < 8)
+            {
+                TempData["error_msg"] = localizer["pass_less_length"];
+                // return RedirectToAction("Edit");
+                return View($"{ViewPath_Edit}Edit.cshtml");
+            }
+            if (password != confirm_password)
+            {
+                TempData["error_msg"] = localizer["pass_not_match"];
+                //return RedirectToAction("Edit");
+                return View($"{ViewPath_Edit}Edit.cshtml");
+            }
+            var user = luxuryDb.users.FirstOrDefault(f => f.Id == Id);
+            if (user == null)
+            {
+
+                TempData["error_msg"] = localizer["user_null"];
+                //  return RedirectToAction("Edit");
+                return View($"{ViewPath_Edit}Edit.cshtml");
+            }
+            using (IDbContextTransaction transaction = luxuryDb.Database.BeginTransaction())
+            {
+                try
+                {
+                    luxuryDb.users.Update(user);
+                    luxuryDb.SaveChanges();
+                    TempData["success_msg"] = localizer["password"] + localizer["update_success"];
+                    transaction.Commit();
+                    // return RedirectToAction("Edit");
+                    return View($"{ViewPath_Edit}Edit.cshtml");
+                }
+                catch (Exception ex)
+                {
+                    TempData["error_msg"] = localizer["occur_error"];
+                    transaction.Rollback();
+                    //  return RedirectToAction("Edit");
+                    return View($"{ViewPath_Edit}Edit.cshtml");
+
+                }
+            }
+
+        }
+        #endregion
+
     }
 }

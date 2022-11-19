@@ -1,0 +1,97 @@
+﻿@using Luxury_Back.Helpers
+
+@model Checked_In
+
+@{
+    var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar") ? "rtl" : "ltr";
+}
+
+@{
+
+    ViewBag.title = localizer["review"];
+    Layout = "~/Areas/Admin/Views/Shared/Layout/_CardView.cshtml";
+}
+
+
+@section Styles {
+    <!-- BEGIN VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="~/Admin/app-assets/css/vendors.css">
+    <!-- END VENDOR CSS-->
+    <!-- BEGIN MODERN CSS-->
+    <link rel="stylesheet" type="text/css" href="~/Admin/app-assets/css/app.css">
+    <!-- END MODERN CSS-->
+    <!-- BEGIN Page Level CSS-->
+    <link rel="stylesheet" type="text/css" href="~/Admin/app-assets/css/core/menu/menu-types/vertical-menu-modern.css">
+    <link rel="stylesheet" type="text/css" href="~/Admin/app-assets/css/core/colors/palette-gradient.css">
+    <!-- END Page Level CSS-->
+    <!-- BEGIN Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="~/Admin/assets/css/style.css">
+    <!-- END Custom CSS-->
+ }
+
+
+<div class="card-content collpase show">
+    <div class="card-body">
+
+        <div class="form-body">
+            <h4 class="form-section"><i class="ft-user"></i>@localizer["personal_info"] </h4>
+            <hr />
+            <div class="row">
+                <div class="form-group col-md-4 mb-2">
+                    <label>@localizer["username"] :</label>
+                    <h1>@Model.User.username</h1>
+                </div>
+
+                <div class="form-group col-md-4 mb-2">
+                    <label>@localizer["email"]</label>
+                    <h1>@Model.User.Email</h1>
+                </div>
+
+                <div class="form-group col-md-4 mb-2">
+                    <label>@localizer["contact_number"]</label>
+                    <h1>@Model.User.Phone</h1>
+                </div>
+            </div>
+              
+            <h4 class="form-section"><i class="ft-clipboard"></i>@localizer["data_book"]</h4>
+            <hr />
+                <div class="row">
+                    <div class="form-group col-12 mb-2">
+                        <table class="table table-striped table-bordered zero-configuration text-center">
+                            <thead>
+                                <tr>
+                                    <th scope="col">@localizer["booking_name"]</th>
+                                    <th scope="col">@localizer["checked_in_date"]</th>
+                                    <th scope="col">@localizer["checked_out_date"]</th>
+                                    <th scope="col">@localizer["stay"]</th>
+                                    <th scope="col">@localizer["price"]</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               <tr>
+                                   @* <th scope="row">@Model.Id</th>*@
+                                    <td class="content-trim">@(Helper.getLnag() == "ar" ? Model.IBooking.name_ar : Model.IBooking.name_en)</td>
+                                    <td>@Model.checked_in</td>
+                                    <td>@Model.checked_out</td>
+                                    <td>@(int.Parse(Model.checked_out.ToString("yyyMMdd")) - int.Parse(Model.checked_in.ToString("yyyMMdd")))</td>
+                                    <td>@Model.amount</td>
+                                   
+                                </tr>
+  
+                         </tbody>
+                         <tfoot>
+                            <tr>
+                                <th scope="col">@localizer["booking_name"]</th>
+                                <th scope="col">@localizer["checked_in_date"]</th>
+                                <th scope="col">@localizer["checked_out_date"]</th>
+                                <th scope="col">@localizer["stay"]</th>
+                                <th scope="col">@localizer["price"]</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

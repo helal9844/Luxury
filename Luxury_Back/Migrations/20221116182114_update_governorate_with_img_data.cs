@@ -16,11 +16,11 @@ namespace Luxury_Back.Migrations
                 values:
                 new object []
                 {
-                    "https://content.r9cdn.net/rimg/dimg/85/e5/d763bad9-city-9087-164429be177.jpg?crop=true&width=1366&height=768&xhint=2760&yhint=1285",
-                    "https://blog.wego.com/wp-content/uploads/shutterstock_1443302708_fi7flo.jpg",
-                    "https://jakadatoursegypt.com/wp-content/uploads/2020/12/Alexandria-Egypt.jpg",
-                    "https://static.wixstatic.com/media/5eff48_85d852fc46aa40288ca187a57aab19ef~mv2.jpg/v1/fill/w_640,h_334,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/5eff48_85d852fc46aa40288ca187a57aab19ef~mv2.jpg",
-                    "https://cf.bstatic.com/xdata/images/hotel/max1024x768/241890691.jpg?k=f30a16d1e61d7253ef29e45343f4ed294694b6a191219eb4293f23e0a83772cb&o=&hp=1",
+                    "https://media.cntraveler.com/photos/56291e1bc4dab9d4414263bc/16:9/w_1280,c_limit/cairo-egypt-night-cr-courtesy.jpg?mbid=social_retweet",
+                    "https://cf.bstatic.com/xdata/images/city/540x270/644363.webp?k=d7dfbc64880d52cf00797f6a0e34568e4d25fc913a719a721a06832b5c5a9308&o=",
+                    "https://cf.bstatic.com/xdata/images/city/square250/644356.webp?k=d6ce4466d6df2568018de1e5de202e1bffed10b6104eebf0681b716fcddc167f&o=",
+                    "https://cf.bstatic.com/xdata/images/city/square250/644338.webp?k=51ec9b834df182428a266d5084a944dca58573a3aad1a2b5993989d3438539fe&o=",
+                    "https://cf.bstatic.com/xdata/images/city/square250/644630.webp?k=700ac1d32a3bab480b14db2cba3050abe5b5bce062911dc4f5b3fdc15d81f007&o=",
                 }
 
                 );
