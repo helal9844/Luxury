@@ -78,6 +78,7 @@ mobiscroll.datepicker('#check_in_out_input', {
     select: 'range',              // More info about select: https://docs.mobiscroll.com/5-19-2/javascript/calendar#opt-select
     showRangeLabels: true,
     min: currentDate("-"),
+    format: 'dd/mm/yyyy',
     rtl: true
 });
 

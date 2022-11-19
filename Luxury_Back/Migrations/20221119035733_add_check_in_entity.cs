@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Luxury_Back.Migrations
 {
-    public partial class add_checked_in : Migration
+    public partial class add_check_in_entity : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,6 +18,7 @@ namespace Luxury_Back.Migrations
                     UserId = table.Column<int>(type: "int", nullable: false),
                     IBookingId = table.Column<int>(type: "int", nullable: false),
                     amount = table.Column<int>(type: "int", nullable: false),
+                    nights_count = table.Column<int>(type: "int", nullable: false),
                     checked_in = table.Column<DateTime>(type: "datetime2", nullable: false),
                     checked_out = table.Column<DateTime>(type: "datetime2", nullable: false),
                     created_at = table.Column<DateTime>(type: "datetime2", nullable: true, defaultValueSql: "getdate()"),

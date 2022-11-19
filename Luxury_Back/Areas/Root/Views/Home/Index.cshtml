@@ -1,4 +1,4 @@
-﻿
+﻿@using Luxury_Back.Helpers
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Root/Views/Shared/Layout/_Layout.cshtml";
@@ -19,3 +19,42 @@
 
 @*<partial name="_Shared/_NextTrip.cshtml"/>
 <partial name="_Shared/_Connect_Travels.cshtml" />*@
+
+
+@section Styles{
+    
+    <link type="text/css" rel="stylesheet" href="~/assets/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css" />
+    <link type="text/css" rel="stylesheet" href="~/assets/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css" />
+}
+
+@section Scripts{
+            <!-- owl carousel -->
+    <script src="~/assets/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+
+    <script>
+        lightGallery(document.getElementById('lightgallery'));
+    </script>
+
+    <script>
+
+        $('.owl-carousel').owlCarousel({
+            loop:true,
+            margin:15,
+            nav:false,
+            dots: false,
+            rtl: @(Helper.getLnag() == "ar" ? "true" : "false"),
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:3
+                },
+                1000:{
+                    items:5
+                }
+            }
+        })
+
+    </script>
+}

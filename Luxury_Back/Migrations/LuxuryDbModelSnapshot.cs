@@ -183,6 +183,9 @@ namespace Luxury_Back.Migrations
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("getdate()");
 
+                    b.Property<int>("nights_count")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("updated_at")
                         .HasColumnType("datetime2");
 

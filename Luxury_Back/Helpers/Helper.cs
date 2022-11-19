@@ -14,7 +14,13 @@ namespace Luxury_Back.Helpers
         {
             return CultureInfo.CurrentCulture.Name.StartsWith("ar")?"ar":"en";
         }
-       
+
+        public static int RandomNum(int min = 1000, int max = 9999)
+        {
+            var random = new Random();
+            return random.Next(min, max);
+        }
+
         public static string? uploadeFile(IFormFile img, string? dirName)
         {
             Random rand = new Random();

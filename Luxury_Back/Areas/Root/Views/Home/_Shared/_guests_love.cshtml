@@ -1,4 +1,5 @@
-﻿<section class="component_siction py-1 _guests_love">
+﻿@using Luxury_Back.Helpers
+<section class="component_siction py-1 _guests_love">
     <div class="container">
         <div class="row title_row my-4">
             <h2 class="h2">
@@ -6,26 +7,58 @@
             </h2>
         </div>
         <div class="row content">
-            <div class="col-lg-3 col-md-6 col-12 p-md-0">
-                <div class="card">
-                    <img src="https://cf.bstatic.com/xdata/images/hotel/square600/123801934.webp?k=27073a18101dd5a4eefc76251f7d476be72e19ed03e98819f2d94667dd60f31a&o=&s=1" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <a href="#">
-                          <h5 class="card-title text_align">Card title</h5>
-                          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                          <p class="card-text">
-                              <small class="text-muted">Night Cost: <b>EGP 5000</b></small>
-                          </p>
-                          <p class="card-text reviews">
-                            <span>0.9</span>
-                            <b>Very Good</b>
-                            <small>   </small>
-                            <small>200 reviews</small>
-                          </p>
-                      </a>
+            @if (ViewBag.recentCount > 0)
+            {
+                <div class="row recent_Ibookings">
+
+                    <div class="recent_items">
+                        <div class="owl-carousel owl-theme">
+                            @foreach (var item in ViewBag.recent)
+                            {
+
+                                <div class="col-md-12 recent_item p-0">
+                                    <div class="card">
+                                        <a asp-action="Show" asp-controller="IBooking" asp-route-id="@item.Id">
+                                            @if (item.images != null)
+                                            {
+                                                @foreach (var img in item.images)
+                                                {
+                                                    <img src="@(Helper.imageUrl(img.Name))" class="card-img-top" alt="@item.name_en">
+                                                }
+                                            }
+
+                                            <div class="card-body">
+                                                <h5 class="card-title">@(Helper.getLnag() == "ar" ? item.name_ar : item.name_en)</h5>
+                                                <p class="card-text"></p>
+                                                <p class="card-text">
+
+                                                    @if (item.iBookingAttributes.Count != 0)
+                                                    {
+                                                    @foreach (var attr in item.iBookingAttributes)
+                                                    {
+                                                    if(item.value != null)
+                                                    {
+                                                    <small class="text-muted">Night Cost: <b>EGP @attr.value??0</b></small>
+                                                    }
+                                                    }
+                                                    }
+
+                                                </p>
+                                                <p class="card-text reviews">
+                                                    <span>0.@(Helper.RandomNum(7, 9))</span>
+                                                    <b>Very Good</b>
+                                                    <small>   </small>
+                                                    <small>@(Helper.RandomNum(200, 500)) reviews</small>
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
         </div>
     </div>
 </section>

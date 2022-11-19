@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Luxury_Back.Migrations
 {
     [DbContext(typeof(LuxuryDb))]
-    [Migration("20221117115952_add_checked_in")]
-    partial class add_checked_in
+    [Migration("20221119035733_add_check_in_entity")]
+    partial class add_check_in_entity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -184,6 +184,9 @@ namespace Luxury_Back.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("getdate()");
+
+                    b.Property<int>("nights_count")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("updated_at")
                         .HasColumnType("datetime2");
