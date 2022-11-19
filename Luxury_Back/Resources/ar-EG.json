@@ -101,7 +101,7 @@
     "deleted successfully": "تم مسح البيانات بنجاح!",
     "can't delete": "لا يمكن مسح هذه البيانات!",
     "can't remove because": "اسف لا يمكن مسح هذا القسم بسبب أن لديه ",
-    "child categories": " أقسام صغيرة  ",
+    "child categories": " أقسام فرعية  ",
     "brands": " علامات تجارية ",
 
 
@@ -118,7 +118,7 @@
     "check out": "خروج من الفندق",
     "ibooking count": "عدد الحجوزات",
   "customers": "النزلاء",
-    "customer name": "اسماء النزلاء",
+    "customer name": "اسم النزيل",
     "cash flow": "المال المتدفق",
     "room": "غرفة",
     "rooms": "غرف",
