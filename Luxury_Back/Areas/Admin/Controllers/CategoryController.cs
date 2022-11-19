@@ -171,7 +171,7 @@ namespace Luxury_Back.Controllers.Admin
             var category = luxuryDb.categories.Include(i => i.iBookings).Include(c => c.childs).ThenInclude(t => t.iBookings).Where(i => i.Id == id).First();
             if (category == null)
             {
-                TempData["error_msg"] = "Category is Not Allow";
+                TempData["error_msg"] = localizer["category not allowed"];
             }
             else
             {
@@ -238,7 +238,7 @@ namespace Luxury_Back.Controllers.Admin
             var category = luxuryDb.categories.Where(i => i.Id == id).First();
             if (category == null)
             {
-                TempData["error_msg"] = "Category is Not Allow";
+                TempData["error_msg"] = localizer["category not allowed"] ;
                 return RedirectToAction("Index");
             }
             int categoryChildCount = luxuryDb.categories.Count(c => c.CategoryId == id);

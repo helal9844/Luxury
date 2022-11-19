@@ -13,6 +13,21 @@ namespace Luxury_Back.Migrations
                 table: "categories",
                 type: "nvarchar(max)",
                 nullable: true);
+
+            migrationBuilder.UpdateData(
+                table: "categories",
+                keyColumn: "Id",
+                keyValues: new object[] { 2, 3, 4},
+                column: "img_category",
+                values:
+                new object[]
+                {
+                    "https://m.economictimes.com/thumb/msid-89465809,width-1254,height-836,resizemode-4,imgsize-28786/indian-hotels.jpg",
+                    "https://www.exceptionalvillas.com/public/upload/listing_photos_resize/w1900xh1900-Tamarindo-19.JPG",
+                    "https://www.aveliving.com/AVE/media/Property_Images/Florham%20Park/hero/flor-apt-living-(2)-hero.jpg?ext=.jpg",
+                }
+
+                );
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

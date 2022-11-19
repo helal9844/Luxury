@@ -11,12 +11,12 @@ namespace Luxury_Back.Areas.Admin.Validations
         public CategoryCreateValidation(IStringLocalizer<CategoryController> _localizer)
         {
             RuleFor(c => c.name_ar).NotNull()
-                .WithMessage("Category Name Can't Be Empty")
-                .MinimumLength(2).WithMessage("MinimumLength Can't Be less Than 2 letters");
+                .WithMessage(localizer["category name empty"])
+                .MinimumLength(2).WithMessage(localizer["minimumLength 2"]);
             RuleFor(c => c.name_en)
                 .NotNull()
-                .WithMessage("Category Name Can't Be Empty")
-                .MinimumLength(2).WithMessage("MinimumLength Can't Be less Than 2 letters");
+                .WithMessage(localizer["category name empty"])
+                .MinimumLength(2).WithMessage(localizer["minimumLength 2"]);
         }
     }
 }

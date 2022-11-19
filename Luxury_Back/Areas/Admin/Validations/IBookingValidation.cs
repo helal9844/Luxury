@@ -28,16 +28,16 @@ namespace Luxury_Back.Areas.Admin.Validations
                 .MinimumLength(4);
 
             RuleFor(i => i.Category_Id)
-                .NotNull().WithMessage("Category Not Selected");
+                .NotNull().WithMessage(localizer["category"]+' '+ localizer["not selected"]);
 
             RuleFor(i => i.Address.GovernorateId)
-                .NotNull().WithMessage("Governorate Not Selected");
+                .NotNull().WithMessage(localizer["Governorate"] + ' ' + localizer["not selected"]);
 
             RuleFor(i => i.Address.CityId)
-                .NotNull().WithMessage("City Not Selected");
+                .NotNull().WithMessage(localizer["city"] + ' ' + localizer["not selected"]);
 
             RuleFor(i => i.Address.address)
-                .NotNull().WithMessage("Address Not Selected");
+                .NotNull().WithMessage(localizer["address"] + ' ' + localizer["not selected"]);
         }
     }
 }

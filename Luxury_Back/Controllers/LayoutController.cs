@@ -38,7 +38,7 @@ namespace Luxury_Back.Controllers
         {
             string locale = Helper.getLnag();
             var topGovernorates = luxuryDb.governorates.Include(g => g.Addresses).Select(g => new { Id = g.Id, image = g.img_governorate, name = locale == "ar" ? g.name_ar : g.name_en, Count = g.Addresses.Count }).OrderByDescending(g => g.Count).Take(10);
-            var topCategories = luxuryDb.categories.Where(c => c.CategoryId != null).Include(c => c.iBookings).Select(c => new { Id = c.Id, name = locale == "ar" ? c.name_ar : c.name_en, Count = c.iBookings.Count, img = Helper.imageUrl(c.img_category) }).OrderByDescending(c => c.Count).Take(2);
+            var topCategories = luxuryDb.categories.Where(c => c.CategoryId != null).Include(c => c.iBookings).Select(c => new { Id = c.Id, name = locale == "ar" ? c.name_ar : c.name_en, image = c.img_category, Count = c.iBookings.Count, img = Helper.imageUrl(c.img_category) }).OrderByDescending(c => c.Count).Take(2);
             var topBrands = luxuryDb.brands.Include(c => c.iBookings).Select(c => new { Id = c.Id, name = locale == "ar" ? c.name_ar : c.name_en, Count = c.iBookings.Count, img = Helper.imageUrl(c.logo) }).OrderByDescending(c => c.Count).Take(2);
             var topCities = luxuryDb.cities.Include(g => g.Addresses).Select(g => new { Id = g.Id, name = locale == "ar" ? g.name_ar : g.name_en, Count = g.Addresses.Count }).Where(c => c.Count > 0).OrderByDescending(g => g.Count).Take(6);
 
