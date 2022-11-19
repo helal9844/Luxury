@@ -203,6 +203,22 @@
             box-shadow: none;
             border-radius: 0;
             font-weight: 550;
+
+            .toast-body {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            img {
+                width: 25px;
+            }
+
+            span {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
         }
     }
 

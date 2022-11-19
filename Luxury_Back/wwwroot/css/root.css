@@ -894,6 +894,19 @@ section .subs .subscontent .subcol #iclose a, .closesection .subs .subscontent .
   border-radius: 0;
   font-weight: 550;
 }
+.iBooking_content .content_1 .iAttributes .toast .toast-body {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.iBooking_content .content_1 .iAttributes .toast img {
+  width: 25px;
+}
+.iBooking_content .content_1 .iAttributes .toast span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .iBooking_content .content_1 .Property .card {
   box-shadow: none;
   background: #ebf3ff;

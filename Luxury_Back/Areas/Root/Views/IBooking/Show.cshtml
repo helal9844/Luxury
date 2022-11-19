@@ -119,11 +119,11 @@
                     <div class="row">
                         @foreach(var attr in Model.iBookingAttributes.Where(i=>i.IAttribute.inputType == "checkbox"))
                         {
-                            <div class="col-md-2">
+                            <div class="col-md-2 my-2 mx-2">
                                 <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
                                     <div class="toast-body">
-                                        <img src="~/images/svg/" />
-                                        <span>@attr.IAttribute.name_en</span>
+                                        <img src="~/images/svg/@($"{attr.IAttribute.name_en}.svg")" />
+                                        <span>@(Helper.getLnag() == "ar" ? attr.IAttribute.name_ar : attr.IAttribute.name_en)</span>
                                     </div>
                                 </div>
                             </div>
