@@ -65,13 +65,13 @@
                     <a class="nav-link active" aria-current="page" asp-action="index" asp-controller="home"> <i class="la la-bed"></i> @localizer["stays"]</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="la la-building-o"></i> @localizer["hotels"]</a></a>
+                    <a class="nav-link" asp-action="Filter" asp-controller="Filter" asp-route-categories="2"><i class="la la-building-o"></i> @localizer["hotels"]</a></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><img src="~/images/icons/image1.png" width="25" /> @localizer["villas"]</a></a>
+                    <a class="nav-link" asp-action="Filter" asp-controller="Filter" asp-route-categories="3"><img src="~/images/icons/image1.png" width="25" /> @localizer["villas"]</a></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><img src="~/images/icons/image2.png" width="30" /> @localizer["apartments"]</a></a>
+                    <a class="nav-link" asp-action="Filter" asp-controller="Filter" asp-route-categories="4"><img src="~/images/icons/image2.png" width="30" /> @localizer["apartments"]</a></a>
                 </li>
             </ul>
         </div>

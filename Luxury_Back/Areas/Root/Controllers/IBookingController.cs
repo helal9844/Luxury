@@ -74,10 +74,15 @@ namespace Luxury_Back.Areas.Root.Controllers
         [HttpPost]
         public IActionResult CheckInForm([FromForm] int? iBookingId, [FromForm] string? checkInOut, [FromForm] string? person)
         {
-            /*if (!User.Identity.IsAuthenticated)
+            if (!User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Auth");
-            }*/
+            }
+
+            if (iBookingId == null || checkInOut == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
 
             var _checkInOut = checkInOut.Split(" - ");
             var checkIn = DateTime.ParseExact(_checkInOut[0], "dd/MM/yyyy", null);
@@ -132,7 +137,13 @@ namespace Luxury_Back.Areas.Root.Controllers
                 [FromForm] int? nights_count
             )
         {
-            if(iBookingId == null || UserId ==null)
+
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Auth");
+            }
+
+            if (iBookingId == null || UserId ==null)
             {
                 return RedirectToAction("Index", "Home");
             }
