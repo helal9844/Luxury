@@ -26,11 +26,45 @@ namespace Luxury_Back.Controllers.Admin
             this.luxuryDb = luxuryDb;
             this.localizer = _localizer;
         }
-        public IActionResult Index()
+        public IActionResult Index(int? id)
         {
             //return luxuryDb.categories.Include(c => c.translations).Include(c=>c.parent).ThenInclude(p=>p.translations).Where(c => c.Id == 2).First().parent.name;
-            var categories = luxuryDb.categories.Include(c => c.parent).ToList();
-            return View(categories);
+            // var categories = luxuryDb.categories.Include(c => c.parent).ToList();
+            var count = luxuryDb.categories.Count();
+            int pageSize = 5;
+            int page_Num = count / pageSize;
+
+            id = id == null ? 1 : id;
+            TempData["prev"] = id > 1 ? id - 1 : null;
+            TempData["next"] = id + 1;
+
+            if (TempData["prev"] == null)//the first page
+            {
+                if ((count - ((id - 1) * pageSize) % count) <= pageSize)//the last page null
+                {
+                    TempData["disabled_next"] = "disabled";
+                }
+                var first_page = luxuryDb.categories.Include(c => c.parent).Skip((id.Value - 1) * pageSize).Take(pageSize).ToList();
+                TempData["disabled_prev"] = "disabled";
+                TempData["id"] = id;
+                return View(first_page);
+            }
+
+            if ((count - ((id - 1) * pageSize) % count) <= pageSize)//the last page null
+            {
+                var last_page = luxuryDb.categories.Include(c => c.parent).Skip((id.Value - 1) * pageSize).Take(pageSize).ToList();
+                TempData["disabled_next"] = "disabled";
+                TempData["id"] = id;
+                return View(last_page);
+            }
+
+
+            var move_page = luxuryDb.categories.Include(c => c.parent).Skip((id.Value - 1) * pageSize).Take(pageSize).ToList();
+            id = id + 1;
+            TempData["id"] = id;
+            return View(move_page);
+
+            // return View(categories);
         }
         [HttpGet]
         #region Create

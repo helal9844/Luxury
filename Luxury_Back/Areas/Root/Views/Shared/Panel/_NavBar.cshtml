@@ -77,6 +77,10 @@
         </div>
     </div>
 </nav>
-<partial name="~/Areas/Root/Views/Home/_Shared/_Top_Header_Title.cshtml" />
+@if (ViewBag.TopSearch == true)
+{
+    <partial name="~/Areas/Root/Views/Home/_Shared/_Top_Header_Title.cshtml" />
+
+}
 <div class="overlay"></div>
 <!-- ////////////////////////////////////////////////////////////////////////////-->

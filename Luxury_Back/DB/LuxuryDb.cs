@@ -20,6 +20,9 @@ namespace Luxury_Back.DB
         //public virtual DbSet<CategoryTranslation> categoriesTranslation { get; set; } = null!;
 
         public virtual DbSet<Code_ForgetPass> code_forget_passes { get; set; } = null!;
+
+        //checked_in
+        public virtual DbSet<Checked_In> checked_in { get; set; } = null!;
         public LuxuryDb(DbContextOptions<LuxuryDb> dbContextOptions) : base(dbContextOptions)
         {
             /*Database.EnsureDeleted();
@@ -45,7 +48,7 @@ namespace Luxury_Back.DB
                         .UseCollation("ARABIC_CI_AS")
                         .IsUnicode();*/
 
-           //City
+            //City
             modelBuilder.Entity<City>().ToTable("cities");
             /*modelBuilder.Entity<City>().Property(g => g.name_ar)
                         .HasColumnType("varchar(max)")
@@ -54,7 +57,7 @@ namespace Luxury_Back.DB
 
             //Brand
             modelBuilder.Entity<Brand>().ToTable("brands");
-            modelBuilder.Entity<Category>().HasMany(h => h.brands).WithOne(b => b.category).HasForeignKey(b=>b.CategoryId);
+            modelBuilder.Entity<Category>().HasMany(h => h.brands).WithOne(b => b.category).HasForeignKey(b => b.CategoryId);
 
             //Booking
             modelBuilder.Entity<IBooking>().ToTable("iBookings");
@@ -62,12 +65,12 @@ namespace Luxury_Back.DB
             modelBuilder.Entity<Category>()
                 .HasMany(c => c.iBookings)
                 .WithOne(b => b.Category)
-                .HasForeignKey(b=>b.Category_Id);
+                .HasForeignKey(b => b.Category_Id);
             modelBuilder.Entity<Brand>()
                 .HasMany(c => c.iBookings)
                 .WithOne(b => b.Brand)
-                .HasForeignKey(b=>b.BrandId);
-            
+                .HasForeignKey(b => b.BrandId);
+
 
             //IBooking - Address
             modelBuilder.Entity<Address>().HasOne(h => h.IBooking).WithOne(b => b.Address);
@@ -104,6 +107,12 @@ namespace Luxury_Back.DB
             //Code_ForgetPass
             //User - Code_ForgetPass
             modelBuilder.Entity<User>().HasOne(h => h.code).WithOne(b => b.user);
+
+            //checked_in
+            modelBuilder.Entity<Checked_In>().HasOne(h => h.User).WithMany(w => w.Checked_In).HasForeignKey(a => a.UserId);
+            modelBuilder.Entity<Checked_In>().HasOne(h => h.IBooking).WithMany(w => w.Checked_In).HasForeignKey(a => a.IBookingId);
+
+            modelBuilder.Entity<Checked_In>().Property(b => b.created_at).HasDefaultValueSql("getdate()");
         }
     }
 }

@@ -8,16 +8,20 @@
   "correction": "is not correct!",
   "Or": "or",
   "not found": "this data not found",
+  "show on map": "Show On Map",
+  "night": "Night",
+  "rating": "Rating",
 
   "placeholdpass": "Password",
   "email": "Email Address",
+
   "password": "Password",
   "confirm_password": "Confirm Passwrd",
   "enter": "Enter",
   "send": "Send",
   "errorusername": "",
   "errorpass": "",
-  "erroremail": "",
+  "erroremail": "Email Not Valid",
   "nullError": " Field Can't Be Empty",
 
   "errorphone": "",
@@ -107,6 +111,8 @@
   "check out": "Check Out",
   "ibooking count": "Ibooking-Count",
   "customers": "Customers",
+  "customer name": "Customer Name",
+  
   "cash flow": "Cash Flow",
   "recently checkin": "Recently Check-In",
   "total": "Total",
@@ -162,5 +168,32 @@
 
   //nav bar
   "Find your next stay": "Find your next stay",
-  "paragraph": "Search deals on hotels, homes, and much more..."
+  "paragraph": "Search deals on hotels, homes, and much more...",
+
+  // checked
+  "checked_in": "Checked",
+  "booking_name": "Booking Name",
+  "price": "Price",
+  "checked_in_date": "Checked In Date",
+  "checked_out_date": "Checked Out Date",
+  "stay": "Stay of duration",
+  "total": "Total",
+  //Edit Profile
+  "personal_info": " Personal Info",
+  "phone": "Phone",
+  "contact_number": "Contact Number",
+  "save": "Save",
+  "cancel": "Cancel",
+  "error_phone": "Minimum Length can't be less than 11 characters",
+  //Edit Profile password
+  "edit_profile": "Edit Profile",
+  "pass_null": "Please Enter New Password",
+  "pass_not_match": "Password does not match with confirm password",
+  "pass_less_length": "Minimum Length can't be less than 8 characters",
+  "user_null": "User is not found",
+  "update_success": " Updated Successfully",
+  "occur_error": "Occured error ",
+
+  //user_data_booking
+  "data_book": "Data Of Bookings"
 }

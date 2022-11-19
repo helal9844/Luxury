@@ -14,11 +14,11 @@ namespace Luxury_Back.Validations.Users
             localizer = _localizer;
             RuleFor(user =>user.Email)
                 .NotNull().WithMessage(x => localizer["email"] + localizer["nullError"])
-                .EmailAddress().WithMessage("email not valid");
+                .EmailAddress().WithMessage(localizer["erroremail"]);
 
             RuleFor(user => user.password)
                 .NotNull().WithMessage(x => localizer["password"] + localizer["nullError"])
-                .MinimumLength(8).WithMessage("Minimum Length can't be less than 8 characters");
+                .MinimumLength(8).WithMessage(localizer["pass_less_length"]);
            
         }
     }

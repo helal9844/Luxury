@@ -15,14 +15,14 @@ namespace Luxury_Back.Areas.Root.Validations
 
             RuleFor(user => user.Password)
                 .NotNull().WithMessage(x => localizer["password"] + localizer["nullError"])
-                .MinimumLength(8).WithMessage("Minimum Length can't be less than 8 characters");
+                .MinimumLength(8).WithMessage(localizer["pass_less_length"]);
             //.Matches("").WithMessage("please enter password strong"); //error in case of if i don't enter field confirm 
 
             RuleFor(user => user).Custom((user, context) =>
             {
                 if (user.Password != user.Confirm_Password)
                 {
-                    context.AddFailure(nameof(user.Password), "Does Not Match With Password");
+                    context.AddFailure(nameof(user.Password), localizer["pass_not_match"]);
                 }
             });
 

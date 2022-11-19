@@ -32,15 +32,14 @@ namespace Luxury_Back.Migrations
                 },
                 values: new object[,]
                 {
-                   
                     //1
                     { 4, null,
                         // NAME
-                        "Alex Luxury sea view apartment",
+                        "شقة مطلة علي البحر بالاسكندرية",
                         "Alex Luxury sea view apartment",
                         //DESCRIPTION
-                        "Alex Luxury sea view apartment",
-                        "<div class=\"col-md-8\">\r\n<div class=\"description\">\r\n<p style=\"font-family: &quot;Geeza Pro&quot;, Tahoma, BlinkMacSystemFont, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; margin-block-start: 0px; color: rgb(38, 38, 38);\"><b>يقع\r\n فندق Comfort Giza Inn في مدينة القاهرة، وعلى</b></p><h3 style=\"font-family: &quot;Geeza Pro&quot;, Tahoma, BlinkMacSystemFont, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; margin-block-start: 0px; color: rgb(38, 38, 38);\"><u>بُعد 1.6 كم من أهرامات \r\nالجيزة، ويوفر غرفاً مكيفة وبار</u>، كما يتميز مكان الإقامة هذا أيضاً بمكتب \r\nاستقبال يعمل على مدار الساعة ويوفر مطعماً وتراس للضيوف، فيما يتميز \r\nالفندق بحوض استحمام ساخن وخدمة الغرف.</h3><h3 style=\"font-family: &quot;Geeza Pro&quot;, Tahoma, BlinkMacSystemFont, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; color: rgb(38, 38, 38);\">تم تجهيز جميع الوحدات في الفندق بتلفزيون بشاشة مسطحة.</h3><p style=\"font-family: &quot;Geeza Pro&quot;, Tahoma, BlinkMacSystemFont, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; margin-block-end: 0px; color: rgb(38, 38, 38);\">يقع\r\n فندق Comfort Giza Inn على بُعد 3.3 كم من تمثال أبو الهول و13 كم من برج \r\nالقاهرة، كما يعتبر مطار القاهرة الدولي المطار الأقرب لمكان الإقامة، حيث \r\nيبعد مسافة 32 كم، ويوفر مكان الإقامة خدمة نقل المطار مقابل تكلفة إضافية.</p>\r\n                        </div>\r\n                    </div><p></p>",
+                        "<h3 style=\"text-align: right;\"><b><u>شرح تفصيلي لأهم مميزات الشقة</u></b></h3><p style=\"text-align: right;\">شرفة بهية وماكينة صراف الي. تقع هذه الشقق في الاسكندرية علي بعد 600 متر من شاطئ كيلوباترا وعلي بعد 1.4 كيلو من شاطئ ستانلي&nbsp;</p><p style=\"text-align: right; \">هذه الملكيات المطلة علي البحر توفر لك شرفات تظهر جمال البحر واماكن خاصة مجانية لركن السيارات&nbsp;</p><p style=\"text-align: right; \">هذه الشقق المكيفة يوجد بها ثلاث آسره وشاشة تلفاز بها رسيفر متصل بالقمر الصناعي ومطبخ وغسالة اطباق وفرن كهربائي ومنشفات ومفارش آسره متوفرة&nbsp;</p><p style=\"text-align: right; \">يمكن للضيوف المقيمن بهذه الشقق ان يحصلوا علي حمامات ساخنة تزيل عنهم هموم وعناء السفر&nbsp;</p>",
+                        "<h5 style=\"color: rgb(38, 38, 38); font-family: BlinkMacSystemFont, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif;\"><h3 style=\"margin-block-start: 0px; font-size: 14px;\"><b><u>Feature Description</u></b></h3><p style=\"margin-block-start: 0px; font-size: 14px;\"><b>Boasting </b>a terrace and an ATM, Alex apartment is conveniently located in Alexandria, 600 m from Cleopatra Beach and 1.4 km from Stanley Beach. This beachfront property offers access to a balcony and free private parking.</p><p style=\"font-size: 14px;\"><b>This </b>air-conditioned apartment is fitted with 3 bedrooms, a satellite flat-screen TV, a dining area, and a kitchen with a dishwasher and a microwave. Towels and bed linen are offered.</p><p style=\"font-size: 14px;\">At the apartment guests are welcome to take advantage of a hot tub.</p></h5>",
 
                         DateTime.Now,
                     },
@@ -49,18 +48,18 @@ namespace Luxury_Back.Migrations
                         "غرفة فيرمونت جولد سيجنتشر مزدوجة - لغير المدخنين",
                         "Fairmont Gold Signature Double Room - Non-Smokingm",
 
-                        "غرفة فيرمونت جولد سيجنتشر مزدوجة - لغير المدخنين",
-                        "Fairmont Gold Signature Double Room - Non-Smokingm",
+                        "<h3 style=\"text-align: right; \"><b style=\"font-size: 1.51rem;\"><u>شرح تفصيلي للمميزات</u></b><br></h3><h4 style=\"text-align: right; \"><br></h4><p style=\"text-align: right;\">مثل المدينة نفسها فندق فيرمونت يقدم لك العديد من الاشياء المبهجة ويجمع بين التقدم التكنولوجي والتصميم الحديث مع نكهات المحلية&nbsp;</p><p style=\"text-align: right;\">مع مشهد بانورامي لنهر النيل والاهرامات علي بعد كبير , جمال القاهرة وتاريخها دائما امام ناظريك من شرفة فندقك الراقي ,اثناء اقامتك في وسط البلد تستيطع الحصول علي افضل الاطعمة من افضل المطاعم الموجودة في القاهرة والاستمتاع بالهواء الطلق من علي قمة سطح فندقنا المجاور له حمام سباحة</p><p style=\"text-align: right;\">&nbsp;يقع الفندق في موقع استراتيجي في قلب العاصمة ويقام بيه العديد من الاحداث الاقتصادية ويتكون من 845 متر مربع اضافة الي 450 متر مربع من المساحة الخارجية المفتوحة مخصصة للتجماعات وتتكون من 10 غرف للاجتماعات ومنظر رائع لنهر النيل</p>",
+                        "<div style=\"margin: 0px; padding: 0px; color: rgb(57, 57, 57); font-family: ITCFranklinGothicStd; letter-spacing: 0.5px;\"><h3 style=\"margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding: 0px; font-family: ITCFranklinGothicStd, sans-serif; font-size: 16px; letter-spacing: normal;\"><b><u>Feature Description&nbsp;</u></b></h3><h3 style=\"margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding: 0px; font-family: ITCFranklinGothicStd, sans-serif; font-size: 16px; letter-spacing: normal;\"><b><u><br></u></b></h3><p style=\"margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding: 0px; font-family: ITCFranklinGothicStd, sans-serif; font-size: 16px; letter-spacing: normal;\">Like the city itself, Fairmont Nile City offers a delightful series of contrasts, combining advanced technology and modern design with local flavors and flair.</p><p style=\"margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding: 0px; font-family: ITCFranklinGothicStd, sans-serif; font-size: 16px; letter-spacing: normal;\">With sweeping panoramas of the river Nile and the Pyramids in the distance, Cairo’s beauty and history are always in sight from your luxury hotel accommodation. During your stay downtown, embark on culinary adventures at the city’s finest restaurants, enjoy the fresh air at our rooftop poolside restaurant and pamper yourself at Willow Stream Spa.</p><p style=\"margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding: 0px; font-family: ITCFranklinGothicStd, sans-serif; font-size: 16px; letter-spacing: normal;\">Conveniently located as part of the prestigious Nile City complex, this luxury city hotel is the ideal location for business events, consisting of 845 square meters (9,100 square feet) in addition to 450 square meters (4,800 square feet) of outdoor space dedicated to meetings and conventions. The space comprises of 10 meeting rooms including a ballroom and offers spectacular river Nile views.</p></div>",
 
                         DateTime.Now,
                     },
                     //3
                     { 2,3,
+                        "فندق قصر هلنان - بالغين فقط",
                         "Helnan Palace Hotel - Adults Only",
-                        "Helnan Palace Hotel - Adults Only",
-                        
-                        "Helnan Palace Hotel - Adults Only",
-                        "Helnan Palace Hotel - Adults Only",
+
+                        "<h3 style=\"text-align: right; \"><b style=\"font-size: 1.51rem;\"><u>شرح تفصيلي للمميزات</u></b><br></h3><h4 style=\"text-align: right; \"><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 1rem;\"><br></span></h4><p style=\"text-align: right; font-family: &quot;Geeza Pro&quot;, Tahoma, BlinkMacSystemFont, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; color: rgb(38, 38, 38);\">يقع فندق هلنان فلسطين‏ وسط حدائق مورقة تبلغ مساحتها 1.42 كم مربع تطل على خليج البحر الأبيض المتوسط، ويتميز بمسبح خارجي وتراس خاص للتشمس مواجه للبحر، كما توفر جميع الغرف إمكانية استخدام الإنترنت مجاناً وشرفات مع إطلالات على البحر.</p><p style=\"text-align: right; font-family: &quot;Geeza Pro&quot;, Tahoma, BlinkMacSystemFont, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; color: rgb(38, 38, 38);\">تتميز جميع غرف هلنان فلسطين بأنها فسيحة وتوفر مفروشات فاخرة، كما تحتوي على سجاد شرقي ومرافق للمشروبات الساخنة وتلفزيون مع قنوات فضائية، بينما توفر بعضها إطلالة على قصر المنتزه التاريخي.</p><p style=\"text-align: right; font-family: &quot;Geeza Pro&quot;, Tahoma, BlinkMacSystemFont, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; color: rgb(38, 38, 38);\">يمكن للضيوف الاستمتاع بقضاء فترة بعد الظهر بالاسترخاء، ويقدم المسبح المرطبات في الأيام الحارة.</p><h4 style=\"text-align: right; \">يقدم البار والمطاعم الموجودة في فندق فلسطين مجموعة كبيرة من المأكولات والمشروبات في كل من المناطق الداخلية والخارجية، وتوفر حانة Budega الترفيه الليلي في أجواء أنيقة.<span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 1rem;\">&nbsp;</span><br></h4>",
+                        "<div style=\"margin: 0px; padding: 0px; color: rgb(57, 57, 57); font-family: ITCFranklinGothicStd; letter-spacing: 0.5px;\"><h3 style=\"margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding: 0px; font-family: ITCFranklinGothicStd, sans-serif; font-size: 16px; letter-spacing: normal;\"><b><u>Feature Description&nbsp;</u></b></h3><h3 style=\"margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding: 0px; font-family: ITCFranklinGothicStd, sans-serif; font-size: 16px; letter-spacing: normal;\"><b><u><br></u></b></h3><h4 style=\"color: rgb(38, 38, 38); font-family: BlinkMacSystemFont, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; letter-spacing: normal;\">Set on 350 acres of lush gardens overlooking a Mediterranean cove, Helnan Royal Hotel - Palestine features an outdoor pool and private seafront sun terrace. All rooms have free internet access and balconies with sea views.</h4><h4 style=\"color: rgb(38, 38, 38); font-family: BlinkMacSystemFont, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; letter-spacing: normal;\"><br>All the rooms of the Helnan Palestine are spacious and offer luxurious furnishings. They feature oriental carpeting, hot drink facility and a satellite TV. Some rooms look out on the historic Montaza Palace.</h4><h4 style=\"color: rgb(38, 38, 38); font-family: BlinkMacSystemFont, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; letter-spacing: normal;\"><br>Guests can simply enjoy a lazy afternoon. The swimming pool provides refreshment on hot days.<br>Palestine Hotel’s restaurants and bar offer a wide range of food and beverages, both indoors and outdoors. The Bodega Pub provides night-time entertainment in a stylish setting.</h4></div>",
 
                         DateTime.Now,
                     },
@@ -68,39 +67,41 @@ namespace Luxury_Back.Migrations
                     { 4,7,
                         "شقق ستير مياستو الفندقية",
                         "Aparthotel Stare Miasto",
-                        
-                        "شقق ستير مياستو الفندقية",
-                        "Aparthotel Stare Miasto",
+
+                        "<h3 style=\"text-align: right; \"><b style=\"font-size: 1.51rem;\"><u>شرح تفصيلي للمميزات</u></b><br></h3><h4 style=\"text-align: right; \"><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 1rem;\"><br></span></h4><h4 style=\"text-align: right; \"><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 1rem;\">فندق ستاير مياستو يقع في شارع خالد بن الوليد علي بعد 120 متر من سوق وسط المدينة . يوجد شقق بها حديثة ولديها نت هوائي مجاني&nbsp;</span></h4><h4 style=\"text-align: right; \"><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 1rem;\">تقع الشقق في مبني تاريخي يطل علي شوارع الاسكندرية , شقق ستاير مياستو لديها تصميم فريد من نوعه للتصميم الداخلي للشقق وبها الوان دافئة وتتكون من احجار ذات طابع خشبي&nbsp;</span></h4><h4 style=\"text-align: right; \"><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 1rem;\">جميع الشقق في ستاير مياستو مكيفة , وبها شاشات تلفاز سمارت وبها مطابخ صغيرة جاهزة للاستخدام وتتضمن ثلاجة وسخان كهربائي وخدمة عملاء تعمل 24 ساعة تحت خدمتك</span></h4><h4 style=\"text-align: right; \"><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 1rem;\">الشقق الفندقية ستاير مياستو تقع علي بعد 900 متر من محطة الرمل , وهناك العديد من المطاعم والكافيهات المحيطة بالمنطقة ومحطة القطارات ومنطقة التسوق علي بعد 1.6 كيلو متر مربع&nbsp;</span></h4><h4 style=\"text-align: right; \"><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 1rem;\"><br></span><br></h4>",
+                        "<h3><u><b>Feature description&nbsp;</b></u></h3><h3><br></h3><h3><div id=\"summary\" class=\"\" data-et-view=\"\" style=\"font-size: 14px; color: rgb(38, 38, 38); font-family: BlinkMacSystemFont, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif;\"><div id=\"property_description_content\"><p><b>Aparthotel Stare Miasto</b> is situated in the very centre of Kraków’s Old Town, just 120 m from the Main Market Square. It features spacious modern apartments with free WiFi.</p><p>Located in a historic building, Aparthotel Stare Miasto features a unique interior design in the warm colour of bricks with wooden elements.</p><p>All apartments at Aparthotel Stare Miasto are air-conditioned, fitted with an LCD TV and a fully-equipped kitchenette, including a refrigerator and an electric kettle. The 24-hour front desk offers ticket and tour services.</p><p style=\"margin-block-end: 0px;\"><b>Aparthotel Stare Miasto </b>is located 900 m from the Wawel Castle. There is a variety of restaurants and cafés in the surrounding area. Kraków Główny Railway Station and Galeria Krakowska Shopping Centre are just 1.6 km away.</p><p style=\"margin-block-end: 0px;\"><br></p></div></div><p class=\"geo_information\" style=\"font-size: 14px; color: rgb(38, 38, 38); font-family: BlinkMacSystemFont, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif;\">This is our guests' favourite part of Kraków, according to independent reviews.</p></h3>",
 
                         DateTime.Now,
                     },
                     //5
                     { 4,7,
+                        "شقق جولدين كوين في المدينة القديمة",
                         "Golden Queen Apartments Old Town",
-                        "Golden Queen Apartments Old Town",
-                        
-                        "Golden Queen Apartments Old Town",
-                        "Golden Queen Apartments Old Town",
+
+                        "<h3 style=\"text-align: right;\"><b><u>شرح تفصيلي للمزيات</u></b></h3><p style=\"text-align: right;\"><br></p><p style=\"text-align: right; \" &quot;geeza=\"\" pro&quot;,=\"\" tahoma,=\"\" blinkmacsystemfont,=\"\" -apple-system,=\"\" &quot;segoe=\"\" ui&quot;,=\"\" roboto,=\"\" helvetica,=\"\" arial,=\"\" sans-serif;=\"\" color:=\"\" rgb(38,=\"\" 38,=\"\" 38);\\\"=\"\">تحتوي جميع الوحدات على مطبخ مع غسالة صحون وميكروويف وتلفزيون بشاشة مسطحة مع قنوات فضائية ومرافق كي الملابس وخزانة ملابس ومنطقة جلوس مع أريكة، ويتوفر حمام خاص مع دش في جميع الوحدات بالإضافة إلى مجفف شعر ولوازم استحمام مجانية،</p><p style=\"text-align: right; \" &quot;geeza=\"\" pro&quot;,=\"\" tahoma,=\"\" blinkmacsystemfont,=\"\" -apple-system,=\"\" &quot;segoe=\"\" ui&quot;,=\"\" roboto,=\"\" helvetica,=\"\" arial,=\"\" sans-serif;=\"\" color:=\"\" rgb(38,=\"\" 38,=\"\" 38);\\\"=\"\">تقدم الشقة وجبة إفطار كونتيننتال أو بوفيه إفطار.</p><p style=\"text-align: right; \" &quot;geeza=\"\" pro&quot;,=\"\" tahoma,=\"\" blinkmacsystemfont,=\"\" -apple-system,=\"\" &quot;segoe=\"\" ui&quot;,=\"\" roboto,=\"\" helvetica,=\"\" arial,=\"\" sans-serif;=\"\" color:=\"\" rgb(38,=\"\" 38,=\"\" 38);\\\"=\"\">يتوفر تراس للضيوف في Golden Queen Apartments Old Town للاستخدام.</p>",
+                        "<h3><b><u>Feature Description</u></b><br class=\"Apple-interchange-newline\"></h3><p><br></p><p style=\"\\&quot;color:\" rgb(38,=\"\" 38,=\"\" 38);=\"\" font-family:=\"\" blinkmacsystemfont,=\"\" -apple-system,=\"\" &quot;segoe=\"\" ui&quot;,=\"\" roboto,=\"\" helvetica,=\"\" arial,=\"\" sans-serif;\\\"=\"\">All units come with a living room, a seating area, a flat-screen TV with satellite channels, a fully equipped kitchen and a private bathroom with shower. Some units feature a dining area and/or a balcony.</p><p style=\"\\&quot;color:\" rgb(38,=\"\" 38,=\"\" 38);=\"\" font-family:=\"\" blinkmacsystemfont,=\"\" -apple-system,=\"\" &quot;segoe=\"\" ui&quot;,=\"\" roboto,=\"\" helvetica,=\"\" arial,=\"\" sans-serif;\\\"=\"\">The apartment offers a continental or buffet breakfast.</p><p style=\"\\&quot;color:\" rgb(38,=\"\" 38,=\"\" 38);=\"\" font-family:=\"\" blinkmacsystemfont,=\"\" -apple-system,=\"\" &quot;segoe=\"\" ui&quot;,=\"\" roboto,=\"\" helvetica,=\"\" arial,=\"\" sans-serif;\\\"=\"\">A terrace is available for guests at Golden Queen Apartments Old Town to use.</p>",
 
                         DateTime.Now,
                     },
                     //6
                     { 2,2,
+                        "جناح تيشز هيثم  فندق الفور سيزون نايل بلازا",
                         "Chez Haytham At Four Seasons Nile Plaza Residential Suite",
-                        "Chez Haytham At Four Seasons Nile Plaza Residential Suite",
-                        
-                        "Chez Haytham At Four Seasons Nile Plaza Residential Suite",
-                        "Chez Haytham At Four Seasons Nile Plaza Residential Suite",
+
+
+                        "<h3 style=\"text-align: right; \"><u>شرح تفصيلي للمزيات</u></h3><p style=\"text-align: right;\"><br></p><p style=\"text-align: right;\"><span style=\"\\&quot;color:\" rgb(38,=\"\" 38,=\"\" 38);=\"\" font-family:=\"\" &quot;geeza=\"\" pro&quot;,=\"\" tahoma,=\"\" blinkmacsystemfont,=\"\" -apple-system,=\"\" &quot;segoe=\"\" ui&quot;,=\"\" roboto,=\"\" helvetica,=\"\" arial,=\"\" sans-serif;\\\"=\"\">تقع الشقة الفندقية Chez Haytham At Four Seasons Nile Plaza Residential Suite في مدينة القاهرة، وهي مكان إقامة يوفر إطلالات على البحيرة ومطعماً ومركزاً للياقة البدنية وبار وصالة مشتركة وحديقة، كما تتوفر خدمة الواي فاي مجاناً في جميع أنحاء مكان الإقامة، بالإضافة إلى مواقف خاصة للسيارات في الموقع.</span><br></p>",
+                        "<h3><u style=\"\"><b>Feature Description</b></u></h3><p><b><br></b></p><p><span style=\"\\&quot;color:\" rgb(38,=\"\" 38,=\"\" 38);=\"\" font-family:=\"\" blinkmacsystemfont,=\"\" -apple-system,=\"\" &quot;segoe=\"\" ui&quot;,=\"\" roboto,=\"\" helvetica,=\"\" arial,=\"\" sans-serif;\\\"=\"\">Providing lake views, Chez Haytham At Four Seasons Nile Plaza Residential Suite in Cairo provides accommodations, a restaurant, a fitness center, a bar, a shared lounge and a garden. Complimentary WiFi is provided throughout the property and private parking is available on site.</span><b><br></b></p>",
 
                         DateTime.Now,
                     },
                     //7
                     { 3,5,
+                        "شيراتون اوشين 401",
                         "Sheraton ocean 401",
-                        "Sheraton ocean 401",
-                        
-                        "Sheraton ocean 401",
-                        "Sheraton ocean 401",
+
+                        "<h3 style=\"text-align: right; \"><b style=\"font-size: 1.51rem;\"><u>شرح تفصيلي للمزيات</u></b></h3><h3 style=\"text-align: right; \"><b style=\"font-size: 1.51rem;\"><u><br></u></b><br></h3><p style=\"text-align: right;\">يقع Sheraton ocean 401 على بعد 6.1 كم من Citystars Heliopolis ، ويوفر أماكن إقامة مع حديقة وتراس ومكتب استقبال يعمل على مدار 24 ساعة لراحتك. متوفر على الموقع موقف خاص للسيارات. </p><p style=\"text-align: right;\">تم تأثيث الوحدات المكيفة بأرضيات خشبية وتحتوي على حمام خاص وتلفزيون بشاشة مسطحة وخدمة الواي فاي المجانية ومكتب وغرفة معيشة ومطبخ مجهز وفناء وإطلالات على المدينة. </p><p style=\"text-align: right;\">توجد منطقة جلوس و / أو منطقة لتناول الطعام في بعض الوحدات.<br></p><p style=\"text-align: right;\"><br></p>",
+                        "<h3 style=\"\\&quot;color:\" rgb(38,=\"\" 38,=\"\" 38);=\"\" font-family:=\"\" blinkmacsystemfont,=\"\" -apple-system,=\"\" &quot;segoe=\"\" ui&quot;,=\"\" roboto,=\"\" helvetica,=\"\" arial,=\"\" sans-serif;\\\"=\"\"><b><u>Feature Description</u></b></h3><p style=\"\\&quot;color:\" rgb(38,=\"\" 38,=\"\" 38);=\"\" font-family:=\"\" blinkmacsystemfont,=\"\" -apple-system,=\"\" &quot;segoe=\"\" ui&quot;,=\"\" roboto,=\"\" helvetica,=\"\" arial,=\"\" sans-serif;\\\"=\"\"><b><br></b></p><p style=\"\\&quot;color:\" rgb(38,=\"\" 38,=\"\" 38);=\"\" font-family:=\"\" blinkmacsystemfont,=\"\" -apple-system,=\"\" &quot;segoe=\"\" ui&quot;,=\"\" roboto,=\"\" helvetica,=\"\" arial,=\"\" sans-serif;\\\"=\"\">Located 6.1 km from Citystars Heliopolis, Sheraton ocean 401 has accommodations with a garden, a terrace and a 24-hour front desk for your convenience. Private parking is available on site.</p><p style=\"\\&quot;color:\" rgb(38,=\"\" 38,=\"\" 38);=\"\" font-family:=\"\" blinkmacsystemfont,=\"\" -apple-system,=\"\" &quot;segoe=\"\" ui&quot;,=\"\" roboto,=\"\" helvetica,=\"\" arial,=\"\" sans-serif;\\\"=\"\">The air-conditioned units are furnished with hardwood floors and feature a private bathroom, a flat-screen TV, free WiFi, desk, a living room, an equipped kitchen, patio and views over the city. </p><p style=\"\\&quot;color:\" rgb(38,=\"\" 38,=\"\" 38);=\"\" font-family:=\"\" blinkmacsystemfont,=\"\" -apple-system,=\"\" &quot;segoe=\"\" ui&quot;,=\"\" roboto,=\"\" helvetica,=\"\" arial,=\"\" sans-serif;\\\"=\"\">There's a seating and/or dining area in some units.</p>",
+
 
                         DateTime.Now,
                     },
@@ -1483,20 +1484,20 @@ namespace Luxury_Back.Migrations
                         {24,"مصطفى كامل, Alexandria, Egypt ",31.248057,30.0008903,3,123 },
                         {25,"112 شارع زكريا غنيم العاشر, 21500 Alexandria, Egypt",31.2175238,29.9265748,3,110 },
                         //Red sea hotels Hurguda
-                        {26,"El Dahar, Abdel-Moneim Riad Square, 84511 Hurghada, Egypt",27.2591473,33.8129257,4,137 },
-                        {27,"El Corniche Street - Hurghada, Red Sea, 19706 الغردقة, مصر",27.2561602,33.8288267,4,137 },
+                        {26,"El Dahar, Abdel-Moneim Riad Square, 84511 Hurghada, Egypt",27.2591473,33.8129257,4,1 },
+                        {27,"El Corniche Street - Hurghada, Red Sea, 19706 الغردقة, مصر",27.2561602,33.8288267,4,1 },
                         //villa
-                        {28,"Safaga Road Km12 Hurghada Red Sea Egypt Egypt, 84517 Hurghada, Egypt ",27.1332614,33.8304279,4,137 },
-                        {29,"29 Hurgada - Al Ismaileya, 46616 الغردقة, مصر",29.9634626,32.5551746,4,137 },
+                        {28,"Safaga Road Km12 Hurghada Red Sea Egypt Egypt, 84517 Hurghada, Egypt ",27.1332614,33.8304279,4,1 },
+                        {29,"29 Hurgada - Al Ismaileya, 46616 الغردقة, مصر",29.9634626,32.5551746,4,1 },
                         //apartment 1
-                        {30,"Sheraton Road, 84511 Hurghada, Egypt",27.2046564,33.8488577,4,137 },
+                        {30,"Sheraton Road, 84511 Hurghada, Egypt",27.2046564,33.8488577,4,1 },
                         //sharm sheikh south sinai hotels
-                        {31,"sea street ,Um El Seed Cliff El Forsya Street ; Um El Seed cliff, 44628 Sharm El Sheikh, Egypt",27.8648531,34.3126042,5,138 },
-                        {32,"Sharm El-Sheikh, Qesm Sharm Ash Sheikh, Egypt, 46619 Sharm El Sheikh, Egypt",27.9654198,34.3617769,5,138 },
+                        {31,"sea street ,Um El Seed Cliff El Forsya Street ; Um El Seed cliff, 44628 Sharm El Sheikh, Egypt",27.8648531,34.3126042,5,1 },
+                        {32,"Sharm El-Sheikh, Qesm Sharm Ash Sheikh, Egypt, 46619 Sharm El Sheikh, Egypt",27.9654198,34.3617769,5,1 },
                         //villa
-                        {33,"1 Four Seasons Resort, Boulevard, El-Salam, Sharm El Sheikh, Egypt",27.9564317,34.3916611,5,138 },
-                        {34," NABQ BAY, approx. 20 km from the entertainment centre in Naama Bay; approx. 8 km from the airport in Sharm El Sheikh. NABQ BAY, 46619 Sharm El Sheikh, Egypt",28.1213151,34.4410615,5,138 },
-                        {35,"Nama bay, 44264 شرم الشيخ, مصر",27.9061088,34.3271739,5,138 },
+                        {33,"1 Four Seasons Resort, Boulevard, El-Salam, Sharm El Sheikh, Egypt",27.9564317,34.3916611,5,1 },
+                        {34," NABQ BAY, approx. 20 km from the entertainment centre in Naama Bay; approx. 8 km from the airport in Sharm El Sheikh. NABQ BAY, 46619 Sharm El Sheikh, Egypt",28.1213151,34.4410615,5,1 },
+                        {35,"Nama bay, 44264 شرم الشيخ, مصر",27.9061088,34.3271739,5,1 },
 
 
 

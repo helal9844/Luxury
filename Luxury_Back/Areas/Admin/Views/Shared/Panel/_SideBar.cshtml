@@ -4,43 +4,46 @@
 @{
     var isRTL = CultureInfo.CurrentCulture.Name.StartsWith("ar") ? "rtl" : "ltr";
 }
- <!-- ////////////////////////////////////////////////////////////////////////////-->
-  <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
+<!-- ////////////////////////////////////////////////////////////////////////////-->
+<div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="main-menu-content">
-      <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-        <li class=" nav-item"><a href="index.html"><i class="la la-home"></i><span class="menu-title" data-i18n="nav.dash.main">@localizer["dashboard"]</span><span class="badge badge badge-info badge-pill float-right mr-2">3</span></a>
-          <ul class="menu-content">
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+            <li class=" nav-item">
+                <a href="index.html"><i class="la la-home"></i><span class="menu-title" data-i18n="nav.dash.main">@localizer["dashboard"]</span><span class="badge badge badge-info badge-pill float-right mr-2">3</span></a>
+                <ul class="menu-content">
                     <li>
                         <a class="menu-item" asp-action="Index" asp-controller="Home" data-i18n="nav.dash.ecommerce">@localizer["dashboard"]</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" asp-action="About" asp-controller="Home" data-i18n="nav.dash.crypto">About</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" href="dashboard-sales.html" data-i18n="nav.dash.sales">Sales</a>
+                    </li>
+                </ul>
             </li>
-            <li><a class="menu-item" asp-action="About" asp-controller="Home"  data-i18n="nav.dash.crypto">About</a>
-            </li>
-            <li><a class="menu-item" href="dashboard-sales.html" data-i18n="nav.dash.sales">Sales</a>
-            </li>
-          </ul>
-        </li>
-        <li class=" nav-item">
+            <li class=" nav-item">
                 <a href="#"><i class="la la-puzzle-piece"></i><span class="menu-title" data-i18n="nav.templates.main">@localizer["category"]</span></a>
-            <ul class="menu-content">
-                <li>
-                    <a class="menu-item" asp-action="Index" asp-controller="Category" data-i18n="nav.templates.vert.classic_menu">@localizer["dispaly"] @localizer["category"]</a>
-                </li>
-                <li>
-                    <a class="menu-item" asp-action="Create" asp-controller="Category">@localizer["add"] @localizer["category"]</a>
-                </li>
-            </ul>
-        </li>
-        <li class=" nav-item">
-            <a href="#"><i class="la la-hotel"></i><span class="menu-title" data-i18n="nav.templates.main">@localizer["iBooking"]</span></a>
-            <ul class="menu-content">
-                <li>
-                    <a class="menu-item" asp-action="Index" asp-controller="IBooking" data-i18n="nav.templates.vert.classic_menu">@localizer["dispaly"] @localizer["iBooking"]</a>
-                </li>
-                <li>
-                    <a class="menu-item" asp-action="Create" asp-controller="IBooking">@localizer["add"] @localizer["iBooking"]</a>
-                </li>
-            </ul>
-        </li>
+                <ul class="menu-content">
+                    <li>
+                        <a class="menu-item" asp-action="Index" asp-controller="Category" data-i18n="nav.templates.vert.classic_menu">@localizer["dispaly"] @localizer["category"]</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" asp-action="Create" asp-controller="Category">@localizer["add"] @localizer["category"]</a>
+                    </li>
+                </ul>
+            </li>
+            <li class=" nav-item">
+                <a href="#"><i class="la la-hotel"></i><span class="menu-title" data-i18n="nav.templates.main">@localizer["iBooking"]</span></a>
+                <ul class="menu-content">
+                    <li>
+                        <a class="menu-item" asp-action="Index" asp-controller="IBooking" data-i18n="nav.templates.vert.classic_menu">@localizer["dispaly"] @localizer["iBooking"]</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" asp-action="Create" asp-controller="IBooking">@localizer["add"] @localizer["iBooking"]</a>
+                    </li>
+                </ul>
+            </li>
             <li class=" nav-item">
                 <a href="#"><i class="la la-briefcase"></i><span class="menu-title">@localizer["attribute"]</span></a>
                 <ul class="menu-content">
@@ -50,7 +53,16 @@
                     <li>
                         <a class="menu-item" asp-action="Create" asp-controller="IAttribute">@localizer["add"] @localizer["attribute"]</a>
                     </li>
-                    
+
+                </ul>
+            </li>
+            </li>
+            <li class=" nav-item">
+                <a href="#"><i class="la la-briefcase"></i><span class="menu-title">@localizer["checked_in"]</span></a>
+                <ul class="menu-content">
+                    <li>
+                        <a class="menu-item" asp-action="Index" asp-controller="Checked">@localizer["dispaly"] @localizer["checked_in"]</a>
+                    </li>
                 </ul>
             </li>
         @*<li class=" navigation-header">
