@@ -11,6 +11,8 @@
   "show on map": "Show On Map",
   "night": "Night",
   "rating": "Rating",
+  "user not valid": "This user is not valid!",
+  "minimumLength 2": "MinimumLength can not be less than 2 letters",
 
   "placeholdpass": "Password",
   "email": "Email Address",
@@ -27,6 +29,7 @@
   "errorphone": "",
   "ar-EG": "Arabic",
   "en-US": "English",
+  "not selected": "is not selected",
   //side bar
   "category": "Category",
   "categories": "Categories",
@@ -53,6 +56,7 @@
   "description": "Description",
   "img": "Image",
   "imgs": "Images",
+  "img not empty": "Images can not be empty!",
 
   "attribute": "Attribute",
   "attributes": "Attributes",
@@ -64,16 +68,19 @@
   "can't remove because": "Sorry can't remove this category because it has ",
   "child categories": " Child Categories",
   "brands": " brands",
+  "category not allowed": "Category is not allowed!",
 
 
   //create category
   "Select Parent Category": "Select Parent Category",
   "submit": "Submit",
   "category exist": "this category already exist!",
+  "category name empty": "Category name can't be empty",
   // create and edit IAttribute
   "new IAttribute": "New IAttribute",
   "inserted before": "this attribute has been inserted before !",
   "attribute not exist": "this attribute does not exist!",
+  "Attribute Name": "Attribute Name can't be empty",
   //create IBooking
   "step": "Step",
   "Select Brand": "Select Brand",
@@ -84,6 +91,8 @@
   "new ibooking": "New Ibooking",
   "edit ibooking": "Edit Ibooking",
   "booking exist": "this booking already exist!",
+  "ibooking not allow": "Ibooking is not allowed!",
+  "can't remove ibooking": "Sorry can't remove this Ibooking ",
 
   //Auth_User
   //Register
@@ -112,7 +121,7 @@
   "ibooking count": "Ibooking-Count",
   "customers": "Customers",
   "customer name": "Customer Name",
-  
+
   "cash flow": "Cash Flow",
   "recently checkin": "Recently Check-In",
   "total": "Total",

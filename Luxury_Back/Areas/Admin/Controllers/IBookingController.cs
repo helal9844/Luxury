@@ -151,7 +151,7 @@ namespace Luxury_Back.Controllers.Admin
 
             if (iBooking == null)
             {
-                TempData["error_msg"] = "Data Not Found";
+                TempData["error_msg"] = localizer["not found"];
                 return RedirectToAction("Index");
             }
 
@@ -293,7 +293,7 @@ namespace Luxury_Back.Controllers.Admin
 
             if (Request.Form.Files.Count() == 0)
             {
-                TempData["error_msg"] = "Images Can't Be Empty";
+                TempData["error_msg"] = localizer["img not empty"];
                 return RedirectToAction("Dropzone", new { id = id });
             }
 
@@ -397,7 +397,7 @@ namespace Luxury_Back.Controllers.Admin
             var ibooking = luxuryDb.iBookings.Include(i => i.Category).Where(w => w.Id == id).FirstOrDefault();
             if (ibooking == null)
             {
-                TempData["error_msg"] = "IBooking is Not Allow";
+                TempData["error_msg"] = localizer["ibooking not allow"];
             }
             var num = ibooking.Category.childs.Count();
             if (num == 0)
@@ -418,7 +418,7 @@ namespace Luxury_Back.Controllers.Admin
             var booking = luxuryDb.iBookings.Include(i => i.images).Where(w => w.Id == id).FirstOrDefault();
             if (booking == null)
             {
-                TempData["error_msg"] = "Booking is Not Allow";
+                TempData["error_msg"] = localizer["ibooking not allow"];
             }
             using (IDbContextTransaction transaction = luxuryDb.Database.BeginTransaction())
             {
@@ -441,7 +441,7 @@ namespace Luxury_Back.Controllers.Admin
                 }
                 catch (Exception ex)
                 {
-                    TempData["error_msg"] = "sorry can't remove This Booking";
+                    TempData["error_msg"] = localizer["can't remove ibooking"];
                     transaction.Rollback();
                 }
             }

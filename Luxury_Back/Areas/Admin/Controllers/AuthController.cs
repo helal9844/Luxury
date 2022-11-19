@@ -77,7 +77,7 @@ namespace Luxury_Back.Controllers.Admin
                     }
                     else
                     {
-                        TempData["userError"] = "This User is not Valid!";
+                        TempData["userError"] = localizer["user not valid"];
                     }
                 }
             }
