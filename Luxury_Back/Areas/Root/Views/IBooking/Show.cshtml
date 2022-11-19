@@ -277,16 +277,16 @@
                 <div class="text-header my-3">
                     <h2 class="h2 fw-bold">
                         <i class="la la-history"></i>
-                        Check In History
+                        @localizer["Check In History"]
                     </h2>
                 </div>
                 <table class="table table-bordered border-primary">
                     <thead>
                         <tr>
-                            <th scope="col">Customer Name</th>
-                            <th scope="col">Check Out</th>
-                            <th scope="col">Night</th>
-                            <th scope="col">Rating</th>
+                            <th scope="col">@localizer["customer name"]</th>
+                            <th scope="col">@localizer["check out"]</th>
+                            <th scope="col">@localizer["night"]</th>
+                            <th scope="col">@localizer["rating"]</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -320,7 +320,7 @@
                 <div class="text-header my-3">
                     <h2 class="h2 fw-bold">
                         <i class="la la-gratipay"></i>
-                        Some Other @(Helper.getLnag() == "ar" ? Model.Category.name_ar : Model.Category.name_en) Bookings may you love!
+                        @localizer["some other"] @(Helper.getLnag() == "ar" ? Model.Category.name_ar : Model.Category.name_en) @localizer["may you love"]
                     </h2>
                 </div>
                 <div class="recent_items">

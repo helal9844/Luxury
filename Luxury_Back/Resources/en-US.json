@@ -69,6 +69,7 @@
   "child categories": " Child Categories",
   "brands": " brands",
   "category not allowed": "Category is not allowed!",
+  "Check In History": "Check In History",
 
 
   //create category
@@ -121,7 +122,7 @@
   "ibooking count": "Ibooking-Count",
   "customers": "Customers",
   "customer name": "Customer Name",
-
+  "some other": "some other",
   "cash flow": "Cash Flow",
   "recently checkin": "Recently Check-In",
   "total": "Total",
@@ -133,6 +134,7 @@
   "person": "person",
   "persons": "persons",
   "search": "Search",
+  "may you love": "Bookings may you love!",
 
   //topfooter
   "hfootertitle": "Save time, save money!",
