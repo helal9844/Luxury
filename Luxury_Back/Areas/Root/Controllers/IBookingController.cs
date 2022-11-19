@@ -1,10 +1,12 @@
 ﻿using Luxury_Back.Controllers;
 using Luxury_Back.DB;
 using Luxury_Back.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using System.Data;
 
 namespace Luxury_Back.Areas.Root.Controllers
 {
@@ -63,5 +65,17 @@ namespace Luxury_Back.Areas.Root.Controllers
 
             return View(iBooking);
         }
+
+        
+        [HttpPost]
+        public IActionResult CheckInForm()
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Auth");
+            }
+            return View();
+        }
+
     }
 }

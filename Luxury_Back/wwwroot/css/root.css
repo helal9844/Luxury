@@ -875,12 +875,16 @@ section .subs .subscontent .subcol #iclose a, .closesection .subs .subscontent .
 }
 .iBooking_content .content_1 .staticmap {
   position: relative;
+  margin-bottom: 1rem;
+}
+.iBooking_content .content_1 .staticmap .card {
+  box-shadow: none;
 }
 .iBooking_content .content_1 .staticmap img {
   width: 100%;
 }
 .iBooking_content .content_1 .staticmap .overlay {
-  background-color: rgba(34, 34, 34, 0.3098039216);
+  background-color: rgba(255, 255, 255, 0.4);
 }
 .iBooking_content .content_1 .staticmap button {
   text-decoration: none;
@@ -972,9 +976,15 @@ section .subs .subscontent .subcol #iclose a, .closesection .subs .subscontent .
   border-radius: 0;
   height: 200px;
 }
+.iBooking_content .recent_Ibookings .card a {
+  color: #444;
+  text-decoration: none;
+  color: #222;
+}
 .iBooking_content .recent_Ibookings .card .card-body > a {
   color: #444;
   text-decoration: none;
+  color: #222;
 }
 .iBooking_content .recent_Ibookings .card .card-body .card-title {
   font-weight: bold;
@@ -1009,6 +1019,26 @@ section .subs .subscontent .subcol #iclose a, .closesection .subs .subscontent .
 .iBooking_content .recent_Ibookings .card .card-body .card-text.reviews small:last-of-type {
   display: block;
   margin-top: 0.5rem;
+}
+.iBooking_content .ibooking-map {
+  width: 100%;
+  height: 500px;
+}
+.iBooking_content .checkIn_form {
+  top: 0;
+}
+@media screen and (min-width: 800px) {
+  .iBooking_content .checkIn_form.top_search_content div [class^=col-lg]:last-of-type {
+    width: 100%;
+  }
+}
+.iBooking_content .checkIn_form .card {
+  background-color: #fff !important;
+  border: 1px solid #ccc;
+  box-shadow: 0px 1px 15px 1px rgba(62, 57, 107, 0.17);
+}
+.iBooking_content .checkIn_form .card .card-title {
+  font-weight: normal;
 }
 
 /*# sourceMappingURL=root.css.map */
