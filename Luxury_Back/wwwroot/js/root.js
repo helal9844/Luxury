@@ -93,7 +93,7 @@ check_in_out_input.onchange = function () {
 
 
 _searchForm.addEventListener("submit", function (e) {
-    e.preventDefault();
+    /*e.preventDefault();*/
     let formData = new FormData(this);
     console.log(formData);
 });

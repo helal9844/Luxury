@@ -1,5 +1,5 @@
 ﻿@using Luxury_Back.Helpers;
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers;
+
 @model IEnumerable<IBooking>
 @{
     ViewData["Title"] = "Filter";
@@ -22,12 +22,12 @@
         
         <div class="col-md-3">
             <figure class="card card-img-top border-grey border-lighten-2">
-                <a asp-action="show" asp-controller="IBooking" asp-route-id="@item.Id">
+                <a >
                         <img class="gallery-thumbnail card-img-top" src="@(Helper.imageUrl(@item.images.First().Name))"
                     height="300"/>
                 </a>
                 <div class="card-body px-0">
-                    <a >
+                    <a href="@("https://localhost:7014/IBooking/Show/"+item.Id)" style="color: #111;text-decoration: none;">
                         <h4 class="card-title">@(Helper.getLnag() == "ar"? item.name_ar: item.name_en)</h4>
 
                         <p class="card-text">

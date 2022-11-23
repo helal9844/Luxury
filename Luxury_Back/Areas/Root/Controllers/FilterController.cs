@@ -71,5 +71,45 @@ namespace Luxury_Back.Areas.Root.Controllers
             return View(ibookings);
         }
 
+        public IActionResult FiterCity(int? cityId, int? room)
+        {
+
+            var ibookings = luxuryDb.iBookings
+                .Include(i => i.Category)//
+                .Include(i => i.Brand)//
+                .Include(i => i.images.Take(1))
+                .Include(i => i.Address)
+                    .ThenInclude(a => a.City)
+                .Include(i => i.Address)
+                    .ThenInclude(a => a.Governorate)
+                .Include(i => i.iBookingAttributes)
+                    .ThenInclude(i => i.IAttribute)
+                .Where(i => i.Address.CityId == cityId)
+                //
+            .ToList();
+        
+            return View("Areas/Root/Views/Filter/Filter.cshtml", ibookings);
+        }
+
+        public IActionResult FiterGov(int? govId)
+        {
+
+            var ibookings = luxuryDb.iBookings
+                .Include(i => i.Category)//
+                .Include(i => i.Brand)//
+                .Include(i => i.images.Take(1))
+                .Include(i => i.Address)
+                    .ThenInclude(a => a.City)
+                .Include(i => i.Address)
+                    .ThenInclude(a => a.Governorate)
+                .Include(i => i.iBookingAttributes)
+                    .ThenInclude(i => i.IAttribute)
+                .Where(i => i.Address.GovernorateId == govId)
+            //
+            .ToList();
+
+            return View("Areas/Root/Views/Filter/Filter.cshtml", ibookings);
+        }
+
     }
 }

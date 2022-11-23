@@ -4,7 +4,7 @@
 
 <div class="top_search_content container">
     <div class="container">
-        <form id="search_form">
+        <form id="search_form" asp-action="FiterCity" asp-controller="filter" >
             <fieldset class="form-group">
                 <div class="row">
                     <div class="col-lg-5">
@@ -14,7 +14,6 @@
                               <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 @localizer["whereGoing"]
                               </a>
-
                               <ul class="dropdown-menu">
                                     @foreach (var city in ViewBag.TopCities)
                                     {

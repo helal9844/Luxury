@@ -41,7 +41,7 @@ namespace Luxury_Back.Areas.Root.Controllers
                 .Include(i => i.iBookingAttributes.Take(1))
                 
                 .Where(i => i.images != null)
-                .Distinct().OrderByDescending(i => i.Id).Take(10).ToList();
+                .Distinct().Take(10).ToList();
 
             ViewBag.recentCount = recent.Count;
             ViewBag.recent = recent;

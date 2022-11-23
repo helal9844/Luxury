@@ -8,7 +8,7 @@
             @foreach (var gov in ViewBag.topGovernorates)
             {
                 <div class="col-lg-@(i==0||i==1?6:4) my-2">
-                    <a href="">
+                    <a asp-action="FiterGov" asp-controller="filter" asp-route-govId="@gov.Id">
                         <div class="imgcontainer">
                             <img src="@(Helper.imageUrl(gov.image))"
                                  alt=""

@@ -17,14 +17,15 @@
         }
     }
 
-    input, button {
+    input, a, button {
         width: 100%;
         height: 100%;
         border-radius: 0%;
         padding: .9rem 0;
     }
 
-    button {
+    a, button {
+        color: #fff;
         @include one_dir(font-family, CairoB);
     }
 
@@ -183,7 +184,7 @@
                     text-align: center;
                     display: flex;
 
-                    button {
+                    a, button {
                         align-content: center;
                         display: grid;
                         width: 40px;

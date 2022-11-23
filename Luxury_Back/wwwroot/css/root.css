@@ -308,13 +308,16 @@ section {
 .top_search_content .has-icon-left .form-control-position i {
   color: #555;
 }
-.top_search_content input, .top_search_content button {
+.top_search_content input, .top_search_content a, .top_search_content button {
   width: 100%;
   height: 100%;
   border-radius: 0%;
   padding: 0.9rem 0;
 }
-[dir=rtl] .top_search_content button {
+.top_search_content a, .top_search_content button {
+  color: #fff;
+}
+[dir=rtl] .top_search_content a, [dir=rtl] .top_search_content button {
   font-family: CairoB;
 }
 .top_search_content div[class^=col-] {
@@ -458,7 +461,8 @@ section {
   text-align: center;
   display: flex;
 }
-.top_search_content .dropdown .toggle_menu .bootstrap-touchspin .input-group-prepend button,
+.top_search_content .dropdown .toggle_menu .bootstrap-touchspin .input-group-prepend a, .top_search_content .dropdown .toggle_menu .bootstrap-touchspin .input-group-prepend button,
+.top_search_content .dropdown .toggle_menu .bootstrap-touchspin .input-group-append a,
 .top_search_content .dropdown .toggle_menu .bootstrap-touchspin .input-group-append button {
   align-content: center;
   display: grid;
